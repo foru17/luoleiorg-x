@@ -1,0 +1,15 @@
+.home-nav-title {
+  font-family: "SourceHanSerifCN-Bold", var(--font-serif-cn),
+    var(--vp-font-family-base);
+}
+
+.site-footer a,
+.site-footer p {
+  text-decoration-line: none;
+  font-size: 14px;
+  letter-spacing: 1px;
+}
+
+.site-footer a:hover {
+  color: var(--vp-c-brand);
+}
