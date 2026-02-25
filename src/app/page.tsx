@@ -2,7 +2,7 @@ import { ArticleList } from "@/components/article-list";
 import { CategoryNav } from "@/components/category-nav";
 import { PaginationNav } from "@/components/pagination-nav";
 import { API_PAGE_HITS, type PageHitItem } from "@/lib/analytics";
-import { getAllPosts, getCategoryMeta } from "@/lib/content/posts";
+import { getAllPosts } from "@/lib/content/posts";
 import { articlePageSize } from "@/lib/site-config";
 
 interface HomePageProps {
@@ -15,7 +15,6 @@ export default async function Home({ searchParams }: HomePageProps) {
   const page = Number(params.page ?? "1");
 
   const allPosts = getAllPosts();
-  const categoryMeta = getCategoryMeta();
   let hitsLoading = false;
   const hitsMap = new Map<string, number>();
 
@@ -48,10 +47,7 @@ export default async function Home({ searchParams }: HomePageProps) {
 
   return (
     <main className="pb-8 pt-2">
-      <CategoryNav
-        currentCategory={currentCategory}
-        categoryCounts={categoryMeta}
-      />
+      <CategoryNav currentCategory={currentCategory} />
       <ArticleList
         posts={visiblePosts}
         hitsMap={hitsMap}

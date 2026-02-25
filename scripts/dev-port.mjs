@@ -64,9 +64,9 @@ async function main() {
     );
   }
 
-  const nextBin = process.platform === "win32" ? "next.cmd" : "next";
+  const vinextBin = process.platform === "win32" ? "vinext.cmd" : "vinext";
   const args = ["dev", "--port", String(resolvedPort)];
-  const child = spawn(nextBin, args, {
+  const child = spawn(vinextBin, args, {
     stdio: "inherit",
     env: process.env,
   });

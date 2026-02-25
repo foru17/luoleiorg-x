@@ -22,7 +22,7 @@ export function PaginationNav({
   const hasNext = page < pageTotal;
 
   return (
-    <div className="mt-8 flex items-center justify-center pb-4">
+    <div className="mt-8 flex items-center justify-center">
       {hasPrev ? (
         <Link
           className="inline-flex h-8 w-24 items-center justify-center whitespace-nowrap rounded bg-white px-2 text-sm font-medium uppercase leading-normal text-neutral-500 shadow-md transition duration-150 ease-in-out hover:bg-neutral-100 dark:bg-zinc-800 dark:text-zinc-300 dark:hover:bg-zinc-700"
@@ -35,12 +35,12 @@ export function PaginationNav({
           第一页
         </span>
       )}
-      <p className="w-16 text-center text-sm font-medium">
-        <span className="inline-block text-neutral-500 underline decoration-pink-500 dark:text-slate-400">
+      <p className="w-16 text-center font-medium md:text-sm">
+        <span className="inline-block underline decoration-pink-500 text-neutral-500 dark:text-slate-400">
           {page}
         </span>
         <span className="text-neutral-900 dark:text-slate-400">/</span>
-        <span className="inline-block text-neutral-500 underline decoration-indigo-500 dark:text-slate-400">
+        <span className="inline-block underline decoration-indigo-500 text-neutral-500 dark:text-slate-400">
           {Math.max(1, pageTotal)}
         </span>
       </p>

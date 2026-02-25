@@ -20,6 +20,7 @@ import {
   formatDate,
   formatShowDate,
   getArticleLazyImage,
+  getPreviewImage,
   getOriginalImage,
 } from "./utils";
 
@@ -148,28 +149,34 @@ function imageTransformPlugin() {
   };
 }
 
-function extractHeadingsFromMarkdown(content: string): PostDetail["headings"] {
-  const lines = content.split("\n");
+function extractHeadingsFromHtml(html: string): PostDetail["headings"] {
   const headings: PostDetail["headings"] = [];
 
-  for (const line of lines) {
-    const trimmed = line.trim();
-    if (trimmed.startsWith("## ")) {
-      const text = trimmed.replace(/^##\s+/, "").trim();
-      const id = text
-        .toLowerCase()
-        .replace(/[^\w\u4e00-\u9fa5\s-]/g, "")
-        .replace(/\s+/g, "-");
-      headings.push({ id, text, level: 2 });
+  const headingPattern =
+    /<h([23])\s+[^>]*id=["']([^"']+)["'][^>]*>([\s\S]*?)<\/h\1>/g;
+  let match: RegExpExecArray | null = headingPattern.exec(html);
+
+  while (match) {
+    const rawText = match[3]
+      .replace(/<[^>]+>/g, " ")
+      .replace(/&nbsp;/g, " ")
+      .replace(/&amp;/g, "&")
+      .replace(/&lt;/g, "<")
+      .replace(/&gt;/g, ">")
+      .replace(/&quot;/g, '"')
+      .replace(/&#39;/g, "'")
+      .replace(/\s+/g, " ")
+      .trim();
+
+    if (rawText) {
+      headings.push({
+        id: match[2],
+        text: rawText,
+        level: Number(match[1]),
+      });
     }
-    if (trimmed.startsWith("### ")) {
-      const text = trimmed.replace(/^###\s+/, "").trim();
-      const id = text
-        .toLowerCase()
-        .replace(/[^\w\u4e00-\u9fa5\s-]/g, "")
-        .replace(/\s+/g, "-");
-      headings.push({ id, text, level: 3 });
-    }
+
+    match = headingPattern.exec(html);
   }
 
   return headings;
@@ -225,7 +232,7 @@ export const getSearchDocuments = cache((): SearchDocument[] => {
   const files = listMarkdownFiles(POSTS_DIR);
 
   return files
-    .map((filePath) => {
+    .map((filePath): SearchDocument | null => {
       const raw = fs.readFileSync(filePath, "utf-8");
       const { data, content } = matter(raw);
       const frontmatter = data as PostFrontmatter;
@@ -240,6 +247,9 @@ export const getSearchDocuments = cache((): SearchDocument[] => {
         id: slug,
         title: frontmatter.title,
         url: `/${slug}`,
+        cover: frontmatter.cover
+          ? getPreviewImage(frontmatter.cover)
+          : undefined,
         excerpt: frontmatter.description ?? extractExcerpt(content),
         content: searchableContent,
         categories: frontmatter.categories ?? [],
@@ -258,7 +268,6 @@ export async function getPostBySlug(slug: string): Promise<PostDetail | null> {
   const frontmatter = data as PostFrontmatter;
   if (!frontmatter.title || !frontmatter.date || frontmatter.hide) return null;
 
-  const headings = extractHeadingsFromMarkdown(content);
   const transformedContent = transformCustomCards(content);
   const rendered = await unified()
     .use(remarkParse)
@@ -268,7 +277,7 @@ export async function getPostBySlug(slug: string): Promise<PostDetail | null> {
     .use(rehypeRaw)
     .use(rehypeSlug)
     .use(rehypeAutolinkHeadings, {
-      behavior: "wrap",
+      behavior: "append",
       properties: {
         className: ["article-anchor"],
       },
@@ -276,6 +285,8 @@ export async function getPostBySlug(slug: string): Promise<PostDetail | null> {
     .use(imageTransformPlugin)
     .use(rehypeStringify, { allowDangerousHtml: true })
     .process(transformedContent);
+  const html = String(rendered);
+  const headings = extractHeadingsFromHtml(html);
 
   const stats = readingTime(content);
 
@@ -291,7 +302,7 @@ export async function getPostBySlug(slug: string): Promise<PostDetail | null> {
     excerpt: frontmatter.description ?? extractExcerpt(content),
     readingTime: `${Math.max(1, Math.round(stats.minutes))} min read`,
     headings,
-    html: String(rendered),
+    html,
   };
 }
 

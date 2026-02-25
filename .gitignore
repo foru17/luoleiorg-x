@@ -19,6 +19,15 @@
 
 # production
 /build
+/dist/
+/.vite/
+
+# generated search artifacts
+public/pagefind/
+public/_pagefind/
+public/search-index.json
+.cache/
+*.pagefind
 
 # misc
 .DS_Store

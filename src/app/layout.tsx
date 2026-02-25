@@ -1,16 +1,9 @@
 import type { Metadata } from "next";
 import Script from "next/script";
-import { Noto_Serif_SC } from "next/font/google";
 import "./globals.css";
 import { siteConfig } from "@/lib/site-config";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
-
-const serif = Noto_Serif_SC({
-  variable: "--font-serif-cn",
-  subsets: ["latin"],
-  weight: ["400", "500", "700"],
-});
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.siteUrl),
@@ -51,7 +44,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="zh-CN">
-      <body className={`${serif.variable} antialiased`}>
+      <body className="antialiased">
         <SiteHeader />
         {children}
         <SiteFooter />

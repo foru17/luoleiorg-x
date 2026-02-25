@@ -52,6 +52,7 @@ function toPayload(item: SearchDocument) {
     id: item.id,
     title: item.title,
     url: item.url,
+    cover: item.cover ?? "",
     excerpt: item.excerpt,
     content: item.content.slice(0, 320),
     categories: item.categories,

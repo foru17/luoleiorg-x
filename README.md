@@ -1,6 +1,6 @@
 # luoleiorg-x
 
-基于 React 19 + Next.js 16 的 luolei.org 新架构重构项目。
+基于 React 19 + vinext（Next.js API 兼容） 的 luolei.org 新架构重构项目。
 
 ## Goals
 
@@ -11,7 +11,7 @@
 
 ## Tech Stack
 
-- Next.js 16 (App Router)
+- vinext (App Router 兼容)
 - React 19
 - TypeScript
 - Tailwind CSS 4
@@ -27,6 +27,7 @@
 - `src/lib/content/`: 内容加载、frontmatter 解析、markdown 渲染、数据模型
 - `scripts/sync-content.mjs`: 从旧仓库同步 markdown 内容
 - `scripts/generate-search-index.mjs`: 生成静态搜索索引 `public/search-index.json`
+- `scripts/generate-pagefind-index.mjs`: 生成 Pagefind 分片索引 `public/pagefind/*`
 
 ## Monorepo Baseline
 
@@ -53,11 +54,28 @@
 pnpm i
 pnpm sync:content
 pnpm search:index
+pnpm search:json
+pnpm search:pagefind
 pnpm dev
 pnpm lint
 pnpm typecheck
 pnpm build
 ```
+
+## Vinext Migration Status
+
+- 当前默认开发/构建/启动命令已切换到 vinext：
+  - `pnpm dev` → `vinext dev`（含端口探测脚本）
+  - `pnpm build` → `vinext build`
+  - `pnpm start` → `vinext start`
+- 兼容性检查：`pnpm dlx vinext check` 当前为 `97% compatible`，无阻断项。
+- 项目保留 `next/*` 语义导入（`next/link`、`next/image`、`next/navigation` 等），由 vinext shim 兼容。
+
+## Vinext Compatibility Notes
+
+- `next/image` 在 vinext 下可用，但默认无本地构建期图片优化；当前使用远程图片模式。
+- `next/font/google` 在当前 vinext 版本存在命名导出覆盖不全问题，本仓库已改为 CSS 变量字体栈兜底。
+- `next.config.mjs` 运行在 ESM 环境，避免使用 `__dirname` 这类 CJS 变量。
 
 ## Migration Notes
 
@@ -71,4 +89,7 @@ pnpm build
 - 已预留未来能力：
   - `POST /api/ai/summary`
   - `POST /api/ai/search`
-- 已实现 Command+K 搜索：标题+正文内容本地检索（基于静态索引）
+- 已实现 Command+K 搜索：
+  - 首选 Pagefind 分片检索（避免全量 JSON 下发）
+  - API 路由兜底（`/api/search/docs`，带缓存与限流）
+  - 搜索结果支持封面缩略图（来自 frontmatter `cover`）

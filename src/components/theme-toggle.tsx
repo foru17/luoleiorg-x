@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { Moon, Sun } from "lucide-react";
 
 export function ThemeToggle() {
   const [isDark, setIsDark] = useState(() => {
@@ -17,18 +18,28 @@ export function ThemeToggle() {
     localStorage.setItem("theme", isDark ? "dark" : "light");
   }, [isDark]);
 
-  const toggle = () => {
-    setIsDark((value) => !value);
-  };
-
   return (
     <button
-      onClick={toggle}
-      aria-label="toggle theme"
-      className="rounded-md border border-zinc-300 px-2 py-1 text-xs text-zinc-600 transition hover:bg-zinc-100 dark:border-zinc-700 dark:text-zinc-300 dark:hover:bg-zinc-800"
       type="button"
+      onClick={() => setIsDark((value) => !value)}
+      aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
+      aria-pressed={isDark}
+      className="group relative inline-flex h-8 w-8 items-center justify-center rounded-full border border-transparent bg-transparent text-zinc-600 transition-all hover:scale-105 hover:bg-zinc-100 sm:border-zinc-200 sm:bg-zinc-50/70 dark:border-transparent dark:bg-transparent dark:text-zinc-300 dark:hover:bg-zinc-800 sm:dark:border-zinc-700/50 sm:dark:bg-zinc-900/70"
     >
-      {isDark ? "Light" : "Dark"}
+      <Sun
+        className={`h-4 w-4 transition-all duration-200 ${
+          isDark
+            ? "scale-0 rotate-90 opacity-0"
+            : "scale-100 rotate-0 opacity-100"
+        }`}
+      />
+      <Moon
+        className={`absolute h-4 w-4 transition-all duration-200 ${
+          isDark
+            ? "scale-100 rotate-0 opacity-100"
+            : "scale-0 -rotate-90 opacity-0"
+        }`}
+      />
     </button>
   );
 }

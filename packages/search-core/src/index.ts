@@ -2,6 +2,7 @@ export interface SearchDocument {
   id: string;
   title: string;
   url: string;
+  cover?: string;
   excerpt: string;
   content: string;
   categories: string[];

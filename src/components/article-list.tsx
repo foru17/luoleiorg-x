@@ -13,16 +13,21 @@ export function ArticleList({
   hitsLoading = false,
 }: ArticleListProps) {
   return (
-    <ul className="mx-auto -mt-4 grid w-full max-w-[1240px] grid-cols-1 gap-x-2 gap-y-6 px-4 pt-6 sm:grid-cols-2 md:px-6 lg:grid-cols-4 lg:px-2 md:pt-12">
-      {posts.map((post) => (
-        <li key={post.slug}>
-          <ArticleCard
-            post={post}
-            hits={hitsMap?.get(post.slug) ?? 0}
-            hitsLoading={hitsLoading}
-          />
-        </li>
-      ))}
-    </ul>
+    <div className="mx-auto -mt-4 max-w-[1240px] px-4 sm:px-4 md:px-6 lg:px-2">
+      <ul className="-mx-3 flex flex-wrap justify-between pt-6 sm:mx-1 md:mx-0 md:pt-12">
+        {posts.map((post) => (
+          <li
+            key={post.slug}
+            className="flex w-full flex-shrink flex-grow flex-col px-4 py-3 sm:w-1/2 sm:px-3 md:w-1/4"
+          >
+            <ArticleCard
+              post={post}
+              hits={hitsMap?.get(post.slug) ?? 0}
+              hitsLoading={hitsLoading}
+            />
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 }

@@ -4,6 +4,7 @@ import { ArticleBottomNav } from "@/components/article-bottom-nav";
 import { ArticleComment } from "@/components/article-comment";
 import { ArticleCopyright } from "@/components/article-copyright";
 import { ArticleMeta } from "@/components/article-meta";
+import { ArticleToc } from "@/components/article-toc";
 import { ContentEnhancer } from "@/components/content-enhancer";
 import {
   getAllPosts,
@@ -51,17 +52,26 @@ export default async function PostPage({ params }: PostPageProps) {
   const siblings = getPostSiblings(slug);
 
   return (
-    <main className="mx-auto w-full max-w-[860px] px-4 pb-12 pt-6 md:px-6">
-      <ArticleMeta post={post} />
-      <ContentEnhancer />
+    <main className="mx-auto w-full max-w-[1220px] px-4 pb-12 pt-6 md:px-6">
+      <div className="lg:grid lg:grid-cols-[minmax(0,860px)_220px] lg:gap-12">
+        <section className="min-w-0">
+          <ArticleMeta post={post} />
+          <ContentEnhancer />
 
-      <article className="article-body article-content mt-6">
-        <div dangerouslySetInnerHTML={{ __html: post.html }} />
-      </article>
+          <article className="article-body article-content mt-6">
+            <div dangerouslySetInnerHTML={{ __html: post.html }} />
+          </article>
 
-      <ArticleCopyright title={post.title} date={post.date} slug={post.slug} />
-      <ArticleBottomNav prev={siblings.prev} next={siblings.next} />
-      <ArticleComment slug={post.slug} title={post.title} />
+          <ArticleCopyright
+            title={post.title}
+            date={post.date}
+            slug={post.slug}
+          />
+          <ArticleBottomNav prev={siblings.prev} next={siblings.next} />
+          <ArticleComment slug={post.slug} title={post.title} />
+        </section>
+        <ArticleToc headings={post.headings} />
+      </div>
     </main>
   );
 }

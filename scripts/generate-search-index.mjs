@@ -4,6 +4,7 @@ import matter from "gray-matter";
 
 const postsDir = path.resolve(process.cwd(), "content/posts");
 const outputFile = path.resolve(process.cwd(), "public/search-index.json");
+const cfImageProxyHost = "https://img.is26.com";
 
 function listMarkdownFiles(dir) {
   const entries = fs.readdirSync(dir, { withFileTypes: true });
@@ -45,6 +46,26 @@ function extractExcerpt(content) {
   return lines[0]?.slice(0, 180) ?? "";
 }
 
+function getPreviewImage(url) {
+  if (!url) return "";
+  const source = String(url).trim();
+  if (!source) return "";
+  if (source.startsWith("data:") || source.startsWith("blob:")) return source;
+  if (source.startsWith("/") && !source.startsWith("//")) return source;
+
+  const normalized = source.startsWith("//") ? `https:${source}` : source;
+  const stripTransform = normalized.replace(/\/w=[^/?#]+(?:,[^/?#]+)*$/, "");
+
+  if (stripTransform.startsWith(`${cfImageProxyHost}/`)) {
+    return `${stripTransform}/w=320`;
+  }
+
+  const raw = normalized.startsWith("http")
+    ? normalized
+    : normalized.replace(/^\/+/, "");
+  return `${cfImageProxyHost}/${raw}/w=320`;
+}
+
 if (!fs.existsSync(postsDir)) {
   console.error(`Posts directory missing: ${postsDir}`);
   process.exit(1);
@@ -63,6 +84,7 @@ const docs = listMarkdownFiles(postsDir)
       id: slug,
       title: data.title,
       url: `/${slug}`,
+      cover: getPreviewImage(data.cover),
       excerpt: data.description ?? extractExcerpt(content),
       content: searchableContent,
       categories: Array.isArray(data.categories) ? data.categories : [],

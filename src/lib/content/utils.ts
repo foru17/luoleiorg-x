@@ -1,3 +1,5 @@
+const CF_IMAGE_PROXY_HOST = "https://img.is26.com";
+
 export function formatDate(dateInput: string): string {
   const date = new Date(dateInput);
   if (Number.isNaN(date.getTime())) return dateInput;
@@ -29,20 +31,55 @@ export function formatShowDate(dateInput: string): string {
   return new Date(dateInput).toISOString().slice(0, 10);
 }
 
+function normalizeImageSource(url: string): string {
+  const source = url.trim();
+  if (!source) return "";
+  if (source.startsWith("//")) {
+    return `https:${source}`;
+  }
+  return source;
+}
+
+function stripCfTransform(url: string): string {
+  return url.replace(/\/w=[^/?#]+(?:,[^/?#]+)*$/, "");
+}
+
+function toCfImage(url: string, transform?: string): string {
+  const source = normalizeImageSource(url);
+  if (!source) return "";
+
+  if (source.startsWith("data:") || source.startsWith("blob:")) {
+    return source;
+  }
+
+  if (source.startsWith("/") && !source.startsWith("//")) {
+    return source;
+  }
+
+  if (source.startsWith(`${CF_IMAGE_PROXY_HOST}/`)) {
+    const clean = stripCfTransform(source);
+    return transform ? `${clean}/${transform}` : clean;
+  }
+
+  const raw = source.startsWith("http") ? source : source.replace(/^\/+/, "");
+  const proxied = `${CF_IMAGE_PROXY_HOST}/${raw}`;
+  return transform ? `${proxied}/${transform}` : proxied;
+}
+
 export function getOriginalImage(url: string): string {
-  return url.startsWith("http") ? url : `https://img.is26.com/${url}`;
+  return toCfImage(url);
 }
 
 export function getPreviewImage(url?: string): string {
   if (!url) return "";
-  return url.startsWith("http") ? url : `https://img.is26.com/${url}/w=800`;
+  return toCfImage(url, "w=800");
 }
 
 export function getArticleLazyImage(url: string): string {
-  return url.startsWith("http") ? url : `https://img.is26.com/${url}/w=1200`;
+  return toCfImage(url, "w=1200");
 }
 
 export function getBannerImage(url?: string): string {
   if (!url) return "";
-  return getPreviewImage(url);
+  return toCfImage(url, "w=800");
 }
