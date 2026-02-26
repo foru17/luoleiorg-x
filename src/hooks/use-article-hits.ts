@@ -39,8 +39,10 @@ function extractSlug(page: string): string {
     }
   }
   
-  // Remove leading and trailing slashes
-  return path.replace(/^\//, "").replace(/\/$/, "");
+  // Remove leading slash and extract only the first segment
+  // This ensures /slug/amp/, /slug/, and /slug all map to "slug"
+  const segments = path.replace(/^\//, "").split("/");
+  return segments[0] || "";
 }
 
 async function fetchHitsData(): Promise<PageHitItem[]> {

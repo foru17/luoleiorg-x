@@ -15,10 +15,20 @@ interface Env {
     };
   };
   CACHE_KV: KVNamespace;
+  // GA4 secrets (set via `wrangler secret put`)
+  GA4_CLIENT_EMAIL?: string;
+  GA4_PRIVATE_KEY?: string;
+  GA4_PROPERTY_ID?: string;
 }
 
 export default {
   async fetch(request: Request, env: Env): Promise<Response> {
+    // Inject Cloudflare secrets into process.env so server-side code can access them.
+    // In Workers, secrets are only available via the env parameter, not process.env.
+    if (env.GA4_CLIENT_EMAIL) process.env.GA4_CLIENT_EMAIL = env.GA4_CLIENT_EMAIL;
+    if (env.GA4_PRIVATE_KEY) process.env.GA4_PRIVATE_KEY = env.GA4_PRIVATE_KEY;
+    if (env.GA4_PROPERTY_ID) process.env.GA4_PROPERTY_ID = env.GA4_PROPERTY_ID;
+
     const url = new URL(request.url);
 
     // Image optimization via Cloudflare Images binding

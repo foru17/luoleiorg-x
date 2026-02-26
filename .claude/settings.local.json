@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npx wrangler:*)",
+      "mcp__ide__getDiagnostics",
+      "Bash(grep:*)",
+      "Bash(cat:*)",
+      "Bash(tail:*)"
+    ]
+  }
+}

@@ -49,7 +49,10 @@ function extractSlug(page: string): string {
     }
   }
   
-  return path.replace(/^\//, "").replace(/\/$/, "");
+  // Remove leading slash and extract only the first segment
+  // This ensures /slug/amp/ and /slug/ both map to "slug"
+  const segments = path.replace(/^\//, "").split("/");
+  return segments[0] || "";
 }
 
 async function getHitsMap(): Promise<{
