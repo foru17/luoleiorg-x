@@ -79,7 +79,7 @@ function renderGearCard(attrs: Record<string, string>): string {
   const prize = attrs.prize ?? "";
   const originalPrice = attrs.originalPrice ?? "";
 
-  return `<div class="tweet-card"><div class="relative m-auto w-fit"><div class="relative flex flex-row h-48 px-4 overflow-hidden bg-white border rounded-lg shadow-lg border-gray-50 dark:border-zinc-700 dark:bg-zinc-800"><div class="relative flex w-48 h-full overflow-hidden rounded-xl"><img class="object-cover w-48 h-full" src="${image}" alt="${product}" /></div><div class="px-5 pb-5 mt-4"><h5 class="text-base tracking-tight text-slate-900 max-w-64 line-clamp-1 dark:text-slate-100">${product}</h5><p class="mt-2 text-xs text-slate-900 dark:text-slate-400">入手价格: ¥${prize}</p><p class="text-xs line-through text-slate-500">原价: ¥${originalPrice}</p></div></div></div></div>`;
+  return `<div class="gear-card"><div class="gear-card-inner"><div class="gear-card-content"><div class="gear-card-image"><img src="${image}" alt="${product}" /></div><div class="gear-card-info"><h5 class="gear-card-title">${product}</h5><p class="gear-card-price">入手价格: ¥${prize}</p><p class="gear-card-original-price">原价: ¥${originalPrice}</p></div></div></div></div>`;
 }
 
 function transformCustomCards(content: string): string {

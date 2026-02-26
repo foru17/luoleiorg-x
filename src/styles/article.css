@@ -456,3 +456,112 @@
   margin-right: 4px;
   vertical-align: middle;
 }
+
+/* GearCard 样式 */
+.gear-card {
+  margin: 24px 0;
+}
+
+.gear-card-inner {
+  position: relative;
+  margin: 0 auto;
+  width: fit-content;
+}
+
+.gear-card-content {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  height: 12rem;
+  padding: 0 1rem;
+  overflow: hidden;
+  background-color: #fff;
+  border: 1px solid #f9fafb;
+  border-radius: 0.5rem;
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+}
+
+.dark .gear-card-content {
+  border-color: #3f3f46;
+  background-color: #27272a;
+}
+
+.gear-card-image {
+  position: relative;
+  display: flex;
+  width: 12rem;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 0.75rem;
+}
+
+.gear-card-image img {
+  object-fit: cover;
+  width: 12rem;
+  height: 100%;
+}
+
+.gear-card-info {
+  padding: 1rem 1.25rem 1.25rem;
+}
+
+.gear-card-title {
+  font-size: 1rem;
+  line-height: 1.5rem;
+  letter-spacing: -0.025em;
+  color: #0f172a;
+  max-width: 16rem;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+}
+
+.dark .gear-card-title {
+  color: #f1f5f9;
+}
+
+.gear-card-price {
+  margin-top: 0.5rem;
+  font-size: 0.75rem;
+  color: #0f172a;
+}
+
+.dark .gear-card-price {
+  color: #a1a1aa;
+}
+
+.gear-card-original-price {
+  font-size: 0.75rem;
+  color: #64748b;
+  text-decoration: line-through;
+}
+
+/* TweetCard / GearCard 内链接 - 重置文章链接样式 */
+.article-content .tweet-card-placeholder a,
+.article-content .gear-card a {
+  position: static;
+  display: inline;
+  gap: 0;
+  font-weight: inherit;
+  color: inherit;
+  padding: 0;
+  border-radius: 0;
+  background-color: transparent;
+  transition: none;
+}
+
+.article-content .tweet-card-placeholder a:hover,
+.article-content .gear-card a:hover {
+  background-color: transparent;
+}
+
+.article-content .tweet-card-placeholder a[href^="http"]::after,
+.article-content .gear-card a[href^="http"]::after {
+  display: none;
+}
+
+.article-content .tweet-card-placeholder a:active,
+.article-content .gear-card a:active {
+  transform: none;
+}

@@ -47,23 +47,14 @@ function parsePrivateKey(pem: string): ArrayBuffer {
  */
 async function getAccessToken(): Promise<string> {
   const GA4_CONFIG = getGA4Config();
-  console.log("[GA4] Checking GA4 config...");
-  console.log("[GA4] Property ID:", GA4_CONFIG.propertyId);
-  console.log("[GA4] Client Email exists:", !!GA4_CONFIG.clientEmail);
-  console.log("[GA4] Private Key exists:", !!GA4_CONFIG.privateKey);
-  console.log("[GA4] Private Key length:", GA4_CONFIG.privateKey?.length);
 
   if (!GA4_CONFIG.clientEmail || !GA4_CONFIG.privateKey) {
     throw new Error("GA4 credentials not configured");
   }
 
   try {
-    // 解析 PEM 私钥
-    console.log("[GA4] Parsing private key...");
     const keyData = parsePrivateKey(GA4_CONFIG.privateKey);
-    console.log("[GA4] Key data length:", keyData.byteLength);
 
-    console.log("[GA4] Importing key with crypto.subtle...");
     const privateKey = await crypto.subtle.importKey(
       "pkcs8",
       keyData,
@@ -71,7 +62,6 @@ async function getAccessToken(): Promise<string> {
       false,
       ["sign"]
     );
-    console.log("[GA4] Key imported successfully");
 
     const jwt = await new SignJWT({
       iss: GA4_CONFIG.clientEmail,
@@ -84,7 +74,6 @@ async function getAccessToken(): Promise<string> {
       .setExpirationTime("1h")
       .sign(privateKey);
 
-    console.log("[GA4] JWT signed, fetching access token...");
     const tokenResponse = await fetch("https://oauth2.googleapis.com/token", {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
@@ -100,7 +89,6 @@ async function getAccessToken(): Promise<string> {
       throw new Error(`Token fetch failed: ${tokenResponse.status} ${error}`);
     }
 
-    console.log("[GA4] Access token obtained");
     const { access_token } = (await tokenResponse.json()) as { access_token: string };
     return access_token;
   } catch (error) {
@@ -114,15 +102,13 @@ async function getAccessToken(): Promise<string> {
  */
 export async function fetchGA4PageViews(): Promise<Array<{ page: string; hit: number }>> {
   try {
-    console.log("[GA4] Starting fetchGA4PageViews...");
     const accessToken = await getAccessToken();
-    
+
     // 计算日期范围（GA4 数据有延迟，查询前天及之前的数据）
     const endDate = new Date();
     endDate.setDate(endDate.getDate() - 1); // 昨天
     const startDate = new Date("2016-01-01"); // GA4 要求开始日期 > 2015-08-13
 
-    console.log("[GA4] Fetching report from GA4 Data API...");
     const response = await fetch(
       `https://analyticsdata.googleapis.com/v1beta/properties/${getGA4Config().propertyId}:runReport`,
       {
@@ -173,7 +159,6 @@ export async function fetchGA4PageViews(): Promise<Array<{ page: string; hit: nu
       hit: parseInt(row.metricValues[0].value, 10) || 0,
     }));
 
-    console.log(`[GA4] Fetched ${results.length} pages`);
     return results;
   } catch (error) {
     console.error("[GA4] Failed to fetch:", error);

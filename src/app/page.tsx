@@ -5,25 +5,10 @@ import { CategoryNav } from "@/components/category-nav";
 import { PaginationNav } from "@/components/pagination-nav";
 import { getPostListing, isKnownCategory } from "@/lib/content/listings";
 import { siteConfig } from "@/lib/site-config";
+import { categoryPageUrl, parsePositivePage } from "@/lib/utils";
 
 interface HomePageProps {
   searchParams: Promise<{ category?: string; page?: string }>;
-}
-
-function parsePositivePage(pageParam?: string): number {
-  if (!pageParam) return 1;
-  const parsed = Number(pageParam);
-  if (!Number.isFinite(parsed)) return 1;
-  const integer = Math.trunc(parsed);
-  return integer > 0 ? integer : 1;
-}
-
-function buildCategoryUrl(category: string, page: number): string {
-  const encodedCategory = encodeURIComponent(category);
-  if (page <= 1) {
-    return `/category/${encodedCategory}`;
-  }
-  return `/category/${encodedCategory}/page/${page}`;
 }
 
 export async function generateMetadata({
@@ -46,7 +31,7 @@ export async function generateMetadata({
 
     return {
       alternates: {
-        canonical: `${siteConfig.siteUrl}${buildCategoryUrl(rawCategory, page)}`,
+        canonical: `${siteConfig.siteUrl}${categoryPageUrl(rawCategory, page)}`,
       },
     };
   }
@@ -74,7 +59,7 @@ export default async function Home({ searchParams }: HomePageProps) {
       notFound();
     }
 
-    permanentRedirect(buildCategoryUrl(rawCategory, page));
+    permanentRedirect(categoryPageUrl(rawCategory, page));
   }
 
   // 如果有 page 参数且 page > 1，重定向到 SEO 友好路径 /page/N

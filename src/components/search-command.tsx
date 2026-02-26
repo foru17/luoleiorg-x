@@ -87,11 +87,9 @@ function normalizeUrl(url: string): string {
 
 async function loadPagefind(): Promise<PagefindApi | null> {
   try {
-    const importer = new Function("p", "return import(p)") as (
-      path: string,
-    ) => Promise<unknown>;
-    const mod = (await importer(
-      "/pagefind/pagefind.js",
+    const pagefindPath = "/pagefind/pagefind.js";
+    const mod = (await import(
+      /* @vite-ignore */ pagefindPath
     )) as Partial<PagefindApi>;
     if (typeof mod.search !== "function") return null;
     if (typeof mod.options === "function") {

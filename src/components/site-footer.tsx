@@ -8,7 +8,7 @@ export function SiteFooter() {
           Powered By <a href="https://github.com/cloudflare/vinext" target="_blank" rel="noreferrer">vinext</a>
         </p>
         <p>
-          Copyright 2026 | <a href={siteConfig.siteUrl}>LUOLEI.ORG</a>
+          Copyright {new Date().getFullYear()} | <a href={siteConfig.siteUrl}>LUOLEI.ORG</a>
         </p>
         <p>
           <a href="http://beian.miit.gov.cn/" target="_blank" rel="noreferrer">

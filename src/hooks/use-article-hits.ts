@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useRef, useState, useCallback } from "react";
 import { API_PAGE_HITS, type PageHitItem } from "@/lib/analytics";
+import { extractSlug } from "@/lib/utils";
 
 // Global cache shared across all hook instances
 interface GlobalCache {
@@ -17,33 +18,6 @@ const globalCache: GlobalCache = {
 };
 
 const CACHE_TTL_MS = 2 * 60 * 1000; // 2 minutes for client-side cache
-
-/**
- * Extract slug from page path/URL
- * Handles formats:
- * - "/article-slug" → "article-slug"
- * - "https://example.com/article-slug/" → "article-slug"
- * - "https://example.com/article-slug" → "article-slug"
- */
-function extractSlug(page: string): string {
-  // Remove protocol and domain if present
-  let path = page;
-  
-  // Handle full URLs like "https://luolei.org/article-slug/"
-  if (path.includes("://")) {
-    try {
-      const url = new URL(path);
-      path = url.pathname;
-    } catch {
-      // If URL parsing fails, treat as path
-    }
-  }
-  
-  // Remove leading slash and extract only the first segment
-  // This ensures /slug/amp/, /slug/, and /slug all map to "slug"
-  const segments = path.replace(/^\//, "").split("/");
-  return segments[0] || "";
-}
 
 async function fetchHitsData(): Promise<PageHitItem[]> {
   // Return cached data if fresh

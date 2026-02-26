@@ -5,7 +5,9 @@
       "mcp__ide__getDiagnostics",
       "Bash(grep:*)",
       "Bash(cat:*)",
-      "Bash(tail:*)"
+      "Bash(tail:*)",
+      "Bash(wc:*)",
+      "Bash(pnpm build:*)"
     ]
   }
 }

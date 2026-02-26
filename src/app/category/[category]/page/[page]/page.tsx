@@ -9,13 +9,10 @@ import {
   isKnownCategory,
 } from "@/lib/content/listings";
 import { siteConfig } from "@/lib/site-config";
+import { categoryPageUrl, normalizeCategory } from "@/lib/utils";
 
 interface CategoryPagedPageProps {
   params: Promise<{ category: string; page: string }>;
-}
-
-function normalizeCategory(category: string): string {
-  return decodeURIComponent(category).trim().toLowerCase();
 }
 
 function parsePageSegment(page: string): number | null {
@@ -27,14 +24,6 @@ function parsePageSegment(page: string): number | null {
     return null;
   }
   return Math.trunc(parsed);
-}
-
-function categoryPageUrl(category: string, page: number): string {
-  if (page <= 1) {
-    return `/category/${encodeURIComponent(category)}`;
-  }
-
-  return `/category/${encodeURIComponent(category)}/page/${page}`;
 }
 
 export async function generateMetadata({

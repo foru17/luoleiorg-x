@@ -1,5 +1,6 @@
 import { fetchGA4PageViews, isGA4Configured } from "@/lib/ga4";
 import { articlePageSize, categoryMap } from "@/lib/site-config";
+import { extractSlug, parsePositivePage } from "@/lib/utils";
 import { getAllPosts } from "./posts";
 import type { PostItem } from "./types";
 
@@ -27,32 +28,6 @@ export interface PostListingResult {
   requestedPage: number;
   page: number;
   pageTotal: number;
-}
-
-function parsePageNumber(pageParam?: string): number {
-  if (!pageParam) return 1;
-  const parsed = Number(pageParam);
-  if (!Number.isFinite(parsed)) return 1;
-  const integer = Math.trunc(parsed);
-  return integer > 0 ? integer : 1;
-}
-
-function extractSlug(page: string): string {
-  let path = page;
-  
-  if (path.includes("://")) {
-    try {
-      const url = new URL(path);
-      path = url.pathname;
-    } catch {
-      // If URL parsing fails, treat as path
-    }
-  }
-  
-  // Remove leading slash and extract only the first segment
-  // This ensures /slug/amp/ and /slug/ both map to "slug"
-  const segments = path.replace(/^\//, "").split("/");
-  return segments[0] || "";
 }
 
 async function getHitsMap(): Promise<{
@@ -122,7 +97,7 @@ export async function getPostListing(params: {
   pageParam?: string;
 }): Promise<PostListingResult> {
   const category = params.category;
-  const requestedPage = parsePageNumber(params.pageParam);
+  const requestedPage = parsePositivePage(params.pageParam);
   const allPosts = getAllPosts();
   
   const hitsPromise = getHitsMap();

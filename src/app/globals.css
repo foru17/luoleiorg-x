@@ -2,3 +2,7 @@
 @import "../styles/tokens.css";
 @import "../styles/layout.css";
 @import "../styles/article.css";
+
+html {
+  scroll-behavior: smooth;
+}

@@ -57,21 +57,27 @@ export function ArticleCard({
             className="block overflow-hidden relative h-60 w-full bg-zinc-100 dark:bg-neutral-900 md:h-40 lg:h-40"
           >
             {imageUrl && (
-              <img
-                ref={imgRef}
-                src={imageUrl}
-                alt={post.title}
-                loading={priority ? "eager" : "lazy"}
-                decoding={priority ? "sync" : "async"}
-                className={`absolute top-0 left-0 h-full w-full object-cover duration-300 ease-in-out group-hover:scale-105 transition-opacity duration-500 ${
-                  isLoaded ? "opacity-100" : "opacity-0"
-                }`}
-                onLoad={() => setIsLoaded(true)}
-                onError={() => {
-                  setHasError(true);
-                  setIsLoaded(true); // Hide skeleton on error
-                }}
-              />
+              <>
+                <img
+                  ref={imgRef}
+                  src={imageUrl}
+                  alt={post.title}
+                  loading={priority ? "eager" : "lazy"}
+                  decoding={priority ? "sync" : "async"}
+                  className="hidden h-0 w-0"
+                  onLoad={() => setIsLoaded(true)}
+                  onError={() => {
+                    setHasError(true);
+                    setIsLoaded(true);
+                  }}
+                />
+                <span
+                  style={{ backgroundImage: `url(${imageUrl})` }}
+                  className={`absolute top-0 left-0 h-full w-full bg-cover bg-center duration-300 ease-in hover:scale-105 ${
+                    isLoaded ? "opacity-100" : "opacity-0"
+                  }`}
+                />
+              </>
             )}
 
             {isVideo && (

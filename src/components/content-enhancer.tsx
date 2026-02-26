@@ -2,7 +2,7 @@
 
 import { useEffect } from "react";
 import mediumZoom from "medium-zoom";
-import { createRoot } from "react-dom/client";
+import { createRoot, type Root } from "react-dom/client";
 import { TweetCard } from "./tweet-card";
 
 function getFaviconUrl(domain: string) {
@@ -10,26 +10,29 @@ function getFaviconUrl(domain: string) {
 }
 
 // 渲染 TweetCard 到占位符
-function hydrateTweetCards() {
+function hydrateTweetCards(roots: Root[]) {
   const placeholders = document.querySelectorAll(".tweet-card-placeholder");
-  
+
   placeholders.forEach((placeholder) => {
     const tweetId = placeholder.getAttribute("data-tweet-id");
     if (!tweetId) return;
-    
+
     // 检查是否已经 hydrate
     if (placeholder.hasAttribute("data-hydrated")) return;
-    
+
     // 创建 React root 并渲染 TweetCard
     const root = createRoot(placeholder);
+    roots.push(root);
     root.render(<TweetCard tweetId={tweetId} />);
-    
+
     placeholder.setAttribute("data-hydrated", "true");
   });
 }
 
 export function ContentEnhancer() {
   useEffect(() => {
+    const roots: Root[] = [];
+
     const zoom = mediumZoom(".article-body img", {
       background: "var(--vp-c-bg)",
       margin: 24,
@@ -81,10 +84,13 @@ export function ContentEnhancer() {
     });
 
     // Hydrate TweetCards
-    hydrateTweetCards();
+    hydrateTweetCards(roots);
 
     return () => {
       zoom.detach();
+      for (const root of roots) {
+        root.unmount();
+      }
     };
   }, []);
 

@@ -9,18 +9,11 @@ import {
   isKnownCategory,
 } from "@/lib/content/listings";
 import { siteConfig } from "@/lib/site-config";
+import { categoryUrl, normalizeCategory, parsePositivePage } from "@/lib/utils";
 
 interface CategoryPageProps {
   params: Promise<{ category: string }>;
   searchParams: Promise<{ page?: string }>;
-}
-
-function normalizeCategory(category: string): string {
-  return decodeURIComponent(category).trim().toLowerCase();
-}
-
-function categoryUrl(category: string): string {
-  return `/category/${encodeURIComponent(category)}`;
 }
 
 export async function generateMetadata({
@@ -55,14 +48,6 @@ export async function generateMetadata({
       canonical: `${siteConfig.siteUrl}${canonicalPath}`,
     },
   };
-}
-
-function parsePositivePage(pageParam?: string): number {
-  if (!pageParam) return 1;
-  const parsed = Number(pageParam);
-  if (!Number.isFinite(parsed)) return 1;
-  const integer = Math.trunc(parsed);
-  return integer > 0 ? integer : 1;
 }
 
 export default async function CategoryPage({
