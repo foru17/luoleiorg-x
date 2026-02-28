@@ -36,7 +36,11 @@ function normalizeImageSource(url: string): string {
 }
 
 function stripCfTransform(url: string): string {
-  return url.replace(/\/w=[^/?#]+(?:,[^/?#]+)*$/, "");
+  // 移除旧格式 /w=XXX 和新格式 ?variant=wXXX
+  return url
+    .replace(/\?variant=[^&]+/, "")
+    .replace(/\/w=[^/?#]+(?:,[^/?#]+)*$/, "")
+    .replace(/\?$/, "");
 }
 
 function toCfImage(url: string, transform?: string): string {
@@ -53,12 +57,12 @@ function toCfImage(url: string, transform?: string): string {
 
   if (source.startsWith(`${CF_IMAGE_PROXY_HOST}/`)) {
     const clean = stripCfTransform(source);
-    return transform ? `${clean}/${transform}` : clean;
+    return transform ? `${clean}?variant=${transform}` : clean;
   }
 
   const raw = source.startsWith("http") ? source : source.replace(/^\/+/, "");
   const proxied = `${CF_IMAGE_PROXY_HOST}/${raw}`;
-  return transform ? `${proxied}/${transform}` : proxied;
+  return transform ? `${proxied}?variant=${transform}` : proxied;
 }
 
 export function getOriginalImage(url: string): string {
@@ -66,17 +70,17 @@ export function getOriginalImage(url: string): string {
 }
 
 export function getPreviewImage(url?: string): string {
-  if (!url) return "";
-  return toCfImage(url, "w=800");
+if (!url) return "";
+return toCfImage(url, "w=800");
 }
 
 export function getArticleLazyImage(url: string): string {
-  return toCfImage(url, "w=1200");
+return toCfImage(url, "w=1200");
 }
 
 export function getBannerImage(url?: string): string {
-  if (!url) return "";
-  return toCfImage(url, "w=800");
+if (!url) return "";
+return toCfImage(url, "w=800");
 }
 
 // 图片尺寸缓存 - 在构建时由 scripts/fetch-image-dimensions.mjs 生成

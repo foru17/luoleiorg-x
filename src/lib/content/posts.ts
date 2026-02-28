@@ -69,7 +69,7 @@ function parseTagAttributes(raw: string): Record<string, string> {
 function renderTweetCardPlaceholder(attrs: Record<string, string>): string {
   const tweetId = attrs.tweetId ?? "";
   if (!tweetId) return "";
-  
+
   // 返回占位符，客户端组件会替换为真实内容
   return `<div data-tweet-id="${tweetId}" class="tweet-card-placeholder"></div>`;
 }
@@ -104,7 +104,7 @@ function transformCustomCards(content: string): string {
 
 // 获取外部网站 favicon
 function getFaviconUrl(domain: string): string {
-  return `https://img.is26.com/https://static.is26.com/favicon/${domain}/w=32`;
+  return `https://img.is26.com/static.is26.com/favicon/${domain}`;
 }
 
 function imageTransformPlugin() {
@@ -168,7 +168,12 @@ function externalLinkFaviconPlugin() {
       const hasFavicon = children.some((child) => {
         if (child.type !== "element") return false;
         const childEl = child as Element;
-        return childEl.tagName === "span" && String(childEl.properties?.className ?? "").includes("favicon-wrapper");
+        return (
+          childEl.tagName === "span" &&
+          String(childEl.properties?.className ?? "").includes(
+            "favicon-wrapper",
+          )
+        );
       });
       if (hasFavicon) return;
 
@@ -199,13 +204,14 @@ function externalLinkFaviconPlugin() {
       const existingClass = String(element.properties?.className ?? "");
       element.properties = {
         ...element.properties,
-        className: existingClass ? `${existingClass} has-favicon` : "has-favicon",
+        className: existingClass
+          ? `${existingClass} has-favicon`
+          : "has-favicon",
       };
       element.children = [wrapper, ...children];
     });
   };
 }
-
 
 function extractHeadingsFromHtml(html: string): PostDetail["headings"] {
   const headings: PostDetail["headings"] = [];
@@ -249,7 +255,10 @@ function parsePostContent(filePath: string, raw: string): PostItem | null {
   }
 
   // Extract slug from file path
-  const slug = filePath.replace("/content/posts/", "").replace(/\.md$/, "").replace(/\//g, "-");
+  const slug = filePath
+    .replace("/content/posts/", "")
+    .replace(/\.md$/, "")
+    .replace(/\//g, "-");
   const stats = readingTime(content);
 
   return {
@@ -268,14 +277,14 @@ function parsePostContent(filePath: string, raw: string): PostItem | null {
 
 export const getAllPosts = cache((): PostItem[] => {
   const posts: PostItem[] = [];
-  
+
   for (const [filePath, content] of Object.entries(markdownFiles)) {
     const post = parsePostContent(filePath, content as string);
     if (post) {
       posts.push(post);
     }
   }
-  
+
   return posts.sort((a, b) => b.dateTime - a.dateTime);
 });
 
@@ -291,7 +300,7 @@ export const getCategoryMeta = cache(() => {
 
 export const getSearchDocuments = cache((): SearchDocument[] => {
   const docs: SearchDocument[] = [];
-  
+
   for (const [filePath, content] of Object.entries(markdownFiles)) {
     const raw = content as string;
     const { data, content: markdownContent } = matter(raw);
@@ -301,16 +310,17 @@ export const getSearchDocuments = cache((): SearchDocument[] => {
       continue;
     }
 
-    const slug = filePath.replace("/content/posts/", "").replace(/\.md$/, "").replace(/\//g, "-");
+    const slug = filePath
+      .replace("/content/posts/", "")
+      .replace(/\.md$/, "")
+      .replace(/\//g, "-");
     const searchableContent = stripMarkdown(markdownContent).slice(0, 4000);
     const aiSummary = getAISummary(slug);
     docs.push({
       id: slug,
       title: frontmatter.title,
       url: `/${slug}`,
-      cover: frontmatter.cover
-        ? getPreviewImage(frontmatter.cover)
-        : undefined,
+      cover: frontmatter.cover ? getPreviewImage(frontmatter.cover) : undefined,
       excerpt: frontmatter.description ?? extractExcerpt(markdownContent),
       content: searchableContent,
       categories: frontmatter.categories ?? [],
@@ -318,7 +328,7 @@ export const getSearchDocuments = cache((): SearchDocument[] => {
       keyPoints: aiSummary?.keyPoints,
     });
   }
-  
+
   return docs;
 });
 
@@ -328,7 +338,7 @@ export async function getPostBySlug(slug: string): Promise<PostDetail | null> {
     `/content/posts/${slug}.md`,
     `/content/posts/${slug.replace(/-/g, "/")}.md`,
   ];
-  
+
   let raw: string | undefined;
 
   for (const path of possiblePaths) {
@@ -341,14 +351,17 @@ export async function getPostBySlug(slug: string): Promise<PostDetail | null> {
   // If not found directly, search through all files
   if (!raw) {
     for (const [filePath, content] of Object.entries(markdownFiles)) {
-      const fileSlug = filePath.replace("/content/posts/", "").replace(/\.md$/, "").replace(/\//g, "-");
+      const fileSlug = filePath
+        .replace("/content/posts/", "")
+        .replace(/\.md$/, "")
+        .replace(/\//g, "-");
       if (fileSlug === slug) {
         raw = content as string;
         break;
       }
     }
   }
-  
+
   if (!raw) return null;
 
   const { data, content } = matter(raw);
@@ -399,7 +412,10 @@ export async function getPostBySlug(slug: string): Promise<PostDetail | null> {
  */
 export function getPostRawContent(slug: string): string | null {
   for (const [filePath, content] of Object.entries(markdownFiles)) {
-    const fileSlug = filePath.replace("/content/posts/", "").replace(/\.md$/, "").replace(/\//g, "-");
+    const fileSlug = filePath
+      .replace("/content/posts/", "")
+      .replace(/\.md$/, "")
+      .replace(/\//g, "-");
     if (fileSlug === slug) {
       const { content: markdownContent } = matter(content as string);
       return markdownContent;
@@ -412,7 +428,7 @@ export function getPostSiblings(slug: string) {
   const posts = getAllPosts();
   const index = posts.findIndex((post) => post.slug === slug);
   return {
-    prev: index >= 0 ? posts[index - 1] ?? null : null,
-    next: index >= 0 ? posts[index + 1] ?? null : null,
+    prev: index >= 0 ? (posts[index - 1] ?? null) : null,
+    next: index >= 0 ? (posts[index + 1] ?? null) : null,
   };
 }

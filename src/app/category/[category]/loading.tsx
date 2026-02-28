@@ -11,26 +11,23 @@ export default async function Loading({ params, searchParams }: LoadingProps) {
   const query = searchParams ? await searchParams : {};
   const page = Number(query.page) || 1;
 
-  // Generate skeleton cards
+  // Generate skeleton cards - 布局与 ArticleList 完全一致
   const skeletonCards = Array.from({ length: 12 }, (_, i) => (
-    <li
-      key={i}
-      className="flex w-full flex-shrink flex-grow flex-col px-4 py-3 sm:w-1/2 sm:px-3 md:w-1/4"
-    >
-      <article className="group flex h-full flex-col">
-        <div className="overflow-hidden flex-1 h-full rounded-t bg-white shadow-lg dark:bg-zinc-800">
-          <div className="flex min-h-60 flex-wrap md:min-h-40 lg:min-h-40">
-            <div className="block overflow-hidden relative h-60 w-full bg-zinc-100 dark:bg-neutral-900 md:h-40 lg:h-40">
-              <div className="absolute inset-0 animate-pulse bg-zinc-200 dark:bg-zinc-700" />
-            </div>
-            <div className="mt-5 w-full px-6">
-              <div className="h-4 w-3/4 animate-pulse rounded bg-zinc-200 dark:bg-zinc-700 md:h-3" />
-              <div className="mt-2 h-4 w-1/2 animate-pulse rounded bg-zinc-200 dark:bg-zinc-700 md:h-3" />
-            </div>
-          </div>
+    <li key={i} className="flex flex-col">
+      <article className="group flex h-full flex-col rounded-lg bg-white dark:bg-zinc-800 shadow-lg overflow-hidden">
+        {/* 图片区域 - 与实际卡片尺寸一致 */}
+        <div className="block relative h-60 w-full md:h-40 lg:h-40 flex-shrink-0 bg-zinc-100 dark:bg-neutral-900 overflow-hidden">
+          <div className="absolute inset-0 animate-pulse bg-zinc-200 dark:bg-zinc-700" />
         </div>
-        <div className="overflow-hidden mt-auto h-12 flex-none rounded-b rounded-t-none bg-white px-6 py-3 shadow-lg dark:bg-zinc-800">
-          <div className="flex items-center justify-between">
+
+        {/* 内容区域 - 与实际卡片一致 */}
+        <div className="flex-1 flex flex-col px-6 py-5">
+          {/* 标题骨架 */}
+          <div className="h-4 w-3/4 animate-pulse rounded bg-zinc-200 dark:bg-zinc-700" />
+          <div className="mt-2 h-4 w-1/2 animate-pulse rounded bg-zinc-200 dark:bg-zinc-700" />
+
+          {/* 日期栏骨架 - 使用 mt-auto 与实际卡片一致 */}
+          <div className="flex items-center justify-between mt-auto pt-4">
             <div className="h-3 w-20 animate-pulse rounded bg-zinc-200 dark:bg-zinc-700" />
             <div className="h-3 w-12 animate-pulse rounded bg-zinc-200 dark:bg-zinc-700" />
           </div>
@@ -42,8 +39,8 @@ export default async function Loading({ params, searchParams }: LoadingProps) {
   return (
     <main className="pb-8 pt-2">
       <CategoryNav currentCategory={routeParams.category} />
-      <div className="mx-auto -mt-4 max-w-[1240px] px-4 sm:px-4 md:px-6 lg:px-2">
-        <ul className="-mx-3 flex flex-wrap justify-between pt-3 sm:mx-1 md:mx-0 md:pt-6">
+      <div className="mx-auto max-w-[1240px] px-4 sm:px-4 md:px-6 lg:px-2">
+        <ul className="grid grid-cols-1 gap-6 pt-3 sm:grid-cols-2 md:pt-6 lg:grid-cols-3 xl:grid-cols-4">
           {skeletonCards}
         </ul>
       </div>
