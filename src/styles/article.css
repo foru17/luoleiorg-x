@@ -349,6 +349,27 @@
   transition: transform 0.25s cubic-bezier(0, 1, 0.5, 1);
 }
 
+/* TOC 展开/收起动画 */
+.toc-children-wrapper {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.25s ease-out;
+}
+
+.toc-children-wrapper.is-expanded {
+  grid-template-rows: 1fr;
+}
+
+.toc-children-inner {
+  overflow: hidden;
+}
+
+/* h3 子项样式 */
+.article-toc-link.toc-h3 {
+  padding-left: 12px;
+  font-size: 12px;
+}
+
 .dark .article-toc-link {
   color: #9ca3af;
 }

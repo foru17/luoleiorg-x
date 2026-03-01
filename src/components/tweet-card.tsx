@@ -54,6 +54,81 @@ function formatNumber(num: number): string {
   return num.toString();
 }
 
+function TweetMediaGrid({
+  images,
+  tweetUrl,
+}: {
+  images: string[];
+  tweetUrl: string;
+}) {
+  const count = images.length;
+
+  const renderImage = (src: string, className: string) => (
+    <img
+      src={src}
+      alt="Tweet media"
+      className={`h-full w-full border-0 object-cover transition-transform hover:scale-[1.02] ${className}`}
+      loading="lazy"
+    />
+  );
+
+  const wrapLink = (children: React.ReactNode, className?: string) => (
+    <a
+      href={tweetUrl}
+      target="_blank"
+      rel="noreferrer"
+      className={`block overflow-hidden rounded-xl ${className ?? ""}`}
+    >
+      {children}
+    </a>
+  );
+
+  // Single image - full width, natural aspect
+  if (count === 1) {
+    return wrapLink(
+      renderImage(images[0], "h-auto w-full"),
+    );
+  }
+
+  // 2 images - side by side
+  if (count === 2) {
+    return wrapLink(
+      <div className="grid grid-cols-2 gap-0.5">
+        {renderImage(images[0], "aspect-[4/3]")}
+        {renderImage(images[1], "aspect-[4/3]")}
+      </div>,
+    );
+  }
+
+  // 3 images - left large, right 2 stacked
+  if (count === 3) {
+    return wrapLink(
+      <div className="grid grid-cols-2 gap-0.5" style={{ aspectRatio: "16/9" }}>
+        <div className="row-span-2 overflow-hidden">
+          {renderImage(images[0], "")}
+        </div>
+        <div className="overflow-hidden">
+          {renderImage(images[1], "")}
+        </div>
+        <div className="overflow-hidden">
+          {renderImage(images[2], "")}
+        </div>
+      </div>,
+    );
+  }
+
+  // 4 images - 2x2 grid
+  return wrapLink(
+    <div className="grid grid-cols-2 gap-0.5">
+      {images.slice(0, 4).map((src, i) => (
+        <div key={i} className="overflow-hidden">
+          {renderImage(src, "aspect-[4/3]")}
+        </div>
+      ))}
+    </div>,
+  );
+}
+
 export function TweetCard({ tweetId }: TweetCardProps) {
   const tweet = (tweetsCache.tweets as unknown as Record<string, TweetData | undefined>)[tweetId];
 
@@ -74,7 +149,10 @@ export function TweetCard({ tweetId }: TweetCardProps) {
   }
 
   const { author, text, created_at, public_metrics, media } = tweet;
-  const image = media?.[0]?.preview_image_url || media?.[0]?.url;
+  const images = media
+    ?.filter((m) => m.type === "photo")
+    .map((m) => m.preview_image_url || m.url)
+    .filter(Boolean) ?? [];
 
   return (
     <div className="my-8 px-2">
@@ -124,21 +202,12 @@ export function TweetCard({ tweetId }: TweetCardProps) {
           {text}
         </div>
 
-        {/* Image */}
-        {image && (
-          <a
-            href={`https://x.com/${author.username}/status/${tweetId}`}
-            target="_blank"
-            rel="noreferrer"
-            className="block overflow-hidden rounded-xl"
-          >
-            <img
-              src={image}
-              alt="Tweet media"
-              className="h-auto w-full border-0 transition-transform hover:scale-[1.02]"
-              loading="lazy"
-            />
-          </a>
+        {/* Media */}
+        {images.length > 0 && (
+          <TweetMediaGrid
+            images={images}
+            tweetUrl={`https://x.com/${author.username}/status/${tweetId}`}
+          />
         )}
 
         {/* Footer */}

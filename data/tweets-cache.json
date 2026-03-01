@@ -12,10 +12,10 @@
       "public_metrics": {
         "retweet_count": 9,
         "reply_count": 5,
-        "like_count": 95,
+        "like_count": 96,
         "quote_count": 0,
-        "bookmark_count": 121,
-        "impression_count": 46498
+        "bookmark_count": 122,
+        "impression_count": 47302
       },
       "media": []
     },
@@ -31,10 +31,10 @@
       "public_metrics": {
         "retweet_count": 40,
         "reply_count": 19,
-        "like_count": 393,
+        "like_count": 391,
         "quote_count": 1,
         "bookmark_count": 207,
-        "impression_count": 114835
+        "impression_count": 114837
       },
       "media": [
         {
@@ -70,7 +70,7 @@
         "like_count": 138,
         "quote_count": 6,
         "bookmark_count": 89,
-        "impression_count": 44112
+        "impression_count": 44118
       },
       "media": [
         {
@@ -94,7 +94,7 @@
         "like_count": 510,
         "quote_count": 0,
         "bookmark_count": 21,
-        "impression_count": 130691
+        "impression_count": 130692
       },
       "media": [
         {
@@ -115,10 +115,10 @@
       "public_metrics": {
         "retweet_count": 325,
         "reply_count": 1150,
-        "like_count": 1569,
+        "like_count": 1568,
         "quote_count": 101,
         "bookmark_count": 690,
-        "impression_count": 1396525
+        "impression_count": 1396543
       },
       "media": [
         {
@@ -163,15 +163,139 @@
       "public_metrics": {
         "retweet_count": 570,
         "reply_count": 98,
-        "like_count": 2320,
+        "like_count": 2321,
         "quote_count": 20,
         "bookmark_count": 2436,
-        "impression_count": 501434
+        "impression_count": 501459
       },
       "media": [
         {
           "type": "photo",
           "url": "https://pbs.twimg.com/media/GCvsKH1WYAAnveW.jpg"
+        }
+      ]
+    },
+    "1744017015256346724": {
+      "id": "1744017015256346724",
+      "text": "用 Grafana 和 Loki，配合 Clash Premium 的 Tracing API，弄了一个 Clash 监控面板，能看看自己的线路流量什么的，其实也没啥用。 https://t.co/YhrjvpspIe https://t.co/3huqYdmg4r",
+      "created_at": "2024-01-07T15:23:53.000Z",
+      "author": {
+        "name": "luolei",
+        "username": "luoleiorg",
+        "profile_image_url": "https://pbs.twimg.com/profile_images/1550157622300786688/672YmCpB_normal.jpg"
+      },
+      "public_metrics": {
+        "retweet_count": 21,
+        "reply_count": 7,
+        "like_count": 150,
+        "quote_count": 2,
+        "bookmark_count": 117,
+        "impression_count": 40859
+      },
+      "media": [
+        {
+          "type": "photo",
+          "url": "https://pbs.twimg.com/media/GDP9AFsX0AEN1nG.jpg"
+        }
+      ]
+    },
+    "2019418455276204185": {
+      "id": "2019418455276204185",
+      "text": "我又来吹 Kimi K2.5 了。刚花一小时 Vibe 了一个 Clash 流量分析工具，完成度极高。部署在内网，监听 OpenClash 流量，实现域名、节点流量统计及 IP 归属地查询，数据持久化。我家的网络分流策略比较复杂，一直想找个工具感知流量状况，毕竟市面上除了 UniFi，其他统计工具的界面确实有些一言难尽。 https://t.co/RoLJbkaP53",
+      "created_at": "2026-02-05T14:30:53.000Z",
+      "author": {
+        "name": "luolei",
+        "username": "luoleiorg",
+        "profile_image_url": "https://pbs.twimg.com/profile_images/1550157622300786688/672YmCpB_normal.jpg"
+      },
+      "public_metrics": {
+        "retweet_count": 36,
+        "reply_count": 40,
+        "like_count": 442,
+        "quote_count": 2,
+        "bookmark_count": 334,
+        "impression_count": 67981
+      },
+      "media": [
+        {
+          "type": "photo",
+          "url": "https://pbs.twimg.com/media/HAZqWanacAQoKE_.jpg"
+        },
+        {
+          "type": "photo",
+          "url": "https://pbs.twimg.com/media/HAZqXrmacAsSrma.jpg"
+        },
+        {
+          "type": "photo",
+          "url": "https://pbs.twimg.com/media/HAZqX15acAQXRdd.jpg"
+        }
+      ]
+    },
+    "2019508580555321508": {
+      "id": "2019508580555321508",
+      "text": "🚀 2026 年最优雅的 Clash 流量可视化工具 Clash Master 来了！\n推荐家里用 OpenClash 或 Clash 内核的朋友体验下 👇\n📊 域名/IP/节点流量全维度统计\n📈 30分钟~24小时趋势分析\n🔄 多后端同时监控\n💾 数据持久化\n🔗 https://t.co/N0H24xaaLA https://t.co/GKiMGXDrMI",
+      "created_at": "2026-02-05T20:29:00.000Z",
+      "author": {
+        "name": "luolei",
+        "username": "luoleiorg",
+        "profile_image_url": "https://pbs.twimg.com/profile_images/1550157622300786688/672YmCpB_normal.jpg"
+      },
+      "public_metrics": {
+        "retweet_count": 80,
+        "reply_count": 28,
+        "like_count": 624,
+        "quote_count": 8,
+        "bookmark_count": 704,
+        "impression_count": 116516
+      },
+      "media": [
+        {
+          "type": "photo",
+          "url": "https://pbs.twimg.com/media/HAa4-e7bYAAckbK.jpg"
+        },
+        {
+          "type": "photo",
+          "url": "https://pbs.twimg.com/media/HAa6rVqasAEPk8p.jpg"
+        },
+        {
+          "type": "photo",
+          "url": "https://pbs.twimg.com/media/HAa77dLbcAA_A5o.jpg"
+        }
+      ]
+    },
+    "2019758733983912111": {
+      "id": "2019758733983912111",
+      "text": "昨晚随手 Vibe 的一个项目 Clash Master，不到 24 小时，收获 GitHub 400+ Star，Docker Hub 1000+ 次拉取。\n\n图 1 是昨晚 Vibe Coding 的第一版，图 2 是现在的完全体。 前者 AI 味浓浓，后者审美基本达到 2026 年现代 App 的水准了。这就是 AI 时代的开发速度。⚡️\n\n💡 分享一个 Vibe Coding https://t.co/9E1GM32EDZ",
+      "created_at": "2026-02-06T13:03:02.000Z",
+      "author": {
+        "name": "luolei",
+        "username": "luoleiorg",
+        "profile_image_url": "https://pbs.twimg.com/profile_images/1550157622300786688/672YmCpB_normal.jpg"
+      },
+      "public_metrics": {
+        "retweet_count": 70,
+        "reply_count": 29,
+        "like_count": 732,
+        "quote_count": 2,
+        "bookmark_count": 806,
+        "impression_count": 78541
+      },
+      "media": [
+        {
+          "type": "photo",
+          "url": "https://pbs.twimg.com/media/HAeblZbaEAAQN0n.jpg"
+        },
+        {
+          "type": "photo",
+          "url": "https://pbs.twimg.com/media/HAecjgyaUAASvkF.jpg"
+        },
+        {
+          "type": "photo",
+          "url": "https://pbs.twimg.com/media/HAedNMYbUAA5hRp.jpg"
+        },
+        {
+          "type": "photo",
+          "url": "https://pbs.twimg.com/media/HAedToMbkAARbbd.jpg"
         }
       ]
     },
@@ -190,7 +314,7 @@
         "like_count": 82,
         "quote_count": 2,
         "bookmark_count": 61,
-        "impression_count": 27334
+        "impression_count": 27335
       },
       "media": [
         {
@@ -214,7 +338,7 @@
         "like_count": 294,
         "quote_count": 8,
         "bookmark_count": 317,
-        "impression_count": 129531
+        "impression_count": 129532
       },
       "media": []
     },
@@ -254,9 +378,9 @@
       "public_metrics": {
         "retweet_count": 84,
         "reply_count": 34,
-        "like_count": 475,
+        "like_count": 474,
         "quote_count": 7,
-        "bookmark_count": 567,
+        "bookmark_count": 568,
         "impression_count": 191993
       },
       "media": [
@@ -303,5 +427,5 @@
       ]
     }
   },
-  "lastUpdated": "2026-02-26T20:12:59.013Z"
+  "lastUpdated": "2026-02-28T18:01:13.906Z"
 }

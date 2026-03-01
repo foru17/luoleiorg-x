@@ -33,7 +33,16 @@
       "Bash(python3:*)",
       "Bash(pnpm run:*)",
       "Bash(pnpm exec:*)",
-      "WebFetch(domain:luolei.org)"
+      "WebFetch(domain:luolei.org)",
+      "WebFetch(domain:v2ex.com)",
+      "mcp__plugin_serena_serena__list_dir",
+      "WebFetch(domain:x.com)",
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "WebFetch(domain:www.v2ex.com)",
+      "Bash(npx next:*)",
+      "Bash(curl:*)",
+      "mcp__plugin_playwright_playwright__browser_navigate",
+      "Bash(npm run:*)"
     ]
   }
 }
