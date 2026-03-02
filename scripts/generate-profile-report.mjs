@@ -24,6 +24,9 @@ const REPORTS_DIR = path.join(DATA_DIR, "reports");
 const MANIFEST_FILE = path.join(REPORTS_DIR, "manifest.json");
 const MODELS_CONFIG_FILE = path.join(ROOT_DIR, ".profile-models.json");
 const MODELS_EXAMPLE_FILE = path.join(ROOT_DIR, ".profile-models.example.json");
+const DEFAULT_TIMEOUT_MS = 300_000;
+const MAX_API_RETRIES = 3;
+const MAX_CONCURRENCY = 2;
 
 // ─── 模型配置加载 ────────────────────────────────────────────
 
@@ -101,9 +104,84 @@ function stripMarkdown(text) {
     .trim();
 }
 
+function compactText(text, max = 60) {
+  return truncate(stripMarkdown(String(text ?? "")), max);
+}
+
+function sleep(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
+async function runWithConcurrency(taskFns, limit) {
+  const results = new Array(taskFns.length);
+  let nextIdx = 0;
+  async function worker() {
+    while (nextIdx < taskFns.length) {
+      const idx = nextIdx++;
+      try {
+        results[idx] = { status: "fulfilled", value: await taskFns[idx]() };
+      } catch (err) {
+        results[idx] = { status: "rejected", reason: err };
+      }
+    }
+  }
+  await Promise.all(
+    Array.from({ length: Math.min(limit, taskFns.length) }, () => worker()),
+  );
+  return results;
+}
+
+function tokenize(text) {
+  const raw = String(text ?? "");
+  const tokens = raw.match(/[A-Za-z][A-Za-z0-9.+#-]{1,}|[\u4e00-\u9fa5]{2,6}/g) ?? [];
+  const stop = new Set([
+    "可以", "这个", "那个", "一些", "以及", "并且", "如果", "因为", "所以", "还是",
+    "一个", "我们", "他们", "你们", "自己", "进行", "使用", "通过", "关于", "相关",
+    "作者", "文章", "项目", "内容", "技术", "博客", "推文", "最近", "持续", "方式",
+  ]);
+  return tokens.filter((t) => t.length >= 2 && !stop.has(t.toLowerCase?.() ?? t));
+}
+
+function buildThemeStats(context) {
+  const counts = new Map();
+  const add = (text, weight = 1) => {
+    for (const token of tokenize(text)) {
+      counts.set(token, (counts.get(token) ?? 0) + weight);
+    }
+  };
+
+  for (const post of context.posts ?? []) {
+    add(post.title, 3);
+    add(post.summary, 2);
+    for (const c of post.categories ?? []) add(c, 2);
+    for (const kp of post.keyPoints ?? []) add(kp, 2);
+  }
+  for (const tweet of context.tweets ?? []) {
+    add(tweet.text, 1);
+  }
+  for (const project of context.projects ?? []) {
+    add(project.name, 3);
+    add(project.description, 2);
+    for (const tag of project.tags ?? []) add(tag, 2);
+  }
+
+  return [...counts.entries()]
+    .sort((a, b) => b[1] - a[1])
+    .slice(0, 30)
+    .map(([token, score]) => `${token}(${score})`);
+}
+
 // ─── AI API 调用 ─────────────────────────────────────────────
 
-async function callAI({ baseUrl, apiKey, model, messages, temperature = 0.4, stream = false }) {
+async function callAI({
+  baseUrl,
+  apiKey,
+  model,
+  messages,
+  temperature = 0.4,
+  stream = false,
+  timeoutMs = DEFAULT_TIMEOUT_MS,
+}) {
   // OpenAI 新模型使用 max_completion_tokens，其他兼容 API 使用 max_tokens
   const isOpenAI = baseUrl.includes("api.openai.com");
   const body = {
@@ -117,64 +195,109 @@ async function callAI({ baseUrl, apiKey, model, messages, temperature = 0.4, str
     body.temperature = temperature;
   }
 
-  const url = `${baseUrl}/chat/completions`;
+  const url = `${baseUrl.replace(/\/+$/, "")}/chat/completions`;
   console.log(`      → POST ${url.replace(/\/v\d.*/, "/...")} (model=${model}, stream=${stream})`);
 
-  const response = await fetch(url, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${apiKey}`,
-    },
-    body: JSON.stringify(body),
-    signal: AbortSignal.timeout(300_000), // 5 分钟超时
-  });
+  const retryableStatus = new Set([408, 409, 425, 429, 500, 502, 503, 504]);
+  let lastError = null;
 
-  if (!response.ok) {
-    const text = await response.text();
-    throw new Error(`AI API 失败: ${response.status} ${text.slice(0, 500)}`);
-  }
-
-  if (stream) {
-    // SSE 流式读取
-    const reader = response.body.getReader();
-    const decoder = new TextDecoder();
-    let result = "";
-    let buffer = "";
-
-    while (true) {
-      const { done, value } = await reader.read();
-      if (done) break;
-      buffer += decoder.decode(value, { stream: true });
-
-      const lines = buffer.split("\n");
-      buffer = lines.pop() ?? ""; // 保留最后不完整的行
-
-      for (const line of lines) {
-        const trimmed = line.trim();
-        if (!trimmed || !trimmed.startsWith("data:")) continue;
-        const data = trimmed.slice(5).trim();
-        if (data === "[DONE]") continue;
-        try {
-          const chunk = JSON.parse(data);
-          const delta = chunk?.choices?.[0]?.delta?.content;
-          if (delta) result += delta;
-        } catch {
-          // 忽略无法解析的行
-        }
+  for (let attempt = 0; attempt < MAX_API_RETRIES; attempt++) {
+    let response;
+    try {
+      response = await fetch(url, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${apiKey}`,
+        },
+        body: JSON.stringify(body),
+        signal: AbortSignal.timeout(timeoutMs),
+      });
+    } catch (err) {
+      const cause = err.cause?.message ?? err.cause?.code ?? "";
+      lastError = err;
+      if (attempt < MAX_API_RETRIES - 1) {
+        const delay = 2000 * (attempt + 1) + Math.round(Math.random() * 1000);
+        console.warn(`      ↻ 网络异常重试(${attempt + 1}/${MAX_API_RETRIES - 1}): ${err.message}${cause ? ` [${cause}]` : ""}`);
+        await sleep(delay);
+        continue;
       }
+      console.error(`      ✗ 网络错误: ${err.message}${cause ? ` [${cause}]` : ""}`);
+      break;
     }
 
-    if (!result) throw new Error("AI 流式响应为空");
-    return result;
+    if (!response.ok) {
+      const text = await response.text();
+      const err = new Error(`AI API 失败: ${response.status} ${text.slice(0, 500)}`);
+      lastError = err;
+      if (retryableStatus.has(response.status) && attempt < MAX_API_RETRIES - 1) {
+        const delay = 1500 * (attempt + 1) + Math.round(Math.random() * 700);
+        console.warn(`      ↻ API 重试(${attempt + 1}/${MAX_API_RETRIES - 1}): HTTP ${response.status}`);
+        await sleep(delay);
+        continue;
+      }
+      break;
+    }
+
+    if (stream) {
+      // SSE 流式读取
+      const reader = response.body.getReader();
+      const decoder = new TextDecoder();
+      let result = "";
+      let buffer = "";
+
+      while (true) {
+        const { done, value } = await reader.read();
+        if (done) break;
+        buffer += decoder.decode(value, { stream: true });
+
+        const lines = buffer.split("\n");
+        buffer = lines.pop() ?? ""; // 保留最后不完整的行
+
+        for (const line of lines) {
+          const trimmed = line.trim();
+          if (!trimmed || !trimmed.startsWith("data:")) continue;
+          const data = trimmed.slice(5).trim();
+          if (data === "[DONE]") continue;
+          try {
+            const chunk = JSON.parse(data);
+            const delta = chunk?.choices?.[0]?.delta?.content;
+            if (delta) result += delta;
+          } catch {
+            // 忽略无法解析的行
+          }
+        }
+      }
+
+      if (!result) {
+        lastError = new Error("AI 流式响应为空");
+        if (attempt < MAX_API_RETRIES - 1) {
+          const delay = 1200 * (attempt + 1);
+          console.warn(`      ↻ 空流响应重试(${attempt + 1}/${MAX_API_RETRIES - 1})`);
+          await sleep(delay);
+          continue;
+        }
+        break;
+      }
+      return result;
+    }
+
+    const data = await response.json();
+    const content = data?.choices?.[0]?.message?.content;
+    if (!content) {
+      lastError = new Error("AI 返回空内容");
+      if (attempt < MAX_API_RETRIES - 1) {
+        const delay = 1000 * (attempt + 1);
+        console.warn(`      ↻ 空内容重试(${attempt + 1}/${MAX_API_RETRIES - 1})`);
+        await sleep(delay);
+        continue;
+      }
+      break;
+    }
+    return content;
   }
 
-  const data = await response.json();
-  const content = data?.choices?.[0]?.message?.content;
-  if (!content) {
-    throw new Error("AI 返回空内容");
-  }
-  return content;
+  throw lastError ?? new Error("AI 调用失败");
 }
 
 function parseJsonText(text) {
@@ -306,11 +429,106 @@ function buildSystemPrompt() {
 }`;
 }
 
-/**
- * 构建结构化文本 prompt（比直接 JSON.stringify 更高效、更易理解）
- */
+// ─── Prompt 构建（本地预分析 + 精选样本 + 统计概览） ────────
+
+function selectRepresentativePosts(posts, topN = 20) {
+  if (posts.length <= topN) return posts;
+  const recent = posts.slice(0, 12);
+  const recentUrls = new Set(recent.map((p) => p.url));
+  const catSeen = new Map();
+  for (const p of recent) {
+    for (const c of p.categories ?? []) catSeen.set(c, (catSeen.get(c) ?? 0) + 1);
+  }
+  const rest = posts.filter((p) => !recentUrls.has(p.url));
+  const scored = rest.map((p, i) => {
+    const catScore = (p.categories ?? []).reduce(
+      (s, c) => s + 1 / (1 + (catSeen.get(c) ?? 0)),
+      0,
+    );
+    return { post: p, score: catScore + 1 / (1 + i * 0.05) };
+  });
+  scored.sort((a, b) => b.score - a.score);
+  const picked = [...recent, ...scored.slice(0, topN - recent.length).map((s) => s.post)];
+  picked.sort((a, b) => (b.date ?? "").localeCompare(a.date ?? ""));
+  return picked;
+}
+
+function buildCategoryDistribution(posts) {
+  const counts = {};
+  for (const p of posts) {
+    for (const c of p.categories ?? []) counts[c] = (counts[c] ?? 0) + 1;
+  }
+  return Object.entries(counts)
+    .sort((a, b) => b[1] - a[1])
+    .map(([c, n]) => `${c}(${n})`)
+    .join(", ");
+}
+
+function buildYearDistribution(items, dateKey = "date") {
+  const counts = {};
+  for (const item of items) {
+    const y = item[dateKey]?.slice(0, 4);
+    if (y) counts[y] = (counts[y] ?? 0) + 1;
+  }
+  return Object.entries(counts)
+    .sort((a, b) => b[0].localeCompare(a[0]))
+    .map(([y, n]) => `${y}(${n})`)
+    .join(", ");
+}
+
+function groupByYear(items, dateKey = "date", textFn = () => "") {
+  const groups = new Map();
+  for (const item of items) {
+    const y = item[dateKey]?.slice(0, 4) ?? "未知";
+    if (!groups.has(y)) groups.set(y, []);
+    groups.get(y).push(textFn(item));
+  }
+  return [...groups.entries()]
+    .sort((a, b) => b[0].localeCompare(a[0]))
+    .map(([y, texts]) => `${y}(${texts.length}篇): ${texts.join(" / ")}`)
+    .join("\n");
+}
+
+function groupTweetsByMonth(tweets, textFn) {
+  const groups = new Map();
+  for (const t of tweets) {
+    const ym = t.date?.slice(0, 7) ?? "未知";
+    if (!groups.has(ym)) groups.set(ym, []);
+    groups.get(ym).push(textFn(t));
+  }
+  return [...groups.entries()]
+    .sort((a, b) => b[0].localeCompare(a[0]))
+    .map(([ym, texts]) => `${ym}(${texts.length}条): ${texts.join(" / ")}`)
+    .join("\n");
+}
+
+function tweetEngagementScore(t) {
+  const m = t.metrics ?? {};
+  return (
+    Number(m.like_count ?? 0) +
+    Number(m.retweet_count ?? 0) * 1.8 +
+    Number(m.reply_count ?? 0) +
+    Number(m.quote_count ?? 0) * 1.2 +
+    Number(m.bookmark_count ?? 0) * 1.5
+  );
+}
+
+function buildTweetStats(tweets) {
+  let totalLikes = 0;
+  let totalRt = 0;
+  let totalRp = 0;
+  for (const t of tweets) {
+    const m = t.metrics ?? {};
+    totalLikes += Number(m.like_count ?? 0);
+    totalRt += Number(m.retweet_count ?? 0);
+    totalRp += Number(m.reply_count ?? 0);
+  }
+  return `总互动: ${totalLikes} likes / ${totalRt} retweets / ${totalRp} replies`;
+}
+
 function buildUserPrompt(context) {
   const sections = [];
+  const themes = buildThemeStats(context);
 
   // 个人简介
   const p = context.profile ?? {};
@@ -320,7 +538,6 @@ function buildUserPrompt(context) {
 简介: ${p.bio ?? ""}
 位置: ${p.location ?? ""}`);
 
-  // 职业经历
   if (context.experience?.length) {
     const expLines = context.experience
       .map((e) => `- ${e.period ?? ""} | ${e.title} @ ${e.company}\n  ${e.description}`)
@@ -328,7 +545,6 @@ function buildUserPrompt(context) {
     sections.push(`## 职业经历\n${expLines}`);
   }
 
-  // 技能
   if (context.skills && Object.keys(context.skills).length) {
     const skillLines = Object.entries(context.skills)
       .map(([cat, items]) => `- ${cat}: ${Array.isArray(items) ? items.join(", ") : items}`)
@@ -336,27 +552,22 @@ function buildUserPrompt(context) {
     sections.push(`## 技术技能\n${skillLines}`);
   }
 
-  // 教育
   if (context.education) {
     sections.push(`## 教育背景\n${context.education.degree} - ${context.education.school}\n${context.education.note ?? ""}`);
   }
 
-  // 关键成就
   if (context.highlights?.length) {
     sections.push(`## 关键成就与亮点\n${context.highlights.map((h) => `- ${h}`).join("\n")}`);
   }
 
-  // 副业项目
   if (context.sideProjects?.length) {
     sections.push(`## 副业项目\n${context.sideProjects.map((s) => `- ${s}`).join("\n")}`);
   }
 
-  // 公共活动
   if (context.publicActivities?.length) {
     sections.push(`## 公共活动\n${context.publicActivities.map((a) => `- ${a}`).join("\n")}`);
   }
 
-  // GitHub 项目
   if (context.projects?.length) {
     const projLines = context.projects
       .map((proj) => `- ${proj.name}: ${proj.description} (${proj.url}) [${(proj.tags ?? []).join(", ")}]`)
@@ -364,27 +575,66 @@ function buildUserPrompt(context) {
     sections.push(`## GitHub 开源项目\n${projLines}`);
   }
 
-  // 博客文章（每篇只要标题+摘要+关键词，非常紧凑）
-  if (context.posts?.length) {
-    const postLines = context.posts
+  // ─ 全量数据统计概览（本地预分析，信息无损）
+  const posts = context.posts ?? [];
+  const tweets = context.tweets ?? [];
+  const projects = context.projects ?? [];
+
+  sections.push(
+    `## 全量数据统计概览（基于 ${posts.length} 篇文章 + ${tweets.length} 条推文 + ${projects.length} 个项目的预分析）
+文章分类分布: ${buildCategoryDistribution(posts) || "无分类"}
+文章年份分布: ${buildYearDistribution(posts)}
+推文年份分布: ${buildYearDistribution(tweets)}
+推文互动统计: ${buildTweetStats(tweets)}
+高频主题词（按权重）: ${themes.join("、")}
+最早文章: ${posts[posts.length - 1]?.date?.slice(0, 10) ?? "未知"} / 最新文章: ${posts[0]?.date?.slice(0, 10) ?? "未知"}
+最早推文: ${tweets[tweets.length - 1]?.date?.slice(0, 10) ?? "未知"} / 最新推文: ${tweets[0]?.date?.slice(0, 10) ?? "未知"}`,
+  );
+
+  // ─ 代表性文章（精选，含完整信息供引用）
+  if (posts.length) {
+    const topPosts = selectRepresentativePosts(posts, 20);
+    const topUrls = new Set(topPosts.map((p) => p.url));
+    const restPosts = posts.filter((p) => !topUrls.has(p.url));
+
+    const topLines = topPosts
       .map((post) => {
-        const kp = post.keyPoints?.length ? ` [${post.keyPoints.join("; ")}]` : "";
-        return `- ${post.date?.slice(0, 10)} | ${post.title}: ${post.summary ?? ""}${kp} (${post.url})`;
+        const cats = (post.categories ?? []).slice(0, 2).join(",");
+        const kp = (post.keyPoints ?? []).slice(0, 2).map((k) => compactText(k, 20)).join(";");
+        return `- ${post.date?.slice(0, 10)}|${compactText(post.title, 40)}|cat:${cats}|kp:${kp}|sum:${compactText(post.summary, 40)}|url:${post.url}`;
       })
       .join("\n");
-    sections.push(`## 博客文章（共 ${context.posts.length} 篇，按时间倒序）\n${postLines}`);
+
+    let postSection = `## 代表性文章（精选 ${topPosts.length} 篇，含 URL 可引用）\n${topLines}`;
+
+    if (restPosts.length) {
+      const restGrouped = groupByYear(restPosts, "date", (p) => compactText(p.title, 20));
+      postSection += `\n\n### 其余 ${restPosts.length} 篇文章标题速览（按年分组，供主题覆盖分析）\n${restGrouped}`;
+    }
+    sections.push(postSection);
   }
 
-  // 推文
-  if (context.tweets?.length) {
-    const tweetLines = context.tweets
+  // ─ 高互动推文（精选，含完整信息供引用）
+  if (tweets.length) {
+    const sorted = [...tweets].sort((a, b) => tweetEngagementScore(b) - tweetEngagementScore(a));
+    const topTweets = sorted.slice(0, 20);
+    const topIds = new Set(topTweets.map((t) => t.id ?? t.url));
+    const restTweets = tweets.filter((t) => !topIds.has(t.id ?? t.url));
+
+    const topLines = topTweets
       .map((t) => {
         const m = t.metrics ?? {};
-        const stats = `❤️${m.like_count ?? 0} 🔁${m.retweet_count ?? 0} 💬${m.reply_count ?? 0}`;
-        return `- ${t.date?.slice(0, 10)} | ${t.text?.slice(0, 120)} ${stats} (${t.url})`;
+        return `- ${t.date?.slice(0, 10)}|${compactText(t.text, 56)}|like:${m.like_count ?? 0},rt:${m.retweet_count ?? 0}|url:${t.url}`;
       })
       .join("\n");
-    sections.push(`## X (Twitter) 推文（共 ${context.tweets.length} 条，按互动量排序）\n${tweetLines}`);
+
+    let tweetSection = `## 高互动推文（精选 ${topTweets.length} 条，含 URL 可引用）\n${topLines}`;
+
+    if (restTweets.length) {
+      const restGrouped = groupTweetsByMonth(restTweets, (t) => compactText(t.text, 12));
+      tweetSection += `\n\n### 其余 ${restTweets.length} 条推文片段速览（按月分组，供话题覆盖分析）\n${restGrouped}`;
+    }
+    sections.push(tweetSection);
   }
 
   return `请根据以下数据，为普通访客介绍这位作者——他在关注什么、做什么、有什么特点。
@@ -393,7 +643,9 @@ function buildUserPrompt(context) {
 - 你是在帮访客了解这个人，像一个认识他的人在介绍他，要有温度和画面。
 - 基于数据中能看到的东西来写，允许"看得出来/明显/经常"这类轻判断，但不要推测内心。
 - 技术方向和生活方向同等重要，不分主次。
-- 如果数据中出现公开的影响力数字（如 YouTube 订阅数、X 关注数），可以提及一次帮读者建立直觉，但不得新增数字或夸大。
+- "全量数据统计概览"是对全部原始数据的预分析结论，可以放心引用。
+- "代表性文章"和"高互动推文"的 URL 可用于 proofs 引用；"速览"部分仅用于了解主题广度，不要引用其中的 URL。
+- 如果数据中出现公开的影响力数字（如 YouTube 订阅数、X 关注数），允许提及一次帮读者建立直觉；禁止新增数字或夸大。
 - 隐私保护：绝对不要提及家庭成员、健康状况、具体公司名或职级。
 
 ${sections.join("\n\n")}`;
@@ -422,7 +674,11 @@ async function generateReportWithAI(context, modelEntry) {
       { role: "user", content: userPrompt },
     ],
     temperature: "temperature" in modelEntry ? modelEntry.temperature : 0.4,
-    stream: modelEntry.stream === true,
+    stream: modelEntry.stream !== false,
+    timeoutMs:
+      typeof modelEntry.timeoutMs === "number" && modelEntry.timeoutMs > 0
+        ? modelEntry.timeoutMs
+        : DEFAULT_TIMEOUT_MS,
   });
 
   console.log(`      → AI 响应长度: ${content.length} 字符`);
@@ -660,7 +916,6 @@ async function generateForModel(context, modelEntry, { noAI = false, force = fal
   }
 
   await writeJson(reportFile, report);
-  await updateManifest(modelEntry, report.meta);
   console.log(`   📄 已写入: ${reportFile}`);
   return report;
 }
@@ -684,13 +939,11 @@ async function main() {
   await fs.mkdir(REPORTS_DIR, { recursive: true });
 
   if (args.all) {
-    // 为所有启用的模型并行生成报告
-    console.log(`\n🚀 为所有 ${modelRegistry.length} 个模型并行生成报告...${args.force ? " (--force 强制重新生成)" : ""}\n`);
-    const results = await Promise.allSettled(
-      modelRegistry.map((entry) =>
-        generateForModel(context, entry, { noAI: args.noAI, force: args.force })
-      ),
+    console.log(`\n🚀 为所有 ${modelRegistry.length} 个模型生成报告（并发上限 ${MAX_CONCURRENCY}）...${args.force ? " (--force 强制重新生成)" : ""}\n`);
+    const tasks = modelRegistry.map((entry) => () =>
+      generateForModel(context, entry, { noAI: args.noAI, force: args.force }),
     );
+    const results = await runWithConcurrency(tasks, MAX_CONCURRENCY);
     // 汇总结果
     const summary = results.map((r, i) => {
       const name = modelRegistry[i].name;
@@ -702,6 +955,13 @@ async function main() {
     });
     console.log("\n📊 生成结果汇总:");
     summary.forEach((s) => console.log(s));
+    // 串行更新 manifest，避免写入竞态
+    for (let i = 0; i < results.length; i++) {
+      const r = results[i];
+      if (r.status === "fulfilled") {
+        await updateManifest(modelRegistry[i], r.value.meta);
+      }
+    }
   } else if (args.modelId) {
     // 指定模型
     const entry = modelRegistry.find((m) => m.id === args.modelId);
@@ -712,12 +972,14 @@ async function main() {
       process.exit(1);
     }
     console.log(`\n🚀 为 ${entry.name} 生成报告...\n`);
-    await generateForModel(context, entry, { noAI: args.noAI, force: true }); // 指定模型时默认 force
+    const report = await generateForModel(context, entry, { noAI: args.noAI, force: true }); // 指定模型时默认 force
+    await updateManifest(entry, report.meta);
   } else {
     // 默认：使用第一个注册模型
     const entry = modelRegistry[0];
     console.log(`\n🚀 为默认模型 ${entry.name} 生成报告...\n`);
-    await generateForModel(context, entry, { noAI: args.noAI, force: args.force });
+    const report = await generateForModel(context, entry, { noAI: args.noAI, force: args.force });
+    await updateManifest(entry, report.meta);
   }
 
   console.log("\n✅ 报告生成完成");

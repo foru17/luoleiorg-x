@@ -1,89 +1,86 @@
 {
   "$schema": "author-context-v1",
-  "generatedAt": "2026-03-02T04:43:15.310Z",
+  "generatedAt": "2026-03-02T06:03:38.903Z",
   "profile": {
     "name": "罗磊",
     "headline": "Senior Full-Stack Developer / Engineering Efficiency Advocate",
     "location": "Shenzhen, China",
     "social": {
       "github": "https://github.com/foru17",
-      "x": "https://x.com/luoleiorg",
-      "youtube": "https://zuoluo.tv/youtube",
+      "x": "https://badge.is26.com/twitter",
+      "youtube": "https://badge.is26.com/youtube-views",
       "bilibili": "https://zuoluo.tv/bilibili",
       "blog": "https://luolei.org",
       "instagram": "https://instagram.com/luoleiorg",
       "unsplash": "https://unsplash.com/@luolei",
-      "telegram": "https://t.me/zuoluotv",
+      "telegram": "https://t.me/zuoluotvofficial",
       "linkedin": "https://www.linkedin.com/in/luoleiorg/",
       "email": "i@luolei.org"
     }
   },
   "experience": [
     {
-      "title": "Full Stack Developer",
-      "company": "Independent / Open Source",
+      "title": "Independent Full-Stack Developer / Open Source Creator",
+      "company": "Independent",
       "period": "Apr 2024 - Present",
-      "description": "全栈独立开发者，使用 React、NestJS、PostgreSQL、Prisma、GraphQL 开发应用。拥抱 AI 优先开发流 (Vibe Coding)，快速构建开源网络工具和生产力面板"
+      "description": "Architected and delivered global-facing web applications utilizing React, NestJS, PostgreSQL, Prisma, and GraphQL.；Embraced an AI-first development workflow (Vibe Coding) to rapidly prototype and scale robust tools and dashboards, reducing time-to-market by up to 90% for complex feature sets.；Built open-source networking and productivity tools widely adopted by the homelab and developer communities."
     },
     {
       "title": "Senior Frontend Developer",
-      "company": "阅文集团 (Yuewen Group) · 深圳",
+      "company": "Yuewen Group - Shenzhen",
       "period": "Jan 2021 - Mar 2024",
-      "description": "负责 OPPO/vivo/华为 等头部手机厂商的前端服务开发，优化 Hybrid App 性能提升 30%，开发营销页面与快应用广告集成"
+      "description": "Spearheaded frontend services for leading Chinese smartphone manufacturers (OPPO, vivo, Huawei).；Developed Hybrid App web views and QuickApps, enhancing hybrid rendering performance by over 30%.；Integrated complex advertising SDKs and performed rigorous A/B testing on monetization strategies.；Streamlined developer workflows by building an automated tool that extracts and parses offline HTML from unscheduled product documentation updates."
     },
     {
       "title": "Founder",
-      "company": "ZUOLUOTV™ · 深圳",
+      "company": "ZUOLUOTV™ - Shenzhen",
       "period": "Jan 2019 - Oct 2020",
-      "description": "创立 ZUOLUOTV 品牌，使用 Node.js/MongoDB/Puppeteer 开发 Telegram & 微信社群机器人，运营微信小程序电商"
+      "description": "Founded a tech and lifestyle media brand, cultivating an engaged community across YouTube, Bilibili, and WeChat.；Engineered automated community bots for Telegram and WeChat using Node.js, MongoDB, and Puppeteer, integrating data visualization via Echarts and Google Search APIs.；Built and operated an e-commerce WeChat Mini Program from the ground up, generating sustainable revenue."
     },
     {
       "title": "Senior Frontend Developer",
-      "company": "阅文集团 (Yuewen Group) · 上海总部",
+      "company": "Yuewen Group - Shanghai HQ",
       "period": "Oct 2015 - Oct 2018",
-      "description": "设计企业级 Node.js/Koa 框架，构建中文 Web 字体基础 API，参与中国最大网文平台的前端重构"
+      "description": "Designed and built enterprise-grade BFF (Backend-For-Frontend) frameworks using Node.js and Koa.；Built low-latency infrastructure APIs to support dynamic Chinese Web Fonts delivery.；Key contributor to the front-end modernization and refactoring of China's largest webnovel reading platform."
     },
     {
       "title": "Frontend Developer",
-      "company": "小蚁科技 (Xiaoyi Tech) · 上海",
+      "company": "Xiaoyi Tech - Shanghai",
       "period": "May 2015 - Sep 2015",
-      "description": "负责产品官网与社区论坛开发，构建自动化应用测试与分发系统"
+      "description": "Managed the development of the primary consumer product website and user community forums.；Developed an automated web-based application testing and distribution management system."
     },
     {
       "title": "Junior Developer / Intern",
-      "company": "猎豹移动 (Cheetah Mobile, NYSE: CMCM) · 北京",
+      "company": "Cheetah Mobile (NYSE: CMCM) - Beijing",
       "period": "Jul 2013 - May 2015",
-      "description": "参与 CM Browser、Clean Master 等产品的前端开发与数字营销，在内部创业项目中开发 Hybrid 网站"
+      "description": "Contributed to web properties for flagship products including CM Browser and Clean Master.；Developed experimental hybrid mobile websites as part of an internal incubator project."
     }
   ],
   "sideProjects": [
-    "AI & 聊天机器人开发：使用 OpenAI GPT 模型开发零售客服机器人，集成 Node.js/NestJS/MongoDB",
-    "Ghost & WordPress 主题开发：创作自定义博客主题，注重交互性与响应式设计",
-    "服务器搭建与优化：熟悉云计算服务、DNS、负载均衡、Nginx 反向代理、Shell 脚本自动化",
-    "前后端性能优化：HTTP请求优化、异步加载、SSR、缓存策略、数据库索引优化"
+    "AI Native Applications: Integrating LLMs for automated customer service, data summarizing, and daily task automation.",
+    "Homelab & Networking: Expert in home networking optimization, from OpenWrt configurations to IPTV multicast-to-unicast routing and high-availability DNS setups.",
+    "Photography & Travel: Avid traveler (Tibet bike tour, multiple marathons globally) and photographer with over 15 million views on Unsplash."
   ],
   "publicActivities": [
-    "2017 FEEXP 前端体验大会（腾讯主办）受邀演讲嘉宾，分享前端最佳实践",
-    "阅文集团 TED 兼职讲师项目（2016），为员工提供前端开发公开培训"
+    "Invited Speaker at 2017 FRONT END & EXPERIENCE CONFERENCE (Tencent).",
+    "Internal Tech Lecturer at Yuewen Group, training peers on advanced frontend practices."
   ],
   "skills": {
     "frontend": [
       "React",
+      "Next.js",
+      "Vinext",
       "TypeScript",
       "JavaScript",
+      "Vue.js",
       "HTML/CSS",
-      "Next.js",
-      "Vite",
       "QuickApp"
     ],
     "backend": [
       "Node.js",
       "NestJS",
-      "Koa",
       "GraphQL",
-      "REST API"
-    ],
-    "database": [
+      "REST API",
       "PostgreSQL",
       "MongoDB",
       "ClickHouse",
@@ -94,36 +91,37 @@
       "Cloudflare Workers",
       "Nginx",
       "Linux",
-      "Shell",
-      "CI/CD"
+      "CI/CD",
+      "Shell Scripting",
+      "Networking (Homelab routing",
+      "DNS)"
+    ],
+    "tools": [
+      "Vibe Coding",
+      "Prompt Engineering",
+      "LLM Integration",
+      "Raycast plugin development"
     ],
     "design": [
+      "UI/UX intuition",
       "Figma",
       "Sketch",
       "Photoshop"
-    ],
-    "tools": [
-      "Raycast",
-      "Git",
-      "VS Code"
     ]
   },
   "education": {
-    "degree": "Bachelor",
-    "school": "School of Public Administration",
-    "note": "非科班出身，自学转行前端开发"
+    "degree": "Bachelor of Management",
+    "school": "School of Public Administration (Jinan University (Guangzhou, China) • Sep 2009 - Jun 2013)",
+    "note": "Self-taught programmer who successfully transitioned into professional software engineering.；Fluent in English (Passed CET-6)."
   },
   "highlights": [
-    "长期在博客（luolei.org）与 YouTube/Bilibili 持续输出技术与生活方式内容",
-    "关注 AI 工具落地、Vibe Coding 效率工作流与个人数字基础设施建设",
-    "具备前端到后端、产品到运维的全栈实践能力，热衷于造轮子和开源",
-    "Unsplash 摄影作品累计 1500万+ 浏览量、8万+ 下载",
-    "完成 8 场全程马拉松（PB: 4h28m）",
-    "骑行川藏线 2200 公里（29天）",
-    "PADI 开放水域潜水员（菲律宾薄荷岛认证）",
-    "旅行足迹覆盖多国：🇨🇳🇺🇸🇯🇵🇰🇷🇹🇭🇵🇭🇻🇳🇳🇵",
-    "2017 腾讯 FEEXP 前端体验大会受邀演讲嘉宾",
-    "养了2只猫🐈和1只柴犬🐕"
+    "Senior Front-End / Full-Stack Developer: Specializing in React, Next.js, Node.js, and Docker.",
+    "AI & Vibe Coding Advocate: I aggressively use AI tooling (Claude, Kimi, GPT) to build and ship open-source products rapidly.",
+    "Pet Parent: Living with 2 cats 🐈 and 1 Shiba Inu 🐕 in Shenzhen.",
+    "Content Creator: Documenting my tech reviews, tutorials, and life hacks on [LUOLEI.ORG](https://luolei.org), YouTube, and Bilibili.",
+    "Photographer: My visual works have garnered 15M+ views and 80K+ downloads on [Unsplash](https://unsplash.com/@luolei).",
+    "Globetrotter & Outdoor Enthusiast: Traveled to 🇨🇳🇺🇸🇯🇵🇰🇷🇹🇭🇵🇭🇻🇳🇳🇵, PADI® Open Water Diver 🤿, and completed a 2,200km month-long bike trip to Tibet 🚲.",
+    "Marathoner: Completed 10+ Marathons (Personal Best: ⏱️4h28m)."
   ],
   "posts": [
     {
@@ -7327,53 +7325,20 @@
     {
       "name": "Neko Master",
       "url": "https://github.com/foru17/neko-master",
-      "description": "开源网络流量分析面板，从 0 到 1K+ Star 的 Vibe Coding 实践，集成 ClickHouse 高性能存储",
-      "tags": [
-        "TypeScript",
-        "Dashboard",
-        "Networking",
-        "ClickHouse"
-      ]
+      "description": "Designed and developed an elegant, open-source home network traffic analysis dashboard with ClickHouse storage integration. Gained 1K+ stars rapidly through efficient AI-assisted \"Vibe Coding.\"",
+      "tags": []
     },
     {
-      "name": "raycast-sink",
-      "url": "https://github.com/foru17/raycast-sink",
-      "description": "Raycast 短链管理插件，强调轻量与工作流整合",
-      "tags": [
-        "Raycast",
-        "Productivity",
-        "TypeScript"
-      ]
-    },
-    {
-      "name": "raycast-hoarder",
-      "url": "https://github.com/foru17/raycast-hoarder",
-      "description": "Raycast 与 Hoarder 的桥接插件，优化收藏检索体验",
-      "tags": [
-        "Raycast",
-        "Hoarder",
-        "Developer Tools"
-      ]
+      "name": "Raycast Plugins",
+      "url": "https://github.com/foru17",
+      "description": "Developed productivity extensions `raycast-sink` and `raycast-hoarder` to optimize URL management and bookmarking workflows.",
+      "tags": []
     },
     {
       "name": "luoleiorg-x",
       "url": "https://github.com/foru17/luoleiorg-x",
-      "description": "当前博客代码仓库，基于 Vinext + Cloudflare Workers，支持 AI 摘要与搜索",
-      "tags": [
-        "Vinext",
-        "Cloudflare Workers",
-        "Blog"
-      ]
-    },
-    {
-      "name": "Clash Master",
-      "url": "https://github.com/foru17/clash-master",
-      "description": "不到24小时收获 400+ Star，Docker Hub 10+ 下载的开源项目",
-      "tags": [
-        "Networking",
-        "Docker",
-        "Open Source"
-      ]
+      "description": "Migrated and rebuilt personal tech blog using Vinext and Cloudflare Workers, integrating AI-generated summaries and SEO capabilities.",
+      "tags": []
     }
   ],
   "sourceVersions": {
@@ -7383,11 +7348,11 @@
       "source": "author-tweets-cache"
     },
     "posts": {
-      "scannedAt": "2026-03-02T04:43:15.310Z",
+      "scannedAt": "2026-03-02T06:03:38.903Z",
       "count": 180
     },
     "github": {
-      "updatedAt": "2026-03-01T23:48:00+08:00"
+      "updatedAt": "2026-03-02T06:03:38.901Z"
     }
   }
 }

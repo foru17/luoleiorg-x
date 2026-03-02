@@ -29,6 +29,9 @@ const MAX_HOT_POSTS = 100;
 const MAX_TWEETS = 300;
 const MAX_PROJECTS = 10;
 const TWEET_CACHE_MAX_AGE_DAYS = 7;
+const GITHUB_PROFILE_REPO = "foru17/foru17";
+const GITHUB_RAW_URL = `https://raw.githubusercontent.com/${GITHUB_PROFILE_REPO}/main`;
+const GITHUB_RESUME_FILE = path.join(DATA_DIR, "github-resume.json");
 
 const UMAMI_API_URL = "https://u.is26.com/api";
 const UMAMI_WEBSITE_ID = "185ef031-29b2-49e3-bc50-1c9f80b4e831";
@@ -289,16 +292,237 @@ async function collectTweets() {
   };
 }
 
-// ─── GitHub 数据 ──────────────────────────────────────────────
+// ─── GitHub 数据（在线拉取 + 本地缓存兜底） ──────────────────
 
-async function collectGithubData() {
-  const resume = await readJson(path.join(DATA_DIR, "github-resume.json"), {
-    profile: {},
-    highlights: [],
-    experience: [],
-    projects: [],
+async function fetchGithubRaw(filename) {
+  const url = `${GITHUB_RAW_URL}/${filename}`;
+  const res = await fetch(url, {
+    headers: { "User-Agent": "luoleiorg-context-builder" },
+    signal: AbortSignal.timeout(15_000),
   });
+  if (!res.ok) throw new Error(`HTTP ${res.status} for ${filename}`);
+  return res.text();
+}
 
+function extractMdSection(md, heading, level = 2) {
+  const prefix = "#".repeat(level) + " ";
+  const re = new RegExp(`^${prefix}${heading.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}`, "m");
+  const match = re.exec(md);
+  if (!match) return "";
+  const contentStart = md.indexOf("\n", match.index) + 1;
+  const nextRe = new RegExp(`^${prefix}\\S`, "m");
+  const nextMatch = nextRe.exec(md.slice(contentStart));
+  return nextMatch
+    ? md.slice(contentStart, contentStart + nextMatch.index).trim()
+    : md.slice(contentStart).trim();
+}
+
+function parseMdLinks(text) {
+  const links = {};
+  const re = /\[([^\]]*)\]\(([^)]+)\)/g;
+  let m;
+  while ((m = re.exec(text))) {
+    links[m[1].replace(/[*_]/g, "").trim()] = m[2].trim();
+  }
+  return links;
+}
+
+function parseBullets(text) {
+  return text
+    .split("\n")
+    .map((l) => l.trim())
+    .filter((l) => l.startsWith("- "))
+    .map((l) => l.slice(2).replace(/\*\*([^*]+)\*\*/g, "$1").trim());
+}
+
+function parseGithubProfile(readmeMd, resumeMd) {
+  // ─ Bio from README tagline
+  const bioLine =
+    readmeMd
+      .split("\n")
+      .find(
+        (l) =>
+          !l.startsWith("#") &&
+          !l.startsWith("|") &&
+          !l.startsWith("!") &&
+          (l.includes("Developer") || l.includes("Photographer") || l.includes("YouTuber")),
+      ) ?? "";
+
+  // ─ Headline from RESUME title
+  const resumeTitle = resumeMd.split("\n").find((l) => l.startsWith("# ")) ?? "";
+  const headlineParts = resumeTitle.replace(/^#\s+/, "").split(" - ");
+  const nameEn = headlineParts[0]?.trim() || "Luo Lei";
+  const headline = headlineParts.slice(1).join(" - ").trim() || "";
+
+  // ─ Social links from both files
+  const allLinks = { ...parseMdLinks(resumeMd), ...parseMdLinks(readmeMd) };
+  const social = {
+    github: "https://github.com/foru17",
+    x: "https://x.com/luoleiorg",
+    youtube: "https://zuoluo.tv/youtube",
+    bilibili: "https://zuoluo.tv/bilibili",
+    blog: "https://luolei.org",
+    instagram: "",
+    unsplash: "",
+    telegram: "",
+    linkedin: "",
+    email: "i@luolei.org",
+  };
+  for (const [label, url] of Object.entries(allLinks)) {
+    const ll = label.toLowerCase();
+    if (url.includes("x.com") || ll.includes("twitter")) social.x = url;
+    else if (ll.includes("youtube") || url.includes("zuoluo.tv/youtube")) social.youtube = url;
+    else if (ll.includes("bilibili")) social.bilibili = url;
+    else if (ll.includes("blog") || (url.includes("luolei.org") && !url.includes("mailto"))) social.blog = url;
+    else if (ll.includes("instagram")) social.instagram = url;
+    else if (ll.includes("unsplash")) social.unsplash = url;
+    else if (ll.includes("telegram")) social.telegram = url;
+    else if (ll.includes("linkedin")) social.linkedin = url;
+    else if (url.startsWith("mailto:")) social.email = url.replace("mailto:", "");
+  }
+
+  // ─ Highlights from README "About Me"
+  const aboutSection = extractMdSection(readmeMd, "About Me");
+  const highlights = parseBullets(aboutSection)
+    .map((h) => h.replace(/^[^\w\u4e00-\u9fff]+/, "").trim())
+    .filter(Boolean);
+
+  // ─ Skills from RESUME "Key Skills"
+  const skillsSection = extractMdSection(resumeMd, "Key Skills");
+  const skills = {};
+  const skillRe = /\*\*([^*]+)\*\*:\s*(.+)/g;
+  let sm;
+  while ((sm = skillRe.exec(skillsSection))) {
+    const cat = sm[1].trim();
+    const items = sm[2].split(",").map((s) => s.trim()).filter(Boolean);
+    const catLow = cat.toLowerCase();
+    if (catLow.includes("front")) skills.frontend = items;
+    else if (catLow.includes("back") || catLow.includes("db")) skills.backend = items;
+    else if (catLow.includes("devops") || catLow.includes("architect")) skills.devops = items;
+    else if (catLow.includes("design")) skills.design = items;
+    else if (catLow.includes("ai") || catLow.includes("productivity")) skills.tools = items;
+    else skills[catLow.replace(/[^a-z0-9]/g, "_")] = items;
+  }
+
+  // ─ Projects from RESUME "Open Source & Featured Projects"
+  const projectsSection = extractMdSection(resumeMd, "Open Source & Featured Projects");
+  const projects = [];
+  const projRe = /\[?\*\*([^*\]]+)\*\*\]?\(([^)]+)\)[:\s]*(.+)/g;
+  let pm;
+  while ((pm = projRe.exec(projectsSection))) {
+    projects.push({
+      name: pm[1].trim(),
+      url: pm[2].trim(),
+      description: pm[3].replace(/\*\*/g, "").trim(),
+      tags: [],
+    });
+  }
+
+  // ─ Experience from RESUME
+  const expSection = extractMdSection(resumeMd, "Experience");
+  const experience = [];
+  const expBlocks = expSection.split(/\n(?=### )/);
+  for (const block of expBlocks) {
+    const lines = block.split("\n").map((l) => l.trim()).filter(Boolean);
+    const headerLine = lines.find((l) => l.startsWith("### "));
+    if (!headerLine) continue;
+    const companyRaw = headerLine.replace(/^###\s+/, "").trim();
+    const italicLine = lines.find((l) => /^_.*_$/.test(l));
+    let title = "";
+    let company = companyRaw;
+    let period = "";
+    if (italicLine) {
+      const content = italicLine.replace(/^_/, "").replace(/_$/, "").trim();
+      const periodMatch = content.match(/\(([^)]+)\)\s*$/);
+      if (periodMatch) {
+        period = periodMatch[1].trim();
+        title = content.replace(/\([^)]+\)\s*$/, "").trim();
+      } else {
+        period = content;
+        title = company;
+        company = "Independent";
+      }
+    }
+    if (!title) title = company;
+    const bullets = lines
+      .filter((l) => l.startsWith("- "))
+      .map((l) => l.slice(2).trim());
+    experience.push({
+      title,
+      company,
+      period,
+      description: bullets.join("；"),
+    });
+  }
+
+  // ─ Education from RESUME
+  const eduSection = extractMdSection(resumeMd, "Education");
+  let degree = "";
+  let school = "";
+  let eduNote = "";
+  for (const line of eduSection.split("\n")) {
+    const bold = line.match(/\*\*([^*]+)\*\*\s*-\s*(.+)/);
+    if (bold) {
+      degree = bold[1].trim();
+      school = bold[2].trim();
+    }
+    const italic = line.match(/^_([^_]+)_$/);
+    if (italic && italic[1].includes("•")) {
+      school = `${school} (${italic[1].trim()})`;
+    }
+    if (line.trim().startsWith("- ")) {
+      const note = line.trim().slice(2).trim();
+      eduNote = eduNote ? `${eduNote}；${note}` : note;
+    }
+  }
+
+  // ─ Side Projects & Interests
+  const sideSection = extractMdSection(resumeMd, "Side Projects & Interests");
+  const sideProjects = parseBullets(sideSection);
+
+  // ─ Public Activities
+  const pubSection = extractMdSection(resumeMd, "Public Activities");
+  const publicActivities = parseBullets(pubSection);
+
+  return {
+    meta: {
+      lastUpdated: new Date().toISOString(),
+      source: `github-${GITHUB_PROFILE_REPO}`,
+      owner: GITHUB_PROFILE_REPO.split("/")[0],
+      fetchedAt: new Date().toISOString(),
+    },
+    profile: {
+      name: "罗磊",
+      nameEn,
+      headline,
+      location: "Shenzhen, China",
+      bio: bioLine.trim(),
+      social,
+    },
+    highlights,
+    experience,
+    sideProjects,
+    publicActivities,
+    projects,
+    skills,
+    education: degree ? { degree, school, note: eduNote } : null,
+  };
+}
+
+async function fetchGithubProfile() {
+  console.log(`   🔗 从 GitHub 在线获取 (${GITHUB_PROFILE_REPO})...`);
+  const [readmeMd, resumeMd] = await Promise.all([
+    fetchGithubRaw("README.md"),
+    fetchGithubRaw("RESUME.md"),
+  ]);
+  console.log(`   └─ README ${readmeMd.length} 字符 / RESUME ${resumeMd.length} 字符`);
+  const profile = parseGithubProfile(readmeMd, resumeMd);
+  await writeJson(GITHUB_RESUME_FILE, profile);
+  console.log(`   └─ 已更新本地缓存: data/github-resume.json`);
+  return profile;
+}
+
+function normalizeResumeData(resume) {
   return {
     profile: resume.profile ?? {},
     highlights: Array.isArray(resume.highlights) ? resume.highlights : [],
@@ -312,6 +536,23 @@ async function collectGithubData() {
       : [],
     updatedAt: resume?.meta?.lastUpdated ?? null,
   };
+}
+
+async function collectGithubData() {
+  try {
+    const profile = await fetchGithubProfile();
+    return normalizeResumeData(profile);
+  } catch (err) {
+    console.warn(`   ⚠️  GitHub 在线获取失败: ${err.message}`);
+    console.log("   └─ 回退使用本地缓存 data/github-resume.json");
+    const resume = await readJson(GITHUB_RESUME_FILE, {
+      profile: {},
+      highlights: [],
+      experience: [],
+      projects: [],
+    });
+    return normalizeResumeData(resume);
+  }
 }
 
 // ─── 主流程 ──────────────────────────────────────────────────

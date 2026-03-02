@@ -1,10 +1,10 @@
 {
   "meta": {
-    "lastUpdated": "2026-03-02T04:51:29.855Z",
+    "lastUpdated": "2026-03-02T06:26:44.061Z",
     "model": "doubao-seed-2-0-pro-260215",
     "modelName": "Doubao Seed2.0 ",
     "provider": "Bytedance",
-    "generatedBy": "rule-based",
+    "generatedBy": "ai",
     "sources": [
       "posts",
       "tweets",
@@ -14,135 +14,132 @@
   "report": {
     "hero": {
       "title": "AI 视角下的罗磊",
-      "summary": "一边写代码做开源，一边把网络、工具、旅行和生活方式都写进博客里。",
-      "intro": "从他近期的内容来看，最集中的方向是：长期在博客（luolei.org）与 YouTube/Bilibili 持续输出技术与生活方式内容。"
+      "summary": "住在深圳，一边靠AI快速撸开源工具，一边跑马拉松满世界拍照片的斜杠开发者",
+      "intro": "从他更新了十几年的博客和X动态能看出来，他的生活一半是写代码折腾网络、AI工具，另一半是跑马拉松、去各地旅行拍照片，还养了两只猫一只柴犬。他在Unsplash上发的摄影作品已经有1500多万次浏览，做的开源项目也有不少开发者在用。他还喜欢把自己折腾出来的经验、踩过的坑都写成教程或者发动态分享，更新频率很高。"
     },
     "identities": [
       {
-        "name": "前端工程实践",
-        "description": "博客中有不少从项目搭建到部署上线的完整记录，涉及前后端、CI/CD 和性能优化。",
-        "evidence": "从 GitHub 来看，Neko Master、raycast-sink 是比较有代表性的项目。",
-        "link": "https://github.com/foru17"
+        "name": "AI辅助开发的开源工具创作者",
+        "description": "他习惯用AI工具（Vibe Coding）快速开发各类实用的小工具，做出来的开源项目被很多开发者和Homelab爱好者使用",
+        "evidence": "他发布过Neko Master等开源项目的开发教程，X上经常分享自己用AI写代码的进度和经验",
+        "link": "https://luolei.org/neko-master-vibe-coding"
       },
       {
-        "name": "工具与效率",
-        "description": "经常可以看到关于工具选择、工作流优化和自动化脚本的讨论。",
-        "evidence": "比如最近的文章《Neko Master: 从 0 到 1K+ Star 的 Vibe Coding 实践》就涉及了相关主题。",
-        "link": "https://luolei.org"
+        "name": "家庭网络折腾达人",
+        "description": "他深耕家庭网络优化，从OpenWrt配置、IPTV方案到宽带套餐对比，都摸得明明白白",
+        "evidence": "他发布过IPTV组播转单播测试、多运营商宽带对比等实测内容，X上经常分享Homelab相关的折腾经验",
+        "link": "https://luolei.org/chinanet-iptv"
       },
       {
-        "name": "旅行与生活方式",
-        "description": "博客和社交动态中有不少关于旅行、城市体验和日常生活方式的内容。",
-        "evidence": "从 X 动态可以看到对旅行、居住和日常工具的持续讨论。"
+        "name": "跑马拉松的旅行摄影师",
+        "description": "他跑完10多场全马，去过8个国家旅行，还完成过2200公里骑行去西藏的挑战，拍的摄影作品传播度很高",
+        "evidence": "他发布过京都马拉松、东京镰仓旅行等多篇攻略，公开可查的Unsplash作品数据证明了摄影内容的传播度",
+        "link": "https://luolei.org/kyoto-marathon-2025"
       }
     ],
     "strengths": [
       {
-        "title": "从内容中可以观察到的工程方式",
+        "title": "做事情的习惯",
         "points": [
-          "文章中常见从想法到可用产品的完整记录。",
-          "重复性工作倾向于脚本化和自动化。",
-          "会把 AI 工具整合进实际工作流，而不是单独讨论。"
+          "不管是搞技术还是选数码产品、办运营商套餐，都要自己实测跑数据，从来不用网上的二手结论",
+          "会把自己踩过的坑、总结的经验整理成 step by step 的教程，普通用户跟着也能操作",
+          "对新工具敏感度很高，尤其是AI相关的新玩法，总是第一时间测试后分享实际效果"
         ]
       },
       {
-        "title": "写作与内容输出方式",
+        "title": "做内容的特点",
         "points": [
-          "习惯把折腾过程写成可复现的教程。",
-          "关注阅读体验和视觉细节，文章排版讲究。"
+          "从2012年开始坚持更新博客，X上几乎每天都有新动态，内容更新频率很稳定",
+          "内容覆盖技术、生活、旅行多个领域，全都是自己真实体验过的内容，没有空泛的理论",
+          "会经常在评论区和网友互动，收集到大家的共性问题之后，还会专门写补充内容解答"
         ]
       }
     ],
     "styles": [
       {
-        "trait": "实测驱动",
-        "description": "文章中经常出现先做实验、再写结论的模式，很少纯理论讨论。"
+        "trait": "进度条体质",
+        "description": "不管是从零开发一个开源项目，还是折腾家里的网络、测新的数码产品，做着做着就顺手把进度同步到X上，连踩的坑、遇到的bug也不藏着，很多同好会跟着他的更新蹲最终成果"
       },
       {
-        "trait": "过程公开",
-        "description": "愿意在博客和社交媒体上分享决策过程和踩过的坑。"
+        "trait": "实测党",
+        "description": "选宽带、买数码产品、办电话卡都要自己亲测好几个方案，把资费、速度、优缺点列得明明白白，很少给笼统的推荐"
       },
       {
-        "trait": "长期迭代",
-        "description": "从内容时间线来看，不少主题会反复出现和更新，不是一次性的热度文章。"
+        "trait": "啥都能写成攻略",
+        "description": "不管是跑马拉松、去陌生城市旅行，还是去医院验光、配眼镜，体验完转头就会写成带细节的攻略，连交通路线、价格参考都标得清清楚楚"
       }
     ],
     "proofs": {
       "posts": [
         {
-          "title": "Neko Master: 从 0 到 1K+ Star 的 Vibe Coding 实践",
+          "title": "Neko Master: 从 0 到 1K+ Star 的 Vibe Codi…",
           "url": "https://luolei.org/neko-master-vibe-coding",
-          "reason": "本文分享了开源网络流量分析面板 Neko Master 的开发经验，通过 AI 辅助的 Vibe Coding 模式快速构建 MVP，并针对硬盘 I/O 优化、ClickHouse 架构升级及 AI 审美引导等深水区问题进行了实战总结，实现了从原型到流行开源项目的跨越。",
+          "reason": "分享了他用AI辅助开发开源项目的完整经验，能代表他的Vibe Coding工作方式",
           "date": "2026-03-01"
         },
         {
-          "title": "实现 AI 自由：我为未来准备的 4 个数字通行证",
-          "url": "https://luolei.org/ai-2026",
-          "reason": "该文探讨了在 AI 时代通过构建数字基建提升生产力的重要性，作者作为资深开发者分享了为探索全球 AI 产品而准备的四个数字通行证，旨在帮助用户克服访问门槛，实现 AI 使用自由。",
-          "date": "2026-02-04"
+          "title": "京都马拉松: 第一次去日本跑马",
+          "url": "https://luolei.org/kyoto-marathon-2025",
+          "reason": "记录了他跑马拉松的真实体验，是他生活类内容的典型代表",
+          "date": "2025-02-28"
         },
         {
-          "title": "我的新电脑: 2025 年 MATX 小主机",
-          "url": "https://luolei.org/pc-2025",
-          "reason": "本文记录了作者时隔七年从 Intel 转投 AMD 平台，通过精选 9700X 处理器与 RTX 5070 显卡，在乔思伯 Z20 小机箱内打造一台兼顾 4K 游戏与视频剪辑的高颜值 MATX 性能主机的全过程。",
-          "date": "2025-05-25"
+          "title": "广东电信 IPTV 组播转单播极限测试",
+          "url": "https://luolei.org/chinanet-iptv",
+          "reason": "是他折腾家庭网络的实测内容，能代表他做技术教程的风格",
+          "date": "2024-12-27"
+        },
+        {
+          "title": "Raycast Hoarder: 开源 AI 书签管理插件",
+          "url": "https://luolei.org/raycast-hoarder",
+          "reason": "是他开发效率工具的代表性内容，展示了他做小工具的思路",
+          "date": "2024-11-24"
         },
         {
           "title": "眼科近视验光体验:深圳大学总医院",
           "url": "https://luolei.org/eyes-2025",
-          "reason": "文章详细记录了作者在深圳大学总医院进行医学验光的完整体验，通过对比解析了医院验光与眼镜店的区别，分享了散瞳验光的专业流程及发现视力被过度矫正的结论，为配镜人群提供了专业参考。",
+          "reason": "记录了他去医院验光的完整流程和经验，是他把日常体验写成攻略的典型内容",
           "date": "2025-05-14"
-        },
-        {
-          "title": "科普网站:航班在 3D 地球的飞行真实轨迹",
-          "url": "https://luolei.org/flight-3d-earth",
-          "reason": "基于 Next.js 和 Three.js 开发的科普网站，通过展示航班在 3D 地球上的真实 GPS 轨迹，直观对比其与墨卡托投影平面地图的差异，帮助用户理解地理投影。",
-          "date": "2025-04-19"
         }
       ],
       "tweets": [
         {
-          "title": "X 动态 · 2025-11-25",
+          "title": "📌 中国联通香港 CUniq 月神卡应该算是目前手机卡套餐里一个真正的 Bug 级存在。 每个月只需要 HK…",
           "url": "https://x.com/luoleiorg/status/1993296964684071429",
-          "reason": "📌 中国联通香港 CUniq 月神卡应该算是目前手机卡套餐里一个真正的 Bug 级存在。 每个月只需要 HK$9，支持内地身份证实名，无需押…",
-          "date": "2025-11-25T12:33:24.000Z"
+          "reason": "是他分享电话卡套餐实测的高互动内容，能代表他喜欢折腾运营商产品的特点",
+          "date": "2025-11-25T00:00:00Z"
         },
         {
-          "title": "X 动态 · 2025-05-25",
-          "url": "https://x.com/luoleiorg/status/1926634754771694040",
-          "reason": "看到一个消息，可能是中国人不小心创造的一个新世界记录，但是这个记录也算一个事故。昨天有一个滑翔伞爱好者在祁连山单人飞行，不小心被云吸到高空，失…",
-          "date": "2025-05-25T13:41:35.000Z"
+          "title": "🚀 2026 年最优雅的 Clash 流量可视化工具 Clash Master 来了！ 推荐家里用 Open…",
+          "url": "https://x.com/luoleiorg/status/2019508580555321508",
+          "reason": "是他同步自己开源项目进度的动态，能代表他边做边分享的风格",
+          "date": "2026-02-05T00:00:00Z"
         },
         {
-          "title": "X 动态 · 2025-09-30",
+          "title": "🚨 强烈建议各位 开发者/产品经理 朋友花 15 分钟看看这个文档 Lovable 官方的 Promptin…",
           "url": "https://x.com/luoleiorg/status/1972928152507978196",
-          "reason": "🚨 强烈建议各位 开发者/产品经理 朋友花 15 分钟看看这个文档 Lovable 官方的 Prompting 1.1 手册太棒了，这份手册…",
-          "date": "2025-09-30T07:35:01.000Z"
+          "reason": "是他分享AI开发相关实用资源的动态，能代表他关注AI工具新玩法的特点",
+          "date": "2025-09-30T00:00:00Z"
         }
       ],
       "projects": [
         {
           "title": "Neko Master",
           "url": "https://github.com/foru17/neko-master",
-          "reason": "开源网络流量分析面板，从 0 到 1K+ Star 的 Vibe Coding 实践，集成 ClickHouse 高性能存储"
+          "reason": "是他用AI辅助开发的开源网络流量分析面板，上线很快就拿到1K+Star，是他的代表性开源项目"
         },
         {
-          "title": "raycast-sink",
-          "url": "https://github.com/foru17/raycast-sink",
-          "reason": "Raycast 短链管理插件，强调轻量与工作流整合"
-        },
-        {
-          "title": "raycast-hoarder",
-          "url": "https://github.com/foru17/raycast-hoarder",
-          "reason": "Raycast 与 Hoarder 的桥接插件，优化收藏检索体验"
+          "title": "Raycast Plugins",
+          "url": "https://github.com/foru17",
+          "reason": "他开发的多个Raycast效率插件，解决了自己和其他开发者的书签、短链管理需求"
         },
         {
           "title": "luoleiorg-x",
           "url": "https://github.com/foru17/luoleiorg-x",
-          "reason": "当前博客代码仓库，基于 Vinext + Cloudflare Workers，支持 AI 摘要与搜索"
+          "reason": "他重构的个人博客系统，集成了AI生成摘要等功能，是他自己日常使用的内容载体"
         }
       ]
     },
-    "disclaimer": "该页面由 AI 基于博客文章、社交动态和 GitHub 项目生成，旨在帮助访客快速了解作者。内容可能存在概括偏差，请以原始文章和项目为准。"
+    "disclaimer": "本内容由AI基于公开的博客、动态、开源项目内容生成，仅为访客快速了解作者提供参考，不代表作者本人的官方表述。"
   }
 }

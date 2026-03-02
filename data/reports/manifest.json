@@ -7,8 +7,8 @@
       "provider": "OpenAI",
       "providerSite": "https://chatgpt.com/",
       "icon": "openai",
-      "generatedAt": "2026-03-02T05:37:30.317Z",
-      "generatedBy": "rule-based"
+      "generatedAt": "2026-03-02T06:23:41.416Z",
+      "generatedBy": "ai"
     },
     {
       "id": "gemini-3-flash-preview",
@@ -16,7 +16,7 @@
       "provider": "Google",
       "providerSite": "https://gemini.google.com/",
       "icon": "gemini",
-      "generatedAt": "2026-03-02T04:50:18.100Z",
+      "generatedAt": "2026-03-02T06:23:31.663Z",
       "generatedBy": "ai"
     },
     {
@@ -25,8 +25,8 @@
       "provider": "Alibaba",
       "providerSite": "https://tongyi.aliyun.com/",
       "icon": "qwen",
-      "generatedAt": "2026-03-02T04:54:46.654Z",
-      "generatedBy": "rule-based"
+      "generatedAt": "2026-03-02T06:24:36.799Z",
+      "generatedBy": "ai"
     },
     {
       "id": "kimi-k2.5",
@@ -34,8 +34,8 @@
       "provider": "Moonshot",
       "providerSite": "https://www.kimi.com/",
       "icon": "kimi",
-      "generatedAt": "2026-03-02T04:51:45.965Z",
-      "generatedBy": "rule-based"
+      "generatedAt": "2026-03-02T06:26:28.079Z",
+      "generatedBy": "ai"
     },
     {
       "id": "doubao-seed-2-0-pro-260215",
@@ -43,8 +43,8 @@
       "provider": "Bytedance",
       "providerSite": "https://www.doubao.com/chat/",
       "icon": "doubao",
-      "generatedAt": "2026-03-02T04:51:29.855Z",
-      "generatedBy": "rule-based"
+      "generatedAt": "2026-03-02T06:26:44.061Z",
+      "generatedBy": "ai"
     },
     {
       "id": "glm-5",
@@ -52,8 +52,8 @@
       "provider": "Zhipu",
       "providerSite": "https://chat.z.ai/",
       "icon": "zhipu",
-      "generatedAt": "2026-03-02T05:31:39.700Z",
-      "generatedBy": "rule-based"
+      "generatedAt": "2026-03-02T06:28:26.787Z",
+      "generatedBy": "ai"
     }
   ]
 }
