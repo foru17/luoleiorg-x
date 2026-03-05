@@ -52,7 +52,8 @@
       "Bash(xxd:*)",
       "Bash(LC_ALL=C sed:*)",
       "Bash(npx esbuild:*)",
-      "Bash(npx vite:*)"
+      "Bash(npx vite:*)",
+      "Bash(do echo:*)"
     ]
   }
 }
