@@ -32,7 +32,7 @@ function parseArgs() {
     } else if (arg.startsWith("--max=")) {
       const value = Number.parseInt(arg.slice("--max=".length), 10);
       if (Number.isFinite(value) && value > 0) {
-        flags.max = Math.min(500, value);
+        flags.max = Math.min(2000, value);
       }
     } else if (arg === "--include-replies") {
       flags.includeReplies = true;
@@ -164,6 +164,9 @@ async function fetchAuthorTweets(userId, token, options) {
     if (options.sinceId) {
       timelineUrl.searchParams.set("since_id", options.sinceId);
     }
+    if (options.untilId) {
+      timelineUrl.searchParams.set("until_id", options.untilId);
+    }
     if (nextToken) {
       timelineUrl.searchParams.set("pagination_token", nextToken);
     }
@@ -225,12 +228,13 @@ async function main() {
   let totalRequests;
 
   if (canIncremental) {
-    // 增量模式：只拉取缓存中最新推文之后的新推文
+    // 增量模式：先拉取最新新推文，再往旧处补足至 max
     const newestId = existingCache.tweets[0]?.id;
+    const oldestId = existingCache.tweets[existingCache.tweets.length - 1]?.id;
     console.log(
       `📡 增量拉取（缓存 ${existingCache.tweets.length} 条，since_id=${newestId}）...`,
     );
-    const { tweets: newTweets, requestCount } = await fetchAuthorTweets(
+    const { tweets: newTweets, requestCount: rc1 } = await fetchAuthorTweets(
       user.id,
       token,
       {
@@ -239,9 +243,9 @@ async function main() {
         sinceId: newestId,
       },
     );
-    totalRequests = requestCount;
+    totalRequests = rc1;
 
-    // 合并: 新推文在前 + 旧推文在后，按 ID 去重后截断
+    // 合并新旧推文，按 ID 去重（不截断）
     const idSet = new Set();
     const merged = [];
     for (const tweet of [...newTweets, ...existingCache.tweets]) {
@@ -250,10 +254,36 @@ async function main() {
         merged.push(tweet);
       }
     }
-    finalTweets = merged.slice(0, args.max);
     console.log(
-      `   └─ 新增 ${newTweets.length} 条，合并后 ${finalTweets.length} 条`,
+      `   └─ 新增 ${newTweets.length} 条，合并后 ${merged.length} 条`,
     );
+
+    // 若缓存仍不足 max，继续往旧处补充
+    if (merged.length < args.max && oldestId) {
+      const need = args.max - merged.length;
+      console.log(`📡 向旧处补充（until_id=${oldestId}，需要 ${need} 条）...`);
+      const { tweets: olderTweets, requestCount: rc2 } = await fetchAuthorTweets(
+        user.id,
+        token,
+        {
+          max: need,
+          includeReplies: args.includeReplies,
+          untilId: oldestId,
+        },
+      );
+      totalRequests += rc2;
+      for (const tweet of olderTweets) {
+        if (!idSet.has(tweet.id)) {
+          idSet.add(tweet.id);
+          merged.push(tweet);
+        }
+      }
+      console.log(
+        `   └─ 补充 ${olderTweets.length} 条，合并后 ${merged.length} 条`,
+      );
+    }
+
+    finalTweets = merged;
   } else {
     // 全量拉取
     const reason = args.force
