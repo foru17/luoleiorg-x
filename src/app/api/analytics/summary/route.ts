@@ -30,7 +30,6 @@ export async function GET() {
         }>(CACHE_KEY, "json");
 
         if (cachedData && Date.now() - cachedData.timestamp < CACHE_TTL_MS) {
-          console.log("[Analytics Summary API] KV Cache hit");
           return NextResponse.json(
             {
               totalPageViews: cachedData.totalPageViews,

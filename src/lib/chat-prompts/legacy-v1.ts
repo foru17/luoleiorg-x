@@ -137,10 +137,6 @@ function buildAuthorBio(): string {
 
   const { profile, experience, skills, highlights } = ctx;
 
-  // Debug log to verify experience is loaded
-  console.log("[chat-prompt] Loaded experience count:", experience?.length || 0);
-  console.log("[chat-prompt] First experience:", experience?.[0]?.company || "N/A");
-
   // Build social links section
   const socialLinks = [
     `博客：${profile.social.blog}`

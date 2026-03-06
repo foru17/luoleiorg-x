@@ -371,6 +371,8 @@ function parseGithubProfile(readmeMd, resumeMd) {
   };
   for (const [label, url] of Object.entries(allLinks)) {
     const ll = label.toLowerCase();
+    // 跳过 badge/统计图片 URL，避免污染 social 链接
+    if (url.includes("badge.is26.com") || url.includes("komarev.com")) continue;
     if (url.includes("x.com") || ll.includes("twitter") || ll.includes("twitter:")) social.x = url;
     else if (ll.includes("youtube") || url.includes("zuoluo.tv/youtube")) social.youtube = url;
     else if (ll.includes("bilibili")) social.bilibili = url;
@@ -395,7 +397,9 @@ function parseGithubProfile(readmeMd, resumeMd) {
   let sm;
   while ((sm = skillRe.exec(skillsSection))) {
     const cat = sm[1].trim();
-    const items = sm[2].split(/[,，、]/).map((s) => s.trim()).filter(Boolean);
+    // 括号内的顿号/逗号不作为分隔符，先替换保护再 split
+    const protectedValue = sm[2].replace(/（[^）]*）/g, (m) => m.replace(/[,，、]/g, "\x00"));
+    const items = protectedValue.split(/[,，、]/).map((s) => s.replace(/\x00/g, "、").trim()).filter(Boolean);
     const catLow = cat.toLowerCase();
     if (cat.includes("前端") || catLow.includes("front")) skills.frontend = items;
     else if (cat.includes("后端") || cat.includes("数据库") || catLow.includes("back") || catLow.includes("db")) skills.backend = items;

@@ -20,6 +20,7 @@ export type PromptVersion = "v1" | "v2";
 
 export type PromptIntent =
   | "ai_rag"
+  | "indie_dev"
   | "devops_homelab"
   | "frontend_fullstack"
   | "photo_travel"

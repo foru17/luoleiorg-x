@@ -51,15 +51,13 @@ async function getHitsMap(): Promise<{
     try {
       // 直接使用 Umami API 获取数据
       const result = await fetchUmamiPageViews();
-      
-      console.log("[Server] Hits data count:", result.data?.length, "Total:", result.total);
+
       for (const item of result.data) {
         const slug = extractSlug(item.page);
         const existing = hitsMap.get(slug) ?? 0;
         hitsMap.set(slug, existing + item.hit);
       }
       loading = false;
-      console.log("[Server] Hits map size:", hitsMap.size);
     } catch (error) {
       console.error("[Server] Failed to fetch hits:", error);
     }

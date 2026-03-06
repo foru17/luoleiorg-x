@@ -336,6 +336,18 @@ function pickAnchorTerms<T>(params: {
   return terms.slice(0, SEARCH_ANCHOR_TERM_MAX);
 }
 
+function mergeSearchResults<T extends { url: string }>(primary: T[], secondary: T[]): T[] {
+  const seen = new Set(primary.map((item) => item.url));
+  const merged = [...primary];
+  for (const item of secondary) {
+    if (!seen.has(item.url)) {
+      seen.add(item.url);
+      merged.push(item);
+    }
+  }
+  return merged;
+}
+
 function filterLowRelevanceResults<T extends { score: number }>(results: T[]): T[] {
   if (results.length <= 3) return results;
 
@@ -525,23 +537,24 @@ const KEYWORD_EXTRACTION_PROMPT = `你是一个搜索关键词提取器。根据
 - 只输出 JSON，不要 Markdown，不要解释，不要多余文本
 - JSON 结构：
   {
-    "primaryTerms": ["..."],
-    "relatedTerms": ["..."],
-    "query": "term1 term2 term3"
+    “primaryTerms”: [“...”],
+    “relatedTerms”: [“...”],
+    “query”: “term1 term2 term3”
   }
-- primaryTerms：2-6 个核心主题实体词（优先级最高）
-- relatedTerms：0-6 个扩展词（同义词/上下位词/地名/技术栈）
+- primaryTerms：1-3 个最核心的主题实体词（精简，用于宽泛召回）
+- relatedTerms：0-6 个扩展词（同义词/上下位词/地名/技术栈，用于精确匹配）
 - query：把 primaryTerms 和 relatedTerms 合并后的搜索词串（空格分隔）
 
 规则：
+- primaryTerms 必须精简（1-3 个），只保留最核心的实体词，让宽泛搜索能召回更多结果
 - 总关键词数控制在 5-10 个
 - 关键词应涵盖：核心话题、相关地名/人名、同义词、上下位词
-- 关键词优先使用“主题实体词/领域词”，避免输出功能词、语气词、问句词和数量词
+- 关键词优先使用”主题实体词/领域词”，避免输出功能词、语气词、问句词和数量词
 - 禁止输出这类词：写过、去过、跑过、多少、几次、几篇、是不是、有没有、推荐几篇
-- 例如用户问"去过哪些国家"→ 输出"旅行 游记 国家 出国 自驾 签证"
-- 例如用户问"日本相关文章"→ 输出"日本 东京 京都 大阪 仙台 旅行 游记"
-- 例如用户问"你跑过马拉松吗"→ 输出"马拉松 跑步 跑马 运动 赛事 训练"
-- 结合上下文理解指代（如"推荐几篇"指的是之前聊的话题）
+- 例如用户问”去过哪些国家”→ primaryTerms: [“旅行”] relatedTerms: [“游记”, “出国”, “自驾”, “签证”]
+- 例如用户问”日本相关文章”→ primaryTerms: [“日本”] relatedTerms: [“东京”, “京都”, “大阪”, “旅行”, “游记”]
+- 例如用户问”你跑过马拉松吗”→ primaryTerms: [“马拉松”] relatedTerms: [“跑步”, “跑马”, “运动”, “赛事”]
+- 结合上下文理解指代（如”推荐几篇”指的是之前聊的话题）
 - 严禁输出无关字段`;
 
 function extractJsonPayload(text: string): Record<string, unknown> | null {
@@ -583,21 +596,25 @@ function toStringList(value: unknown): string[] {
     .filter(Boolean);
 }
 
-function buildKeywordQueryFromModelOutput(text: string): string {
+function buildKeywordQueryFromModelOutput(text: string): {
+  query: string;
+  primaryQuery: string;
+} {
   const payload = extractJsonPayload(text);
   if (payload) {
-    const terms = [
-      ...toStringList(payload.primaryTerms),
-      ...toStringList(payload.relatedTerms),
-    ];
+    const primaryTerms = toStringList(payload.primaryTerms);
+    const relatedTerms = toStringList(payload.relatedTerms);
+    const allTerms = [...primaryTerms, ...relatedTerms];
     if (typeof payload.query === "string") {
-      terms.push(payload.query);
+      allTerms.push(payload.query);
     }
-    const normalized = buildSearchQuery(terms.join(" "));
-    if (normalized) return normalized;
+    const query = buildSearchQuery(allTerms.join(" "));
+    const primaryQuery = buildSearchQuery(primaryTerms.join(" "));
+    if (query) return { query, primaryQuery: primaryQuery || query };
   }
 
-  return buildSearchQuery(text.trim().replace(/[，,、;；。.]/g, " "));
+  const fallback = buildSearchQuery(text.trim().replace(/[，,、;；。.]/g, " "));
+  return { query: fallback, primaryQuery: fallback };
 }
 
 const REUSE_INTENT_CHECK_PROMPT = `你是检索上下文复用判定器。请判断“最新用户问题”是否和“上一条用户问题”属于同一检索意图。
@@ -625,7 +642,7 @@ async function extractSearchKeywords(
   provider: ReturnType<typeof createOpenAICompatible>,
   model: string,
   abortSignal?: AbortSignal,
-): Promise<{ query: string; usage?: TokenUsageStats }> {
+): Promise<{ query: string; primaryQuery: string; usage?: TokenUsageStats }> {
   const recentMessages = messages.slice(-KEYWORD_EXTRACTION_RECENT_MESSAGES);
   const conversation = recentMessages
     .map((m) => {
@@ -645,12 +662,13 @@ async function extractSearchKeywords(
       abortSignal,
     });
     return {
-      query: buildKeywordQueryFromModelOutput(text),
+      ...buildKeywordQueryFromModelOutput(text),
       usage: toTokenUsageStats(totalUsage),
     };
   } catch {
     const latest = getMessageText(recentMessages[recentMessages.length - 1]);
-    return { query: buildSearchQuery(latest) };
+    const fallback = buildSearchQuery(latest);
+    return { query: fallback, primaryQuery: fallback };
   }
 }
 
@@ -876,6 +894,16 @@ export async function POST(req: Request) {
           searchQuery = normalizedKeywordQuery;
           relatedArticles = searchRelatedArticles(searchQuery, true);
           relatedTweets = searchRelatedTweets(searchQuery);
+
+          // Extra broad search using only primaryTerms to catch more relevant results
+          // that may be filtered out when the full expanded query has too many terms
+          const primaryQuery = buildSearchQuery(keywordResult.primaryQuery || "");
+          if (primaryQuery && primaryQuery !== searchQuery) {
+            const primaryArticles = searchRelatedArticles(primaryQuery, false);
+            const primaryTweets = searchRelatedTweets(primaryQuery);
+            relatedArticles = mergeSearchResults(relatedArticles, primaryArticles);
+            relatedTweets = mergeSearchResults(relatedTweets, primaryTweets);
+          }
         } else {
           relatedArticles = localArticles;
           relatedTweets = localTweets;
@@ -917,10 +945,6 @@ export async function POST(req: Request) {
   const promptBuildStart = performance.now();
   const systemPrompt = buildSystemPrompt(relatedArticles, relatedTweets, searchQuery || latestText);
   const promptBuildMs = durationMs(promptBuildStart);
-
-  // Debug: Log the generated system prompt
-  console.log("[chat-api] System prompt:\n", systemPrompt.slice(0, 1500));
-  console.log("[chat-api] Prompt length:", systemPrompt.length);
 
   try {
     let baseResponseText = "";

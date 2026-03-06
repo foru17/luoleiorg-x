@@ -41,7 +41,6 @@ export async function getPageHits(slug: string): Promise<number> {
     try {
       const cached = await KV.get<{ total: number; data: PageHitItem[]; timestamp: number }>(KV_CACHE_KEY, "json");
       if (cached && Date.now() - cached.timestamp < SERVER_CACHE_TTL) {
-        console.log("[getPageHits] KV Cache hit for:", slug);
         return calculateHitsForSlug(cached.data, slug);
       }
     } catch (err) {
@@ -53,15 +52,11 @@ export async function getPageHits(slug: string): Promise<number> {
   if (serverHitsCache && 
       serverHitsCache.version === CACHE_VERSION &&
       Date.now() - serverHitsCache.timestamp < SERVER_CACHE_TTL) {
-    console.log("[getPageHits] Memory Cache hit for:", slug);
     return calculateHitsForSlug(serverHitsCache.data, slug);
   }
 
-  console.log("[getPageHits] Fetching for:", slug);
-
   try {
     const result = await fetchUmamiPageViews();
-    console.log("[getPageHits] Got result:", result.total, "total,", result.data.length, "items");
     const data = result.data || [];
 
     // 更新内存缓存
@@ -81,7 +76,6 @@ export async function getPageHits(slug: string): Promise<number> {
     }
 
     const hits = calculateHitsForSlug(data, slug);
-    console.log("[getPageHits] Calculated hits for", slug, ":", hits);
     return hits;
   } catch (error) {
     console.error("[getPageHits] Error:", error);

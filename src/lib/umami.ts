@@ -52,8 +52,6 @@ export async function fetchUmamiPageViews(): Promise<UmamiStatsResult> {
     metricsUrl.searchParams.set("type", "path");
     metricsUrl.searchParams.set("limit", "2000");
 
-    console.log("[Umami] Fetching page metrics...");
-
     // 使用 AbortController 替代 AbortSignal.timeout（兼容性更好）
     const controller = new AbortController();
     const timeoutId = setTimeout(() => controller.abort(), 10000);
@@ -73,8 +71,6 @@ export async function fetchUmamiPageViews(): Promise<UmamiStatsResult> {
         y: number;
       }>;
 
-      console.log(`[Umami] Got ${metricsData.length} metrics entries`);
-
       pageData = metricsData.map((item) => ({
         page: item.x,
         hit: item.y,
@@ -89,8 +85,6 @@ export async function fetchUmamiPageViews(): Promise<UmamiStatsResult> {
       pageviewsUrl.searchParams.set("endAt", endAt.toString());
       pageviewsUrl.searchParams.set("unit", "year");
       pageviewsUrl.searchParams.set("tz", "Asia/Shanghai");
-
-      console.log("[Umami] Trying pageviews endpoint:", pageviewsUrl.toString());
 
       const pvController = new AbortController();
       const pvTimeoutId = setTimeout(() => pvController.abort(), 10000);
@@ -124,8 +118,6 @@ export async function fetchUmamiPageViews(): Promise<UmamiStatsResult> {
     }
 
     const total = pageData.reduce((sum, item) => sum + item.hit, 0);
-
-    console.log(`[Umami] Total pageviews: ${total}, Pages: ${pageData.length}`);
 
     return {
       total,
@@ -221,11 +213,9 @@ export async function fetchUmamiStats(): Promise<{
     statsUrl.searchParams.set("startAt", startAt.toString());
     statsUrl.searchParams.set("endAt", endAt.toString());
     
-    console.log("[Umami] Fetching stats...");
-    
     const controller = new AbortController();
     const timeoutId = setTimeout(() => controller.abort(), 10000);
-    
+
     const response = await fetch(statsUrl.toString(), {
       headers,
       signal: controller.signal,
@@ -239,8 +229,7 @@ export async function fetchUmamiStats(): Promise<{
         visitors: number;
         visits: number;
       };
-      
-      console.log("[Umami] Stats fetched:", data);
+
       return data;
     } else {
       const errorText = await response.text().catch(() => "Unknown error");
@@ -279,7 +268,6 @@ export async function fetchRecentVisitor(): Promise<RecentVisitor | null> {
   // 首先尝试获取实时数据（最近30分钟）
   try {
     const realtimeUrl = new URL(`${apiUrl}/realtime/${websiteId}`);
-    console.log("[Umami] Fetching realtime data from:", realtimeUrl.toString());
     
     const controller = new AbortController();
     const timeoutId = setTimeout(() => controller.abort(), TIMEOUT_MS);
@@ -298,8 +286,7 @@ export async function fetchRecentVisitor(): Promise<RecentVisitor | null> {
           createdAt?: string;
         }>;
       };
-      console.log("[Umami] Realtime API: got", rawData.events?.length ?? 0, "events");
-      
+
       // realtime 返回的 events 数组包含最近的访问事件
       if (rawData.events && rawData.events.length > 0) {
         // 获取第一个事件（最新的）
@@ -310,7 +297,6 @@ export async function fetchRecentVisitor(): Promise<RecentVisitor | null> {
           city: "",   // realtime 不返回 city
           lastAt: event.createdAt || new Date().toISOString(),
         };
-        console.log("[Umami] Recent visitor from realtime:", visitor);
         return visitor;
       }
     } else {
@@ -322,8 +308,6 @@ export async function fetchRecentVisitor(): Promise<RecentVisitor | null> {
   }
   
   // 如果 realtime 失败或没有数据，回退到 sessions 查询（最近7天）
-  console.log("[Umami] Falling back to sessions API...");
-  
   for (let attempt = 0; attempt <= MAX_RETRIES; attempt++) {
     try {
       // 计算时间范围：最近7天（之前是24小时，可能太短了）
@@ -337,12 +321,6 @@ export async function fetchRecentVisitor(): Promise<RecentVisitor | null> {
       sessionsUrl.searchParams.set("page", "1");
       sessionsUrl.searchParams.set("pageSize", "1"); // 只获取最近的一条
       
-      if (attempt === 0) {
-        console.log("[Umami] Fetching recent visitor from:", sessionsUrl.toString());
-      } else {
-        console.log(`[Umami] Retry ${attempt}/${MAX_RETRIES} fetching recent visitor...`);
-      }
-      
       const controller = new AbortController();
       const timeoutId = setTimeout(() => controller.abort(), TIMEOUT_MS);
       
@@ -355,8 +333,6 @@ export async function fetchRecentVisitor(): Promise<RecentVisitor | null> {
       
       if (response.ok) {
         const rawData = await response.json();
-        console.log("[Umami] Sessions API: got", (rawData as { data?: unknown[] }).data?.length ?? 0, "sessions");
-        
         const data = rawData as {
           data: Array<{
             country: string;
@@ -368,7 +344,6 @@ export async function fetchRecentVisitor(): Promise<RecentVisitor | null> {
         
         if (data.data && data.data.length > 0) {
           const visitor = data.data[0];
-          console.log("[Umami] Recent visitor fetched:", visitor);
           return {
             country: visitor.country || "Unknown",
             region: visitor.region || "",
@@ -377,7 +352,6 @@ export async function fetchRecentVisitor(): Promise<RecentVisitor | null> {
           };
         }
         
-        console.log("[Umami] No sessions found in the last 7 days");
         return null;
       } else {
         const errorText = await response.text().catch(() => "Unknown error");

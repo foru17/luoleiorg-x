@@ -1,9 +1,9 @@
 {
   "meta": {
-    "lastUpdated": "2026-03-04T03:27:47.796Z",
+    "lastUpdated": "2026-03-06T05:19:21.017Z",
     "source": "github-foru17/foru17",
     "owner": "foru17",
-    "fetchedAt": "2026-03-04T03:27:47.796Z"
+    "fetchedAt": "2026-03-06T05:19:21.017Z"
   },
   "profile": {
     "name": "罗磊",
@@ -14,7 +14,7 @@
     "social": {
       "github": "https://github.com/foru17",
       "x": "https://x.com/luoleiorg",
-      "youtube": "https://www.youtube.com/zuoluotv",
+      "youtube": "https://zuoluo.tv/youtube",
       "bilibili": "https://zuoluo.tv/bilibili",
       "blog": "https://luolei.org",
       "instagram": "https://instagram.com/luoleiorg",
@@ -124,8 +124,7 @@
       "Linux",
       "CI/CD",
       "Shell 脚本",
-      "网络（家庭实验室路由",
-      "DNS）"
+      "网络（家庭实验室路由、DNS）"
     ],
     "tools": [
       "Vibe Coding",

@@ -38,11 +38,19 @@ interface AuthorSkills {
   design?: string[];
 }
 
+interface AuthorProject {
+  name: string;
+  url: string;
+  description: string;
+}
+
 interface AuthorContext {
   profile: AuthorProfile;
   experience: AuthorExperience[];
   skills: AuthorSkills;
   highlights: string[];
+  projects?: AuthorProject[];
+  publicActivities?: string[];
 }
 
 const MAX_ARTICLE_SUMMARY_LENGTH = 140;
@@ -62,6 +70,8 @@ function toAuthorContext(): AuthorContext | null {
     experience: Array.isArray(context.experience) ? context.experience : [],
     skills: (context.skills ?? {}) as AuthorSkills,
     highlights: Array.isArray(context.highlights) ? context.highlights : [],
+    projects: Array.isArray(context.projects) ? context.projects as AuthorProject[] : [],
+    publicActivities: Array.isArray(context.publicActivities) ? context.publicActivities : [],
   };
 }
 
@@ -182,19 +192,30 @@ function buildAuthorBio(config: ChatPromptRuntimeConfig): string {
 
   const skillGroups = [
     ["前端", ctx.skills.frontend ?? [], 6],
-    ["后端", ctx.skills.backend ?? [], 5],
-    ["DevOps", ctx.skills.devops ?? [], 5],
-    ["工具", ctx.skills.tools ?? [], 5],
+    ["后端", ctx.skills.backend ?? [], 6],
+    ["DevOps", ctx.skills.devops ?? [], 6],
+    ["AI/工具", ctx.skills.tools ?? [], 6],
   ] as const;
 
   const skillLines = skillGroups
     .filter(([, list]) => list.length > 0)
     .map(([label, list, max]) => `- ${label}：${list.slice(0, max).join("、")}`);
 
+  const projectLines = (ctx.projects ?? [])
+    .slice(0, 3)
+    .map((p) => `- [${p.name}](${p.url})：${truncateText(p.description, 60)}`);
+
+  const activityLines = (ctx.publicActivities ?? [])
+    .slice(0, 3)
+    .map((a) => `- ${a}`);
+
   return [
     `- 身份：${identityLine}`,
     `- 坐标：${location}`,
     ...socialLines,
+    "",
+    "## 精选项目（最新）",
+    ...(projectLines.length > 0 ? projectLines : ["- 暂无公开记录"]),
     "",
     "## 工作经历",
     ...(experienceLines.length > 0 ? experienceLines : ["- 暂无公开记录"]),
@@ -204,6 +225,7 @@ function buildAuthorBio(config: ChatPromptRuntimeConfig): string {
     "",
     "## 亮点",
     ...(highlights.length > 0 ? highlights : ["- 暂无公开记录"]),
+    ...(activityLines.length > 0 ? ["", "## 公开活动", ...activityLines] : []),
   ].join("\n");
 }
 

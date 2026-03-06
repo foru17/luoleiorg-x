@@ -53,7 +53,11 @@
       "Bash(LC_ALL=C sed:*)",
       "Bash(npx esbuild:*)",
       "Bash(npx vite:*)",
-      "Bash(do echo:*)"
+      "Bash(do echo:*)",
+      "Bash(pnpm info:*)",
+      "Bash(pnpm add:*)",
+      "Bash(pnpm list:*)",
+      "Bash(pnpm profile:context:*)"
     ]
   }
 }

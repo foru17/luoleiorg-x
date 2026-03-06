@@ -3,7 +3,7 @@ import type { PromptVersion } from "./types.ts";
 const DEFAULT_MAX_ARTICLES_IN_PROMPT = 10;
 const DEFAULT_MAX_TWEETS_IN_PROMPT = 8;
 const DEFAULT_MAX_SOCIAL_LINKS = 4;
-const DEFAULT_MAX_HIGHLIGHTS = 3;
+const DEFAULT_MAX_HIGHLIGHTS = 7;
 
 function parseIntEnv(value: string | undefined, fallback: number): number {
   if (!value) return fallback;

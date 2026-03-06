@@ -17,7 +17,6 @@ export async function GET() {
       try {
         const cachedData = await KV.get<{ total: number; data: PageHitItem[]; timestamp: number }>(KV_CACHE_KEY, "json");
         if (cachedData && Date.now() - cachedData.timestamp < CACHE_TTL_MS) {
-          console.log("[Analytics API] KV Cache hit");
           return NextResponse.json(
             { total: cachedData.total, data: cachedData.data },
             { headers: { "Cache-Control": "public, max-age=300", "X-Cache": "HIT" } }

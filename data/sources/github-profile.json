@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-03-04T03:27:47.797Z",
+  "generatedAt": "2026-03-06T05:19:21.018Z",
   "profile": {
     "name": "罗磊",
     "nameEn": "罗磊",
@@ -9,7 +9,7 @@
     "social": {
       "github": "https://github.com/foru17",
       "x": "https://x.com/luoleiorg",
-      "youtube": "https://www.youtube.com/zuoluotv",
+      "youtube": "https://zuoluo.tv/youtube",
       "bilibili": "https://zuoluo.tv/bilibili",
       "blog": "https://luolei.org",
       "instagram": "https://instagram.com/luoleiorg",
@@ -99,8 +99,7 @@
       "Linux",
       "CI/CD",
       "Shell 脚本",
-      "网络（家庭实验室路由",
-      "DNS）"
+      "网络（家庭实验室路由、DNS）"
     ],
     "tools": [
       "Vibe Coding",
@@ -140,5 +139,5 @@
       "tags": []
     }
   ],
-  "updatedAt": "2026-03-04T03:27:47.796Z"
+  "updatedAt": "2026-03-06T05:19:21.017Z"
 }
