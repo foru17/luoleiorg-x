@@ -12,8 +12,10 @@ import {
   getPostSiblings,
 } from "@/lib/content/posts";
 import { ArticleAISummary } from "@/components/article-ai-summary";
+import { ArticleChatBootstrap } from "@/components/article-chat-bootstrap";
 import { ScrollToTop } from "@/components/scroll-to-top";
 import { getAISeo, getAISummary } from "@/lib/content/ai-data";
+import { getArticleChatGuideWithFallback } from "@/lib/content/article-chat-guides";
 import { categoryMap, siteConfig } from "@/lib/site-config";
 import { getPageHits } from "@/lib/analytics";
 
@@ -102,6 +104,12 @@ export default async function PostPage({ params }: PostPageProps) {
   const siblings = getPostSiblings(slug);
   const aiSummary = getAISummary(slug);
   const aiSeo = getAISeo(slug);
+  const articleChatGuide = getArticleChatGuideWithFallback({
+    slug,
+    title: post.title,
+    categories: post.categories,
+    aiSummary,
+  });
   const canonicalUrl = `${siteConfig.siteUrl}/${post.slug}`;
   const primaryCategory = post.categories.find(
     (category) => category !== "hot" && categoryNameMap.has(category),
@@ -189,6 +197,7 @@ export default async function PostPage({ params }: PostPageProps) {
       />
       <div className="flex flex-col lg:flex-row lg:gap-12">
         <section className="min-w-0 flex-1 lg:max-w-[860px]">
+          <ArticleChatBootstrap guide={articleChatGuide} />
           <ArticleMeta post={post} hits={hits} />
           {aiSummary && <ArticleAISummary summary={aiSummary} />}
           <ContentEnhancer />

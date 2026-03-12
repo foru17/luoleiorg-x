@@ -22,6 +22,20 @@ export interface ProjectContext {
   description: string;
 }
 
+export interface CurrentArticleContext {
+  slug: string;
+  title: string;
+  url: string;
+  summary: string;
+  abstract?: string;
+  keyPoints: string[];
+  categories: string[];
+  relatedSlugs?: string[];
+  questionFacts?: string[];
+  relevantExcerpts?: string[];
+  fullContent?: string;
+}
+
 export type PromptVersion = "v1" | "v2";
 
 export type PromptIntent =

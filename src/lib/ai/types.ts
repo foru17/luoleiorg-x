@@ -45,6 +45,16 @@ export interface ArticleSummary {
   readingTime?: number;
 }
 
+/** 文章对话引导数据 */
+export interface ArticleChatGuideGeneration {
+  /** 弹窗或欢迎区的开场引导语 */
+  openingLine: string;
+  /** 当前文章优先展示的读者问题 */
+  focusQuestions: string[];
+  /** 顺着本文继续追问的方向 */
+  extensionTopics: string[];
+}
+
 /** SEO 数据 */
 export interface ArticleSeo {
   /** SEO meta description（120-160字） */

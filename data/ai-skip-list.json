@@ -30,5 +30,21 @@
     "failCount": 1,
     "lastFailedAt": "2026-03-05T06:41:34.256Z",
     "firstFailedAt": "2026-03-05T06:41:34.256Z"
+  },
+  "chat-guide:weibo-kaifang": {
+    "slug": "weibo-kaifang",
+    "task": "chat-guide",
+    "reason": "API 502: {\"code\":502,\"message\":\"all channels failed\"}",
+    "failCount": 2,
+    "lastFailedAt": "2026-03-12T12:50:51.969Z",
+    "firstFailedAt": "2026-03-12T12:38:54.836Z"
+  },
+  "chat-guide:imagination-story": {
+    "slug": "imagination-story",
+    "task": "chat-guide",
+    "reason": "Expected ',' or '}' after property value in JSON at position 50 (line 1 column 51)",
+    "failCount": 1,
+    "lastFailedAt": "2026-03-12T12:50:30.659Z",
+    "firstFailedAt": "2026-03-12T12:50:30.659Z"
   }
 }

@@ -10,6 +10,7 @@ import {
 import { fallbackResponseTemplates } from "./core-rules.ts";
 import type {
   ArticleContext,
+  CurrentArticleContext,
   PromptAnswerMode,
   ProjectContext,
   TweetContext,
@@ -173,6 +174,7 @@ interface AuthorContext {
 const MAX_ARTICLE_SUMMARY_LENGTH = 140;
 const MAX_ARTICLE_KEYPOINTS = 3;
 const MAX_ARTICLE_KEYPOINT_LENGTH = 28;
+const MAX_CURRENT_ARTICLE_FULL_CONTENT_LENGTH = 12000;
 const MAX_TWEET_TEXT_LENGTH = 140;
 const MAX_STABLE_FACT_POSTS = 3;
 const MAX_TIMELINE_POSTS = 3;
@@ -629,6 +631,44 @@ function formatProjectSection(projects: ProjectContext[]): string {
   ].join("\n");
 }
 
+function formatCurrentArticleSection(currentArticle?: CurrentArticleContext): string {
+  if (!currentArticle) {
+    return `（当前无文章阅读上下文）`;
+  }
+
+  const abstract = truncateText(
+    currentArticle.abstract || currentArticle.summary,
+    MAX_ARTICLE_SUMMARY_LENGTH,
+  );
+  const keyPoints = currentArticle.keyPoints
+    .slice(0, MAX_ARTICLE_KEYPOINTS)
+    .map((point) => truncateText(point, MAX_ARTICLE_KEYPOINT_LENGTH))
+    .join("；");
+  const questionFacts = (currentArticle.questionFacts ?? [])
+    .map((fact, index) => `${index + 1}. ${fact}`)
+    .join("\n");
+  const relevantExcerpts = (currentArticle.relevantExcerpts ?? [])
+    .map((excerpt, index) => `${index + 1}. ${excerpt}`)
+    .join("\n");
+  const fullContent = currentArticle.fullContent
+    ? truncateText(currentArticle.fullContent, MAX_CURRENT_ARTICLE_FULL_CONTENT_LENGTH)
+    : "";
+
+  return [
+    `来源层级：L0 current_article（用户当前正在阅读的文章，优先级最高）`,
+    `- 标题：《${currentArticle.title}》 | ${currentArticle.url}`,
+    abstract ? `- 摘要：${abstract}` : "",
+    keyPoints ? `- 要点：${keyPoints}` : "",
+    questionFacts ? `- 针对当前问题最直接的原文事实：\n${questionFacts}` : "",
+    relevantExcerpts ? `- 与当前问题最相关的段落：\n${relevantExcerpts}` : "",
+    fullContent ? `- 正文全文（优先直接阅读这里，不要只看摘要）：\n"""\n${fullContent}\n"""` : "",
+    `- 语义消歧：如果用户在当前文章里问“你住哪里 / 去了哪些地方 / 花了多少 / 怎么走”这类问题，默认指文中这次经历，不是作者当前的常住地、长期背景或全站资料。`,
+    `- 回答要求：如果用户问题明显指向“这篇文章 / 文中 / 这个方案 / 这种做法 / 文里提到的某个细节”，先依据上面的正文全文回答；只有当前文章没有写到，或用户明确要求延伸到其他文章/项目时，才参考下方 L1。`,
+  ]
+    .filter(Boolean)
+    .join("\n");
+}
+
 function buildAnswerModeHint(answerMode: PromptAnswerMode): string {
   switch (answerMode) {
     case "list":
@@ -655,8 +695,9 @@ export function buildRuntimeContext(params: {
   projects?: ProjectContext[];
   userQuery: string;
   config: ChatPromptRuntimeConfig;
+  currentArticle?: CurrentArticleContext;
 }): string {
-  const { articles, tweets, projects = [], userQuery, config } = params;
+  const { articles, tweets, projects = [], userQuery, config, currentArticle } = params;
 
   const { intent, rankedArticles } = rankArticlesByIntent({
     query: userQuery,
@@ -677,17 +718,20 @@ export function buildRuntimeContext(params: {
   const tweetSection = formatTweetSection(rankedTweets, config.maxTweetsInPrompt);
   const projectSection = formatProjectSection(projects);
 
-  const sections = [
-    `## 关于你（L2 curated_public）`,
-    authorBio,
-    ``,
+  const runtimeSections = [
     `## 运行时上下文`,
     `- 用户问题：${userQuery || "（未提供）"}`,
     `- 识别意图：${intent}`,
     `- 预期回答模式：${answerMode}`,
     `- 模式提示：${buildAnswerModeHint(answerMode)}`,
-    `- 来源优先级：L1 相关文章/相关动态 > L2 关于你/相关项目 > L3 结构化事实索引 > L5 语言风格`,
+    `- 来源优先级：L0 当前阅读文章 > L1 相关文章/相关动态 > L2 关于你/相关项目 > L3 结构化事实索引 > L5 语言风格`,
+    `- 当前文章策略：如果用户问题围绕正在阅读的这篇文章，先使用 L0 的正文全文直接回答，不要先跳到站内搜索。`,
     `- 引用约束：你只能引用下列列表中的完整 URL。`,
+  ];
+
+  const articleScopedSections = [
+    `## 当前阅读文章（L0 current_article）`,
+    formatCurrentArticleSection(currentArticle),
     ``,
     `## 相关文章（博客，L1 authored_public）`,
     articleSection,
@@ -695,6 +739,15 @@ export function buildRuntimeContext(params: {
     `## 相关动态（X，L1 authored_public）`,
     tweetSection,
   ];
+
+  const profileSections = [
+    `## 关于你（L2 curated_public）`,
+    authorBio,
+  ];
+
+  const sections = currentArticle
+    ? [...runtimeSections, ``, ...articleScopedSections, ``, ...profileSections]
+    : [...profileSections, ``, ...runtimeSections, ``, ...articleScopedSections];
 
   // 只在有项目结果时才添加项目部分
   if (projects.length > 0) {

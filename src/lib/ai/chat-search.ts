@@ -60,6 +60,7 @@ const DEEP_ARTICLE_SCORE_THRESHOLD = Number(
   process.env.DEEP_ARTICLE_SCORE_THRESHOLD ?? 8,
 );
 const DEEP_ARTICLE_FULL_CONTENT_MAX_LENGTH = 1500;
+const CURRENT_ARTICLE_FULL_CONTENT_MAX_LENGTH = 1400;
 const PROJECT_SEARCH_LIMIT = 5;
 const TRAVEL_EVIDENCE_QUERY_TERMS = [
   "旅行",
@@ -157,6 +158,50 @@ function loadSearchData(): {
   cachedProjectIndex = projectIndex;
 
   return { postIndex, tweetIndex, projectIndex };
+}
+
+function toArticleContext(
+  item: SearchDocument,
+  options: { fullContentMaxLength?: number; includeFullContent?: boolean } = {},
+): ArticleContext {
+  const aiSummary = getAISummary(item.id);
+  const maxLength = options.fullContentMaxLength ?? CURRENT_ARTICLE_FULL_CONTENT_MAX_LENGTH;
+
+  return {
+    title: item.title,
+    url: item.url.startsWith("http")
+      ? item.url
+      : `${siteConfig.siteUrl}${item.url}`,
+    summary: aiSummary?.summary ?? item.excerpt,
+    keyPoints: aiSummary?.keyPoints ?? [],
+    categories: item.categories,
+    dateTime: item.dateTime,
+    fullContent:
+      options.includeFullContent && item.content
+        ? item.content.slice(0, maxLength)
+        : undefined,
+  };
+}
+
+export function getArticleContextBySlug(
+  slug: string,
+  options: { fullContentMaxLength?: number } = {},
+): ArticleContext | null {
+  if (!slug.trim()) return null;
+  loadSearchData();
+  const item = cachedPostDocs?.find((doc) => doc.id === slug);
+  if (!item) return null;
+  return toArticleContext(item, { ...options, includeFullContent: true });
+}
+
+export function getArticleContextsBySlugs(
+  slugs: string[],
+  options: { fullContentMaxLength?: number } = {},
+): ArticleContext[] {
+  const uniqueSlugs = Array.from(new Set(slugs.map((slug) => slug.trim()).filter(Boolean)));
+  return uniqueSlugs
+    .map((slug) => getArticleContextBySlug(slug, options))
+    .filter((item): item is ArticleContext => item !== null);
 }
 
 function resolveSearchLimit(
@@ -410,17 +455,10 @@ export function searchRelatedArticles(
       isDeepHit && index === 0 && result.content
         ? result.content.slice(0, DEEP_ARTICLE_FULL_CONTENT_MAX_LENGTH)
         : undefined;
-    return {
-      title: result.title,
-      url: result.url.startsWith("http")
-        ? result.url
-        : `${siteConfig.siteUrl}${result.url}`,
-      summary: getAISummary(result.id)?.summary ?? result.excerpt,
-      keyPoints: getAISummary(result.id)?.keyPoints ?? [],
-      categories: result.categories,
-      dateTime: result.dateTime,
-      fullContent,
-    };
+    return toArticleContext(result, {
+      includeFullContent: Boolean(fullContent),
+      fullContentMaxLength: fullContent?.length,
+    });
   });
 }
 

@@ -9,10 +9,21 @@ import {
 import { createOpenAICompatible } from "@ai-sdk/openai-compatible";
 import type {
   ArticleContext,
+  CurrentArticleContext,
   ProjectContext,
   TweetContext,
 } from "@/lib/ai/chat-prompt";
 import { buildSystemPrompt } from "@/lib/ai/chat-prompt";
+import {
+  buildArticleConversationQuery,
+  buildArticleEvidenceQuery,
+  decideArticleIntent,
+} from "@/lib/ai/article-chat";
+import {
+  extractCurrentArticleQuestionFacts,
+  extractRelevantArticleExcerpts,
+} from "@/lib/ai/article-chat-excerpts";
+import { parseChatRequestContext } from "@/lib/ai/chat-context";
 import {
   buildEvidenceAnalysisSection,
   analyzeRetrievedEvidence,
@@ -20,6 +31,8 @@ import {
 } from "@/lib/ai/evidence-analysis";
 import {
   cleanupSearchContextCache,
+  getArticleContextBySlug,
+  getArticleContextsBySlugs,
   getCachedSearchContext,
   getSessionCacheKey,
   isLikelyFollowUp,
@@ -61,7 +74,9 @@ import {
   hasNewSignificantTokens,
   hasSearchQueryOverlap,
 } from "@/lib/ai/search-query";
+import { getPostRawContent } from "@/lib/content/posts";
 import { getClientIP, checkRateLimit, rateLimitResponse } from "@/lib/rate-limit";
+import { siteConfig } from "@/lib/site-config";
 import {
   sendChatNotification,
   type RequestTimingStats,
@@ -80,6 +95,10 @@ const EVIDENCE_ANALYSIS_MAX_OUTPUT_TOKENS = parsePositiveIntEnv(
   process.env.EVIDENCE_ANALYSIS_MAX_OUTPUT_TOKENS,
   360,
 );
+const CURRENT_ARTICLE_FULL_CONTENT_MAX_LENGTH = parsePositiveIntEnv(
+  process.env.CURRENT_ARTICLE_FULL_CONTENT_MAX_LENGTH,
+  12000,
+);
 
 function hasRecencyIntent(text: string): boolean {
   return /最近|最新|最近一次|最近一篇|最新一篇|最近公开|最新公开/u.test(
@@ -91,6 +110,87 @@ function sortByRecency<T extends { dateTime?: number }>(items: T[]): T[] {
   return [...items].sort(
     (a, b) => (b.dateTime ?? Number.NEGATIVE_INFINITY) - (a.dateTime ?? Number.NEGATIVE_INFINITY),
   );
+}
+
+function stripMarkdownForPrompt(content: string): string {
+  const withCodePreserved = content.replace(
+    /```(?:[\w-]+)?\n([\s\S]*?)```/g,
+    (_match, code: string) => `\n${code.trim()}\n`,
+  );
+
+  const normalizedLines = withCodePreserved
+    .replace(/\r\n/g, "\n")
+    .split("\n")
+    .map((line) =>
+      line
+        .replace(/!\[[^\]]*\]\([^)]*\)/g, " ")
+        .replace(/\[([^\]]*)\]\([^)]*\)/g, "$1")
+        .replace(/`([^`]*)`/g, "$1")
+        .replace(/^#{1,6}\s+/, "")
+        .replace(/^\s*>\s?/, "")
+        .replace(/^\s*[-*+]\s+/, "- ")
+        .replace(/\s+/g, " ")
+        .trim(),
+    );
+
+  const cleanedLines: string[] = [];
+  let previousBlank = false;
+
+  for (const line of normalizedLines) {
+    if (!line) {
+      if (!previousBlank) {
+        cleanedLines.push("");
+      }
+      previousBlank = true;
+      continue;
+    }
+
+    cleanedLines.push(line);
+    previousBlank = false;
+  }
+
+  return cleanedLines.join("\n").trim();
+}
+
+function resolveCurrentArticleContext(
+  value: ReturnType<typeof parseChatRequestContext>,
+  articleQuery: string,
+): CurrentArticleContext | undefined {
+  if (!value || value.scope !== "article") return undefined;
+
+  const baseArticle = getArticleContextBySlug(value.article.slug, {
+    fullContentMaxLength: CURRENT_ARTICLE_FULL_CONTENT_MAX_LENGTH,
+  });
+  const rawContent = getPostRawContent(value.article.slug);
+  const fullContent = rawContent
+    ? stripMarkdownForPrompt(rawContent).slice(0, CURRENT_ARTICLE_FULL_CONTENT_MAX_LENGTH)
+    : baseArticle?.fullContent;
+  const questionFacts = fullContent
+    ? extractCurrentArticleQuestionFacts(fullContent, articleQuery)
+    : [];
+  const relevantExcerpts = fullContent
+    ? extractRelevantArticleExcerpts(fullContent, articleQuery)
+    : [];
+
+  return {
+    slug: value.article.slug,
+    title: baseArticle?.title ?? value.article.title,
+    url: baseArticle?.url ?? `${siteConfig.siteUrl}/${value.article.slug}`,
+    summary: value.article.summary ?? baseArticle?.summary ?? "",
+    abstract: value.article.abstract,
+    keyPoints:
+      value.article.keyPoints && value.article.keyPoints.length > 0
+        ? value.article.keyPoints
+        : baseArticle?.keyPoints ?? [],
+    categories:
+      value.article.categories && value.article.categories.length > 0
+        ? value.article.categories
+        : baseArticle?.categories ?? [],
+    relatedSlugs: value.article.relatedSlugs ?? [],
+    questionFacts,
+    relevantExcerpts,
+    fullContent,
+  };
 }
 
 export async function POST(req: Request) {
@@ -114,7 +214,7 @@ export async function POST(req: Request) {
   }
   const keywordModel = process.env.AI_KEYWORD_MODEL || model;
 
-  let body: { messages?: UIMessage[] };
+  let body: { messages?: UIMessage[]; context?: unknown };
   try {
     body = await req.json();
   } catch {
@@ -133,6 +233,22 @@ export async function POST(req: Request) {
   }
 
   const latestText = getMessageText(messages[messages.length - 1]);
+  const articleConversationQuery = buildArticleConversationQuery(messages);
+  const articleEvidenceQuery = buildArticleEvidenceQuery(messages);
+  const requestContext = parseChatRequestContext(body.context);
+  const currentArticle = resolveCurrentArticleContext(
+    requestContext,
+    articleEvidenceQuery || latestText,
+  );
+  const articleIntentDecision = currentArticle
+    ? decideArticleIntent(articleConversationQuery || latestText, currentArticle)
+    : undefined;
+  const shouldUseArticleScopedFlow = Boolean(
+    currentArticle &&
+      articleIntentDecision &&
+      !articleIntentDecision.shouldSearchSiteWide,
+  );
+
   if (latestText.length > MAX_INPUT_LENGTH) {
     return Response.json(
       { error: `消息过长，最多 ${MAX_INPUT_LENGTH} 字` },
@@ -148,6 +264,8 @@ export async function POST(req: Request) {
   });
   logChatAIDebug(requestId, "request.received", {
     latestText: truncateForLog(latestText),
+    articleConversationQuery: truncateForLog(articleConversationQuery || latestText),
+    articleEvidenceQuery: truncateForLog(articleEvidenceQuery || latestText),
     messageCount: messages.length,
     model,
     keywordModel,
@@ -168,6 +286,7 @@ export async function POST(req: Request) {
     ? hasNewSignificantTokens(currentQueryForReuseCheck, cachedContext.query)
     : false;
   const shouldReuseSearchContext = Boolean(
+    !shouldUseArticleScopedFlow &&
     cachedContext &&
       userTurnCount > 1 &&
       now - cachedContext.updatedAt <= SEARCH_CONTEXT_CACHE_TTL_MS &&
@@ -191,7 +310,17 @@ export async function POST(req: Request) {
   let searchMs = 0;
   let queryComplexity: QueryComplexity = "moderate";
 
-  if (shouldReuseSearchContext && cachedContext) {
+  if (shouldUseArticleScopedFlow && currentArticle && articleIntentDecision) {
+    searchQuery = articleIntentDecision.queryHint || currentArticle.title;
+    if (articleIntentDecision.mode === "article_extension") {
+      relatedArticles = getArticleContextsBySlugs(currentArticle.relatedSlugs ?? []);
+    }
+    if (articleIntentDecision.mode === "article_extension" && relatedArticles.length === 0) {
+      relatedArticles = searchRelatedArticles(searchQuery, true).filter(
+        (article) => article.url !== currentArticle.url,
+      );
+    }
+  } else if (shouldReuseSearchContext && cachedContext) {
     searchQuery = cachedContext.query;
     relatedArticles = cachedContext.articles;
     relatedTweets = cachedContext.tweets;
@@ -310,6 +439,9 @@ export async function POST(req: Request) {
 
   logChatAIDebug(requestId, "search.summary", {
     hasExplicitSessionId: Boolean(cacheKey),
+    currentArticleSlug: currentArticle?.slug,
+    articleIntentMode: articleIntentDecision?.mode,
+    articleScopedFlow: shouldUseArticleScopedFlow,
     reusedSearchContext: shouldReuseSearchContext,
     searchQuery,
     articleCount: relatedArticles.length,
@@ -323,8 +455,9 @@ export async function POST(req: Request) {
   const baseSystemPrompt = buildSystemPrompt(
     relatedArticles,
     relatedTweets,
-    searchQuery || latestText,
+    currentArticle ? articleEvidenceQuery || latestText : articleConversationQuery || latestText,
     relatedProjects,
+    currentArticle,
   );
 
   const evidenceModel = process.env.AI_EVIDENCE_MODEL || keywordModel;
@@ -333,11 +466,9 @@ export async function POST(req: Request) {
   let evidenceAnalysisMs: number | undefined;
   let evidenceParseStatus = "";
 
-  const skipAnalysis = shouldSkipAnalysis(
-    latestText,
-    relatedArticles.length,
-    relatedTweets.length,
-  );
+  const skipAnalysis =
+    shouldUseArticleScopedFlow ||
+    shouldSkipAnalysis(latestText, relatedArticles.length, relatedTweets.length);
   if (!skipAnalysis) {
     const evidenceStart = performance.now();
     const evidenceAbortController = new AbortController();
@@ -392,7 +523,7 @@ export async function POST(req: Request) {
     evidenceAnalysisMs = durationMs(evidenceStart);
   } else {
     logChatAIDebug(requestId, "evidence-analysis.skipped", {
-      reason: "skip_analysis",
+      reason: shouldUseArticleScopedFlow ? "article_scoped_flow" : "skip_analysis",
       articleCount: relatedArticles.length,
       tweetCount: relatedTweets.length,
     });
@@ -427,7 +558,16 @@ export async function POST(req: Request) {
       execute: async ({ writer }) => {
         const articleCount = relatedArticles.length + relatedTweets.length;
 
-        if (articleCount > 0) {
+        if (shouldUseArticleScopedFlow && currentArticle) {
+          writer.write({
+            type: "message-metadata",
+            messageMetadata: createChatStatusData({
+              stage: "search",
+              message: "正在结合当前文章全文回答",
+              progress: 40,
+            }),
+          });
+        } else if (articleCount > 0) {
           writer.write({
             type: "message-metadata",
             messageMetadata: createChatStatusData({
@@ -494,7 +634,7 @@ export async function POST(req: Request) {
           temperature: 0.3,
           maxOutputTokens: 2500,
           experimental_transform: createCitationGuardTransform({
-            userQuery: latestText,
+            userQuery: articleConversationQuery || latestText,
             articles: relatedArticles,
             tweets: relatedTweets,
             projects: relatedProjects,

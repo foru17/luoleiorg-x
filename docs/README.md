@@ -15,6 +15,7 @@
 | [./ai-chat-v3-optimization.md](./ai-chat-v3-optimization.md) | AI 对话架构与流程升级规划 | ✅ 已更新 |
 | [./ai-chat-review-report.md](./ai-chat-review-report.md) | AI 对话数据流 Review 报告 | ✅ 已更新 |
 | [./ai-chat-handoff-2026-03-06.md](./ai-chat-handoff-2026-03-06.md) | 2026-03-06 AI 对话链路调试与交接记录 | 🧪 新增 |
+| [./article-page-ai-chat-framework.md](./article-page-ai-chat-framework.md) | 文章页自动弹出式 AI 对话增强方案 | 🧪 新增 |
 
 ### 开发指南
 

@@ -9,7 +9,7 @@ import {
   resolveVoiceStyleMode,
 } from "../intent-ranking.ts";
 import { buildRuntimeContext } from "../runtime-context.ts";
-import type { ArticleContext, TweetContext } from "../types.ts";
+import type { ArticleContext, CurrentArticleContext, TweetContext } from "../types.ts";
 
 function createArticle(params: {
   title: string;
@@ -203,6 +203,37 @@ test("answer mode should match query shape", () => {
   assert.equal(resolveAnswerMode("介绍一下你自己"), "fact");
 });
 
+test("runtime context should include current article full text for article-scoped questions", () => {
+  const currentArticle: CurrentArticleContext = {
+    slug: "digital-nomad-ids",
+    title: "实现 AI 自由：我为未来准备的 4 个数字通行证",
+    url: "https://luolei.org/digital-nomad-ids",
+    summary: "围绕数字通行证的配置思路。",
+    keyPoints: ["海外手机号", "国际邮箱", "虚拟信用卡"],
+    categories: ["ai", "digital-nomad"],
+    questionFacts: ["我把这套数字通行证分成四层：海外手机号、国际邮箱、虚拟信用卡，以及海外身份验证工具。"],
+    fullContent: `我把这套数字通行证分成四层：海外手机号、国际邮箱、虚拟信用卡，以及可长期使用的海外身份验证工具。
+
+其中海外实体 SIM 卡是接收国际服务验证码的基础保障。很多海外服务会校验注册手机号是否真实可用。`,
+  };
+
+  const runtime = buildRuntimeContext({
+    articles: [],
+    tweets: [],
+    projects: [],
+    userQuery: "海外实体 SIM 卡为什么是基础保障？",
+    config: getChatPromptRuntimeConfig(),
+    currentArticle,
+  });
+
+  assert.match(runtime, /正文全文（优先直接阅读这里，不要只看摘要）/);
+  assert.match(runtime, /海外实体 SIM 卡是接收国际服务验证码的基础保障/);
+  assert.match(runtime, /针对当前问题最直接的原文事实/);
+  assert.match(runtime, /语义消歧：如果用户在当前文章里问“你住哪里 \/ 去了哪些地方 \/ 花了多少 \/ 怎么走”这类问题/);
+  assert.match(runtime, /先使用 L0 的正文全文直接回答/);
+  assert.ok(runtime.indexOf("## 当前阅读文章") < runtime.indexOf("## 关于你"));
+});
+
 test("core identity should only inject the active voice mode", () => {
   const recommendationIdentity = buildCoreIdentity("推荐几篇 AI RAG 入门文章");
 
@@ -249,5 +280,5 @@ test("runtime context should expose provenance layers and expected answer mode",
   assert.match(runtime, /内部技术分享讲师/);
   assert.match(runtime, /预期回答模式：recommendation/);
   assert.match(runtime, /模式提示：先推荐 2-4 个具体项目\/文章/);
-  assert.match(runtime, /来源优先级：L1 相关文章\/相关动态 > L2 关于你\/相关项目 > L3 结构化事实索引 > L5 语言风格/);
+  assert.match(runtime, /来源优先级：L0 当前阅读文章 > L1 相关文章\/相关动态 > L2 关于你\/相关项目 > L3 结构化事实索引 > L5 语言风格/);
 });

@@ -1,0 +1,5465 @@
+{
+  "meta": {
+    "lastUpdated": "2026-03-12T12:50:50.397Z",
+    "model": "kimi",
+    "totalProcessed": 341
+  },
+  "articles": {
+    "usa-road-travel-nov": {
+      "data": {
+        "openingLine": "这趟美西自驾挺有意思，从旧金山出发顺时针绕了个圈，还撞了车换了皮卡。",
+        "focusQuestions": [
+          "为什么建议不要提前订酒店？",
+          "滑雪一天花了多少钱？",
+          "50号公路怎么又叫最孤独的公路？"
+        ],
+        "extensionTopics": [
+          "两次美西自驾路线有什么不同？",
+          "死亡谷夏天去会怎么样？"
+        ]
+      },
+      "contentHash": "859c5ca3",
+      "processedAt": "2026-03-12T12:49:32.812Z"
+    },
+    "ai-2026": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "这四个通行证分别是什么？",
+          "办这些需要多少预算？",
+          "哪个对普通用户门槛最低？"
+        ],
+        "extensionTopics": [
+          "如果只办一个该选哪个？",
+          "和直接买共享账号比值不值？"
+        ]
+      },
+      "contentHash": "e0ed48b0",
+      "processedAt": "2026-03-12T12:48:57.168Z"
+    },
+    "cellphone-plans-2024": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "联通三折冰现在还能办到吗？",
+          "电信宽带没有公网IP怎么连NAS？",
+          "广电在地下室失联频繁吗？"
+        ],
+        "extensionTopics": [
+          "你最后选了哪家当主力宽带？",
+          "澳门学生卡现在还能新办吗？"
+        ]
+      },
+      "contentHash": "5b355bb0",
+      "processedAt": "2026-03-12T12:48:59.019Z"
+    },
+    "raycast-hoarder": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "自部署需要准备什么服务器？",
+          "Raycast 插件能预览哪些格式？",
+          "API 现在加图片书签有问题吗？"
+        ],
+        "extensionTopics": [
+          "和之前那个 Sink 插件比起来哪个常用？",
+          "Hoarder 的 AI 标签识别准不准？"
+        ]
+      },
+      "contentHash": "9f94ea0c",
+      "processedAt": "2026-03-12T12:48:59.449Z"
+    },
+    "neko-master-vibe-coding": {
+      "data": {
+        "openingLine": "春节四个小时从零上线，一周后破千星，这个项目的开发过程挺值得复盘。",
+        "focusQuestions": [
+          "Vibe Coding 四小时 MVP 具体怎么跟 AI 对话的？",
+          "200GB 降到 1.6GB 的 I/O 优化做了哪三步？",
+          "Kimi 和 Claude 在具体任务上怎么分工？"
+        ],
+        "extensionTopics": [
+          "家里跑 OpenClash 的话部署资源要求多少？",
+          "如果要做 Surge 之外的新后端接入难不难？"
+        ]
+      },
+      "contentHash": "bb209076",
+      "processedAt": "2026-03-12T12:48:58.308Z"
+    },
+    "kyoto-marathon-2025": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "海外报名具体怎么操作？",
+          "酒店离起跑点这么近，怎么订的？",
+          "补给点的水量提示是怎么标的？"
+        ],
+        "extensionTopics": [
+          "下次想带老婆去的景点有哪些？",
+          "国内马拉松有类似全程录像的吗？"
+        ]
+      },
+      "contentHash": "935f6589",
+      "processedAt": "2026-03-12T12:48:57.048Z"
+    },
+    "life-ai": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "AI 罗磊现在能回答哪些问题？",
+          "怎么判断 AI 说得准还是不准？",
+          "博客迁移到 Vinext 花了多长时间？"
+        ],
+        "extensionTopics": [
+          "如果数据量更大效果会变好吗？",
+          "不公开内容的人怎么做类似整理？"
+        ]
+      },
+      "contentHash": "5faebc2f",
+      "processedAt": "2026-03-12T12:48:56.488Z"
+    },
+    "cloudflare-for-startups": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "公司成立超过5年还能申请吗？",
+          "审核主要看中哪些材料？",
+          "R2和Cache的5000美元上限是单独算吗？"
+        ],
+        "extensionTopics": [
+          "如果还没用Cloudflare产品能申请吗？",
+          "额度到期后业务怎么续接？"
+        ]
+      },
+      "contentHash": "f7ed28e4",
+      "processedAt": "2026-03-12T12:48:56.588Z"
+    },
+    "tokyo-2024": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "这次机票两人来回花了多少？",
+          "皇居晨跑一圈大概多少公里？",
+          "住的酒店在水道桥站附近叫什么名字？"
+        ],
+        "extensionTopics": [
+          "下次再来日本还打算重走这条线吗？",
+          "东洋馆里的中国流失文物印象最深是哪件？"
+        ]
+      },
+      "contentHash": "97212fc7",
+      "processedAt": "2026-03-12T12:49:00.982Z"
+    },
+    "start-investing": {
+      "data": {
+        "openingLine": "老婆刚完成美股开户，我把整个流程里踩的坑和省钱技巧都记下来了，供你参考。",
+        "focusQuestions": [
+          "中银快汇和兴业寰宇卡哪个更省？",
+          "下午三点后汇美元为什么会被扣费？",
+          "长桥开户跳过存量证明的具体操作？"
+        ],
+        "extensionTopics": [
+          "香港银行开户要准备哪些材料？",
+          "除了长桥其他券商对比如何？"
+        ]
+      },
+      "contentHash": "d5adeb00",
+      "processedAt": "2026-03-12T12:49:01.572Z"
+    },
+    "setapp": {
+      "data": {
+        "openingLine": "七年老用户来聊聊，Setapp 里哪些软件真正值得用，拼团怎么最划算。",
+        "focusQuestions": [
+          "家庭套餐怎么拼最省钱？",
+          "表里这几个五星软件各是干嘛的？",
+          "已经有买断软件还适合订吗？"
+        ],
+        "extensionTopics": [
+          "如果家里只有一台 Mac 还值得买吗？",
+          "和单独买断这些软件比哪个更划算？"
+        ]
+      },
+      "contentHash": "1a3d9d2b",
+      "processedAt": "2026-03-12T12:49:02.935Z"
+    },
+    "why-no-videos-in-900-days": {
+      "data": {
+        "openingLine": "两年半没更新，回来只放了两个链接，没提去了哪、做了什么。",
+        "focusQuestions": [
+          "这两年半具体做什么去了？",
+          "为什么不先写文字版？",
+          "以后还会定期更新吗？"
+        ],
+        "extensionTopics": [
+          "停更这么久怎么维持收入？",
+          "同期停更的博主现在怎样了？"
+        ]
+      },
+      "contentHash": "cb3c753f",
+      "processedAt": "2026-03-12T12:49:02.620Z"
+    },
+    "2023-mac-mini-ssd-upgrade-experience": {
+      "data": {
+        "openingLine": "6千出头攒出2TB的Mac mini，这套方案具体怎么操作的。",
+        "focusQuestions": [
+          "外接硬盘读写速度比内置慢多少？",
+          "装系统到外接盘要格式化吗？",
+          "雷电盒和USB4盒差价大吗？"
+        ],
+        "extensionTopics": [
+          "iMac外挂硬盘和Mac mini有区别吗？",
+          "现在SSD降价了值得再升级吗？"
+        ]
+      },
+      "contentHash": "974dab6d",
+      "processedAt": "2026-03-12T12:49:04.538Z"
+    },
+    "edc-2020": {
+      "data": {
+        "openingLine": "翻了下包，发现价格差了一百倍的十件东西，居然天天都在用。",
+        "focusQuestions": [
+          "9元那件到底是什么？",
+          "9000元的是相机还是电脑？",
+          "这几件里哪个最容易坏？"
+        ],
+        "extensionTopics": [
+          "有没试过只带三样出门？",
+          "cheaper 的平替试过吗？"
+        ]
+      },
+      "contentHash": "80b59006",
+      "processedAt": "2026-03-12T12:49:07.195Z"
+    },
+    "how-much-i-spend-on-cloud-monthly-2023": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "联通三折套餐怎么申请到的？",
+          "澳门学生卡哪里能办，要实名吗？",
+          "土耳其 Adobe 具体怎么操作付款？"
+        ],
+        "extensionTopics": [
+          "NAS 代替 iCloud 后具体怎么备份？",
+          "东莞和深圳宽带体验差多少？"
+        ]
+      },
+      "contentHash": "cd6634fb",
+      "processedAt": "2026-03-12T12:49:05.931Z"
+    },
+    "iphone-shell-supermarket": {
+      "data": {
+        "openingLine": "华强北买手机壳和淘宝价差能有多大。",
+        "focusQuestions": [
+          "具体逛了哪几家档口？",
+          "多少钱拿下几个壳？",
+          "怎么判断壳的质量好坏？"
+        ],
+        "extensionTopics": [
+          "其他配件值得现场买吗？",
+          "下次买壳会选线上还是线下？"
+        ]
+      },
+      "contentHash": "bfc82de0",
+      "processedAt": "2026-03-12T12:49:07.714Z"
+    },
+    "clarks-desert-boot-resole": {
+      "data": {
+        "openingLine": "这双沙漠靴穿了5年才磨坏底，看来平时用得挺狠的。",
+        "focusQuestions": [
+          "换底花了多少钱？",
+          "新鞋底是什么材质？",
+          "修完脚感有变化吗？"
+        ],
+        "extensionTopics": [
+          "这双沙漠靴是什么牌子？",
+          "其他旧鞋也能这么修吗？"
+        ]
+      },
+      "contentHash": "5a470e07",
+      "processedAt": "2026-03-12T12:49:07.358Z"
+    },
+    "warsun-portable-y40-led-light": {
+      "data": {
+        "openingLine": "这个不到80块的小灯，居然让我想换掉车里的备用手电了。",
+        "focusQuestions": [
+          "太阳能充电实际有多鸡肋？",
+          "4000毫安电池能给手机充多少？",
+          "磁吸在车底会不会掉？"
+        ],
+        "extensionTopics": [
+          "NITECORE和Y40日常怎么选？",
+          "有没有更大电池+双向快充的替代品？"
+        ]
+      },
+      "contentHash": "fb0aa674",
+      "processedAt": "2026-03-12T12:49:10.216Z"
+    },
+    "zhuhai-marathon-2023": {
+      "data": {
+        "openingLine": "30岁重启马拉松，半年只跑了几十公里就上赛场，结果比预想的好。",
+        "focusQuestions": [
+          "赛前一个月只跑两次10公里，够用吗？",
+          "19公里肚子痛那次耽误了几分钟？",
+          "索康尼胜利20磨脚吗，尺码怎么选？"
+        ],
+        "extensionTopics": [
+          "明年还报珠海还是换其他城市？",
+          "现在这体能能恢复到五年前的水平吗？"
+        ]
+      },
+      "contentHash": "870e9d43",
+      "processedAt": "2026-03-12T12:49:03.203Z"
+    },
+    "airshow-china-2021": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "现在去航展还能自驾吗？",
+          "带娃看航展要提前做啥功课？",
+          "蔡司那个望远镜够用吗？"
+        ],
+        "extensionTopics": [
+          "2022航展去了吗，有啥不同？",
+          "装修和养狗这两年，后悔过吗？"
+        ]
+      },
+      "contentHash": "a085222e",
+      "processedAt": "2026-03-12T12:49:07.083Z"
+    },
+    "apartment-log-book-network": {
+      "data": {
+        "openingLine": "装修水电还没进场，先把网络和智能家居的骨架搭好，确实能省不少后话。",
+        "focusQuestions": [
+          "玄关柜只有35厘米深，机柜怎么散热？",
+          "光纤穿管之后，手头只有MacBook怎么当场测试通断？",
+          "两个AP位置中间隔了几堵墙，信号衰减实际测过吗？"
+        ],
+        "extensionTopics": [
+          "风管机换智能面板贵，有没有其他接入米家的折中办法？",
+          "工作室机柜和客厅NAS之间，万兆直连和走墙内光纤比，延迟差多少？"
+        ]
+      },
+      "contentHash": "d4a92cd3",
+      "processedAt": "2026-03-12T12:49:09.713Z"
+    },
+    "freshman-internet-guidebook": {
+      "data": {
+        "openingLine": "上大学前先把这些数字身份理顺，后面能省不少麻烦。",
+        "focusQuestions": [
+          "录取通知书里夹的手机卡能用吗？",
+          "主号副号具体怎么分配？",
+          "邮箱ID用真名还是英文名好？"
+        ],
+        "extensionTopics": [
+          "具体怎么申请香港或美国手机号？",
+          "域名邮箱万一没续费怎么办？"
+        ]
+      },
+      "contentHash": "c3df4449",
+      "processedAt": "2026-03-12T12:49:11.550Z"
+    },
+    "tibet-2020": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "租现代ix35花了多少钱，携程租车坑在哪？",
+          "边防证要在哪办更方便？",
+          "醋甲唑胺怎么买，需要处方吗？"
+        ],
+        "extensionTopics": [
+          "304省道这条小众路线值得走吗？",
+          "没去纳木错是不是挺遗憾的？"
+        ]
+      },
+      "contentHash": "1fa83806",
+      "processedAt": "2026-03-12T12:49:11.172Z"
+    },
+    "keyboard-amsr": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "300元和2000元的键盘声音差在哪？",
+          "录的时候用什么设备收音？",
+          "日常打字推荐哪个价位？"
+        ],
+        "extensionTopics": [
+          "同价位还有什么键盘值得对比？",
+          "录ASMR视频还有什么注意事项？"
+        ]
+      },
+      "contentHash": "793e9a90",
+      "processedAt": "2026-03-12T12:49:45.682Z"
+    },
+    "my-friend-guoyu": {
+      "data": {
+        "openingLine": "十年老友眼中的郭宇：不是逆袭故事，而是一个真的敢按自己想法活的人。",
+        "focusQuestions": [
+          "他大学那个外卖网站为啥没做成？",
+          "GitHub中文区前五是什么概念？",
+          "字节期权到底值多少北京房子？"
+        ],
+        "extensionTopics": [
+          "作者自己后来去西藏骑行和转行有关联吗？",
+          "除了郭宇还有谁影响了作者选这行？"
+        ]
+      },
+      "contentHash": "92105256",
+      "processedAt": "2026-03-12T12:49:13.184Z"
+    },
+    "tapole-glasses": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "蔡司A系列镜片8折和网上3折差距多大？",
+          "Tapole验光服务到底值不值得专门去？",
+          "钛架1.60折射率镜片厚不厚？"
+        ],
+        "extensionTopics": [
+          "网上配镜怎么保证度数准确？",
+          "除了蔡司A系列还有哪些入门镜片可选？"
+        ]
+      },
+      "contentHash": "46f67607",
+      "processedAt": "2026-03-12T12:49:15.952Z"
+    },
+    "deepl-ai-translator": {
+      "data": {
+        "openingLine": "作者刚试完DeepL，正好奇中文翻译到底能不能打，咱们一起看看实测。",
+        "focusQuestions": [
+          "免费版和付费版差在哪？",
+          "中文翻英文效果比谷歌好吗？",
+          "年付46块值不值？"
+        ],
+        "extensionTopics": [
+          "日文翻译效果怎么样？",
+          "和彩云小译对比谁更顺？"
+        ]
+      },
+      "contentHash": "356d34da",
+      "processedAt": "2026-03-12T12:49:15.013Z"
+    },
+    "covid-19-test-shenzhen": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "蛇口人民医院复工门诊具体在哪？",
+          "核酸检测费用花了多少钱？",
+          "现场填表时要填哪些信息？"
+        ],
+        "extensionTopics": [
+          "其他医院的检测流程差别大吗？",
+          "阴性报告有效期一般多久？"
+        ]
+      },
+      "contentHash": "2e237a45",
+      "processedAt": "2026-03-12T12:49:12.685Z"
+    },
+    "hongkong-driver-lincense": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "信用卡账单怎么补寄纸质版？",
+          "没有香港朋友的话，中介一般收多少钱？",
+          "香港驾照和日本台湾自驾到底能不能用？"
+        ],
+        "extensionTopics": [
+          "香港地址证明有哪些其他替代材料？",
+          "现在去香港运输署排队大概要多久？"
+        ]
+      },
+      "contentHash": "5a33f3d9",
+      "processedAt": "2026-03-12T12:49:13.289Z"
+    },
+    "ashmore-ultrasonic-cleaner": {
+      "data": {
+        "openingLine": "作者用三百块的机器洗两千块的键盘，效果到底打几折。",
+        "focusQuestions": [
+          "超声波洗后键帽还留了多少顽固污渍？",
+          "洗洁精配合超声波效果会不会更好？",
+          "百元机和这个ASHMORE实际区别在哪？"
+        ],
+        "extensionTopics": [
+          "HHKB键盘平时怎么保养比较省事？",
+          "PCB板用超声波洗安全吗？"
+        ]
+      },
+      "contentHash": "816b9386",
+      "processedAt": "2026-03-12T12:49:16.225Z"
+    },
+    "macau-roaming-sim-card": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "CMLink全球数据卡多少钱、多少流量？",
+          "三种卡实测网速差多少？",
+          "CMLink卡怎么长期保留号码？"
+        ],
+        "extensionTopics": [
+          "CMLink卡还能在哪些地区用？",
+          "长期不用的话卡会过期吗？"
+        ]
+      },
+      "contentHash": "53b31b5f",
+      "processedAt": "2026-03-12T12:49:18.010Z"
+    },
+    "dockcase-review": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "USB-C输出功率降到70W，15寸MBP够用吗？",
+          "不通电的Dock Mode传输速度会变慢吗？",
+          "QC版和HDMI版具体差在哪？"
+        ],
+        "extensionTopics": [
+          "除了这个还有哪些省行李的拓展方案？",
+          "如果已经有拓展坞还值得换吗？"
+        ]
+      },
+      "contentHash": "2f694eb8",
+      "processedAt": "2026-03-12T12:49:15.789Z"
+    },
+    "cmlink-global-borderless-internet-roaming-card": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "每天500MB高速后限速8Mbps，实际刷剧够用吗？",
+          "大陆号码买不了，具体怎么绕开这个限制？",
+          "除了留学生，短期回国的人用划算吗？"
+        ],
+        "extensionTopics": [
+          "和之前推荐的Cuniq香港卡比，差在哪？",
+          "如果只是想收个Gmail，有没有更便宜的替代方案？"
+        ]
+      },
+      "contentHash": "559835e6",
+      "processedAt": "2026-03-12T12:49:14.505Z"
+    },
+    "i-fix-my-broken-bose-qc35": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "20块和原装耳罩差别大吗？",
+          "淘宝和1688哪家更靠谱？",
+          "换耳罩需要工具吗？"
+        ],
+        "extensionTopics": [
+          "其他型号 BOSE 耳机能这么换吗？",
+          "除了耳罩，电池老化好解决吗？"
+        ]
+      },
+      "contentHash": "be7cdc39",
+      "processedAt": "2026-03-12T12:49:17.451Z"
+    },
+    "my-ricoh-gr-was-crashed-by-a-car": {
+      "data": {
+        "openingLine": "陪伴多年的GR突然没了，看完最后这组照片，想再仔细聊聊这台小机器。",
+        "focusQuestions": [
+          "GR被压坏后还能修好吗？",
+          "当时怎么同时带了A6500和GR？",
+          "GR拍人像有哪些优势？"
+        ],
+        "extensionTopics": [
+          "后来有再买一台GR吗？",
+          "现在主力随身机换成了什么？"
+        ]
+      },
+      "contentHash": "44b7d2c2",
+      "processedAt": "2026-03-12T12:49:16.740Z"
+    },
+    "simbox-review": {
+      "data": {
+        "openingLine": "作者手里五张卡、两台手机，最后选了这么个盒子来解决，你觉得值吗。",
+        "focusQuestions": [
+          "多少钱买的，比二手手机便宜吗？",
+          "四张卡怎么切换，能同时待机吗？",
+          "通话质量到底差到什么程度？"
+        ],
+        "extensionTopics": [
+          "和SIP猫池方案比哪个更划算？",
+          "留学生长期用的话有没有更省钱的替代方案？"
+        ]
+      },
+      "contentHash": "51496613",
+      "processedAt": "2026-03-12T12:49:17.628Z"
+    },
+    "7-select-chinese-websites": {
+      "data": {
+        "openingLine": "这几个站平时确实挺难刷到的，你常逛的是里面哪一个。",
+        "focusQuestions": [
+          "KoolShare 主要折腾什么设备？",
+          "充电头网怎么查充电协议？",
+          "耳机大家坛买二手靠谱吗？"
+        ],
+        "extensionTopics": [
+          "有没类似的摄影器材交流站？",
+          "西藏骑行路线你试过哪条？"
+        ]
+      },
+      "contentHash": "351bb2a8",
+      "processedAt": "2026-03-12T12:49:20.752Z"
+    },
+    "how-to-open-a-bank-account-in-hongkong": {
+      "data": {
+        "openingLine": "打算去香港开户的话，建议先确认清楚材料清单，免得白跑一趟。",
+        "focusQuestions": [
+          "入境小票丢了还能开户吗？",
+          "哪家银行门槛最低不用排队？",
+          "地址证明用电子版可以吗？"
+        ],
+        "extensionTopics": [
+          "见证开户和亲自去香港哪个更划算？",
+          "开户后怎么避免被当成洗钱风控？"
+        ]
+      },
+      "contentHash": "93e301d1",
+      "processedAt": "2026-03-12T12:49:21.839Z"
+    },
+    "hikvision-c2000-ssd-review": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "最后实际到手多少钱每GB？",
+          "和三星960 EVO对拷文件速度差多少？",
+          "散热马甲安装前要撕掉什么贴纸？"
+        ],
+        "extensionTopics": [
+          "C2000 Pro版为什么更推荐？",
+          "剪辑4K视频时SATA盘卡在哪一步？"
+        ]
+      },
+      "contentHash": "c5eee4f0",
+      "processedAt": "2026-03-12T12:49:20.403Z"
+    },
+    "tips-for-bilibili-video-cover": {
+      "data": {
+        "openingLine": "封面确实容易做得太花哨，这篇讲了个快速出干净封面的办法。",
+        "focusQuestions": [
+          "具体是哪三步10秒搞定？",
+          "需要用什么软件或工具？",
+          "干净封面和魔性封面的区别在哪？"
+        ],
+        "extensionTopics": [
+          "这种封面适合什么类型的视频？",
+          "如果已经有固定风格还要改吗？"
+        ]
+      },
+      "contentHash": "c2ff5f2e",
+      "processedAt": "2026-03-12T12:49:24.697Z"
+    },
+    "wesim-roaming-card": {
+      "data": {
+        "openingLine": "你也经常跑香港的话，应该也会纠结用哪种上网卡更划算。",
+        "focusQuestions": [
+          "WeSim在香港实际网速怎么样？",
+          "一加国际上网在香港多少钱一天？",
+          "WeSim和一加哪个更适合短途游？"
+        ],
+        "extensionTopics": [
+          "去美国用一加国际上网体验如何？",
+          "深圳居民还有没有其他省钱方案？"
+        ]
+      },
+      "contentHash": "9f4780b3",
+      "processedAt": "2026-03-12T12:49:21.558Z"
+    },
+    "new-york-2019": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "怎么换到时代广场跨年夜的特价房？",
+          "复古列车怎么坐，要预约吗？",
+          "Explorer Pass 通票划算吗？"
+        ],
+        "extensionTopics": [
+          "皇后区和曼哈顿住哪里更方便？",
+          "帝国大厦和洛克菲勒观景台选哪个？"
+        ]
+      },
+      "contentHash": "0bc60810",
+      "processedAt": "2026-03-12T12:49:20.259Z"
+    },
+    "how-to-get-a-us-mobile-phone-number": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "Google Voice每9个月发一条短信就能保号？",
+          "Lycamobile关闭语音邮箱具体怎么操作？",
+          "Google Fi月费80多美元包含多少高速流量？"
+        ],
+        "extensionTopics": [
+          "TextNow和TextFree这种免费虚拟号能用吗？",
+          "除了美国号，香港或日本手机号是不是更方便？"
+        ]
+      },
+      "contentHash": "a7ef923b",
+      "processedAt": "2026-03-12T12:49:24.282Z"
+    },
+    "cuniq-uk-sim-card-china-roaming": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "开通香港号和大陆号只能二选一吗？",
+          "现在申请还免费吗？运费多少？",
+          "漫游上网的APN怎么设置？"
+        ],
+        "extensionTopics": [
+          "除了这张卡，还有其他能大陆漫游的境外卡吗？",
+          "如果主要为了收验证码，选哪个号码组合最划算？"
+        ]
+      },
+      "contentHash": "1066dcad",
+      "processedAt": "2026-03-12T12:49:24.554Z"
+    },
+    "peak-design-capture-clip-clone": {
+      "data": {
+        "openingLine": "45块的山寨快挂，用起来和正版差多少。",
+        "focusQuestions": [
+          "快挂用的是什么材质？",
+          "背负时相机真的不会晃吗？",
+          "正版和山寨主要差别在哪？"
+        ],
+        "extensionTopics": [
+          "Peak Design 其他配件值得买吗？",
+          "有没有更便宜靠谱的国产替代品？"
+        ]
+      },
+      "contentHash": "32b932ac",
+      "processedAt": "2026-03-12T12:49:26.255Z"
+    },
+    "you-163-and-jins-glasees-review": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "医院验光具体怎么操作？",
+          "67和1.74镜片厚度差多少？",
+          "JINS脱皮是普遍问题吗？"
+        ],
+        "extensionTopics": [
+          "除了严选还有别的在线配镜可选吗？",
+          "板材和金属镜架现在还用吗？"
+        ]
+      },
+      "contentHash": "9d08d627",
+      "processedAt": "2026-03-12T12:49:26.071Z"
+    },
+    "post-instagram-with-chrome": {
+      "data": {
+        "openingLine": "不用手机发 Ins，这个技巧具体是怎么操作的。",
+        "focusQuestions": [
+          "只能在电脑上发，还是平板也行？",
+          "发出来的效果和手机发的一样吗？",
+          "照片视频都能发，还是只能发图片？"
+        ],
+        "extensionTopics": [
+          "有没有办法定时发布或者批量发？",
+          "除了 Instagram，其他平台有类似技巧吗？"
+        ]
+      },
+      "contentHash": "0f69aa0d",
+      "processedAt": "2026-03-12T12:49:24.126Z"
+    },
+    "ikan-portkeys-hh7-montor": {
+      "data": {
+        "openingLine": "拍VLOG的时候屏幕太小确实看不清，你用的什么监视器。",
+        "focusQuestions": [
+          "HH7和索尼CLM-FHD5怎么选？",
+          "亮度1500nit户外够用吗？",
+          "用监视器会不会很费电？"
+        ],
+        "extensionTopics": [
+          "你拍VLOG还用什么辅助设备？",
+          "监视器色彩准不准怎么调？"
+        ]
+      },
+      "contentHash": "2493fad2",
+      "processedAt": "2026-03-12T12:49:27.533Z"
+    },
+    "my-desk-2018": {
+      "data": {
+        "openingLine": "从宜家凑合到定制黑胡桃木，换桌子的这段经历挺有代表性的。",
+        "focusQuestions": [
+          "160x80的黑胡桃木桌多少钱？",
+          "3cm和5cm桌板怎么选？",
+          "支架上手写的A、B记号能擦掉吗？"
+        ],
+        "extensionTopics": [
+          "宜家贝肯特和这张桌子比差在哪？",
+          "自由职业者的书房还有什么推荐？"
+        ]
+      },
+      "contentHash": "10dfe743",
+      "processedAt": "2026-03-12T12:49:27.729Z"
+    },
+    "tibet-road-2012": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "借的佳能500D全程JPG直出，后悔没存RAW吗？",
+          "休学那半年具体怎么变成间隔年的？",
+          "体力恢复剂是什么牌子在哪买的？"
+        ],
+        "extensionTopics": [
+          "后来那辆山地车去哪了？",
+          "现在还会骑长途吗？"
+        ]
+      },
+      "contentHash": "5d417acc",
+      "processedAt": "2026-03-12T12:49:28.448Z"
+    },
+    "smartta-slidermini-review": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "众筹价大概什么价位？",
+          "旅行背它占多大地方？",
+          "续航能撑多久拍摄？"
+        ],
+        "extensionTopics": [
+          "同期还有哪些便携滑轨可选？",
+          "拍VLOG用它和稳定器怎么搭配？"
+        ]
+      },
+      "contentHash": "a8e1953e",
+      "processedAt": "2026-03-12T12:49:28.125Z"
+    },
+    "vlog-14-travel-gears": {
+      "data": {
+        "openingLine": "出差带设备最怕忘带的就是充电器，他列的这几样你包里常备吗。",
+        "focusQuestions": [
+          "公牛环球和小米4口怎么分工用？",
+          "蔡司湿巾和普通眼镜布差在哪？",
+          "迪卡侬手电筒亮度够用吗？"
+        ],
+        "extensionTopics": [
+          "如果再加一件你会选什么？",
+          "这些收纳方案适合短途还是长途？"
+        ]
+      },
+      "contentHash": "59b74fee",
+      "processedAt": "2026-03-12T12:49:32.362Z"
+    },
+    "vlog-13-camera-and-lens": {
+      "data": {
+        "openingLine": "翻了下2018年的装备，有些选择现在回头看挺有代表性的。",
+        "focusQuestions": [
+          "当时主力机为什么选A7R3？",
+          "那几颗定焦镜头怎么分工？",
+          "现在还会用这套配置吗？"
+        ],
+        "extensionTopics": [
+          "后来升级到哪些设备了？",
+          "同期有没有试过别的牌子？"
+        ]
+      },
+      "contentHash": "59b12610",
+      "processedAt": "2026-03-12T12:49:30.146Z"
+    },
+    "new-journey": {
+      "data": {
+        "openingLine": "作者刚完成人生一次大转折，从程序员到新领域，读完想聊聊他是怎么想的。",
+        "focusQuestions": [
+          "为什么放弃百万股权选择辞职？",
+          "新领域具体做什么，和程序员完全无关吗？",
+          "两个人一起辞职，经济压力怎么扛过来的？"
+        ],
+        "extensionTopics": [
+          "你们旅行做自媒体，收入来源稳定吗？",
+          "深圳和上海比，创业环境差多少？"
+        ]
+      },
+      "contentHash": "e35275c3",
+      "processedAt": "2026-03-12T12:49:29.217Z"
+    },
+    "vlog-15-storage-and-backups": {
+      "data": {
+        "openingLine": "花了一万块攒这套存储方案，实际用起来顺畅吗。",
+        "focusQuestions": [
+          "闪迪和东芝这两张卡区别在哪？",
+          "红盘比普通硬盘贵在哪？",
+          "雷电阵列柜和群晖NAS怎么选？"
+        ],
+        "extensionTopics": [
+          "如果素材量翻倍这套够用吗？",
+          "外出只带移动硬盘怎么备份？"
+        ]
+      },
+      "contentHash": "d4055ccf",
+      "processedAt": "2026-03-12T12:49:29.385Z"
+    },
+    "geburtstags-shampoo": {
+      "data": {
+        "openingLine": "刷到德国墓碑清洁剂那条微博的时候，我也没想到评论区还藏着这种细分产品。",
+        "focusQuestions": [
+          "100多块的清洗液和普通沐浴露区别在哪？",
+          "开口设计容易倒多，实际用起来麻烦吗？",
+          "成分说明全是德语，怎么看懂功效？"
+        ],
+        "extensionTopics": [
+          "亚马逊上还有哪些奇怪的男女清洁用品？",
+          "除了送人，自己用值得回购吗？"
+        ]
+      },
+      "contentHash": "b670e0d8",
+      "processedAt": "2026-03-12T12:49:31.639Z"
+    },
+    "wechat-speakl-update-2018": {
+      "data": {
+        "openingLine": "十一年前的公众号突然多了个搜索功能，顺手试了下，比翻历史记录方便不少。",
+        "focusQuestions": [
+          "这个搜索能搜到多早的文章？",
+          "为什么视频内容还搜不了？",
+          "智能分词和关键词搜索区别在哪？"
+        ],
+        "extensionTopics": [
+          "独立博客和公众号怎么同步的？",
+          "这套方案换其他博客能用吗？"
+        ]
+      },
+      "contentHash": "12b52576",
+      "processedAt": "2026-03-12T12:49:30.687Z"
+    },
+    "canada-visa-2018": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "夫妻一起申请为什么批下来时间差这么多？",
+          "四年有效期是护照到期决定的还是被卡了？",
+          "自助办和中介办到底差在哪几步？"
+        ],
+        "extensionTopics": [
+          "美签十年和加签十年的隐藏区别？",
+          "如果护照快到期了怎么规划办加签时机？"
+        ]
+      },
+      "contentHash": "66d492be",
+      "processedAt": "2026-03-12T12:49:32.662Z"
+    },
+    "yashica-y35-camera": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "四个滤镜实际拍出来差别大吗？",
+          "过片扳手每拍一张都要手动拉吗？",
+          "样片那种畸变是常态还是偶发？"
+        ],
+        "extensionTopics": [
+          "后来外拍那组照片是用哪个滤镜？",
+          "同价位还有什么颜值复古的替代品？"
+        ]
+      },
+      "contentHash": "44122813",
+      "processedAt": "2026-03-12T12:49:28.868Z"
+    },
+    "nintendo-switch-pro-unboxing": {
+      "data": {
+        "openingLine": "Pro手柄和Joy-Con玩起来差别有多大。",
+        "focusQuestions": [
+          "那两个键帽手感到底怎么样？",
+          "连电视时Pro手柄比Joy-Con强在哪？",
+          "港行保修具体怎么操作？"
+        ],
+        "extensionTopics": [
+          "Xbox手柄吃灰是因为游戏类型吗？",
+          "双人游戏还有什么推荐？"
+        ]
+      },
+      "contentHash": "18a2fea6",
+      "processedAt": "2026-03-12T12:49:32.826Z"
+    },
+    "usa-road-travel-feb": {
+      "data": {
+        "openingLine": "这趟美西自驾挺折腾的，求婚还差点没拍上，读完了想问问当时到底怎么规划的。",
+        "focusQuestions": [
+          "11天行程单具体怎么排的？",
+          "摄影团和普通团差在哪？",
+          "戒指最后怎么处理的？"
+        ],
+        "extensionTopics": [
+          "第二次14天自驾去了哪？",
+          "现在回头会选哪个季节去？"
+        ]
+      },
+      "contentHash": "e06eae52",
+      "processedAt": "2026-03-12T12:49:34.810Z"
+    },
+    "mac-setapp": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "CleanMyMac和Disk Drill具体能干什么？",
+          "Ulysses单独订阅和Setapp哪个划算？",
+          "Paste2的剪贴板记录会不会有隐私问题？"
+        ],
+        "extensionTopics": [
+          "作者同时用Adobe和G Suite，这几个服务怎么分工？",
+          "除了这7个，另外90多款里还有哪些值得看？"
+        ]
+      },
+      "contentHash": "f7fa2e89",
+      "processedAt": "2026-03-12T12:49:35.723Z"
+    },
+    "shanghai-diamond-stopwatch-type-504": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "504和505型号怎么选？",
+          "上发条能走多久？",
+          "表盘瑕疵明显吗？"
+        ],
+        "extensionTopics": [
+          "作者还买过其他国产老物件吗？",
+          "拍视频时这个秒表实际怎么用？"
+        ]
+      },
+      "contentHash": "f73ff41d",
+      "processedAt": "2026-03-12T12:49:37.391Z"
+    },
+    "insta360-one-vr-camera": {
+      "data": {
+        "openingLine": "作者把包装盒做成VR眼镜的巧思，确实比单纯讲参数更让人想上手试试。",
+        "focusQuestions": [
+          "1188元的售价比其他VR相机便宜多少？",
+          "iPhone直播时发热和掉电具体有多快？",
+          "双210度鱼眼镜头怎么合成360度画面？"
+        ],
+        "extensionTopics": [
+          "Insta360 ONE有哪些升级值得等？",
+          "安卓用户有什么替代方案可以选？"
+        ]
+      },
+      "contentHash": "a0efbcc3",
+      "processedAt": "2026-03-12T12:49:36.652Z"
+    },
+    "amplifi-hd-unboxing": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "路由器正面圆形屏幕是干什么用的？",
+          "USB-C接口只能充电还是也能传数据？",
+          "WiFi放大器的磁力小球容易松吗？"
+        ],
+        "extensionTopics": [
+          "你之前用过的七八个路由器里哪个最耐用？",
+          "如果家里已经布了网线还有必要买Mesh吗？"
+        ]
+      },
+      "contentHash": "fd8a36e5",
+      "processedAt": "2026-03-12T12:49:40.888Z"
+    },
+    "read-microcosm-of-usa": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "夏威夷跑马拉松那10天婚假怎么安排？",
+          "毕阿姨跟团游和自己穷游比哪种更值？",
+          "托洛茨基故居那段红色历史书里怎么写的？"
+        ],
+        "extensionTopics": [
+          "下次去越南芽庄前想先读什么书？",
+          "冯唐和毕淑敏医生转行写作的路子像不像？"
+        ]
+      },
+      "contentHash": "dc258fc5",
+      "processedAt": "2026-03-12T12:49:39.215Z"
+    },
+    "liqi-interview-luolei": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "车载逆变器一般选多大功率的？",
+          "索尼黑卡和A7S2怎么分工？",
+          "NAS用RAID1两块盘够用吗？"
+        ],
+        "extensionTopics": [
+          "你们视频工作室怎么分工的？",
+          "后来换Mavic了吗，体验差多少？"
+        ]
+      },
+      "contentHash": "49f0c4b0",
+      "processedAt": "2026-03-12T12:49:40.581Z"
+    },
+    "travel-hangzhou-changle": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "林场具体在杭州什么位置，怎么去？",
+          "十一月去为什么没见到大片黄叶？",
+          "那边手机信号真的不好吗？"
+        ],
+        "extensionTopics": [
+          "附近除了林场还有什么可拍的？",
+          "春秋季节去会有什么不同？"
+        ]
+      },
+      "contentHash": "5f5f305e",
+      "processedAt": "2026-03-12T12:49:41.823Z"
+    },
+    "sony-rx100-v-unboxing": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "黑卡5一天要备几块电池？",
+          "屏幕不贴膜真的容易划伤吗？",
+          "6300淘宝入手靠谱吗有保修吗？"
+        ],
+        "extensionTopics": [
+          "后来换过其他卡片机吗？",
+          "LX10和黑卡5视频差距大吗？"
+        ]
+      },
+      "contentHash": "5da45a04",
+      "processedAt": "2026-03-12T12:49:44.329Z"
+    },
+    "travel-to-boracay-2016": {
+      "data": {
+        "openingLine": "作者把10小时素材剪到5分钟，还顺手聊了聊技术转岗的时间焦虑。",
+        "focusQuestions": [
+          "A7S2和小蚁、无人机怎么分工拍？",
+          "剪辑时怎么从10小时筛到5分钟？",
+          "第1000位关注者送什么礼物？"
+        ],
+        "extensionTopics": [
+          "马尼拉航拍特辑什么时候出？",
+          "之前几次旅行视频踩过哪些坑？"
+        ]
+      },
+      "contentHash": "f9cc4c8a",
+      "processedAt": "2026-03-12T12:49:44.108Z"
+    },
+    "pilipinas-travel-day-2": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "Caticlan和Kalibo机场怎么选？",
+          "到岛上三轮车加船票花了多少？",
+          "护照丢了最后怎么解决的？"
+        ],
+        "extensionTopics": [
+          "雨季去长滩岛穿什么合适？",
+          "精灵4在海边飞要注意什么？"
+        ]
+      },
+      "contentHash": "1bef65f2",
+      "processedAt": "2026-03-12T12:49:45.137Z"
+    },
+    "meet-in-suzhou-day-1": {
+      "data": {
+        "openingLine": "第一次自驾就碰上挂错档的尴尬，后面还顺利吗。",
+        "focusQuestions": [
+          "同里门票多少钱，停车方便吗？",
+          "索尼50mm镜头拍人像效果怎么样？",
+          "为什么选同里而不是周庄乌镇？"
+        ],
+        "extensionTopics": [
+          "苏州城里那晚后来去了哪？",
+          "实习期走国道比高速慢多少？"
+        ]
+      },
+      "contentHash": "f2e6c387",
+      "processedAt": "2026-03-12T12:49:47.954Z"
+    },
+    "pilipinas-travel-day-4": {
+      "data": {
+        "openingLine": "这趟长滩岛的最后一天，从日出航拍开始，到百年酒店收尾，节奏还挺满的。",
+        "focusQuestions": [
+          "无人机飞多高拍到的日出？",
+          "Kalibo和Caticlan机场怎么区分？",
+          "马尼拉大酒店入住要安检吗？"
+        ],
+        "extensionTopics": [
+          "长滩岛直升机观光多少钱？",
+          "白天看西班牙老城区什么样？"
+        ]
+      },
+      "contentHash": "fe1ea0e8",
+      "processedAt": "2026-03-12T12:49:44.713Z"
+    },
+    "how-i-became-a-programmer": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "猎豹和阅文的技术栈差别在哪？",
+          "非科班怎么补上编程基础的？",
+          "Node框架具体怎么支撑千万访问量？"
+        ],
+        "extensionTopics": [
+          "小蚁那段全栈经历有没踩坑？",
+          "现在回头看还会选前端吗？"
+        ]
+      },
+      "contentHash": "328981f2",
+      "processedAt": "2026-03-12T12:49:43.391Z"
+    },
+    "travel-in-japan-wifi-tips": {
+      "data": {
+        "openingLine": "上次同时带了WIFI和SIM卡两套设备，实际用下来差别还挺明显的。",
+        "focusQuestions": [
+          "两个人共享的话WIFI耗电快吗？",
+          "SIM卡插进去直接能用吗？",
+          "机场取还WIFI方便不？"
+        ],
+        "extensionTopics": [
+          "如果只选一样带哪个更省心？",
+          "其他国家旅行也能这么配吗？"
+        ]
+      },
+      "contentHash": "1abb9a43",
+      "processedAt": "2026-03-12T12:49:47.276Z"
+    },
+    "meet-in-japan-day-5": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "最上屋的私人温泉怎么预约？",
+          "小蚁相机是怎么找回来的？",
+          "索尼PlayMemory遥控自拍怎么用？"
+        ],
+        "extensionTopics": [
+          "白石城最后去了吗？",
+          "元旦大阪行程怎么安排的？"
+        ]
+      },
+      "contentHash": "5036e8af",
+      "processedAt": "2026-03-12T12:49:48.712Z"
+    },
+    "meet-in-japan-day-4": {
+      "data": {
+        "openingLine": "松岛这天的行程安排得挺满，从游船到航拍，中间还见缝插针吃了顿日式料理。",
+        "focusQuestions": [
+          "仁王号游船票价具体多少？",
+          "下午三点松岛为啥很多店休息？",
+          "无人机在东京为啥不敢飞？"
+        ],
+        "extensionTopics": [
+          "白石藏王温泉那晚住哪儿？",
+          "松岛跟宫城其他景点比值得去吗？"
+        ]
+      },
+      "contentHash": "c739a2f2",
+      "processedAt": "2026-03-12T12:49:49.896Z"
+    },
+    "to-the-east-end-of-china-dongji-island": {
+      "data": {
+        "openingLine": "东极岛三天团建，索尼A7S2拍4K， Slog3调色调到放弃达芬奇。",
+        "focusQuestions": [
+          "海钓和环岛徒步具体怎么安排的？",
+          "小蚁4K和A7S2画面怎么搭配的？",
+          "Slog3不调色直接放能看吗？"
+        ],
+        "extensionTopics": [
+          "你们团建预算人均多少？",
+          "精灵3标准版续航够拍吗？"
+        ]
+      },
+      "contentHash": "08cbdc8e",
+      "processedAt": "2026-03-12T12:49:47.573Z"
+    },
+    "meet-in-japan-day-3": {
+      "data": {
+        "openingLine": "这趟仙台行程挺让人意外的，人少、天蓝、住得也高，连刷卡都出了个小插曲。",
+        "focusQuestions": [
+          "新干线到仙台要多久？",
+          "为什么选威斯汀而不是东京湾洲际？",
+          "仙台城遗址能看到太平洋吗？"
+        ],
+        "extensionTopics": [
+          "仙台牛舌有推荐的店吗？",
+          "Day4去松岛是当天来回吗？"
+        ]
+      },
+      "contentHash": "2f42dcd6",
+      "processedAt": "2026-03-12T12:49:49.791Z"
+    },
+    "zuoluotv-travel-in-japan": {
+      "data": {
+        "openingLine": "东京到仙台五天跑了四个地方，设备带得这么全，实际用起来顺手吗。",
+        "focusQuestions": [
+          "A7S2配这两支镜头够用吗？",
+          "小蚁4K和精灵3画质差多少？",
+          "Slog3后期调色麻烦吗？"
+        ],
+        "extensionTopics": [
+          "当时怎么安排每天路线的？",
+          "如果只带一部手机能拍出效果吗？"
+        ]
+      },
+      "contentHash": "517584b1",
+      "processedAt": "2026-03-12T12:49:50.151Z"
+    },
+    "one-step-forward-for-zuoluotv": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "第一支视频是什么主题？",
+          "旅行和科技内容怎么分配比例？",
+          "两个人怎么分工，谁管剪辑谁出镜？"
+        ],
+        "extensionTopics": [
+          "后来遇到过最意外的拍摄状况是什么？",
+          "同类双人频道里你们想做出什么不同？"
+        ]
+      },
+      "contentHash": "efe3bf17",
+      "processedAt": "2026-03-12T12:49:49.845Z"
+    },
+    "zkin-yeti-backbag-review": {
+      "data": {
+        "openingLine": "这个灰色尼龙质感挺特别，不过卡扣确实看着有点担心强度。",
+        "focusQuestions": [
+          "侧挂三脚架为什么不如底袋方便？",
+          "顶部收纳能同时装下稳定器和章鱼架吗？",
+          "7公斤负重背一天肩膀会不会很酸？"
+        ],
+        "extensionTopics": [
+          "你后来有换过更专业的背负系统吗？",
+          "同类潮牌摄影包里还有谁家的设计比较能打？"
+        ]
+      },
+      "contentHash": "ba5068b0",
+      "processedAt": "2026-03-12T12:49:51.096Z"
+    },
+    "zuoluo-life-log-sony-a7s2": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "1200万像素发朋友圈够用吗？",
+          "那块SD转接线具体怎么用？",
+          "四块电池一天用了几块？"
+        ],
+        "extensionTopics": [
+          "理光GR现在还常带出门吗？",
+          "这套和当年外滩那组比差别在哪？"
+        ]
+      },
+      "contentHash": "7dc3362d",
+      "processedAt": "2026-03-12T12:49:52.144Z"
+    },
+    "what-i-read-in-2016-spring": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "这17本里哪本让你印象最深？",
+          "冯仑的两本怎么个读法？",
+          "千门之美适合带去旅游看吗？"
+        ],
+        "extensionTopics": [
+          "其他年份的春季书单还有吗？",
+          "这几本地产书对普通读者有用吗？"
+        ]
+      },
+      "contentHash": "5ed92e29",
+      "processedAt": "2026-03-12T12:49:51.962Z"
+    },
+    "kindle-oasis-review": {
+      "data": {
+        "openingLine": "从KPW到Oasis，升级的不只是设备，还有对阅读这件事本身的理解。",
+        "focusQuestions": [
+          "皮套拆了续航还能撑多久？",
+          "左手握持翻页键会不会别扭？",
+          "和iPad Mini比看书差别在哪？"
+        ],
+        "extensionTopics": [
+          "现在回头看还值这个价吗？",
+          "如果KPW没坏还会换吗？"
+        ]
+      },
+      "contentHash": "b67e7762",
+      "processedAt": "2026-03-12T12:49:52.250Z"
+    },
+    "pilipinas-travel-day-1": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "美签可以直接入境菲律宾吗？",
+          "黄色出租车和白色有什么区别？",
+          "酒店WiFi不好怎么解决的？"
+        ],
+        "extensionTopics": [
+          "长滩岛那边信号也这么差吗？",
+          "第二天转机去长滩岛要多久？"
+        ]
+      },
+      "contentHash": "1f7de131",
+      "processedAt": "2026-03-12T12:49:46.772Z"
+    },
+    "lcd-power-station-pisen-ts-d199": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "这100块是怎么凑出来的，预售价还是日常价？",
+          "2A和1A两个口充电速度差多少，你试了吗？",
+          "20000毫安带上飞机有没有被拦过？"
+        ],
+        "extensionTopics": [
+          "对比小米同容量的，哪个更扛用？",
+          "如果经常出差，20000毫安是不是太重了？"
+        ]
+      },
+      "contentHash": "b1672a5a",
+      "processedAt": "2026-03-12T12:49:56.592Z"
+    },
+    "meet-in-seoul-day-2": {
+      "data": {
+        "openingLine": "这趟第二天行程挺满的，从南山塔一路逛到梨大周边，有几个细节还挺有意思。",
+        "focusQuestions": [
+          "坐哪路公交上首尔塔最方便？",
+          "为什么最后没买首尔塔登顶票？",
+          "理光SD卡数据是怎么救回来的？"
+        ],
+        "extensionTopics": [
+          "第三天韩屋村和景福宫怎么安排的？",
+          "八色烤肉和第一天吃的烤肉比怎么样？"
+        ]
+      },
+      "contentHash": "1fe6a5b5",
+      "processedAt": "2026-03-12T12:49:55.439Z"
+    },
+    "meet-in-seoul-day-3": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "南村和北村韩屋村怎么区分？",
+          "景福宫没检票就进去了怎么回事？",
+          "机场退税具体怎么操作？"
+        ],
+        "extensionTopics": [
+          "三清洞和明洞购物氛围差别大吗？",
+          "韩国周日很多店关门怎么安排行程？"
+        ]
+      },
+      "contentHash": "fc799466",
+      "processedAt": "2026-03-12T12:49:54.621Z"
+    },
+    "meet-in-seoul-day-1": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "广州领区办韩签只要户口本和护照？",
+          "机场租WiFi比淘宝贵三倍值得吗？",
+          "T-money卡四天充两万够花吗？"
+        ],
+        "extensionTopics": [
+          "明洞换汇177.5算好价吗？",
+          "洲际酒店接机怎么预约的？"
+        ]
+      },
+      "contentHash": "32785e24",
+      "processedAt": "2026-03-12T12:49:53.728Z"
+    },
+    "be-a-best-man-shenzhen-wedding": {
+      "data": {
+        "openingLine": "第一次被老朋友喊去当伴郎，从订机票到挑西装，这一路其实挺多细节值得聊聊。",
+        "focusQuestions": [
+          "伴郎当天具体要做什么？",
+          "绿色袜子是谁的主意？",
+          "在上海买的西装花了多少？"
+        ],
+        "extensionTopics": [
+          "第一次当伴娘是什么体验？",
+          "自己婚礼会请高中同学主持吗？"
+        ]
+      },
+      "contentHash": "03bfd3e2",
+      "processedAt": "2026-03-12T12:49:56.456Z"
+    },
+    "the-value-of-tech-and-information": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "一个月十几块具体怎么花的？",
+          "前端开发者接触国外社区有哪些渠道？",
+          "PAC和VPN设置现在还能用吗？"
+        ],
+        "extensionTopics": [
+          "后来那三台服务器还在用吗？",
+          "如果当年没折腾翻墙，技术成长会慢多少？"
+        ]
+      },
+      "contentHash": "729817f7",
+      "processedAt": "2026-03-12T12:49:56.922Z"
+    },
+    "review-of-2015": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "小蚁团队集体离职的具体原因是什么？",
+          "现在阅文的前端构建系统是怎么搭的？",
+          "每月100块买书计划还在坚持吗？"
+        ],
+        "extensionTopics": [
+          "女朋友现在也在互联网行业吗？",
+          "2016年定的这几个目标后来达成了多少？"
+        ]
+      },
+      "contentHash": "66f09dca",
+      "processedAt": "2026-03-12T12:49:59.168Z"
+    },
+    "what-i-read-in-2015": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "骑行之后为什么反而更焦虑了？",
+          "《光荣与梦想》战后部分讲了什么？",
+          "《你一生的故事》哪篇最好看？"
+        ],
+        "extensionTopics": [
+          "这几年还保持骑行习惯吗？",
+          "想重读《娱乐至死》看看准不准？"
+        ]
+      },
+      "contentHash": "f6b8802f",
+      "processedAt": "2026-03-12T12:49:57.931Z"
+    },
+    "guangzhou-marathon-2015-race-day": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "赛前晚上只吃一个面包够吗？",
+          "为什么特意穿其他赛事的衣服？",
+          "4小时29分算快还是慢？"
+        ],
+        "extensionTopics": [
+          "国外马拉松和国内有什么不一样？",
+          "带着家人去跑马要注意什么？"
+        ]
+      },
+      "contentHash": "b7634e3d",
+      "processedAt": "2026-03-12T12:49:58.031Z"
+    },
+    "zhanmei-minipc-review": {
+      "data": {
+        "openingLine": "十年前的迷你主机方案，现在回头看 still 有意思。",
+        "focusQuestions": [
+          "具体花了多少钱，都买了啥配件？",
+          "换5G网卡后网速能到多少？",
+          "猫趴上去真的不会过热吗？"
+        ],
+        "extensionTopics": [
+          "这配置现在还能装Win11吗？",
+          "和现在的NUC比差多少？"
+        ]
+      },
+      "contentHash": "bc76875a",
+      "processedAt": "2026-03-12T12:49:59.609Z"
+    },
+    "citizenfour-review": {
+      "data": {
+        "openingLine": "看完这部纪录片，斯诺登在酒店里用红布罩着输密码那段，让我重新想了很久。",
+        "focusQuestions": [
+          "斯诺登最后怎么逃到俄罗斯的？",
+          "片子里提到的隐私即自由是什么意思？",
+          "作者说的那个牛姓老师后来怎么样了？"
+        ],
+        "extensionTopics": [
+          "除了斯诺登还有谁拍过这种纪录片？",
+          "普通人现在能用的加密工具有哪些？"
+        ]
+      },
+      "contentHash": "eca32a7d",
+      "processedAt": "2026-03-12T12:50:00.311Z"
+    },
+    "qiandaohu-drifting": {
+      "data": {
+        "openingLine": "这趟千岛湖行程看起来挺松弛的，周五出发、周日漂流，时间是怎么安排的。",
+        "focusQuestions": [
+          "漂流和清远比具体哪里不一样？",
+          "升级套房要额外加钱吗？",
+          "小蚁运动相机防水怎么处理的？"
+        ],
+        "extensionTopics": [
+          "没坐船的话还有哪些地方能去？",
+          "这种短途自驾一般预算多少？"
+        ]
+      },
+      "contentHash": "d6db1fd3",
+      "processedAt": "2026-03-12T12:50:00.908Z"
+    },
+    "meet-hangzhou-day-one": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "为什么杭州Uber比上海便宜那么多？",
+          "三潭印月岛上下午四点半光线好在哪？",
+          "长曝光拍西湖夜景具体怎么设置？"
+        ],
+        "extensionTopics": [
+          "九溪和西湖比人少多少？",
+          "冬天去西湖拍什么颜色？"
+        ]
+      },
+      "contentHash": "da1dc523",
+      "processedAt": "2026-03-12T12:50:03.453Z"
+    },
+    "onitsuka-tiger-blue-2015": {
+      "data": {
+        "openingLine": "这双亮蓝到手价不到400块，7天清关，比国内便宜两三百，你之前淘过吗。",
+        "focusQuestions": [
+          "6PM和笨鸟海淘怎么操作？",
+          "亮蓝和之前那双骚绿比脚感差多少？",
+          "美码10D对应国内43码准吗？"
+        ],
+        "extensionTopics": [
+          "除了鬼冢虎还淘过哪些鞋？",
+          "转运被税过么怎么处理？"
+        ]
+      },
+      "contentHash": "be7f8c6d",
+      "processedAt": "2026-03-12T12:50:02.909Z"
+    },
+    "meet-hangzhou-day-two": {
+      "data": {
+        "openingLine": "九溪离西湖远吗，打车过去大概多久。",
+        "focusQuestions": [
+          "20块的东坡肉够三人吃吗？",
+          "九溪茶园能自由进去吗？",
+          "Uber在杭州为什么只要7块5？"
+        ],
+        "extensionTopics": [
+          "冬天去杭州看雪景怎么样？",
+          "小蚁是什么相机，好用吗？"
+        ]
+      },
+      "contentHash": "2faa47c8",
+      "processedAt": "2026-03-12T12:50:02.331Z"
+    },
+    "clarks-originals-desert-boot": {
+      "data": {
+        "openingLine": "十年前美亚还能直邮那会儿，买双沙漠靴十天才到，比现在转运还快。",
+        "focusQuestions": [
+          "5码脚感刚好，那平时该买多大？",
+          "清关走易客满会被税吗？",
+          "越南产和中国产差别大不大？"
+        ],
+        "extensionTopics": [
+          "现在还能找到这种价差吗？",
+          "沙漠靴穿什么裤子合适？"
+        ]
+      },
+      "contentHash": "ac63403b",
+      "processedAt": "2026-03-12T12:50:04.734Z"
+    },
+    "yunmai-smart-weighing-health-gear": {
+      "data": {
+        "openingLine": "68块能买到的体脂秤，用起来到底靠不靠谱。",
+        "focusQuestions": [
+          "测体脂时脚要踩哪四个位置？",
+          "电池耗电快吗，多久要换？",
+          "和小米体重秤比具体好在哪？"
+        ],
+        "extensionTopics": [
+          "你之前那个Fitbit手环还在用吗？",
+          "小蚁现在做的东西和这个比怎么样？"
+        ]
+      },
+      "contentHash": "24cdc9eb",
+      "processedAt": "2026-03-12T12:50:04.739Z"
+    },
+    "alfred-lookupdomainip": {
+      "data": {
+        "openingLine": "记不住服务器IP又不想翻笔记的话，这个Alfred小工具确实省事。",
+        "focusQuestions": [
+          "没有Powerpack能用吗？",
+          "查出来的IP怎么直接复制到剪贴板？",
+          "支持同时查多个域名吗？"
+        ],
+        "extensionTopics": [
+          "如果换成Raycast要怎么实现？",
+          "Windows上有类似方案吗？"
+        ]
+      },
+      "contentHash": "494764c0",
+      "processedAt": "2026-03-12T12:50:02.260Z"
+    },
+    "nike-move-free-5-2014": {
+      "data": {
+        "openingLine": "这双蓝白绿的Free 5.0，你平时会穿去户外跑还是只敢在健身房用。",
+        "focusQuestions": [
+          "70美元加运费500块到手，算好价吗？",
+          "鞋带紧的问题你怎么处理的？",
+          "和亚瑟士比缓冲差多少，还能跑长距离吗？"
+        ],
+        "extensionTopics": [
+          "你后来真去门口健身房了吗？",
+          "现在海淘鞋还走笨鸟还是换别的渠道了？"
+        ]
+      },
+      "contentHash": "fbb5ee7d",
+      "processedAt": "2026-03-12T12:50:02.259Z"
+    },
+    "yi-camera-unbox-review": {
+      "data": {
+        "openingLine": "这个防水壳质感看起来确实不错，水晶白的实物比想象中更专业。",
+        "focusQuestions": [
+          "防水深度是多少？",
+          "装上后操作按键还顺手吗？",
+          "壳子里那三样配件具体怎么装？"
+        ],
+        "extensionTopics": [
+          "有试过雨天实拍效果吗？",
+          "和官方壳比性价比如何？"
+        ]
+      },
+      "contentHash": "f88bcd4b",
+      "processedAt": "2026-03-12T12:50:05.038Z"
+    },
+    "meet-qingdao-love-and-kiss-day-1": {
+      "data": {
+        "openingLine": "这趟青岛之行开头挺波折的，差点没赶上高铁，最后花了高价买黄牛票才成行。",
+        "focusQuestions": [
+          "黄牛票最后怎么砍到400块的？",
+          "海鲜水饺69块20个值不值？",
+          "奥帆中心拍照选什么时候最好？"
+        ],
+        "extensionTopics": [
+          "DAY2去了哪些地方？",
+          "用印象笔记怎么做旅行规划？"
+        ]
+      },
+      "contentHash": "2e09e2a5",
+      "processedAt": "2026-03-12T12:50:10.305Z"
+    },
+    "meet-qingdao-love-and-kiss-day-2": {
+      "data": {
+        "openingLine": "黄岛温德姆那个海景房，阳台确实挺让人心动的，不过初春去还是冷了点。",
+        "focusQuestions": [
+          "银沙滩和深圳惠州的海滩比怎么样？",
+          "八大关哪条路最适合散步拍照？",
+          "老船夫的船夫海螺到底什么味道？"
+        ],
+        "extensionTopics": [
+          "DAY1在青岛市区去了哪些地方？",
+          "这家温德姆夏天住体验会更好吗？"
+        ]
+      },
+      "contentHash": "53535c3b",
+      "processedAt": "2026-03-12T12:50:07.852Z"
+    },
+    "beijing-run-2015": {
+      "data": {
+        "openingLine": "早起困得要死，但站在空无一人的广场底下自拍，这种体验倒是独一份。",
+        "focusQuestions": [
+          "赛前失眠怎么熬过去的？",
+          "计时芯片和奖牌是第一次有吗？",
+          "57分钟完赛比去年慢在哪？"
+        ],
+        "extensionTopics": [
+          "除了北马还有别的天安门起跑赛事吗？",
+          "体检肥胖前期之后怎么调整？"
+        ]
+      },
+      "contentHash": "1f6b5535",
+      "processedAt": "2026-03-12T12:50:06.064Z"
+    },
+    "kiss-and-love-in-qingdao-yi-camera": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "小蚁加自拍杆怎么拍出低位仰拍？",
+          "iMovie合成延时摄影要拍多久？",
+          "黄岛银沙滩比金沙滩好在哪？"
+        ],
+        "extensionTopics": [
+          "理光GR在这次行程里拍了什么？",
+          "Final Cut Pro比iMovie强在哪？"
+        ]
+      },
+      "contentHash": "c3cacdc9",
+      "processedAt": "2026-03-12T12:50:10.238Z"
+    },
+    "code-like-a-geek": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "Dropbox同步Git仓库不会冲突吗？",
+          "Mackup和dotfile具体怎么配合用？",
+          "Dash查文档比直接Google快在哪？"
+        ],
+        "extensionTopics": [
+          "Grunt和Gulp现在还用吗？",
+          "有没有试过更现代的同步方案？"
+        ]
+      },
+      "contentHash": "cfeeb501",
+      "processedAt": "2026-03-12T12:50:10.244Z"
+    },
+    "meet-hong-kong": {
+      "data": {
+        "openingLine": "理光GR随手拍，年前去香港人确实少很多，你们当时通关花了多久。",
+        "focusQuestions": [
+          "深圳湾过关后怎么转港铁最方便？",
+          "太平山爬上去走了多久，路线好找吗？",
+          "15路小巴下山在哪坐车，票价多少？"
+        ],
+        "extensionTopics": [
+          "理光GR在香港街拍参数怎么设？",
+          "过年和黄金周去香港体验差多少？"
+        ]
+      },
+      "contentHash": "d25d8f6d",
+      "processedAt": "2026-03-12T12:50:11.608Z"
+    },
+    "skiing-in-beijing": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "南山雪场租装备要IC卡吗？",
+          "单板新手多久能滑初级道？",
+          "雪镜起雾怎么解决的？"
+        ],
+        "extensionTopics": [
+          "北京还有哪个雪场适合新手？",
+          "第二次去建议换双板试试吗？"
+        ]
+      },
+      "contentHash": "7d506fac",
+      "processedAt": "2026-03-12T12:50:13.420Z"
+    },
+    "what-i-read-in-2014": {
+      "data": {
+        "openingLine": "年底复盘读书，作者自己也在琢磨这事到底算不算\"生产\"，这种纠结挺真实的。",
+        "focusQuestions": [
+          "《跑步》这本书具体讲了哪些城市？",
+          "冯唐六本里哪本最有意思？",
+          "Kindle 换过两次屏是什么情况？"
+        ],
+        "extensionTopics": [
+          "现在还会觉得读书是\"消费\"吗？",
+          "后来有没有找到\"生产\"的路子？"
+        ]
+      },
+      "contentHash": "eae0de00",
+      "processedAt": "2026-03-12T12:50:12.568Z"
+    },
+    "theme-nevecoo": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "Ghost 0.58 现在支持哪些新功能？",
+          "新主题为什么叫 Nevecoo？",
+          "StartSSL 的证书申请麻烦吗？"
+        ],
+        "extensionTopics": [
+          "Ghost 1.0 的 API 开放后想做什么？",
+          "手机阅读体验具体优化了哪些地方？"
+        ]
+      },
+      "contentHash": "7136de20",
+      "processedAt": "2026-03-12T12:50:12.600Z"
+    },
+    "what-is-in-my-bag-2014": {
+      "data": {
+        "openingLine": "十年前程序员翻包，和现在你的包里有什么不一样。",
+        "focusQuestions": [
+          "MacBook Air 2012现在还能用吗？",
+          "Kindle paperwhite修屏幕要多少钱？",
+          "为什么随身带港澳通行证？"
+        ],
+        "extensionTopics": [
+          "现在出门还带充电宝吗？",
+          "当年那些App你还在用吗？"
+        ]
+      },
+      "contentHash": "c19d667f",
+      "processedAt": "2026-03-12T12:50:13.292Z"
+    },
+    "safari-ios8-iphone6-web-developers-designers-chinese": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "iPhone 6和Plus的viewport具体是多少像素？",
+          "文件上传bug在8.02修复了吗？",
+          "WKWebView和老的UIWebView怎么选？"
+        ],
+        "extensionTopics": [
+          "Android同尺寸设备的viewport对比？",
+          "实际项目迁移到WKWebView的经验？"
+        ]
+      },
+      "contentHash": "70fbd9be",
+      "processedAt": "2026-03-12T12:50:14.913Z"
+    },
+    "google-io-2014-web-fundamentals-lessons-learned-from-analyzing-websites-at-scale": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "禁用缩放到底什么情况下才合理？",
+          "web font 为什么需要慎用？",
+          "输入框优化具体要怎么做？"
+        ],
+        "extensionTopics": [
+          "现在移动端还有什么新坑？",
+          "PageSpeed 现在还推荐用吗？"
+        ]
+      },
+      "contentHash": "84fff2d3",
+      "processedAt": "2026-03-12T12:50:15.355Z"
+    },
+    "work-reflection": {
+      "data": {
+        "openingLine": "读这封反思邮件，能看到一个在技术焦虑里打转、又想逼自己变好的年轻人。",
+        "focusQuestions": [
+          "浪哥说的「习惯和方法」具体指哪些？",
+          "傅总批的那个字母d是怎么回事？",
+          "按钮图标晃1px是怎么粗糙造成的？"
+        ],
+        "extensionTopics": [
+          "这半年学JS踩过哪些具体的坑？",
+          "和LY刚哥请教时他们怎么帮你的？"
+        ]
+      },
+      "contentHash": "35cb5efe",
+      "processedAt": "2026-03-12T12:50:16.120Z"
+    },
+    "learn-japanese-hiragana-write-2": {
+      "data": {
+        "openingLine": "上次学了あ行，今天跟着视频一起写か行，手写体和印刷体的区别还挺容易忽略。",
+        "focusQuestions": [
+          "き的手写体为什么要分开写？",
+          "かお为什么读卡哦不靠？",
+          "学这些单词需要配合听力材料吗？"
+        ],
+        "extensionTopics": [
+          "か行的片假名写法有变化吗？",
+          "下一期打算学什么行？"
+        ]
+      },
+      "contentHash": "1361cf0d",
+      "processedAt": "2026-03-12T12:50:17.135Z"
+    },
+    "story-behind-my-id": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "foru17到底是哪三个词拼的？",
+          "MP3被退回来是什么误会？",
+          "复读初一那年怎么追上的重点班？"
+        ],
+        "extensionTopics": [
+          "后来遇到的那些姑娘里还有记得ID的吗？",
+          "如果当初没复读会不会是完全不同的故事？"
+        ]
+      },
+      "contentHash": "6e4ddc76",
+      "processedAt": "2026-03-12T12:50:25.519Z"
+    },
+    "a-sad-news-for-run-knee-degeneration": {
+      "data": {
+        "openingLine": "跑步跑到膝盖出状况，作者从医院回来写下这篇，读完想跟他聊聊后面怎么打算。",
+        "focusQuestions": [
+          "退行性病变真的完全不可逆吗？",
+          "现在还能做什么运动替代跑步？",
+          "海淘的Saucony跑鞋到货后穿着怎样？"
+        ],
+        "extensionTopics": [
+          "后来马拉松目标完成了吗？",
+          "股四头肌锻炼具体怎么做？"
+        ]
+      },
+      "contentHash": "ccf5ac5a",
+      "processedAt": "2026-03-12T12:50:19.661Z"
+    },
+    "smart-with-grunt": {
+      "data": {
+        "openingLine": "十年前用Grunt配静态页自动化，这些配置现在还能用吗。",
+        "focusQuestions": [
+          "Windows上能跑这套Grunt流程吗？",
+          "grunt bundle打包后压缩包在哪找？",
+          "不配Sass的话用哪个命令监听？"
+        ],
+        "extensionTopics": [
+          "现在做静态页会换Vite吗？",
+          "当时为什么不用Yeoman直接生成？"
+        ]
+      },
+      "contentHash": "87355f5c",
+      "processedAt": "2026-03-12T12:50:26.573Z"
+    },
+    "guangzhou-marathon-30km-run": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "三明治为什么不够，赛前该吃什么？",
+          "腰带具体能装哪些东西，有推荐吗？",
+          "乳贴和凡士林哪个更实用？"
+        ],
+        "extensionTopics": [
+          "你后来去帝都找好跑步路线了吗？",
+          "骑车川藏和跑马拉松哪个更累？"
+        ]
+      },
+      "contentHash": "75ffe501",
+      "processedAt": "2026-03-12T12:50:23.024Z"
+    },
+    "shenzhen-unicom-review": {
+      "data": {
+        "openingLine": "十年前换宽带还要纠结南北运营商，现在看当时的网速测试，倒是挺怀旧。",
+        "focusQuestions": [
+          "上传速度0.4M具体是什么体验？",
+          "机顶盒装兔子TV桌面怎么操作？",
+          "迅雷离线1M/s和浏览器20kb/s差距这么大？"
+        ],
+        "extensionTopics": [
+          "后来上传速度投诉解决了吗？",
+          "现在还用这个机顶盒吗？"
+        ]
+      },
+      "contentHash": "493534e3",
+      "processedAt": "2026-03-12T12:50:25.665Z"
+    },
+    "better-git-log": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "graph和pretty参数各控制什么？",
+          "git lg -p 的完整写法是什么？",
+          "alias怎么查看已设置的别名？"
+        ],
+        "extensionTopics": [
+          "还能给git lg加什么常用参数？",
+          "除了git log，还有什么命令值得配alias？"
+        ]
+      },
+      "contentHash": "f031e244",
+      "processedAt": "2026-03-12T12:50:26.429Z"
+    },
+    "xunlei-2014-capmus-front-end": {
+      "data": {
+        "openingLine": "十年前校招笔试的回忆录，现在看这些题目还挺有年代感的。",
+        "focusQuestions": [
+          "代码题考了哪些具体考点？",
+          "进度条那道题用 CSS sprite 怎么解？",
+          "材料题的 WebApp 转 Native 怎么答的？"
+        ],
+        "extensionTopics": [
+          "后来 UC 的笔试考了什么？",
+          "和网易笔试比起来难度差多少？"
+        ]
+      },
+      "contentHash": "c7d010d3",
+      "processedAt": "2026-03-12T12:50:23.580Z"
+    },
+    "tiny-time-film-review": {
+      "data": {
+        "openingLine": "凌晨三点写完这篇，作者自己先笑了一声。",
+        "focusQuestions": [
+          "上海小南国真的不贵吗？",
+          "电影里用了多少分钟广告才进剧情？",
+          "顾源他爸为什么一直没露脸？"
+        ],
+        "extensionTopics": [
+          "如果没看小时代1直接看2会更懵吗？",
+          "郭敬明其他书也是这种风格吗？"
+        ]
+      },
+      "contentHash": "8ddb3abd",
+      "processedAt": "2026-03-12T12:50:27.405Z"
+    },
+    "sublime-text-config": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "Soda主题怎么启用？要改哪个文件？",
+          "Source Code Pro字体怎么设置？",
+          "Emmet和AdvancedNewFile快捷键冲突吗？"
+        ],
+        "extensionTopics": [
+          "收费提示频率真的不影响使用吗？",
+          "后来换到Sublime Text 3了吗？"
+        ]
+      },
+      "contentHash": "2a0e7214",
+      "processedAt": "2026-03-12T12:50:28.897Z"
+    },
+    "needless": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "MacBook Air插着电源用算是浪费吗？",
+          "不贴膜不带套屏幕真的不会刮花吗？",
+          "单反快门次数需要刻意保养吗？"
+        ],
+        "extensionTopics": [
+          "你现在的手机带套贴膜吗？",
+          "下一部手机会选更大电池还是更轻薄？"
+        ]
+      },
+      "contentHash": "2ea508fd",
+      "processedAt": "2026-03-12T12:50:29.876Z"
+    },
+    "date-in-memory": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "40G数据具体怎么分类整理的？",
+          "为什么提醒要留神国内云储存？",
+          "NAS和云盘备份怎么搭配用？"
+        ],
+        "extensionTopics": [
+          "毕业后这些数据会怎么继续增长？",
+          "如果不整理，数据会不会反而成了负担？"
+        ]
+      },
+      "contentHash": "bba95cb7",
+      "processedAt": "2026-03-12T12:50:28.619Z"
+    },
+    "maker-time": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "树莓派大概什么价位，哪里能买到？",
+          "怎么给路由器加NAS和离线下载功能？",
+          "那个能自动翻墙的路由器最后做成了吗？"
+        ],
+        "extensionTopics": [
+          "除了树莓派还有什么类似的开源硬件？",
+          "小众硬件产品现在好众筹吗？"
+        ]
+      },
+      "contentHash": "029aa710",
+      "processedAt": "2026-03-12T12:50:29.870Z"
+    },
+    "imagination-story": {
+      "data": {
+        "openingLine": "作者在二十多岁时被《冰与火之歌》颠覆了看剧习惯，这种体验你有过吗。",
+        "focusQuestions": [
+          "《冰与火之歌》第三季第九集到底发生了什么？",
+          "作者初中作文写多长，老师怎么处理的？",
+          "为什么作者决定暂时不看原著只追美剧？"
+        ],
+        "extensionTopics": [
+          "作者弟弟现在还会幻想魔戒世界吗？",
+          "除了《三体》还有哪些中国科幻值得看？"
+        ]
+      },
+      "contentHash": "09a14ee1",
+      "processedAt": "2026-03-12T12:29:11.836Z"
+    },
+    "about-we-media-personal-brand": {
+      "data": {
+        "openingLine": "作者在2013年写自己怎么靠网络从零学编程，有些办法现在看依然挺实在。",
+        "focusQuestions": [
+          "文科转前端具体怎么开始学的？",
+          "Tuts+ Premium 20刀月费值不值？",
+          "翻墙买VPN有推荐的吗？"
+        ],
+        "extensionTopics": [
+          "现在这些网站还能用吗？",
+          "和科班出身的差距怎么补？"
+        ]
+      },
+      "contentHash": "77f29410",
+      "processedAt": "2026-03-12T12:50:29.345Z"
+    },
+    "learing-online": {
+      "data": {
+        "openingLine": "作者在文末放了三个问题，你读完这篇十年前的学习笔记，想先聊哪一个。",
+        "focusQuestions": [
+          "你平时会利用网络学习吗？",
+          "你愿意为网络教育付费吗？多少钱？",
+          "当年这些网站现在还能用吗？"
+        ],
+        "extensionTopics": [
+          "现在翻墙还那么麻烦吗？",
+          "这些年网络教育变好了吗？"
+        ]
+      },
+      "contentHash": "8b136111",
+      "processedAt": "2026-03-12T12:50:30.140Z"
+    },
+    "may-read-book-film": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "《恐怖游轮》的剧情怎么个赞法？",
+          "《上帝掷骰子吗》怎么颠覆世界观的？",
+          "《杀人回忆》哪里过誉了？"
+        ],
+        "extensionTopics": [
+          "后来重看《致青春》还亲切吗？",
+          "《失控》现在读懂了吗？"
+        ]
+      },
+      "contentHash": "a6d1dfc4",
+      "processedAt": "2026-03-12T12:50:33.175Z"
+    },
+    "review-of-2012-english": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "骑车去西藏花了多少钱、准备了多久？",
+          "那个短片现在还能找到吗？",
+          "学编程是从哪本书开始的？"
+        ],
+        "extensionTopics": [
+          "现在回头看那个三角关系怎么想？",
+          "后来真的换成Jekyll了吗？"
+        ]
+      },
+      "contentHash": "e600f7f0",
+      "processedAt": "2026-03-12T12:50:33.420Z"
+    },
+    "what-i-use-chrome-extension": {
+      "data": {
+        "openingLine": "十年前那批 Chrome 插件，现在还有几个能用的。",
+        "focusQuestions": [
+          "Stash 现在还有替代方案吗？",
+          "当时用什么看优酷能跳过 45 秒广告？",
+          "鼠标手势现在还有人用吗？"
+        ],
+        "extensionTopics": [
+          "现在主力浏览器还是 Chrome 吗？",
+          "后来换成什么工具管理密码了？"
+        ]
+      },
+      "contentHash": "ef88a535",
+      "processedAt": "2026-03-12T12:50:33.943Z"
+    },
+    "great-jnu": {
+      "data": {
+        "openingLine": "这几张图做得挺有意思，耐克那句「活出你的伟大」被你改成了暨大版。",
+        "focusQuestions": [
+          "「没有海的城市」指的是暨大哪个校区？",
+          "这几张海报都是怎么P出来的？",
+          "苏炳添真是2009级本科生吗？"
+        ],
+        "extensionTopics": [
+          "还有没有其他校友能套这个句式？",
+          "这套文案当时传播效果怎么样？"
+        ]
+      },
+      "contentHash": "2a671e04",
+      "processedAt": "2026-03-12T12:50:36.349Z"
+    },
+    "openwrt-router-wifi-android-sync-iclould": {
+      "data": {
+        "openingLine": "十年前折腾路由器刷OpenWrt的方案，现在回头看哪些还值得参考。",
+        "focusQuestions": [
+          "MW4530R现在还能买到吗？",
+          "挂载硬盘必须格式化成ext4吗？",
+          "aria2和迅雷离线现在还能用吗？"
+        ],
+        "extensionTopics": [
+          "有没有更省事的现成NAS方案？",
+          "手机照片同步现在推荐用什么？"
+        ]
+      },
+      "contentHash": "a770536c",
+      "processedAt": "2026-03-12T12:50:33.047Z"
+    },
+    "personal-brand": {
+      "data": {
+        "openingLine": "十年前写下的这些观察，现在回头看，实名社交的潮水似乎已经退了不少。",
+        "focusQuestions": [
+          "现在还有必要坚持实名制吗？",
+          "Path这类私密社交后来怎么消失了？",
+          "网络差评真能让店家倒闭吗？"
+        ],
+        "extensionTopics": [
+          "你现在的社交账号还用自己的真名吗？",
+          "当年说的「绝不犯傻」具体指哪些事？"
+        ]
+      },
+      "contentHash": "2e015b8d",
+      "processedAt": "2026-03-12T12:50:36.278Z"
+    },
+    "dorcus-sell": {
+      "data": {
+        "openingLine": "十年前亚洲自行车展的头奖车架，现在看是什么水平。",
+        "focusQuestions": [
+          "钪合金车架比铝合金轻多少？",
+          "18寸适合多高的人骑？",
+          "当时淘宝价大概多少钱？"
+        ],
+        "extensionTopics": [
+          "这车架最后出了吗？",
+          "现在钪合金还主流吗？"
+        ]
+      },
+      "contentHash": "6b316e47",
+      "processedAt": "2026-03-12T12:50:38.173Z"
+    },
+    "gestures-for-chrome-tips": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "南京大屠杀纪念馆看了四小时，饿了吗？",
+          "暨南学堂的碑具体在鼓楼哪块草丛？",
+          "中山陵和大屠杀纪念馆为什么放一起写？"
+        ],
+        "extensionTopics": [
+          "广州上学后为什么开始抵触大城市？",
+          "川藏骑行和这次人文之旅什么关系？"
+        ]
+      },
+      "contentHash": "08dce286",
+      "processedAt": "2026-03-12T12:50:38.601Z"
+    },
+    "17-qq-group": {
+      "data": {
+        "openingLine": "一个QQ骑行群，用数字暗号筛选同好，看起来挺有默契的。",
+        "focusQuestions": [
+          "群暗号为什么是17不是别的数字？",
+          "500人满了之后会开新群吗？",
+          "群里主要聊入藏线还是也聊短途？"
+        ],
+        "extensionTopics": [
+          "线下聚会一般在哪里办？",
+          "除了QQ群有没有其他联系方式？"
+        ]
+      },
+      "contentHash": "ec4baaaa",
+      "processedAt": "2026-03-12T12:50:39.290Z"
+    },
+    "gap-year-news-report": {
+      "data": {
+        "openingLine": "作者在川藏线上遇到过这位被骂的西安妹子，想听听他眼里的真实情况。",
+        "focusQuestions": [
+          "那天骑140公里烂路具体有多难？",
+          "队里为啥叫她「副队」？",
+          "路上拦车要水成功率高吗？"
+        ],
+        "extensionTopics": [
+          "你自己也被加过菜？后来有感谢吗？",
+          "如果当时知道会火，她还会发那条微博吗？"
+        ]
+      },
+      "contentHash": "eadb3c6a",
+      "processedAt": "2026-03-12T12:50:39.208Z"
+    },
+    "biket2tibet-movie": {
+      "data": {
+        "openingLine": "21岁骑完川藏线，剪辑时一帧一帧回看，这种心情大概只有真正走过的人才懂。",
+        "focusQuestions": [
+          "29天骑完2200公里，每天平均要骑多远？",
+          "用Final Cut Pro X剪了多久？",
+          "路上遇到的车友后来还有联系吗？"
+        ],
+        "extensionTopics": [
+          "间隔年除了骑行还尝试过什么？",
+          "现在回看2012年的这段视频，感觉有变化吗？"
+        ]
+      },
+      "contentHash": "b75f8e8d",
+      "processedAt": "2026-03-12T12:50:42.315Z"
+    },
+    "318-debate": {
+      "data": {
+        "openingLine": "作者在川藏线上真遇到过那个被骂的西安妹子，想听听他怎么说。",
+        "focusQuestions": [
+          "作者和麦田同行那天经历了什么？",
+          "路上蹭吃蹭喝到底是什么情况？",
+          "为什么觉得麦田那条微博是反语？"
+        ],
+        "extensionTopics": [
+          "作者后来还遇到过麦田吗？",
+          "其他骑友对蹭吃蹭喝怎么看？"
+        ]
+      },
+      "contentHash": "bf64e5b6",
+      "processedAt": "2026-03-12T12:50:38.374Z"
+    },
+    "biket2tibet1": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "川藏线上具体有哪些致命风险？",
+          "出发前为什么特意提到妈妈弟弟女朋友？",
+          "72拐为什么特别危险？"
+        ],
+        "extensionTopics": [
+          "后来真的遇到危险了吗？",
+          "骑行回来后想法变了吗？"
+        ]
+      },
+      "contentHash": "abe2bf4f",
+      "processedAt": "2026-03-12T12:50:41.273Z"
+    },
+    "sz2gz": {
+      "data": {
+        "openingLine": "骑到凌晨浑身湿透是什么感觉？这篇雨衣夜行的细节太具体了。",
+        "focusQuestions": [
+          "99块的雨衣能扛多久小雨？",
+          "没买雨裤具体会冷成什么样？",
+          "抓绒衣湿了之后怎么处理的？"
+        ],
+        "extensionTopics": [
+          "五月川藏南线准备带哪些装备？",
+          "广州附近还有哪条路线适合练手？"
+        ]
+      },
+      "contentHash": "07413d31",
+      "processedAt": "2026-03-12T12:50:42.984Z"
+    },
+    "thinking-at-sep": {
+      "data": {
+        "openingLine": "9月到了，正好停下来把这些问题捋一捋。",
+        "focusQuestions": [
+          "工作、感情、时间这几个哪个最急？",
+          "打算怎么安排读书和学习的时间？",
+          "是一起写还是分开想？"
+        ],
+        "extensionTopics": [
+          "之前有没有做过类似的月度复盘？",
+          "写完之后会公开还是只给自己看？"
+        ]
+      },
+      "contentHash": "b3708963",
+      "processedAt": "2026-03-12T12:50:43.307Z"
+    },
+    "we": {
+      "data": {
+        "openingLine": "读这篇2011年的旧文，能感觉到作者写下这些字句时紧咬牙关的重量。",
+        "focusQuestions": [
+          "作者为什么说自己'笑不出'？",
+          "小伊伊和杨峰是指什么人？",
+          "五毛''愤青''傻逼'这些标签当时怎么流行起来的？"
+        ],
+        "extensionTopics": [
+          "作者后来还写过类似主题的文章吗？",
+          "十一年过去，文中的'抱怨'变了吗？"
+        ]
+      },
+      "contentHash": "8000252e",
+      "processedAt": "2026-03-12T12:50:45.179Z"
+    },
+    "cv-design-chs": {
+      "data": {
+        "openingLine": "假期赶简历，还顺手用WP7风格做了套设计，挺有想法的。",
+        "focusQuestions": [
+          "这种metro风格具体怎么布局的？",
+          "投简历前书单选了哪些方向？",
+          "假期10本书打算怎么分配时间？"
+        ],
+        "extensionTopics": [
+          "后来这套设计实际反馈怎么样？",
+          "有对比过其他简历风格的效果吗？"
+        ]
+      },
+      "contentHash": "f229edec",
+      "processedAt": "2026-03-12T12:50:45.419Z"
+    },
+    "qiuye-cv-desig": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "WP7风格简历长什么样？",
+          "秋叶老师具体提了哪些修改建议？",
+          "三次修改主要改了哪些地方？"
+        ],
+        "extensionTopics": [
+          "后来还用过这份简历找工作吗？",
+          "现在做简历会选什么风格？"
+        ]
+      },
+      "contentHash": "3da51957",
+      "processedAt": "2026-03-12T12:50:44.801Z"
+    },
+    "summer-read": {
+      "data": {
+        "openingLine": "图书馆冷气足、网速快，这样的地方确实容易让人想多借几本书。",
+        "focusQuestions": [
+          "七本书里哪本最先开始读？",
+          "《变化社会中的政治秩序》六月为什么没看完？",
+          "苏联史的兴趣是怎么突然起来的？"
+        ],
+        "extensionTopics": [
+          "后来去市图书馆档案局查到什么了吗？",
+          "这几本读完有改变什么想法吗？"
+        ]
+      },
+      "contentHash": "a4c3b76d",
+      "processedAt": "2026-03-12T12:50:45.924Z"
+    },
+    "hello-summer": {
+      "data": {
+        "openingLine": "交卷那一刻，突然意识到这是倒数第二个暑假了。",
+        "focusQuestions": [
+          "打算去哪里实习？",
+          "这个假期书单有吗？",
+          "女朋友回家前最后约了什么？"
+        ],
+        "extensionTopics": [
+          "倒数第一个暑假怎么打算？",
+          "成熟和成长具体指什么？"
+        ]
+      },
+      "contentHash": "9aba1daf",
+      "processedAt": "2026-03-12T12:50:45.253Z"
+    },
+    "card-design": {
+      "data": {
+        "openingLine": "学生会主席的名片，用半个下午赶出来的。",
+        "focusQuestions": [
+          "最后用了什么软件做名片？",
+          "两个主席具体怎么评价？",
+          "设计辅助软件有哪些推荐？"
+        ],
+        "extensionTopics": [
+          "周孝正讲座内容是什么？",
+          "BEC考完感觉怎么样？"
+        ]
+      },
+      "contentHash": "c1f70d47",
+      "processedAt": "2026-03-12T12:50:46.989Z"
+    },
+    "weibo-tiger-sorry": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "后来那个男当事人怎么样了？",
+          "当时微博上的具体谣言是什么？",
+          "作者在广州校区怎么了解到珠海的事？"
+        ],
+        "extensionTopics": [
+          "之后他还写过类似的反思吗？",
+          "同期其他校园网络事件怎么处理的？"
+        ]
+      },
+      "contentHash": "9c0eefe1",
+      "processedAt": "2026-03-12T12:50:47.509Z"
+    },
+    "may-35": {
+      "data": {
+        "openingLine": "通行证到期、某园进不去，这种被迫旁观的感觉，你以前遇到过吗。",
+        "focusQuestions": [
+          "文中说的'某园'具体是什么地方？",
+          "三个石头'是什么意思？",
+          "作者迷上的罗素、洛克是谁？"
+        ],
+        "extensionTopics": [
+          "象牙塔里还想多看点什么？",
+          "找工作和看热闹，哪个会赢？"
+        ]
+      },
+      "contentHash": "3b65c1f7",
+      "processedAt": "2026-03-12T12:50:48.575Z"
+    },
+    "june-book": {
+      "data": {
+        "openingLine": "期末了还列四本，你是真想看完还是就想给自己找点压力。",
+        "focusQuestions": [
+          "《1984》之前在电脑上看了多少页？",
+          "图书馆那本《动物庄园》为什么找不到？",
+          "29文买的设计书到底讲了什么原则？"
+        ],
+        "extensionTopics": [
+          "《第三波浪潮》和这本亨廷顿哪本更适合先看？",
+          "这几本里面哪本最适合用电子墨水屏读？"
+        ]
+      },
+      "contentHash": "05476a9a",
+      "processedAt": "2026-03-12T12:50:48.503Z"
+    },
+    "jnu-shelian": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "影协到底为什么被撤，文章里说了吗？",
+          "Mattew是谁，他原话到底怎么骂的？",
+          "那个抵制社联的签名链接现在还能打开吗？"
+        ],
+        "extensionTopics": [
+          "后来影协真的被撤销了吗？",
+          "国外大学怎么管社团的，作者提到了吗？"
+        ]
+      },
+      "contentHash": "18c05557",
+      "processedAt": "2026-03-12T12:50:46.811Z"
+    },
+    "volunteer-zhouxiaozheng": {
+      "data": {
+        "openingLine": "十年前一场靠网友接力完成的讲座整理，奖励竟是两个月翻墙账号。",
+        "focusQuestions": [
+          "当时用的什么VPS，速度能到多少？",
+          "10段怎么分工的，每段多长？",
+          "整理完直接发邮件还是传云端？"
+        ],
+        "extensionTopics": [
+          "现在还有这种志愿整理项目吗？",
+          "当年那批人后来怎么保持联系？"
+        ]
+      },
+      "contentHash": "afb2cb19",
+      "processedAt": "2026-03-12T12:50:47.541Z"
+    },
+    "hello-world": {
+      "data": {
+        "openingLine": "通行证断了，热闹看不成，先哲和现实两头拉扯——你也有过这种卡住的感觉吗。",
+        "focusQuestions": [
+          "作者提到的'三个石头'是什么意思？",
+          "房价2万的城市大概在哪里？",
+          "看热闹'具体指什么事情？"
+        ],
+        "extensionTopics": [
+          "后来找到工作了吗？",
+          "现在回头看罗素和洛克还在读吗？"
+        ]
+      },
+      "contentHash": "3b65c1f7",
+      "processedAt": "2026-03-12T12:50:48.856Z"
+    },
+    "nuffnang": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "流量爆了备份不过来怎么办？",
+          "公益广告具体怎么选？",
+          "装了Adblock会不会看不到自己的广告？"
+        ],
+        "extensionTopics": [
+          "后来这个博客做下去了吗？",
+          "拿福能现在还在中国运营吗？"
+        ]
+      },
+      "contentHash": "ffd1887d",
+      "processedAt": "2026-03-12T12:50:50.397Z"
+    },
+    "test": {
+      "data": {
+        "openingLine": "博主换域名了，看来上次那篇关于方校长的文章影响不小。",
+        "focusQuestions": [
+          "VPS 是哪里买的、多少钱？",
+          "现在网站每月流量大概多少？",
+          "新域名选 .com 有什么考量？"
+        ],
+        "extensionTopics": [
+          "方校长那篇文章现在还能找到吗？",
+          "从国内主机换 VPS 具体怎么操作？"
+        ]
+      },
+      "contentHash": "92885036",
+      "processedAt": "2026-03-12T12:50:49.216Z"
+    },
+    "flight-3d-earth": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "墨卡托投影怎么让航线看起来变弯了？",
+          "现在用的是真实数据还是模拟数据？",
+          "Flightradar24的API到底怎么计费？"
+        ],
+        "extensionTopics": [
+          "有哪些特别绕的航线值得看看？",
+          "自己做类似项目还能用哪些免费数据源？"
+        ]
+      },
+      "contentHash": "b365e803",
+      "processedAt": "2026-03-12T12:48:56.852Z"
+    },
+    "zte-f50": {
+      "data": {
+        "openingLine": "这台不到50g的小东西，真能跑满5G还比手机热点稳定吗。",
+        "focusQuestions": [
+          "你平时插哪张卡，网速能到多少？",
+          "长时间用下来发热真的明显吗？",
+          "TF卡槽除了读卡还能干嘛？"
+        ],
+        "extensionTopics": [
+          "你车里用的是什么供电方案？",
+          "如果预算加一倍还有更省心的选择吗？"
+        ]
+      },
+      "contentHash": "70c00327",
+      "processedAt": "2026-03-12T12:49:00.079Z"
+    },
+    "eyes-2025": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "散瞳验光后度数为什么会降？",
+          "为什么建议先配550度而不是直接500度？",
+          "停车怎么减免到10块一次？"
+        ],
+        "extensionTopics": [
+          "后来真换成500度了吗？",
+          "除了深大总医院还有其他推荐吗？"
+        ]
+      },
+      "contentHash": "6b96bd4a",
+      "processedAt": "2026-03-12T12:48:55.545Z"
+    },
+    "how-i-lose-10kg-in-3-months": {
+      "data": {
+        "openingLine": "七年增重四十斤，作者用三个月减掉一半，来看看具体怎么操作的。",
+        "focusQuestions": [
+          "每天早餐具体吃什么？",
+          "HIIT和骑行怎么安排时间？",
+          "戒糖后怎么对抗想吃甜食的冲动？"
+        ],
+        "extensionTopics": [
+          "瓶颈期体重不降怎么办？",
+          "现在恢复到什么体重了？"
+        ]
+      },
+      "contentHash": "2d2597a7",
+      "processedAt": "2026-03-12T12:49:04.900Z"
+    },
+    "chatgpt-in-development": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "手机号和信用卡怎么自己搞定？",
+          "Pandora 具体怎么部署给团队用？",
+          "优化代码时怎么防止 AI 乱删东西？"
+        ],
+        "extensionTopics": [
+          "Copilot 和 ChatGPT 怎么分工配合？",
+          "prompt 库有推荐的整理方法吗？"
+        ]
+      },
+      "contentHash": "89d19e0d",
+      "processedAt": "2026-03-12T12:49:04.614Z"
+    },
+    "mountain-everest-internet-speedtest": {
+      "data": {
+        "openingLine": "作者在珠峰大本营还能刷出4G信号，确实挺意外的，想具体看看测速数据。",
+        "focusQuestions": [
+          "5000米海拔测速具体多少兆？",
+          "全程4G覆盖走了哪几条路线？",
+          "西藏自驾SIM卡选哪家运营商？"
+        ],
+        "extensionTopics": [
+          "高海拔地区基站供电怎么解决？",
+          "其他国家的偏远地区网络覆盖对比？"
+        ]
+      },
+      "contentHash": "a90d63c6",
+      "processedAt": "2026-03-12T12:49:09.632Z"
+    },
+    "kunming-yuxi-weekend-getaways": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "抚仙湖住太阳山度假村和网红民宿差别在哪？",
+          "磨豆山开车上去具体要多久，路况怎么样？",
+          "昆明篆新农贸市场下午几点就不让进了？"
+        ],
+        "extensionTopics": [
+          "如果三天的话还可以加哪条线？",
+          "东航随心飞除了昆明还有哪些好路线？"
+        ]
+      },
+      "contentHash": "6dc444ec",
+      "processedAt": "2026-03-12T12:49:11.590Z"
+    },
+    "logitech-g502-lightspeed": {
+      "data": {
+        "openingLine": "用了三年有线G502，趁618换了无线版，顺手记录一下开箱和实际感受。",
+        "focusQuestions": [
+          "无线版比有线轻了多少克？",
+          "519元算是好价吗？",
+          "充电接口还是microUSB吗？"
+        ],
+        "extensionTopics": [
+          "HERO 16K传感器比老款强在哪？",
+          "Powerplay无线充电值得配吗？"
+        ]
+      },
+      "contentHash": "013fd86b",
+      "processedAt": "2026-03-12T12:49:10.118Z"
+    },
+    "aurora-as036-shredder": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "一次最多塞几张纸不卡机？",
+          "5级保密碎出来的纸屑有多大？",
+          "过热或过载时灯会怎么提示？"
+        ],
+        "extensionTopics": [
+          "除了碎纸机还有什么销毁敏感文件的办法？",
+          "商用碎纸机和这种桌面款差别有多大？"
+        ]
+      },
+      "contentHash": "4ed5fcc5",
+      "processedAt": "2026-03-12T12:49:15.188Z"
+    },
+    "top-5-interesting-chinese-website": {
+      "data": {
+        "openingLine": "这几个站你平时刷得多吗？我倒是常看，尤其想换设备或者找工具的时候。",
+        "focusQuestions": [
+          "V2ex 现在氛围怎么样？",
+          "Chiphell 和数字尾巴哪个更适合看评测？",
+          "少数派上的效率工具推荐靠谱吗？"
+        ],
+        "extensionTopics": [
+          "海外用 Mobile01 体验有什么不同？",
+          "除了这五个还有类似的小众站吗？"
+        ]
+      },
+      "contentHash": "c8d7278a",
+      "processedAt": "2026-03-12T12:49:20.610Z"
+    },
+    "oneplus-esim-usa-travel": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "一加 eSIM 在纽约具体怎么翻车的？",
+          "漫游超人和 T-Mobile 预付卡各多少钱？",
+          "最后作者推荐用哪个方案？"
+        ],
+        "extensionTopics": [
+          "T-Mobile 预付卡在国内能提前买吗？",
+          "如果去欧洲是不是也适用这套方案？"
+        ]
+      },
+      "contentHash": "2f08bf74",
+      "processedAt": "2026-03-12T12:49:25.278Z"
+    },
+    "shenzhen-startup-tutorial": {
+      "data": {
+        "openingLine": "作者把从注册到开户的完整流程走了一遍，踩过的坑确实能帮后来者省不少时间。",
+        "focusQuestions": [
+          "上海代理注册为啥最后没成功？",
+          "深圳DIY注册具体怎么操作？",
+          "数字签名必须用本地银行的U盾吗？"
+        ],
+        "extensionTopics": [
+          "深圳和上海注册流程差别大吗？",
+          "自己跑和找代理哪个更省心？"
+        ]
+      },
+      "contentHash": "32d409f6",
+      "processedAt": "2026-03-12T12:49:23.519Z"
+    },
+    "iphone-esim-club-sim": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "港版iPhone XS怎么扫二维码加eSIM？",
+          "Club eSIM免费申请要香港手机号吗？",
+          "激活后有效期多久，能停着不用吗？"
+        ],
+        "extensionTopics": [
+          "3HK那138块10天的和Club比哪个划算？",
+          "除了漫游，eSIM平时主号双卡好用吗？"
+        ]
+      },
+      "contentHash": "feb0ccac",
+      "processedAt": "2026-03-12T12:49:22.328Z"
+    },
+    "nintendo-switch-unboxing": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "港版同捆版具体多少钱买的？",
+          "为什么觉得马里奥奥德赛一般？",
+          "卡带苦味涂层真的有用吗？"
+        ],
+        "extensionTopics": [
+          "后来单独买的 Pro 手柄怎么样？",
+          "现在还会推荐别人买港版吗？"
+        ]
+      },
+      "contentHash": "d4af0ad1",
+      "processedAt": "2026-03-12T12:49:34.676Z"
+    },
+    "zeiss-terra-8x25-binocular": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "8x25的目镜是不是偏小？",
+          "ED镜片和平场效果有啥区别？",
+          "自驾时放哪最顺手？"
+        ],
+        "extensionTopics": [
+          "除了看风景还能用来观星吗？",
+          "和胜途那款900元的比值得吗？"
+        ]
+      },
+      "contentHash": "36bff647",
+      "processedAt": "2026-03-12T12:49:35.721Z"
+    },
+    "hisense-a2-pro-unboxing": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "截屏便签具体怎么用？",
+          "墨水屏和Kindle比清晰度差多少？",
+          "3000块算贵还是便宜？"
+        ],
+        "extensionTopics": [
+          "除了海信还有其他双面屏手机吗？",
+          "带壳之后手感变化大不大？"
+        ]
+      },
+      "contentHash": "9c5021f9",
+      "processedAt": "2026-03-12T12:49:37.895Z"
+    },
+    "century-thunderbolt2-5bay-raid-storage": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "RAID0和RAID5实际速度差多少？",
+          "这风扇噪音到底有多大？",
+          "为什么选软RAID而不是硬件阵列？"
+        ],
+        "extensionTopics": [
+          "雷电2现在是不是有点过时了？",
+          "除了视频剪辑还有什么场景适合用它？"
+        ]
+      },
+      "contentHash": "c8de2703",
+      "processedAt": "2026-03-12T12:49:37.812Z"
+    },
+    "owc-thunderbolt-3-dock": {
+      "data": {
+        "openingLine": "2500块买个拓展坞，两年用下来真的值吗。",
+        "focusQuestions": [
+          "SD卡槽实际读写速度多少？",
+          "miniDP为什么不支持雷电2？",
+          "多显示器同时用会黑屏吗？"
+        ],
+        "extensionTopics": [
+          "现在买贝尔金还是OWC？",
+          "普通Hub和雷电3拓展坞怎么选？"
+        ]
+      },
+      "contentHash": "8c1dd447",
+      "processedAt": "2026-03-12T12:49:41.635Z"
+    },
+    "bangkok-shooting": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "基础套餐580元能体验哪些枪？",
+          "女生穿短裤短裙真的进不去吗？",
+          "M16和霰弹枪后坐力差多少？"
+        ],
+        "extensionTopics": [
+          "泰国还有别的军事基地能射击吗？",
+          "国内现在能合法体验实弹射击吗？"
+        ]
+      },
+      "contentHash": "ba201d16",
+      "processedAt": "2026-03-12T12:49:41.104Z"
+    },
+    "dji-phantom-4-unboxing": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "精灵4三电套餐具体包含哪些东西？",
+          "7480这个价格当时算好价吗？",
+          "精灵3和4的电池为什么不能通用？"
+        ],
+        "extensionTopics": [
+          "背包是在淘宝哪家店买的？",
+          "精灵3炸过机吗，怎么处理的？"
+        ]
+      },
+      "contentHash": "99381143",
+      "processedAt": "2026-03-12T12:49:46.969Z"
+    },
+    "mijia-action-camera-unboxing": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "屏幕颗粒感明显，实际用起来会不会很糟？",
+          "IMX317这颗CMOS画质到底怎么样？",
+          "和小蚁4K比，配件能通用吗？"
+        ],
+        "extensionTopics": [
+          "小蚁4K用了这么久，后悔买早了吗？",
+          "除了旅游，这价格适合当行车记录仪吗？"
+        ]
+      },
+      "contentHash": "f47be118",
+      "processedAt": "2026-03-12T12:49:39.206Z"
+    },
+    "meet-in-suzhou-day-2": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "苏博的预约二维码在哪领？",
+          "拙政园当天门票几点会售完？",
+          "平江路从拙政园走过去要多久？"
+        ],
+        "extensionTopics": [
+          "同里古镇那天怎么安排的？",
+          "美国西海岸自驾计划去哪几个地方？"
+        ]
+      },
+      "contentHash": "b41d432c",
+      "processedAt": "2026-03-12T12:49:48.989Z"
+    },
+    "we-got-usa-visa": {
+      "data": {
+        "openingLine": "十年美签到手，但作者最开始其实是想去菲律宾——这操作你遇到过吗。",
+        "focusQuestions": [
+          "自己填DS-160表格要注意什么坑？",
+          "面签官到底问了哪些问题？",
+          "旅行社代办和自己办差多少钱？"
+        ],
+        "extensionTopics": [
+          "没发达国家签证记录怎么过面签？",
+          "菲律宾免签7天够玩吗？"
+        ]
+      },
+      "contentHash": "65fa0b3c",
+      "processedAt": "2026-03-12T12:49:46.884Z"
+    },
+    "meet-in-japan-day-1": {
+      "data": {
+        "openingLine": "东京第一天，从抢票到住进海景房，中间还踩了个小坑。",
+        "focusQuestions": [
+          "6k含税往返是哪天刷到的？",
+          "JR东北通票1200块怎么买？",
+          "中华料理那顿花了多少钱？"
+        ],
+        "extensionTopics": [
+          "洲际大使贵宾计划值不值？",
+          "台场没安排会遗憾吗？"
+        ]
+      },
+      "contentHash": "76c5fabc",
+      "processedAt": "2026-03-12T12:49:50.173Z"
+    },
+    "meet-in-japan-day-2": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "皇居广场的石子地是什么讲究？",
+          "银座优衣库和国内价格差多少？",
+          "A7S2弱光下怎么调色的？"
+        ],
+        "extensionTopics": [
+          "洲际大使延迟退房怎么弄？",
+          "仙台后面几天怎么安排的？"
+        ]
+      },
+      "contentHash": "eebd5394",
+      "processedAt": "2026-03-12T12:49:48.875Z"
+    },
+    "macbook-battery-replacement-tutorial-diy": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "换电池花了多少钱？",
+          "要买哪种螺丝刀？",
+          "拆装时怎么防止丢螺丝？"
+        ],
+        "extensionTopics": [
+          "现在还能买到绿巨能电池吗？",
+          "换完电池后续航实测怎么样？"
+        ]
+      },
+      "contentHash": "28f8dcb3",
+      "processedAt": "2026-03-12T12:49:54.783Z"
+    },
+    "meet-in-seoul-a-iphone-travel-video": {
+      "data": {
+        "openingLine": "iPhone 6 加三轴稳定器拍首尔，这套组合实际用起来顺手吗。",
+        "focusQuestions": [
+          "iPhone比运动相机强在哪儿？",
+          "三轴稳定器具体用的哪一款？",
+          "视频后期花了多长时间？"
+        ],
+        "extensionTopics": [
+          "小蚁相机这次拍了多少素材？",
+          "专业相机录视频会比这套好吗？"
+        ]
+      },
+      "contentHash": "0e507bab",
+      "processedAt": "2026-03-12T12:49:53.707Z"
+    },
+    "review-or-2015-gadget": {
+      "data": {
+        "openingLine": "作者刚工作第一年，从键盘到猫，置办了不少东西，看看哪些钱花得值。",
+        "focusQuestions": [
+          "HHKB用VIM操作效率提升明显吗？",
+          "AOC显示器2.5K入手，漏光控制怎么样？",
+          "小蚁相机和GoPro差距主要在哪些场景？"
+        ],
+        "extensionTopics": [
+          "这些装备现在还在用吗？",
+          "租房党买人体工学椅值得吗？"
+        ]
+      },
+      "contentHash": "0848cbe7",
+      "processedAt": "2026-03-12T12:49:55.391Z"
+    },
+    "everything-behind-the-road-i-runned": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "膝盖查出退行性变后怎么恢复跑步的？",
+          "第一次马拉松为什么选了秦皇岛？",
+          "跑鞋和姿势有什么讲究？"
+        ],
+        "extensionTopics": [
+          "现在还在坚持跑步吗？",
+          "想试试骑行川藏要注意什么？"
+        ]
+      },
+      "contentHash": "a40ecebb",
+      "processedAt": "2026-03-12T12:50:05.576Z"
+    },
+    "what-i-read-in-2015-spring": {
+      "data": {
+        "openingLine": "这半年读了16本，从设计方法论到何伟的甲骨文，跨度不小。",
+        "focusQuestions": [
+          "《甲骨文》国内没出版，怎么读到它的？",
+          "哪几本做了读书笔记，方便参考吗？",
+          "《反脆弱》为什么建议读纸书？"
+        ],
+        "extensionTopics": [
+          "何伟中国三部曲另外两本值得补吗？",
+          "这些书里哪些适合产品经理优先读？"
+        ]
+      },
+      "contentHash": "8964dda9",
+      "processedAt": "2026-03-12T12:50:04.676Z"
+    },
+    "shanghai-typhoon-sky-change-timelapse": {
+      "data": {
+        "openingLine": "小蚁运动相机直出延时确实省事，在公司拍台风，最后画面效果怎么样。",
+        "focusQuestions": [
+          "延时视频拍了多久？",
+          "台风前天空变化明显吗？",
+          "小蚁直出和后期合成差在哪？"
+        ],
+        "extensionTopics": [
+          "搬家和拍视频是同一天吗？",
+          "上海台风天还有什么好拍的？"
+        ]
+      },
+      "contentHash": "1e2db4bb",
+      "processedAt": "2026-03-12T12:50:02.168Z"
+    },
+    "chinanet-iptv": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "msd_lite 比 udpxy 省多少 CPU？",
+          "IPTV 超过 1.2G 为啥会限网速？",
+          "200 路的时候网速又恢复 1000M 怎么回事？"
+        ],
+        "extensionTopics": [
+          "深圳联通和东莞电信差异大吗？",
+          "AppleTV 四路同屏怎么设置的？"
+        ]
+      },
+      "contentHash": "60bed82c",
+      "processedAt": "2026-03-12T12:48:56.202Z"
+    },
+    "changsha-marathon-2024": {
+      "data": {
+        "openingLine": "十年马拉松经验，中断三年后再出发，这次长沙赛道的具体体验如何。",
+        "focusQuestions": [
+          "参赛包里具体都有什么东西？",
+          "赞助商名额怎么拿到的？",
+          "最后两公里上坡到底有多折磨？"
+        ],
+        "extensionTopics": [
+          "平时只跑5公里怎么备赛全马？",
+          "明年430目标要怎么练？"
+        ]
+      },
+      "contentHash": "06fa7090",
+      "processedAt": "2026-03-12T12:48:58.635Z"
+    },
+    "ugreen-dx4600": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "2000价位具体是指多少？",
+          "双2.5G网口怎么配合交换机用？",
+          "功耗45-55W算高还是低？"
+        ],
+        "extensionTopics": [
+          "你之前折腾群晖踩过哪些坑？",
+          "除了绿联还对比过哪些成品NAS？"
+        ]
+      },
+      "contentHash": "100f2d6a",
+      "processedAt": "2026-03-12T12:49:07.369Z"
+    },
+    "home-network-1": {
+      "data": {
+        "openingLine": "装修弱电这部分，最容易前期省钱后期后悔。",
+        "focusQuestions": [
+          "吊顶藏路由散热够吗？",
+          "超六类线能跑多少兆？",
+          "全屋WiFi怎么测速验收？"
+        ],
+        "extensionTopics": [
+          "下篇会讲机柜具体怎么摆？",
+          "精装房网线要不要全换？"
+        ]
+      },
+      "contentHash": "61421a7f",
+      "processedAt": "2026-03-12T12:49:07.011Z"
+    },
+    "what-i-read-in-2023-spring": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "《双重冲击》为什么说中国输定了？",
+          "《现代中国的形成》从哪些角度分析清朝？",
+          "《制造消费者》和中国80年代差在哪？"
+        ],
+        "extensionTopics": [
+          "其他几本你印象最深的是哪本？",
+          "现在恢复阅读习惯后打算怎么保持？"
+        ]
+      },
+      "contentHash": "1f58aabd",
+      "processedAt": "2026-03-12T12:49:05.887Z"
+    },
+    "shenzhen-wisdom-teeth-extraction": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "拔四颗智齿总共花了多少钱？",
+          "第二次为啥比第一次贵两百？",
+          "医保卡没绑定成功怎么办？"
+        ],
+        "extensionTopics": [
+          "深圳其他三甲医院拔牙价格对比？",
+          "拔完牙后多久能正常吃饭？"
+        ]
+      },
+      "contentHash": "9d4d6f33",
+      "processedAt": "2026-03-12T12:49:11.285Z"
+    },
+    "what-i-use-chrome-extension-2023": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "日常和开发插件怎么分开管理？",
+          "油猴脚本具体用来跳过哪些网站？",
+          "比价插件能追踪多久的历史价格？"
+        ],
+        "extensionTopics": [
+          "这些插件在 Edge 上兼容性怎么样？",
+          "有没有考虑过改用 Firefox 作为主浏览器？"
+        ]
+      },
+      "contentHash": "83074882",
+      "processedAt": "2026-03-12T12:49:03.604Z"
+    },
+    "how-to-open-a-bank-account-in-hongkong-2024": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "中银和汇丰walk-in哪个更快？",
+          "地址证明用信用卡账单怎么打印？",
+          "ZA Bank实体卡寄内地多少钱？"
+        ],
+        "extensionTopics": [
+          "如果已经在国内有中银账号，转钱到香港怎么免手续费？",
+          "除了元朗，还有哪些偏门网点开户更省事？"
+        ]
+      },
+      "contentHash": "ec24eba7",
+      "processedAt": "2026-03-12T12:49:03.997Z"
+    },
+    "raycast-sink": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "从 YOURLS 迁到 Sink 花了多久？",
+          "插件的本地缓存是怎么实现的？",
+          "没有编程基础能用 AI 做这种插件吗？"
+        ],
+        "extensionTopics": [
+          "其他替代 Alfred 或 Raycast 的方案？",
+          "用 Cursor 做大项目和小项目的区别？"
+        ]
+      },
+      "contentHash": "dc043896",
+      "processedAt": "2026-03-12T12:49:00.226Z"
+    },
+    "pc-2025": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "为啥最后选了雕妹主板而不是冰雕？",
+          "风冷压9700X到底够不够用？",
+          "铭瑄5070比技嘉雪鹰便宜多少？"
+        ],
+        "extensionTopics": [
+          "M2硬盘快拆实际用起来方便吗？",
+          "同款配置能不能再砍几百块？"
+        ]
+      },
+      "contentHash": "1589f00e",
+      "processedAt": "2026-03-12T12:48:57.515Z"
+    },
+    "fighting-cancer-collection": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "深圳和广州哪家医院更推荐？",
+          "基因检测必须做吗，大概多少钱？",
+          "MRD检测什么时候做最合适？"
+        ],
+        "extensionTopics": [
+          "熊猫与病友群怎么加入？",
+          "术后复查要保存哪些数据？"
+        ]
+      },
+      "contentHash": "20aef07f",
+      "processedAt": "2026-03-12T12:49:01.686Z"
+    },
+    "maclehose-trail": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "拼车到东坝总共花了多少钱？",
+          "浪茄湾那瓶可乐多少钱？",
+          "普通休闲装不带登山杖能走完吗？"
+        ],
+        "extensionTopics": [
+          "下个月带老婆走完整段第二段？",
+          "第一段和第二段哪段更适合新手？"
+        ]
+      },
+      "contentHash": "a778bddf",
+      "processedAt": "2026-03-12T12:49:00.071Z"
+    },
+    "luolei-ai": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "11万字上下文怎么压缩的？",
+          "追问时怎么判断要不要复用缓存？",
+          "反幻觉四条规则具体怎么生效？"
+        ],
+        "extensionTopics": [
+          "YouTube视频转文字后怎么喂进去？",
+          "换成本地部署模型要改哪些？"
+        ]
+      },
+      "contentHash": "a63768be",
+      "processedAt": "2026-03-12T12:48:58.002Z"
+    },
+    "benq-rd280U-monitor-for-programming": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "3:2比例写代码具体能多看到多少行？",
+          "MoonHalo背光灯实际亮度够深夜用吗？",
+          "接Xbox和Apple TV为什么会画面变形？"
+        ],
+        "extensionTopics": [
+          "除了光轴木桌还有什么桌面方案？",
+          "跟LG Dell同价位比差多少？"
+        ]
+      },
+      "contentHash": "b97867cf",
+      "processedAt": "2026-03-12T12:49:00.435Z"
+    },
+    "fighting-cancer": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "深圳和广州哪家医院的方案更稳妥？",
+          "基因检测现在做还是等复发后再做？",
+          "微乳头结构和脉管累犯对预后影响多大？"
+        ],
+        "extensionTopics": [
+          "术后康复期有哪些实际注意事项？",
+          "类似早期肺癌家庭是怎么做长期管理的？"
+        ]
+      },
+      "contentHash": "ff75b5b6",
+      "processedAt": "2026-03-12T12:49:02.681Z"
+    },
+    "secure-home-camera-setup": {
+      "data": {
+        "openingLine": "作者用一套旧设备搭了个本地监控，既省云存储费又能把视频留在自己手里。",
+        "focusQuestions": [
+          "旧群晖也能当监控主机吗？",
+          "摄像头必须支持什么协议？",
+          "外接SSD存储怎么设置？"
+        ],
+        "extensionTopics": [
+          "小米摄像头能刷固件支持ONVIF吗？",
+          "这种方案适合租房用吗？"
+        ]
+      },
+      "contentHash": "84f2a876",
+      "processedAt": "2026-03-12T12:49:04.988Z"
+    },
+    "pamu-quiet": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "降噪3个半小时够日常通勤用吗？",
+          "充电盒的流光效果费电吗？",
+          "APP不支持均衡器调节影响大不大？"
+        ],
+        "extensionTopics": [
+          "同价位还试过哪些降噪耳机？",
+          "睡觉戴真无线不怕压坏吗？"
+        ]
+      },
+      "contentHash": "3fff94ea",
+      "processedAt": "2026-03-12T12:49:08.344Z"
+    },
+    "personal-decoupling-cybersecurity": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "两套手机具体怎么分工最省心？",
+          "Cloudflare 的 Catch-all 怎么设置防撞库？",
+          "家庭 NAS 怎么实现三重备份？"
+        ],
+        "extensionTopics": [
+          "想进一步压缩国内服务的话还有哪些能砍？",
+          "这套方案每年大概要花多少维护成本？"
+        ]
+      },
+      "contentHash": "6bea9dd3",
+      "processedAt": "2026-03-12T12:49:04.209Z"
+    },
+    "huawei-freebuds3": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "FreeBuds 3 降噪怎么开启？",
+          "充电盒真的不用带线吗？",
+          "戴着睡觉会压耳朵吗？"
+        ],
+        "extensionTopics": [
+          "除了前海，深圳还有类似的荒地吗？",
+          "白噪音听海浪，有推荐的 App 吗？"
+        ]
+      },
+      "contentHash": "ba071f3a",
+      "processedAt": "2026-03-12T12:49:16.666Z"
+    },
+    "why-i-choose-telegram": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "BOT的入群验证具体怎么操作？",
+          "反广告系统能识别哪些推广行为？",
+          "每天发贴纸超过5个会被怎么处理？"
+        ],
+        "extensionTopics": [
+          "微信那批老粉有没有跟着过来？",
+          "其他YouTube博主怎么选社群平台？"
+        ]
+      },
+      "contentHash": "0a7fa785",
+      "processedAt": "2026-03-12T12:49:15.879Z"
+    },
+    "zeiss-glasses": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "横岗眼镜城怎么挑到靠谱镜架？",
+          "原厂加工和普通加工差在哪？",
+          "74折射率镜片边缘还是会厚吗？"
+        ],
+        "extensionTopics": [
+          "镜片防伪标怎么保留最合适？",
+          "高折射率镜片选大框还是小框？"
+        ]
+      },
+      "contentHash": "06cad379",
+      "processedAt": "2026-03-12T12:49:10.739Z"
+    },
+    "shenzhen-chinanet-public-dns-realtime-benchmark": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "深圳电信用哪个 DNS 延迟最低？",
+          "红鱼 DNS 稳定性怎么样？",
+          "家用宽带测延迟要避开哪些干扰？"
+        ],
+        "extensionTopics": [
+          "除了 DNS 还监控了哪些 VPS？",
+          "SmokePing 配置有坑吗？"
+        ]
+      },
+      "contentHash": "f0b4bff5",
+      "processedAt": "2026-03-12T12:49:13.879Z"
+    },
+    "how-much-i-spend-on-cloud-monthly-2020": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "电信299套餐送的两部华为是哪款？",
+          "腾讯云香港服务器2021到期后打算续吗？",
+          "Adobe港区全家桶具体怎么付的款？"
+        ],
+        "extensionTopics": [
+          "Notion模板能直接套用吗？",
+          "除了文中这些，还有想过砍掉哪个订阅吗？"
+        ]
+      },
+      "contentHash": "c89389e9",
+      "processedAt": "2026-03-12T12:49:13.363Z"
+    },
+    "new-apartment-log-book": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "开放式厨房最后怎么解决的？",
+          "四家装修公司报价差好几万，选了哪家？",
+          "主卧卫生间改衣帽间，施工要注意什么？"
+        ],
+        "extensionTopics": [
+          "现在住进去没，省下的房租和办公室钱划算吗？",
+          "东莞装修人工比材料贵，具体哪些环节最烧钱？"
+        ]
+      },
+      "contentHash": "1cb99fa2",
+      "processedAt": "2026-03-12T12:49:09.952Z"
+    },
+    "migrate-from-ghost-to-wordpress": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "三台静态服务器用rsync同步，延迟大吗？",
+          "OpenResty+Redis缓存具体怎么配置的？",
+          "WebP用Nginx-lua自动转换，CPU占用高吗？"
+        ],
+        "extensionTopics": [
+          "Ghost和WordPress现在选哪个更好？",
+          "这种架构一个月服务器成本多少？"
+        ]
+      },
+      "contentHash": "d8e00589",
+      "processedAt": "2026-03-12T12:49:17.258Z"
+    },
+    "apple-macbook-flexgate": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "30度能看到、45度全黑是什么故障？",
+          "自己换排线真的只要30块钱吗？",
+          "15寸为什么不在官方服务计划里？"
+        ],
+        "extensionTopics": [
+          "你后来还继续用MacBook吗？",
+          "其他品牌笔记本有类似设计问题吗？"
+        ]
+      },
+      "contentHash": "62d5bfe6",
+      "processedAt": "2026-03-12T12:49:19.507Z"
+    },
+    "lycamobile-recharge-custom-money": {
+      "data": {
+        "openingLine": "这个方法现在还能用吗？作者后面提到Lyca在中国已经无法免费漫游了。",
+        "focusQuestions": [
+          "Console里那行代码具体怎么改金额？",
+          "充1美元真的能成功到账吗？",
+          "现在还有什么替代的低门槛保号方案？"
+        ],
+        "extensionTopics": [
+          "除了Lyca还有哪家支持自定义小额充值？",
+          "当时是怎么发现这个Console漏洞的？"
+        ]
+      },
+      "contentHash": "de2678a6",
+      "processedAt": "2026-03-12T12:49:20.961Z"
+    },
+    "china-unicom-iphone-active-voicemail": {
+      "data": {
+        "openingLine": "iOS 12.2 更新后，联通终于能用 iPhone 原生语音邮箱了。",
+        "focusQuestions": [
+          "联通开通后免费多久？",
+          "哪些情况会转进语音邮箱？",
+          "语音留言会自动转成文字吗？"
+        ],
+        "extensionTopics": [
+          "移动和留言现在还能免费吗？",
+          "电信用户什么时候能用上？"
+        ]
+      },
+      "contentHash": "a96da22a",
+      "processedAt": "2026-03-12T12:49:23.636Z"
+    },
+    "my-office-chair-2018": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "安装真的只要10分钟吗？",
+          "腰枕高度怎么调，范围够不够用？",
+          "固定扶手实际影响大不大？"
+        ],
+        "extensionTopics": [
+          "和之前那把椅子比怎么样？",
+          "这个价位还有其他值得看的吗？"
+        ]
+      },
+      "contentHash": "1d3ffb55",
+      "processedAt": "2026-03-12T12:49:25.913Z"
+    },
+    "mibox-s-unboxing": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "国内买这个盒子怎么解决网络问题？",
+          "遥控器上的Netflix键能改吗？",
+          "Chromecast投屏延迟怎么样？"
+        ],
+        "extensionTopics": [
+          "和Shield TV比起来差多少？",
+          "国内版小米盒子能刷这个系统吗？"
+        ]
+      },
+      "contentHash": "fe9401e4",
+      "processedAt": "2026-03-12T12:49:23.918Z"
+    },
+    "vlog-gear-2019": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "ND镜具体在什么光线场景下必须用？",
+          "蜗牛阻尼云台相比普通云台强在哪？",
+          "iwata 补光灯续航能撑多久？"
+        ],
+        "extensionTopics": [
+          "假电池方案会不会伤机器？",
+          "有没有试过更轻便的麦克风替代？"
+        ]
+      },
+      "contentHash": "f83e63c3",
+      "processedAt": "2026-03-12T12:49:19.822Z"
+    },
+    "china-pla-navy-167-ship-open-day": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "门票是免费抢的吗，在哪预约？",
+          "鱼雷真的两千万一枚？时速多少？",
+          "深圳舰是哪年服役的，有多老了？"
+        ],
+        "extensionTopics": [
+          "现在还能参观其他军舰吗？",
+          "除了深圳舰还有哪些'第一舰？"
+        ]
+      },
+      "contentHash": "21189d51",
+      "processedAt": "2026-03-12T12:49:27.159Z"
+    },
+    "travel-philippines-bohol": {
+      "data": {
+        "openingLine": "国庆带妈妈弟弟去薄荷岛考潜水证，11岁小孩也能独立下潜18米。",
+        "focusQuestions": [
+          "OW考证最小几岁能考？",
+          "深圳出发怎么飞最省事？",
+          "考潜水证大概要花多少钱？"
+        ],
+        "extensionTopics": [
+          "和长滩岛比哪个更适合带娃？",
+          "考完OW下次去哪潜？"
+        ]
+      },
+      "contentHash": "18b75359",
+      "processedAt": "2026-03-12T12:49:26.815Z"
+    },
+    "realme-x-unboxing": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "蒸汽白实物看起来廉价吗？",
+          "为什么怀疑收到二手东？",
+          "香港一天重度使用还剩多少电？"
+        ],
+        "extensionTopics": [
+          "现在ColorOS还能刷国际版吗？",
+          "和当年理光GR比照片差别大吗？"
+        ]
+      },
+      "contentHash": "1f469bef",
+      "processedAt": "2026-03-12T12:49:18.758Z"
+    },
+    "fujifilme-xf10-review": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "电池正反都能插进去，怎么避免的？",
+          "和理光GR比，单手操控差多少？",
+          "3499首发送了什么配件？"
+        ],
+        "extensionTopics": [
+          "黑卡5的24-70焦段会更实用吗？",
+          "现在还会考虑再买GR2吗？"
+        ]
+      },
+      "contentHash": "6daa7406",
+      "processedAt": "2026-03-12T12:49:29.150Z"
+    },
+    "sony-a7m3-unboxing": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "为什么最后选了A7M3而不是继续用S2？",
+          "新电池比老款强多少？",
+          "拍视频时录制键容易误按怎么办？"
+        ],
+        "extensionTopics": [
+          "A6500现在还在用吗？",
+          "后来买的那两个新镜头是什么？"
+        ]
+      },
+      "contentHash": "3f8df270",
+      "processedAt": "2026-03-12T12:49:31.103Z"
+    },
+    "terramaster-d2-310-review": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "RAID0和RAID1到底怎么选？",
+          "USB3.1和雷电2速度差多少？",
+          "附送的数据线只有50cm够用吗？"
+        ],
+        "extensionTopics": [
+          "后来换雷电3方案了吗？",
+          "长期用下来噪音和稳定性如何？"
+        ]
+      },
+      "contentHash": "26149f6b",
+      "processedAt": "2026-03-12T12:49:31.899Z"
+    },
+    "cuniq-hk-shared-plan-for-chinese-mainland-citizens": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "押金是退现金还是原路返回？",
+          "内地和香港流量是分开算还是共用？",
+          "上台一定要本人去香港门店吗？"
+        ],
+        "extensionTopics": [
+          "其他运营商的大湾区套餐对比？",
+          "合约到期怎么续约或转台？"
+        ]
+      },
+      "contentHash": "546cdb65",
+      "processedAt": "2026-03-12T12:49:23.300Z"
+    },
+    "korean-seoul-travel-fail": {
+      "data": {
+        "openingLine": "作者在机场被拒登机的经历，看得人心里一紧——签证代码差一位，行程全毁。",
+        "focusQuestions": [
+          "C-3-2和C-3-9签证到底怎么区分？",
+          "免签政策要查哪些具体条款？",
+          "特价机票怎么买取消险最划算？"
+        ],
+        "extensionTopics": [
+          "如果当时改飞釜山能成行吗？",
+          "五年多次签证值得专门办吗？"
+        ]
+      },
+      "contentHash": "8637e342",
+      "processedAt": "2026-03-12T12:49:32.924Z"
+    },
+    "nitecore-ec20-ec4s-unboxing": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "EC20和EC4S续航差多少？",
+          "哪款更适合日常家用？",
+          "IPX-8防水具体能防到什么程度？"
+        ],
+        "extensionTopics": [
+          "除了这两款还有其他18650手电推荐吗？",
+          "自驾户外还有哪些小装备值得带？"
+        ]
+      },
+      "contentHash": "325a6f2f",
+      "processedAt": "2026-03-12T12:49:34.125Z"
+    },
+    "how-much-i-spend-on-cloud-monthly-2017": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "阿里云国际版怎么申请下来的？",
+          "腾讯云客服到底多难用？",
+          "Setapp一年600多比单买划算吗？"
+        ],
+        "extensionTopics": [
+          "现在还会用这套方案吗？",
+          "如果砍掉一半预算会留哪几个？"
+        ]
+      },
+      "contentHash": "9df70743",
+      "processedAt": "2026-03-12T12:49:35.758Z"
+    },
+    "sony-a6500-unboxing": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "续航真的像评论说的那么差吗？",
+          "残幅挂全画幅镜头画质损失多少？",
+          "翻转屏这么设计还能自拍吗？"
+        ],
+        "extensionTopics": [
+          "A6500和黑卡5日常怎么分工？",
+          "拍视频的话防抖够用吗？"
+        ]
+      },
+      "contentHash": "ef1f15ac",
+      "processedAt": "2026-03-12T12:49:38.832Z"
+    },
+    "open-bank-account-in-usa-b1-b2-visa": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "具体需要带哪些证件材料？",
+          "月费怎么免？存多少才行？",
+          "临时卡和正式卡有什么区别？"
+        ],
+        "extensionTopics": [
+          "回国后怎么给这个卡汇款最划算？",
+          "除了BOA还有其他银行适合游客开户吗？"
+        ]
+      },
+      "contentHash": "46413c3d",
+      "processedAt": "2026-03-12T12:49:35.803Z"
+    },
+    "feexp-2017-shenzhen": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "休学骑行回来后怎么下定决心转行的？",
+          "Yworkflow脚手架具体解决了哪些开发痛点？",
+          "起点架构改造时为什么不让前端碰业务逻辑？"
+        ],
+        "extensionTopics": [
+          "小蚁那次被迫写Node后台，现在回头看值不值？",
+          "如果当初没遇到郭宇，人生会怎么走？"
+        ]
+      },
+      "contentHash": "4bfdc44d",
+      "processedAt": "2026-03-12T12:49:35.463Z"
+    },
+    "filco-keyboard-unboxing": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "蓝牙延迟具体什么情况下最明显？",
+          "茶轴跟红轴、HHKB手感差别在哪？",
+          "两个设备间切换速度快不快？"
+        ],
+        "extensionTopics": [
+          "现在还会背着键盘上下班吗？",
+          "千元预算会选这款还是继续HHKB？"
+        ]
+      },
+      "contentHash": "43ac8780",
+      "processedAt": "2026-03-12T12:49:40.654Z"
+    },
+    "mobile-phone-i-used-in-the-past-10-years": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "多普达575当年花了多少钱？",
+          "O2 Cocoon在哪能买到充电接口？",
+          "魅族M8触摸屏失灵怎么换的新机？"
+        ],
+        "extensionTopics": [
+          "里程碑XT701二手花了多少钱？",
+          "一加3T现在还会卡吗？"
+        ]
+      },
+      "contentHash": "303c0f41",
+      "processedAt": "2026-03-12T12:49:41.619Z"
+    },
+    "homeplus-inn-shanghai-smart-room": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "APP一键开门实际能用吗？",
+          "床头有USB口但书桌没有？",
+          "智能控制灯光延迟多久？"
+        ],
+        "extensionTopics": [
+          "智能房和普通印象房差在哪？",
+          "后来去住过其他城市的精选店吗？"
+        ]
+      },
+      "contentHash": "2371efed",
+      "processedAt": "2026-03-12T12:49:44.079Z"
+    },
+    "qqread-elink-reader-yi-2018-review": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "网文订阅能直接在这上面买吗？",
+          "和Kindle Paperwhite比具体轻多少？",
+          "没有邮箱推送怎么传书进去？"
+        ],
+        "extensionTopics": [
+          "你老婆后来视力有好转吗？",
+          "Oasis的碎屏险最后派上用场没？"
+        ]
+      },
+      "contentHash": "a6b86986",
+      "processedAt": "2026-03-12T12:49:34.923Z"
+    },
+    "amplifi-hd-review": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "200M宽带能跑满吗？",
+          "隔楼板后信号还剩多少？",
+          "Mesh放大器到底怎么自动连的？"
+        ],
+        "extensionTopics": [
+          "和华为荣耀立方比差在哪？",
+          "千兆宽带够不够用？"
+        ]
+      },
+      "contentHash": "dd9d3881",
+      "processedAt": "2026-03-12T12:49:37.842Z"
+    },
+    "travel-in-taiwan-2016": {
+      "data": {
+        "openingLine": "这趟七天东海岸行程，作者带着几百G素材回来，修图剪片的压力比爬山还大。",
+        "focusQuestions": [
+          "上海飞台北在澳门转机要多久？",
+          "台北飞无人机限高60米够拍吗？",
+          "夜宿海生馆睡觉对着鱼是什么体验？"
+        ],
+        "extensionTopics": [
+          "菲律宾长滩岛那篇被嫌太长？",
+          "尼泊尔滑翔伞和台湾比怎么样？"
+        ]
+      },
+      "contentHash": "4e5d771f",
+      "processedAt": "2026-03-12T12:49:44.354Z"
+    },
+    "shenzhen-marathon-2016": {
+      "data": {
+        "openingLine": "作者赛前连轴转了一整周，还能站上起跑线，这种折腾看着都累。",
+        "focusQuestions": [
+          "赛前那个星期到底加了几天班？",
+          "为什么20公里就开始掉速？",
+          "这双索康尼跑了几个马拉松了？"
+        ],
+        "extensionTopics": [
+          "2017年最后去了哪里跑？",
+          "Bangkok马拉松后来成行了吗？"
+        ]
+      },
+      "contentHash": "f9c46017",
+      "processedAt": "2026-03-12T12:49:40.540Z"
+    },
+    "oneplus-3t-unboxing": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "氢 OS 和氧 OS 用起来差在哪？",
+          "DASH 快充头体积多大，便携吗？",
+          "屏幕具体哪里看着怪，习惯了之后呢？"
+        ],
+        "extensionTopics": [
+          "氧 OS 配合 SS 怎么设置？",
+          "和 iPhone 7 比拍照差距大吗？"
+        ]
+      },
+      "contentHash": "c4caae65",
+      "processedAt": "2026-03-12T12:49:43.355Z"
+    },
+    "what-i-read-in-2016": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "《邻家的百万富翁》讲的富人习惯具体有哪些？",
+          "印象笔记那本书里有什么实用技巧？",
+          "《镜头的语法》对拍照片有用吗？"
+        ],
+        "extensionTopics": [
+          "张千里老师的视频频道怎么看？",
+          "2016上半年读了什么书？"
+        ]
+      },
+      "contentHash": "0991a529",
+      "processedAt": "2026-03-12T12:49:40.513Z"
+    },
+    "pilipinas-travel-day-3": {
+      "data": {
+        "openingLine": "长滩岛第二天，从睡过头的日出到深夜的雨，这一天排得挺满。",
+        "focusQuestions": [
+          "Nami酒店上下台阶带大箱子方便吗？",
+          "小蚁4K水下画质到底怎么样？",
+          "拖曳伞要飞多久、给多少小费合适？"
+        ],
+        "extensionTopics": [
+          "下次去海岛想体验什么项目？",
+          "Nami和白沙滩酒店怎么选？"
+        ]
+      },
+      "contentHash": "e0d552bc",
+      "processedAt": "2026-03-12T12:49:45.686Z"
+    },
+    "review-orf-netflix-2016": {
+      "data": {
+        "openingLine": "十年前折腾Netflix的体验，现在回头看还挺有意思的。",
+        "focusQuestions": [
+          "三档套餐具体有什么区别？",
+          "香港节点SS能用吗？",
+          "iPad和Xbox体验差多少？"
+        ],
+        "extensionTopics": [
+          "现在Netflix进大陆了吗？",
+          "Chromecast现在还好用吗？"
+        ]
+      },
+      "contentHash": "d72d7d05",
+      "processedAt": "2026-03-12T12:49:56.450Z"
+    },
+    "love-story-how-i-fall-in-love-with-zoel": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "怎么通过微博信息定位到公司地址的？",
+          "第一次私聊是怎么找借口的？",
+          "送毛姆的书是怎么选的？"
+        ],
+        "extensionTopics": [
+          "异地那两年怎么维持的？",
+          "后来一起来上海是谁先提的？"
+        ]
+      },
+      "contentHash": "f53840f2",
+      "processedAt": "2026-03-12T12:49:47.205Z"
+    },
+    "being-who": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "你身边有没有那种让你又佩服又有压力的朋友？",
+          "每天通勤时间怎么挤出一小时看书？",
+          "提前半小时早起真的能保持精力吗？"
+        ],
+        "extensionTopics": [
+          "如果想换圈子但水平不够，该从哪步开始？",
+          "除了读书健身，还有哪些长线投资值得做？"
+        ]
+      },
+      "contentHash": "fefc33b8",
+      "processedAt": "2026-03-12T12:49:54.318Z"
+    },
+    "to-the-east-end-of-china-dongji-island-journey-log": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "上海到东极岛具体怎么走？",
+          "船上买上舱还是中下舱？",
+          "东福山住哪家旅馆视野最好？"
+        ],
+        "extensionTopics": [
+          "小蚁4K和GoPro画质差多少？",
+          "达芬奇调色比Final Cut难在哪？"
+        ]
+      },
+      "contentHash": "37c48a65",
+      "processedAt": "2026-03-12T12:49:47.881Z"
+    },
+    "i-got-the-driver-license": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "韩国考驾照回国换证为什么放弃了？",
+          "荣安的'学时制'和传统驾校差在哪？",
+          "科目二约课真的要抢吗，怎么抢？"
+        ],
+        "extensionTopics": [
+          "陪驾六小时花了多少钱，值不值？",
+          "拍深圳牌照摇到了吗，还是竞价了？"
+        ]
+      },
+      "contentHash": "89fb626a",
+      "processedAt": "2026-03-12T12:49:50.528Z"
+    },
+    "annual-analytics-2015": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "百度不收录HTTPS具体怎么影响的流量？",
+          "极路由那篇翻墙文章为什么阅读量最高？",
+          "Feedly和Inoreader订阅数差这么多正常吗？"
+        ],
+        "extensionTopics": [
+          "现在还会推荐别人开独立博客吗？",
+          "当年那些朋友博客现在还在更新吗？"
+        ]
+      },
+      "contentHash": "e559448b",
+      "processedAt": "2026-03-12T12:49:57.199Z"
+    },
+    "guangzhou-marathon-2015": {
+      "data": {
+        "openingLine": "作者特意避开琶洲选了海航威斯汀，看来对赛前便利性考虑挺细的。",
+        "focusQuestions": [
+          "住两晚是为了提前踩点还是恢复体力？",
+          "忘记带成绩证明现场能补打吗？",
+          "比赛当天几点从酒店出发合适？"
+        ],
+        "extensionTopics": [
+          "跑完还有体力在广州再逛一天吗？",
+          "北京和广州马拉松氛围差别大吗？"
+        ]
+      },
+      "contentHash": "0ae62f6d",
+      "processedAt": "2026-03-12T12:50:00.407Z"
+    },
+    "a-ghost-theme-yasuko-with-story": {
+      "data": {
+        "openingLine": "一个博客主题的名字背后，原来藏着一位登山者的真实人生。",
+        "focusQuestions": [
+          "96年珠峰事故的具体细节是什么？",
+          "反向代理怎么配置SSL证书？",
+          "怎么让图片根据设备自动加载WebP？"
+        ],
+        "extensionTopics": [
+          "其他Ghost主题有没有类似的命名故事？",
+          "如果不用又拍云图片优化还能怎么做？"
+        ]
+      },
+      "contentHash": "b21720f9",
+      "processedAt": "2026-03-12T12:49:58.934Z"
+    },
+    "chromecast-2-unboxing-and-review": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "极路由Shadowsocks具体怎么配置？",
+          "35美元加上转运实际花了多少？",
+          "Chromecast插电视USB供电够不够用？"
+        ],
+        "extensionTopics": [
+          "现在还在用Chromecast吗？",
+          "后来换过别的投屏方案吗？"
+        ]
+      },
+      "contentHash": "35c3ef31",
+      "processedAt": "2026-03-12T12:50:00.036Z"
+    },
+    "desk-setup-2015": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "桌子最后花了多少钱到手的？",
+          "160和180规格具体差多少？",
+          "电动工具组装能省多少时间？"
+        ],
+        "extensionTopics": [
+          "后来桌子变形了吗？",
+          "租房党还有其他省钱的布置建议吗？"
+        ]
+      },
+      "contentHash": "d7b217f0",
+      "processedAt": "2026-03-12T12:50:00.989Z"
+    },
+    "update-http2-nginx": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "CentOS和Ubuntu的Nginx源地址分别怎么改？",
+          "开启HTTP/2只需要改listen这一行吗？",
+          "为什么不能同时开SPDY和HTTP/2？"
+        ],
+        "extensionTopics": [
+          "升级后怎么确认真的走h2协议了？",
+          "HTTP/2和SPDY性能差距多大？"
+        ]
+      },
+      "contentHash": "4edb7657",
+      "processedAt": "2026-03-12T12:49:59.999Z"
+    },
+    "zhiyun-z1-smooth-review": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "二代的无极摇杆具体怎么操作？",
+          "1300块和自拍杆比值不值？",
+          "iPhone 6 Plus夹上去会晃吗？"
+        ],
+        "extensionTopics": [
+          "你后来出门还带它吗？",
+          "和DJI Osmo比最后怎么选的？"
+        ]
+      },
+      "contentHash": "1c7d9023",
+      "processedAt": "2026-03-12T12:49:52.386Z"
+    },
+    "how-much-i-spend-on-cloud-monthly": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "Linode换到东京机房后Ping降到多少？",
+          "阿里云流量计费改成多少钱的套餐？",
+          "迅雷VIP一年会员花了多少钱？"
+        ],
+        "extensionTopics": [
+          "现在这些云服务商价格变化大吗？",
+          "有没有后来停掉不用的服务？"
+        ]
+      },
+      "contentHash": "aba42245",
+      "processedAt": "2026-03-12T12:50:00.183Z"
+    },
+    "meet-shanghai-july": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "小蚁运动相机当时迭代了哪些功能？",
+          "理光GR抓拍外滩有什么技巧？",
+          "Clarks新鞋磨脚怎么处理的？"
+        ],
+        "extensionTopics": [
+          "后来还拍了哪些遇见上海系列？",
+          "小蚁和现在运动相机比怎么样？"
+        ]
+      },
+      "contentHash": "be70db52",
+      "processedAt": "2026-03-12T12:50:05.143Z"
+    },
+    "nodejs-google-analytics-track": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "中间页跳转会有哪些体验问题？",
+          "universal-analytics 怎么和 Express 配合用？",
+          "同事老王那个 URL 参数怎么拼的？"
+        ],
+        "extensionTopics": [
+          "如果渠道很多，后台数据会不会很乱？",
+          "百度统计有没有类似的 Node 模块？"
+        ]
+      },
+      "contentHash": "cd27e165",
+      "processedAt": "2026-03-12T12:50:02.465Z"
+    },
+    "ghost-https-baidu-seo-support": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "具体怎么识别百度爬虫的UA？",
+          "移动端和PC端爬虫UA有什么区别？",
+          "现在还需要给百度单独开http通道吗？"
+        ],
+        "extensionTopics": [
+          "如果用Apache而不是Nginx该怎么配？",
+          "这套方案对Google收录有没有副作用？"
+        ]
+      },
+      "contentHash": "b3ecdf13",
+      "processedAt": "2026-03-12T12:50:05.615Z"
+    },
+    "uber-life-style": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "滴滴和快的的补贴大战后来怎么收场了？",
+          "易到企业账号报销具体怎么操作？",
+          "AA租车航班晚点自动换车是标配吗？"
+        ],
+        "extensionTopics": [
+          "现在这些平台价格还跟当年差不多吗？",
+          "如果公司没合作账号自己怎么选最划算？"
+        ]
+      },
+      "contentHash": "7fe0aafa",
+      "processedAt": "2026-03-12T12:50:02.306Z"
+    },
+    "meet-qingdao-love-and-kiss-day-3": {
+      "data": {
+        "openingLine": "这趟青岛最后一天，从银沙滩逛到啤酒街，不赶景点的节奏反而挺舒服。",
+        "focusQuestions": [
+          "四月份青岛海水还这么凉吗？",
+          "银沙滩附近除了温德姆还有别的住宿吗？",
+          "拖着箱子走老城区坡路有多累？"
+        ],
+        "extensionTopics": [
+          "理光GR拍街景有什么技巧？",
+          "深圳飞北京那次拍的星空怎么样？"
+        ]
+      },
+      "contentHash": "c6f6073e",
+      "processedAt": "2026-03-12T12:50:06.753Z"
+    },
+    "beijing-to-shanghai-weekend": {
+      "data": {
+        "openingLine": "买票看错日期白白损失五百块，这种迷糊事你也干过吗。",
+        "focusQuestions": [
+          "改签费用怎么算的，为什么不如退票重买？",
+          "上海交大樱花具体在哪拍的？",
+          "智选假日酒店一晚大概多少钱？"
+        ],
+        "extensionTopics": [
+          "后来去上海工作适应得怎么样？",
+          "理光GR那台相机还在用吗？"
+        ]
+      },
+      "contentHash": "077c1288",
+      "processedAt": "2026-03-12T12:50:04.742Z"
+    },
+    "yi-camera-time-lapse": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "三小时拍了1227张，电池撑得住吗？",
+          "晚上画质不行，白天拍人够用吗？",
+          "防水壳出了之后准备拍什么？"
+        ],
+        "extensionTopics": [
+          "滑雪和故宫哪个场景更吃画质？",
+          "Nepal那趟除了Gopro还带了什么相机？"
+        ]
+      },
+      "contentHash": "1787f41c",
+      "processedAt": "2026-03-12T12:50:07.934Z"
+    },
+    "become-apple-developer": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "Hybrid方案和原生性能差距到底多大？",
+          "注册时姓名不一致怎么解决的？",
+          "客服电话是打给美国区吗？"
+        ],
+        "extensionTopics": [
+          "这个App点子后来做出来了吗？",
+          "Cordova现在还用来开发吗？"
+        ]
+      },
+      "contentHash": "76d4e993",
+      "processedAt": "2026-03-12T12:50:10.243Z"
+    },
+    "ricoh-gr-shenzhen-bay": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "深圳湾夜拍具体用了什么三脚架？",
+          "长曝光拍风力发电杠子用了多久？",
+          "低潮和涨潮拍夜景差别在哪？"
+        ],
+        "extensionTopics": [
+          "那辆陪骑川藏的车后来还在吗？",
+          "北京现在的PM2.5比2015年好些了吗？"
+        ]
+      },
+      "contentHash": "2b029cc0",
+      "processedAt": "2026-03-12T12:50:09.404Z"
+    },
+    "track-your-time": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "RescueTime免费版和付费版差在哪？",
+          "WakaTime怎么安装到Sublime里？",
+          "两台Mac的数据能同步吗？"
+        ],
+        "extensionTopics": [
+          "如果只选一个，推荐先装哪个？",
+          "有没有类似的手机时间记录工具？"
+        ]
+      },
+      "contentHash": "a444e197",
+      "processedAt": "2026-03-12T12:50:06.541Z"
+    },
+    "imac-5k-external-usb-ssd-update": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "USB3.0 硬盘盒具体用的哪款？",
+          "迁移系统花了多长时间？",
+          "开机时间从多久降到了多久？"
+        ],
+        "extensionTopics": [
+          "雷电硬盘盒比 USB3.0 贵多少？",
+          "部门集中采购的方案后续用得怎么样？"
+        ]
+      },
+      "contentHash": "c43635ef",
+      "processedAt": "2026-03-12T12:50:01.920Z"
+    },
+    "2015-new-year-concert": {
+      "data": {
+        "openingLine": "第一次正经进音乐厅听交响，比想象中有趣，也有些没预料到的尴尬。",
+        "focusQuestions": [
+          "池座4排31座视角怎么样？",
+          "演出时手机信号真被屏蔽吗？",
+          "返场了几次分别演的什么？"
+        ],
+        "extensionTopics": [
+          "北京还有哪些值得去的音乐厅？",
+          "学钢琴半途而废的你后悔了吗？"
+        ]
+      },
+      "contentHash": "0c1a1b38",
+      "processedAt": "2026-03-12T12:50:12.334Z"
+    },
+    "meet-shenzhen-flower": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "从哪个门进深大最方便？",
+          "几点去光线最好？",
+          "理光GR拍这种场景够用吗？"
+        ],
+        "extensionTopics": [
+          "四月五月北京有哪些看花的地方？",
+          "深大的新图书馆能进去参观吗？"
+        ]
+      },
+      "contentHash": "9db5c76f",
+      "processedAt": "2026-03-12T12:50:10.243Z"
+    },
+    "share-to-facebook-smart": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "中转页面具体怎么配置OG标签？",
+          "为什么og:url要填中转页而不是最终页？",
+          "参数里的url为什么要encode转码？"
+        ],
+        "extensionTopics": [
+          "Twitter Card也能用这套方案吗？",
+          "如果目标站本身有OG标签怎么取舍？"
+        ]
+      },
+      "contentHash": "85972f95",
+      "processedAt": "2026-03-12T12:50:10.239Z"
+    },
+    "2014-review-things-i-failed": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "信用卡刷爆那几个月具体怎么过来的？",
+          "为什么学日语两个月就放弃了？",
+          "学剑道6K学费最后没交是只去了一次吗？"
+        ],
+        "extensionTopics": [
+          "后来日语和剑道有再捡起来吗？",
+          "这种'失败者回顾'后面几年还写吗？"
+        ]
+      },
+      "contentHash": "67cb943c",
+      "processedAt": "2026-03-12T12:50:16.102Z"
+    },
+    "beijing-marathon-2014": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "带伤跑怎么还快了15分钟？",
+          "膝盖伤和雾霾哪个更难受？",
+          "430俱乐部是什么水平？"
+        ],
+        "extensionTopics": [
+          "深圳来北京跑步空气差这么多？",
+          "后来还跑过北上广的另外两场吗？"
+        ]
+      },
+      "contentHash": "88358783",
+      "processedAt": "2026-03-12T12:50:14.692Z"
+    },
+    "meet-shenzhen-sea-world": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "育才中学现在还能进去参观吗？",
+          "明华轮灯光秀晚上几点开始？",
+          "从地铁站走到海上世界要多久？"
+        ],
+        "extensionTopics": [
+          "广州和深圳生活体验差别大吗？",
+          "蛇口老码头现在改成什么样了？"
+        ]
+      },
+      "contentHash": "4c8c9b3e",
+      "processedAt": "2026-03-12T12:50:09.247Z"
+    },
+    "the-nature-and-chemistry-of-romantic-love": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "多巴胺下降为什么让人抑郁？",
+          "健身提高多巴胺是什么原理？",
+          "女人为什么更怕感情背叛而非身体背叛？"
+        ],
+        "extensionTopics": [
+          "你书里提到的书读过哪几本？",
+          "经历过那种'愈挫愈烈'的迷恋吗？"
+        ]
+      },
+      "contentHash": "28a03d5c",
+      "processedAt": "2026-03-12T12:50:15.783Z"
+    },
+    "qinhuangdao-marathon-2014": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "膝盖有伤怎么坚持到最后十公里的？",
+          "六分配速是什么概念，普通人能跟上吗？",
+          "终点前想拍计时器又忘了吻跑道，现在后悔吗？"
+        ],
+        "extensionTopics": [
+          "后来北京上海广州马拉松跑得怎么样？",
+          "现在还会一个人去陌生城市跑马吗？"
+        ]
+      },
+      "contentHash": "586e79b6",
+      "processedAt": "2026-03-12T12:50:15.691Z"
+    },
+    "august-talk": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "北京实习半年睡过地板的日子具体怎么过的？",
+          "「轻清减简」四个关键字各自什么意思？",
+          "作者打算怎么利用早晨6点到10点这段时间？"
+        ],
+        "extensionTopics": [
+          "后来真的做到早起打卡了吗？",
+          "这些改变里哪条最难坚持？"
+        ]
+      },
+      "contentHash": "b8153055",
+      "processedAt": "2026-03-12T12:50:16.554Z"
+    },
+    "classic-music-mozart": {
+      "data": {
+        "openingLine": "莫扎特的36年，像一场才华与苦难交织的漫长独奏。",
+        "focusQuestions": [
+          "神童时期的巡演到底去过哪些城市？",
+          "与大主教决裂后靠什么养活自己？",
+          "《费加罗的婚礼》走红为啥还是穷？"
+        ],
+        "extensionTopics": [
+          "海顿同期作品对他影响多大？",
+          "如果没早逝会写出什么？"
+        ]
+      },
+      "contentHash": "3aa5cf7f",
+      "processedAt": "2026-03-12T12:50:19.336Z"
+    },
+    "shanghai-marathon-2014": {
+      "data": {
+        "openingLine": "跑崩了还能写这么细，看来这趟上海没白疼。",
+        "focusQuestions": [
+          "膝盖是什么时候开始不对劲的？",
+          "500兔子之后的世界什么样？",
+          "最后为什么自己换奖牌？"
+        ],
+        "extensionTopics": [
+          "后来膝盖养好了吗？",
+          "北马和上马哪个更虐？"
+        ]
+      },
+      "contentHash": "782d7b72",
+      "processedAt": "2026-03-12T12:50:13.444Z"
+    },
+    "trave-in-nepal-paragliding": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "现在去飞一次大概多少钱？",
+          "需要提前多久预订？",
+          "穿什么衣服合适，能带相机吗？"
+        ],
+        "extensionTopics": [
+          "深圳塘朗山现在还能飞吗？",
+          "考了执照就能单飞吗？"
+        ]
+      },
+      "contentHash": "e2b32990",
+      "processedAt": "2026-03-12T12:50:19.849Z"
+    },
+    "learn-japanese-hiragana-write-1": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "あいうえお的笔画顺序哪里能看到？",
+          "平假名和片假名具体怎么对应？",
+          "OSX自带的日语输入法怎么切换出来？"
+        ],
+        "extensionTopics": [
+          "下一篇会讲か行的写法吗？",
+          "学完五十音后该怎么继续往下学？"
+        ]
+      },
+      "contentHash": "ed7b5ca1",
+      "processedAt": "2026-03-12T12:50:18.172Z"
+    },
+    "whatever-is-best-for-the-people-that-is-what-we-do-chinese-facebook-redesign-2014": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "10寸小屏上体验差是指什么？",
+          "为什么用户更依赖鼠标滚动而非触摸？",
+          "最终版本和夭折版具体哪里不一样？"
+        ],
+        "extensionTopics": [
+          "Dustin那篇质疑文章的主要观点？",
+          "设计师和用户设备差异怎么弥合？"
+        ]
+      },
+      "contentHash": "68aaaba6",
+      "processedAt": "2026-03-12T12:50:20.720Z"
+    },
+    "what-i-read-in-2014-spring": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "《寻路中国》和《江城》都是何伟写的，哪本更触动你？",
+          "王石两本书里提到的登山和哈佛游学，具体讲了什么？",
+          "《打造Facebook》里说的工程师绩效考核标准是什么？"
+        ],
+        "extensionTopics": [
+          "这34本里你最想重读哪几本？",
+          "除了列出来的，有没有读到一半放弃的？"
+        ]
+      },
+      "contentHash": "1a004d26",
+      "processedAt": "2026-03-12T12:50:21.995Z"
+    },
+    "review-of-2013": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "延毕一年具体要补哪些课？",
+          "怎么从零开始一年拿到金山offer？",
+          "跑马拉松时每天几点开始练？"
+        ],
+        "extensionTopics": [
+          "2014年入职金山后适应得怎么样？",
+          "后来还继续保持每年读40本书吗？"
+        ]
+      },
+      "contentHash": "87482834",
+      "processedAt": "2026-03-12T12:50:22.913Z"
+    },
+    "classical-music-in-movies": {
+      "data": {
+        "openingLine": "作者用几部电影串起了古典乐的入门地图，读起来像在朋友家翻他的观影笔记。",
+        "focusQuestions": [
+          "《我的野蛮女友》里弹的到底是不是卡农？",
+          "《七宗罪》图书馆那段是什么曲子？",
+          "泰坦尼克号沉船时乐队到底演奏了几首歌？"
+        ],
+        "extensionTopics": [
+          "除了这几部，还有哪些电影用了古典乐当神来之笔？",
+          "想跟着这本书入门，具体怎么找歌来听？"
+        ]
+      },
+      "contentHash": "8ce98ec4",
+      "processedAt": "2026-03-12T12:50:17.901Z"
+    },
+    "da-lu-ju-min-shen-qing-ni-bo-er-qian-zheng-xiang-gang-ling-shi-guan-2014zui-xin-gong-lue": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "白本护照在香港办签证真的没问题吗？",
+          "加急办理具体要花多少钱？",
+          "深圳湾口岸过去地铁怎么换乘最方便？"
+        ],
+        "extensionTopics": [
+          "落地签和提前办签证哪个更划算？",
+          "如果走淘宝代办需要准备什么材料？"
+        ]
+      },
+      "contentHash": "ab800352",
+      "processedAt": "2026-03-12T12:50:18.067Z"
+    },
+    "niu-yue-shi-bao-wang-zhan-gai-ban-bei-hou-de-ji-zhu": {
+      "data": {
+        "openingLine": "十年前纽约时报这场大重构，现在回头看哪些决策最经得起时间考验。",
+        "focusQuestions": [
+          "当时为什么没换掉静态HTML系统？",
+          "20种设备适配是怎么实现的？",
+          "Varnish缓存具体怎么配置的？"
+        ],
+        "extensionTopics": [
+          "现在他们还守着这套架构吗？",
+          "WebSockets后来用在了哪里？"
+        ]
+      },
+      "contentHash": "1423b89c",
+      "processedAt": "2026-03-12T12:50:19.333Z"
+    },
+    "theme-ghostwill": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "迁移到 Ghost 具体花了多少工作量？",
+          "Ghostwill 主题的封面图怎么设置？",
+          "又拍云 CDN 是怎么配置的？"
+        ],
+        "extensionTopics": [
+          "WordPress 和 Ghost 的实际性能对比？",
+          "Ghost 主题开发有哪些现成的工具链？"
+        ]
+      },
+      "contentHash": "b37edcc5",
+      "processedAt": "2026-03-12T12:50:19.212Z"
+    },
+    "zhuangbility": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "80%的人搭车是真的吗，怎么判断？",
+          "腹泻八次那天具体怎么撑下来的？",
+          "雅江到理塘推车那两公里路况多差？"
+        ],
+        "extensionTopics": [
+          "如果当初真的听了家里人的话折返呢？",
+          "除了川藏线还想过骑哪条线？"
+        ]
+      },
+      "contentHash": "2d7bfc6d",
+      "processedAt": "2026-03-12T12:50:17.084Z"
+    },
+    "gravity-review-about-technology-future": {
+      "data": {
+        "openingLine": "看完这篇从《地心引力》聊到太空梦的随笔，想顺着作者的思路多聊几句。",
+        "focusQuestions": [
+          "第一排看IMAX特效电影体验真的更好吗？",
+          "SpaceX现在发展得怎么样了？",
+          "高铁和航空航天该不该被骂？"
+        ],
+        "extensionTopics": [
+          "《三体》和《地心引力》哪个更震撼？",
+          "深圳高中生做的开源硬件是什么？"
+        ]
+      },
+      "contentHash": "573a2ea5",
+      "processedAt": "2026-03-12T12:50:21.999Z"
+    },
+    "observations-from-a-week-in-shanghai-chinese": {
+      "data": {
+        "openingLine": "作者在地铁上观察到的这些细节，让我也好奇她是怎么跟那些陌生用户聊起来的。",
+        "focusQuestions": [
+          "为什么大家这么怕按坏Home键？",
+          "微信的语音对讲到底有多方便？",
+          "5c广告那么多为什么没人用？"
+        ],
+        "extensionTopics": [
+          "她两年后再回上海又看到什么变化？",
+          "美国和上海用户的手机习惯还有哪些不同？"
+        ]
+      },
+      "contentHash": "3fe1fa4d",
+      "processedAt": "2026-03-12T12:50:21.477Z"
+    },
+    "avoid-css-mistakes-chinese": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "id 和 class 的权重差距到底有多大？",
+          "选择器最多嵌套几层比较合适？",
+          "Sass 的 @extend 怎么用才能减少重复？"
+        ],
+        "extensionTopics": [
+          "除了这十条还有什么常见坑点？",
+          "em 和 rem 到底选哪个更省心？"
+        ]
+      },
+      "contentHash": "2a9634ad",
+      "processedAt": "2026-03-12T12:50:22.905Z"
+    },
+    "2014-netease-front-end-campus-test": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "简答题闭包那题怎么答能拿高分？",
+          "手写三切换标签原型图有哪些坑？",
+          "apply和call的区别怎么记最清楚？"
+        ],
+        "extensionTopics": [
+          "当年笔试的20人里最后录了几个？",
+          "现在前端面试还考这些吗？"
+        ]
+      },
+      "contentHash": "ea5503f0",
+      "processedAt": "2026-03-12T12:50:23.522Z"
+    },
+    "regula-expression-simple-tutorial": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "QQ号匹配为啥必须加$结尾？",
+          "\\d和[0-9]到底有什么区别？",
+          "分组和分支怎么配合用？"
+        ],
+        "extensionTopics": [
+          "反向引用一般用在什么场景？",
+          "除了抓QQ号还能顺手抓什么？"
+        ]
+      },
+      "contentHash": "6becfba1",
+      "processedAt": "2026-03-12T12:50:23.626Z"
+    },
+    "dotfiles-tutorial": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "软链接和硬链接到底差在哪？",
+          "Dropbox 和 GitHub 备份怎么配合用？",
+          "换电脑后恢复配置的完整步骤是什么？"
+        ],
+        "extensionTopics": [
+          "有没有现成的自动化脚本推荐？",
+          "别人的 dotfiles 怎么参考比较高效？"
+        ]
+      },
+      "contentHash": "6716ca93",
+      "processedAt": "2026-03-12T12:50:24.820Z"
+    },
+    "git-config-advanced": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "怎么只看最近一小时改了哪些文件？",
+          "git diff 两个分支具体怎么写？",
+          "HEAD~5 和 HEAD^^^^^ 有区别吗？"
+        ],
+        "extensionTopics": [
+          "这些 alias 怎么同步到另一台电脑？",
+          "和 tig 相比哪个更适合日常看 log？"
+        ]
+      },
+      "contentHash": "53b10ed5",
+      "processedAt": "2026-03-12T12:50:24.466Z"
+    },
+    "duoshuo-just-flat-theme": {
+      "data": {
+        "openingLine": "十年前给多说评论写的一个扁平化皮肤，现在看当时的调试环境还挺怀旧。",
+        "focusQuestions": [
+          "怎么直接用这个主题？",
+          "IE兼容性问题有多大？",
+          "颜色变量后来加上了吗？"
+        ],
+        "extensionTopics": [
+          "后来多说关了，这套代码还能用在哪？",
+          "当时dribbble上看到的拟物化方案长什么样？"
+        ]
+      },
+      "contentHash": "8730f0fb",
+      "processedAt": "2026-03-12T12:50:27.462Z"
+    },
+    "books-i-read-in-2013": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "Kindle Paperwhite 为什么性价比高？",
+          "林达近距离看美国系列哪几本值得读？",
+          "《失控》为什么读了一个半月还打四颗星？"
+        ],
+        "extensionTopics": [
+          "2012年只读了一本《人生的枷锁》，怎么转变的？",
+          "除了列出的书，技术类推荐哪些？"
+        ]
+      },
+      "contentHash": "7a60f540",
+      "processedAt": "2026-03-12T12:50:26.745Z"
+    },
+    "taobao-front-end-quiz3": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "第三关 Canvas 二维码到底考什么？",
+          "第五关怎么从 HTML 抓数字改 URL 跳转？",
+          "console 里那个乱码 URL 要怎么解？"
+        ],
+        "extensionTopics": [
+          "现在校招还考这种题吗？",
+          "有没有类似的现代版闯关练习？"
+        ]
+      },
+      "contentHash": "03e51f7c",
+      "processedAt": "2026-03-12T12:50:27.019Z"
+    },
+    "node-js-nginx-proxy": {
+      "data": {
+        "openingLine": "这篇是作者自己留档的笔记，配置步骤写得很具体，适合跟着一步步试。",
+        "focusQuestions": [
+          "proxy_pass 为什么要用 https 而不是 http？",
+          "这些 proxy_set_header 每一项具体有什么用？",
+          "配置改完后怎么确认真的生效了？"
+        ],
+        "extensionTopics": [
+          "如果 Node 应用崩了，nginx 会怎么表现？",
+          "同一台机器跑多个 Node 项目要怎么配？"
+        ]
+      },
+      "contentHash": "6e6cfede",
+      "processedAt": "2026-03-12T12:50:26.567Z"
+    },
+    "css-noise-with-data-uri": {
+      "data": {
+        "openingLine": "这个用CSS模拟杂色质感的方法挺省事，不用切图也不用多请求一张资源。",
+        "focusQuestions": [
+          "50px×50px是硬性要求吗？",
+          "为什么用:before伪元素而不是直接加背景？",
+          "PNG转DataURI后体积反而变小了？"
+        ],
+        "extensionTopics": [
+          "纸张和布料的纹理也能用这招做吗？",
+          "现在扁平化设计还需要杂色质感吗？"
+        ]
+      },
+      "contentHash": "5009177c",
+      "processedAt": "2026-03-12T12:50:27.961Z"
+    },
+    "bit-literacy-productivity-in-the-age-of-information-overload": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "两分钟原则具体怎么操作？",
+          "怎么区分该放日历还是待办清单？",
+          "明星队员和一般队员怎么筛选？"
+        ],
+        "extensionTopics": [
+          "这些方法在团队协作里怎么推广？",
+          "如果已经拖延了几年的邮件怎么办？"
+        ]
+      },
+      "contentHash": "eb02de42",
+      "processedAt": "2026-03-12T12:50:29.130Z"
+    },
+    "chrome-vimium": {
+      "data": {
+        "openingLine": "作者因为手腕出状况才开始用键盘流，你现在用鼠标多吗。",
+        "focusQuestions": [
+          "Vimium 具体怎么操作上下滚动和切换标签？",
+          "安装后按哪个键看全部功能清单？",
+          "机械键盘买几百块的够用吗？"
+        ],
+        "extensionTopics": [
+          "和Vimperator比起来哪个更适合新手？",
+          "除了Chrome还有别的浏览器能这样玩吗？"
+        ]
+      },
+      "contentHash": "c172e70b",
+      "processedAt": "2026-03-12T12:50:29.947Z"
+    },
+    "to-colleage-last-time": {
+      "data": {
+        "openingLine": "毕业聚餐后的晚上，最容易想起这些年的事。",
+        "focusQuestions": [
+          "答辩后聚餐具体吃了什么？",
+          "18支啤酒是怎么喝完的？",
+          "慰佳怎么活跃气氛的？"
+        ],
+        "extensionTopics": [
+          "你大学最难忘的一次聚会是什么？",
+          "后来这批同学还联系吗？"
+        ]
+      },
+      "contentHash": "43eb91aa",
+      "processedAt": "2026-03-12T12:50:30.411Z"
+    },
+    "learn-to-unfollow": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "现在微博关注600多人算多还是少？",
+          "小号只关注几十个熟人，怎么克服取关的尴尬？",
+          "取关政治类账号后，真的不会错过重要消息吗？"
+        ],
+        "extensionTopics": [
+          "如果微信也变得臃肿，会再退一次吗？",
+          "当年运营的校园微博现在怎么样了？"
+        ]
+      },
+      "contentHash": "f25ad770",
+      "processedAt": "2026-03-12T12:50:32.580Z"
+    },
+    "will-box-one-theme": {
+      "data": {
+        "openingLine": "作者在凌晨四点写的这篇发布笔记，读起来像是在跟一个熬夜赶工的朋友聊天。",
+        "focusQuestions": [
+          "瀑布流设计具体怎么解决阅读体验问题？",
+          "和post-views插件冲突要怎么处理？",
+          "第三方插件样式兼容做了哪些？"
+        ],
+        "extensionTopics": [
+          "后来那个时光机页面写完了吗？",
+          "用微信API做的webapp最后做了没？"
+        ]
+      },
+      "contentHash": "9b5f2fab",
+      "processedAt": "2026-03-12T12:50:33.511Z"
+    },
+    "about-fxck-fang-and-great-fire-wall": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "那次讲座后被疯转，作者怎么看？",
+          "现在还会因写东西担心被谈话吗？",
+          "北邮学生真没人抗议过校长吗？"
+        ],
+        "extensionTopics": [
+          "棱镜门之后再看各国防火墙？",
+          "体制内外的人该怎么互相理解？"
+        ]
+      },
+      "contentHash": "3aab67fd",
+      "processedAt": "2026-03-12T12:50:30.557Z"
+    },
+    "profile-me": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "投腾讯简历为什么心虚？",
+          "Hostigation和Linode到底哪个更稳？",
+          "台湾环岛骑行怎么找赞助？"
+        ],
+        "extensionTopics": [
+          "后来有没有进腾讯CDC？",
+          "那个WordPress主题最终发布了没？"
+        ]
+      },
+      "contentHash": "f73f4b55",
+      "processedAt": "2026-03-12T12:50:32.470Z"
+    },
+    "kindle-paper-white-review": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "日版KPW 800块怎么搜到的？",
+          "背光实际用下来和开灯看书差别大吗？",
+          "重度使用续航大概能撑几天？"
+        ],
+        "extensionTopics": [
+          "Dropbox自动推送具体怎么设置？",
+          "除了爱看豆还有哪些找书渠道？"
+        ]
+      },
+      "contentHash": "39f6d2f3",
+      "processedAt": "2026-03-12T12:50:32.454Z"
+    },
+    "web-developer-video": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "MarakanaTechTV 主要讲什么内容？",
+          "怎么搜到 yeoman 和 node.js 相关视频？",
+          "作者说的开发流程具体怎么改进的？"
+        ],
+        "extensionTopics": [
+          "现在这些视频还能看吗，链接失效了吗？",
+          "当年那些工具 Yeoman、Grunt 现在还用得上吗？"
+        ]
+      },
+      "contentHash": "dcea9538",
+      "processedAt": "2026-03-12T12:50:32.182Z"
+    },
+    "mac-alfred": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "怎么找到网站的Search URL？",
+          "淘宝和花瓣的搜索代码怎么写？",
+          "自定义图标拖进去就能用吗？"
+        ],
+        "extensionTopics": [
+          "现在新版Alfred有什么不同？",
+          "除了搜索还能做什么快捷操作？"
+        ]
+      },
+      "contentHash": "4ab469d5",
+      "processedAt": "2026-03-12T12:50:35.303Z"
+    },
+    "cloud-atlas": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "佛珠最后找到了吗？",
+          "《云图》国内删减版少了哪些内容？",
+          "川藏骑行时佛珠具体起了什么作用？"
+        ],
+        "extensionTopics": [
+          "现在还会重温这部电影吗？",
+          "后来有没有试过其他寻找失物的方法？"
+        ]
+      },
+      "contentHash": "216f9c5a",
+      "processedAt": "2026-03-12T12:50:33.600Z"
+    },
+    "about-me": {
+      "data": {
+        "openingLine": "作者难得静下来跟自己写点东西，这种独处的感觉你有过吗。",
+        "focusQuestions": [
+          "那个3D lightbox特效具体怎么做的？",
+          "西藏笔记本里写了什么？",
+          "前端入门选的教程难不难上手？"
+        ],
+        "extensionTopics": [
+          "这个About主页现在还在用吗？",
+          "西藏那趟旅行印象最深的是什么？"
+        ]
+      },
+      "contentHash": "961f27ce",
+      "processedAt": "2026-03-12T12:50:34.674Z"
+    },
+    "vivick-q-w501-router": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "Vivick Q-W501和腾达A5硬件完全一样吗？",
+          "刷腾达固件后原来的设置会丢失吗？",
+          "图书馆用这迷你路由器网速能到多少？"
+        ],
+        "extensionTopics": [
+          "腾达A5自己买的话多少钱？",
+          "迷你路由器出差住酒店方便吗？"
+        ]
+      },
+      "contentHash": "8160e002",
+      "processedAt": "2026-03-12T12:50:35.785Z"
+    },
+    "wordpress-theme-luo": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "大背景图虚化是怎么实现的？",
+          "单栏设计具体删掉了哪些元素？",
+          "360浏览器下的bug是什么情况？"
+        ],
+        "extensionTopics": [
+          "对比下你之前博客的设计风格？",
+          "有没有参考其他轻博客主题的做法？"
+        ]
+      },
+      "contentHash": "d300e256",
+      "processedAt": "2026-03-12T12:50:34.744Z"
+    },
+    "duoshuo-css": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "Chrome审查元素具体怎么定位头像选择符？",
+          "border-radius 27px怎么算出来的？",
+          "这段代码现在主流浏览器还兼容吗？"
+        ],
+        "extensionTopics": [
+          "当年折腾过多说CSS的其他效果吗？",
+          "现在用的是什么评论系统，还能这么改吗？"
+        ]
+      },
+      "contentHash": "9118134c",
+      "processedAt": "2026-03-12T12:50:35.949Z"
+    },
+    "like-circle-sns": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "V2EX上主要能看到哪些城市IT公司的招聘？",
+          "Chiphell和数字尾巴说的毒物具体指什么？",
+          "远景在线现在还能找到系统破解资源吗？"
+        ],
+        "extensionTopics": [
+          "这几个社区现在活跃度还和12年一样吗？",
+          "除了IT类，你还逛过什么小众兴趣圈子？"
+        ]
+      },
+      "contentHash": "7274d0d2",
+      "processedAt": "2026-03-12T12:50:36.939Z"
+    },
+    "weibo-jnu-sites": {
+      "data": {
+        "openingLine": "这个导航站从有想法到上线只用了48小时，来看看当时怎么快速解决的。",
+        "focusQuestions": [
+          "网站架设在新浪SAE上，稳定性怎么样？",
+          "一键关注功能具体怎么实现的？",
+          "十大热门微博推荐是怎么筛选出来的？"
+        ],
+        "extensionTopics": [
+          "现在暨大还有没有类似的导航工具？",
+          "当年这种人工整理微博的方式后来怎么演进？"
+        ]
+      },
+      "contentHash": "a19f64d8",
+      "processedAt": "2026-03-12T12:50:39.357Z"
+    },
+    "weibo-no-cheat": {
+      "data": {
+        "openingLine": "十年前那波「转发送iPhone」的骗局，现在看来套路一点没变。",
+        "focusQuestions": [
+          "怎么快速查抽奖图片是不是盗的？",
+          "加V的微博抽奖就能信吗？",
+          "小公司送大奖怎么判断靠不靠谱？"
+        ],
+        "extensionTopics": [
+          "现在微博还有这种骗局吗？",
+          "除了微博别的平台怎么防？"
+        ]
+      },
+      "contentHash": "e91caba9",
+      "processedAt": "2026-03-12T12:50:38.421Z"
+    },
+    "dream-list": {
+      "data": {
+        "openingLine": "二十出头列梦想清单，作者刚拿完奖、又要去南京，顺手写下这些——。",
+        "focusQuestions": [
+          "珠峰和极地这种难度怎么排的？",
+          "带儿子骑西藏时儿子多大算合适？",
+          "创业规划和间隔年怎么衔接的？"
+        ],
+        "extensionTopics": [
+          "西藏骑行的具体路线是哪条？",
+          "和郭宇在杭州打算聊什么？"
+        ]
+      },
+      "contentHash": "73f360af",
+      "processedAt": "2026-03-12T12:50:39.846Z"
+    },
+    "weakness": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "现在为什么不写私人生活了？",
+          "休学骑行那段具体去了哪些地方？",
+          "Blogbus 上的旧文章还留着吗？"
+        ],
+        "extensionTopics": [
+          "独立博客和平台博客你更倾向哪个？",
+          "如果重新开始记录生活，会写什么？"
+        ]
+      },
+      "contentHash": "8106ead6",
+      "processedAt": "2026-03-12T12:50:36.111Z"
+    },
+    "bike-unfair": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "其他航空公司真的都能免费托运自行车吗？",
+          "为什么深圳出发的驴友没被收费？",
+          "南航这条规定是不是霸王条款？"
+        ],
+        "extensionTopics": [
+          "如果开庭后胜诉，能要求南航退钱吗？",
+          "打算带自行车坐飞机该怎么打包最稳妥？"
+        ]
+      },
+      "contentHash": "ee9f84a3",
+      "processedAt": "2026-03-12T12:50:37.578Z"
+    },
+    "traveler-note-book": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "疯马油皮和道林纸哪里能买到？",
+          "内芯尺寸为什么选210×110mm？",
+          "裁皮时长几毫米会有什么影响？"
+        ],
+        "extensionTopics": [
+          "自己做内芯装订有什么技巧？",
+          "骑车去西藏还带了哪些手工装备？"
+        ]
+      },
+      "contentHash": "52e9063e",
+      "processedAt": "2026-03-12T12:50:42.004Z"
+    },
+    "tibet-dream-road": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "三个月锻炼计划具体怎么安排？",
+          "碟刹和V刹到底选哪个好？",
+          "手套为什么不建议用普通的骑行手套？"
+        ],
+        "extensionTopics": [
+          "现在318路况和十年前比变化大吗？",
+          "如果预算只有两千怎么选车？"
+        ]
+      },
+      "contentHash": "5feb5203",
+      "processedAt": "2026-03-12T12:50:41.161Z"
+    },
+    "biket2tibet2": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "驮包5KG算多还是少？",
+          "5块钱剃光头，后悔了吗？",
+          "出发前一个月才学会骑车，怎么敢走川藏？"
+        ],
+        "extensionTopics": [
+          "回来写装备清单，会推荐哪些？",
+          "21岁这趟和后来其他长途比，哪里不一样？"
+        ]
+      },
+      "contentHash": "4392a69a",
+      "processedAt": "2026-03-12T12:50:41.263Z"
+    },
+    "new2012": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "组装山地车最后花了多少钱？",
+          "从广州骑到深圳那次遇到下雨怎么办？",
+          "暨南大学第一饭堂微博怎么火起来的？"
+        ],
+        "extensionTopics": [
+          "骑行西藏的装备清单具体有哪些？",
+          "卖iPad凑路费后悔吗现在？"
+        ]
+      },
+      "contentHash": "5573f64a",
+      "processedAt": "2026-03-12T12:50:42.838Z"
+    },
+    "tools": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "为什么上课带电脑记笔记的人那么少？",
+          "Google Reader的https加密具体怎么用？",
+          "GTD到底是什么、怎么入门？"
+        ],
+        "extensionTopics": [
+          "现在这些工具哪些已经凉了、用什么替代？",
+          "作者后来真的戒掉碎片化阅读了吗？"
+        ]
+      },
+      "contentHash": "130bcdda",
+      "processedAt": "2026-03-12T12:50:43.434Z"
+    },
+    "morning-world": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "318国道每公里都有英魂是真的吗？",
+          "出发前三周开始调整作息具体怎么做？",
+          "作者说的'最后的时光'是指什么？"
+        ],
+        "extensionTopics": [
+          "这趟骑行回来后作者的生活习惯变了吗？",
+          "类似这样'向死而生'的旅行还有推荐吗？"
+        ]
+      },
+      "contentHash": "e8654f91",
+      "processedAt": "2026-03-12T12:50:42.037Z"
+    },
+    "think-different": {
+      "data": {
+        "openingLine": "十一年前的那个早晨，你醒来看到这条消息时，第一反应是什么。",
+        "focusQuestions": [
+          "乔布斯哪段经历最让你意外？",
+          "The last memory is the best memory'是什么意思？",
+          "这段广告哪句翻译得最好？"
+        ],
+        "extensionTopics": [
+          "你还留着哪些老苹果设备？",
+          "后来有哪家公司的广告打动过你？"
+        ]
+      },
+      "contentHash": "499586d5",
+      "processedAt": "2026-03-12T12:50:43.768Z"
+    },
+    "gz2sz": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "早餐吃太少真的会骑不动吗？",
+          "为什么凌晨4点出发反而更安全？",
+          "爬坡训练具体要练多少次？"
+        ],
+        "extensionTopics": [
+          "深圳回广州走的是同一条路吗？",
+          "3000块预算还能怎么配车？"
+        ]
+      },
+      "contentHash": "8c94bcd1",
+      "processedAt": "2026-03-12T12:50:42.422Z"
+    },
+    "jnufan": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "桶装水那件事最后学校有道歉吗？",
+          "饭票被私用的到底是哪个学院？",
+          "运营这个微博有没有被学校找过麻烦？"
+        ],
+        "extensionTopics": [
+          "现在暨大还有类似的匿名校园媒体吗？",
+          "如果重来一次他会怎么发那条桶装水微博？"
+        ]
+      },
+      "contentHash": "bfdd8c75",
+      "processedAt": "2026-03-12T12:50:44.431Z"
+    },
+    "chrome-best": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "现在 Chrome 还像当年说的这么快吗？",
+          "IE 内核浏览器现在还有人用吗？",
+          "多进程和沙盒具体怎么防病毒？"
+        ],
+        "extensionTopics": [
+          "作者后来推荐的插件有哪些？",
+          "和现在的 Edge 浏览器怎么选？"
+        ]
+      },
+      "contentHash": "ae33510d",
+      "processedAt": "2026-03-12T12:50:45.769Z"
+    },
+    "internship-1": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "最后选了哪家公司？",
+          "WP7风格简历怎么设计的？",
+          "面试时英文问到什么程度？"
+        ],
+        "extensionTopics": [
+          "现在回看这段经历有什么变化？",
+          "当时如果没选这家会去哪？"
+        ]
+      },
+      "contentHash": "6438c99f",
+      "processedAt": "2026-03-12T12:50:44.299Z"
+    },
+    "cv-design": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "微求职那段话怎么组织的？",
+          "三条线图形化简历具体怎么呈现？",
+          "考完试才做中文简历来得及吗？"
+        ],
+        "extensionTopics": [
+          "这种简洁风简历适合投哪些岗位？",
+          "除了这本书还有啥快速上手的资源？"
+        ]
+      },
+      "contentHash": "79841ee4",
+      "processedAt": "2026-03-12T12:50:46.639Z"
+    },
+    "june-plan": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "概率论自学一小时够吗，从哪章开始补？",
+          "VPS搞VPN和SSH具体怎么操作？",
+          "GTD你打算研究哪本教材或工具？"
+        ],
+        "extensionTopics": [
+          "win7启动慢最后怎么解决的？",
+          "后来BEC过了没，证书有用吗？"
+        ]
+      },
+      "contentHash": "6f2408be",
+      "processedAt": "2026-03-12T12:50:48.902Z"
+    },
+    "weibo-tiger": {
+      "data": {
+        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "focusQuestions": [
+          "作者提到的两只老虎具体指什么？",
+          "那条指甲油微博为什么说是扯蛋？",
+          "色狼事件的男当事人后来怎么样了？"
+        ],
+        "extensionTopics": [
+          "现在朋友圈谣言和当年微博有什么区别？",
+          "如果是短视频传谣更难辟谣吗？"
+        ]
+      },
+      "contentHash": "8d06c6db",
+      "processedAt": "2026-03-12T12:50:48.688Z"
+    }
+  }
+}

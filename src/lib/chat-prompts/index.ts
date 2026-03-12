@@ -2,9 +2,14 @@ import { getChatPromptRuntimeConfig } from "./config.ts";
 import { buildCoreIdentity } from "./core-identity.ts";
 import { buildCoreRules } from "./core-rules.ts";
 import { buildRuntimeContext } from "./runtime-context.ts";
-import type { ArticleContext, TweetContext, ProjectContext } from "./types.ts";
+import type {
+  ArticleContext,
+  TweetContext,
+  ProjectContext,
+  CurrentArticleContext,
+} from "./types.ts";
 
-export type { ArticleContext, TweetContext, ProjectContext } from "./types";
+export type { ArticleContext, TweetContext, ProjectContext, CurrentArticleContext } from "./types";
 export { fallbackResponseTemplates } from "./core-rules";
 
 export function buildSystemPromptV2(
@@ -12,6 +17,7 @@ export function buildSystemPromptV2(
   tweets: TweetContext[] = [],
   userQuery = "",
   projects: ProjectContext[] = [],
+  currentArticle?: CurrentArticleContext,
 ): string {
   const config = getChatPromptRuntimeConfig();
   const identity = buildCoreIdentity(userQuery);
@@ -22,6 +28,7 @@ export function buildSystemPromptV2(
     projects,
     userQuery,
     config,
+    currentArticle,
   });
 
   return `${identity}\n\n${rules}\n\n${runtime}`;

@@ -18,13 +18,13 @@ export function ScrollToTop() {
       type="button"
       aria-label="回到顶部"
       onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-      className={`fixed bottom-6 right-6 z-40 flex h-10 w-10 items-center justify-center rounded-full border border-zinc-200 bg-white/90 text-zinc-500 shadow-md backdrop-blur-sm transition-all duration-300 hover:bg-zinc-50 hover:text-zinc-800 dark:border-zinc-700 dark:bg-zinc-800/90 dark:text-zinc-400 dark:hover:bg-zinc-700 dark:hover:text-zinc-200 ${
+      className={`fixed bottom-[max(1rem,calc(env(safe-area-inset-bottom)+1rem))] right-4 z-40 flex h-11 w-11 items-center justify-center rounded-full bg-white/74 text-zinc-700 shadow-[0_10px_24px_-14px_rgba(15,23,42,0.5),0_8px_18px_-14px_rgba(15,23,42,0.28)] ring-1 ring-black/6 backdrop-blur-xl transition-all duration-300 hover:-translate-y-0.5 hover:bg-white/86 hover:shadow-[0_14px_30px_-16px_rgba(15,23,42,0.55),0_10px_20px_-16px_rgba(15,23,42,0.32)] hover:text-zinc-900 sm:bottom-6 sm:right-6 dark:bg-zinc-900/76 dark:text-zinc-300 dark:ring-white/10 dark:hover:bg-zinc-900/88 dark:hover:text-zinc-100 ${
         visible
           ? "translate-y-0 opacity-100"
           : "pointer-events-none translate-y-4 opacity-0"
       }`}
     >
-      <ChevronUp className="h-5 w-5" />
+      <ChevronUp className="h-[18px] w-[18px]" />
     </button>
   );
 }

@@ -7,6 +7,7 @@
  *   pnpm ai:process --slug=xxx         只处理指定文章
  *   pnpm ai:process --task=summary     只运行摘要任务
  *   pnpm ai:process --task=seo         只运行 SEO 任务
+ *   pnpm ai:process --task=chat-guide  只运行文章对话引导任务
  *   pnpm ai:process --recent=10        处理最近 10 篇文章
  *   pnpm ai:process --new-only         只处理没有缓存的文章
  *   pnpm ai:process --dry-run          只显示会处理哪些文章
@@ -19,6 +20,12 @@ import fs from "fs/promises";
 import path from "path";
 import crypto from "crypto";
 import { fileURLToPath } from "url";
+import {
+  buildArticleChatGuideContent,
+  normalizeGuideOpeningLine,
+  normalizeGuideQuestions,
+  normalizeGuideTopics,
+} from "../src/lib/content/article-chat-guide-utils.js";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT_DIR = path.join(__dirname, "..");
@@ -32,7 +39,7 @@ function parseArgs() {
   const flags = {
     force: false,
     slug: null,
-    task: null, // "summary" | "seo" | null (both)
+    task: null, // "summary" | "seo" | "chat-guide" | null (all)
     recent: null,
     newOnly: false,
     dryRun: false,
@@ -521,6 +528,100 @@ ${article.content.slice(0, 8000)}`,
       };
     },
   },
+
+  "chat-guide": {
+    name: "chat-guide",
+    cacheFile: "ai-article-chat-guides.json",
+
+    buildPrompt(article) {
+      return {
+        system: `你是一位擅长为中文博客读者设计“边读边聊”问题的内容编辑。请分析给定文章，并只返回**严格合法的 JSON**（RFC8259），不得输出任何额外文字或 Markdown 代码块。
+
+你的目标不是再做摘要，而是预测普通读者读到这篇文章时，最自然、最想继续追问的内容。
+
+请输出以下字段：
+
+1) openingLine：
+一句自然的开场引导语（18-40字）。
+要求：
+- 语气像作者分身在陪读者一起看这篇文章
+- 自然、克制、可信，不要过度活泼，更不要像营销文案
+- 不要复述文章标题
+- 不要出现“正在看《...》”“文章 AI 对话”“智能助手”等产品化套话
+- 不要写成摘要或功能说明
+- 避免网络热词和表演感表达，例如“抄作业”“盘盘”“掰扯”“也太稳了”
+
+2) focusQuestions：
+3 个可直接点击提问的问题。
+要求：
+- 必须是读者视角、自然口语、短句
+- 优先问文章里真的写到了、且普通人最关心的具体细节
+- 如果文章涉及路线、住宿、预算、准备项、设备、参数、步骤、坑点、结论、取舍、适用场景、对比，请优先转成这些问题
+- 至少 2 个问题要足够具体，能从原文中直接找到明确答案
+- 避免空泛、总结腔、提示词味表达，例如：
+  - “这篇文章最值得记住的 3 个重点是什么”
+  - “文中提到……背后的原因是什么”
+  - “如果我想复用文中的做法……应该从哪一步开始”
+- 不要照抄原文长句，不要把 key points 原样改写成问题
+- 每条最好不超过 22 个字，最长不超过 30 个字
+
+3) extensionTopics：
+2 个顺着本文自然延伸的问题。
+要求：
+- 仍然使用读者视角
+- 要贴近本文，不要只写泛泛的“推荐相关文章”
+- 可以引到相邻经历、类似方案、进一步比较，但语气要自然
+- 每条最好不超过 24 个字
+
+重要约束：
+- 只能基于文章已有内容判断，不要补充外部知识
+- 不要添加编号、解释、标题、括号说明
+- 输出必须可直接 JSON.parse 解析
+
+输出格式必须严格如下（字段齐全）：
+{"openingLine":"...","focusQuestions":["...","...","..."],"extensionTopics":["...","..."]}`,
+
+        user: `文章标题：${article.title}
+文章分类：${article.categories.join(", ") || "无"}
+
+文章正文：
+${article.content}`,
+      };
+    },
+
+    parseResponse(raw, article) {
+      const jsonMatch = raw.match(/```(?:json)?\s*([\s\S]*?)```/);
+      const jsonStr = (jsonMatch ? jsonMatch[1] : raw).trim();
+      const parsed = JSON.parse(jsonStr);
+
+      const openingLineSource =
+        typeof parsed.openingLine === "string"
+          ? parsed.openingLine
+          : typeof parsed.intro === "string"
+            ? parsed.intro
+            : typeof parsed.lead === "string"
+              ? parsed.lead
+              : "";
+      const focusQuestionSource =
+        parsed.focusQuestions ?? parsed.questions ?? parsed.quickQuestions ?? parsed.suggestedQuestions;
+      const extensionTopicSource =
+        parsed.extensionTopics ?? parsed.followUps ?? parsed.relatedQuestions ?? parsed.topics;
+
+      const repairedGuide = buildArticleChatGuideContent(
+        {
+          title: article?.title ?? "",
+          categories: article?.categories ?? [],
+        },
+        {
+          openingLine: normalizeGuideOpeningLine(openingLineSource),
+          focusQuestions: normalizeGuideQuestions(focusQuestionSource, 3),
+          extensionTopics: normalizeGuideTopics(extensionTopicSource, 2),
+        },
+      );
+
+      return repairedGuide;
+    },
+  },
 };
 
 // ─── 工具函数 ────────────────────────────────────────────────
@@ -533,6 +634,13 @@ function sleep(ms) {
 function cleanStringArray(arr) {
   if (!Array.isArray(arr)) return [];
   return [...new Set(arr.map((s) => String(s).trim()).filter(Boolean))];
+}
+
+function shouldCountAsSystemFailure(message) {
+  const text = String(message ?? "");
+  return /fetch failed|API \d+|aborted|ECONN|ENOTFOUND|ETIMEDOUT|EAI_AGAIN|socket hang up/i.test(
+    text,
+  );
 }
 
 // ─── 并发处理池 ──────────────────────────────────────────────
@@ -590,7 +698,7 @@ async function processQueue(queue, task, cacheManager, config, concurrency, skip
       try {
         const prompt = task.buildPrompt(article);
         const raw = await callAI(config, prompt.system, prompt.user);
-        const data = task.parseResponse(raw);
+        const data = task.parseResponse(raw, article);
 
         await cacheManager.writeEntry(
           article.slug,
@@ -620,7 +728,8 @@ async function processQueue(queue, task, cacheManager, config, concurrency, skip
 
         // 429 是限速，callAI 内部已充分重试后仍失败，不计入连续失败
         const is429 = err.message?.includes("429");
-        if (!is429) {
+        const isSystemFailure = shouldCountAsSystemFailure(err.message);
+        if (!is429 && isSystemFailure) {
           consecutiveFailures++;
           // 连续失败 10 次可能是 API 级别的问题（key 失效、服务宕机等），暂停处理
           if (consecutiveFailures >= 10) {
@@ -632,6 +741,8 @@ async function processQueue(queue, task, cacheManager, config, concurrency, skip
               `   💡 失败的文章已记录到跳过列表，下次运行将自动跳过`,
             );
           }
+        } else if (!isSystemFailure) {
+          consecutiveFailures = 0;
         }
       }
 
@@ -701,10 +812,10 @@ async function main() {
   }
 
   // 3. 确定要运行的任务
-  const taskNames = flags.task ? [flags.task] : ["summary", "seo"];
+  const taskNames = flags.task ? [flags.task] : ["summary", "seo", "chat-guide"];
   const invalidTask = taskNames.find((t) => !TASKS[t]);
   if (invalidTask) {
-    console.error(`❌ 未知任务: ${invalidTask}（可选: summary, seo）`);
+    console.error(`❌ 未知任务: ${invalidTask}（可选: summary, seo, chat-guide）`);
     process.exit(1);
   }
 
