@@ -57,7 +57,18 @@
       "Bash(pnpm info:*)",
       "Bash(pnpm add:*)",
       "Bash(pnpm list:*)",
-      "Bash(pnpm profile:context:*)"
+      "Bash(pnpm profile:context:*)",
+      "Bash(lsof:*)",
+      "Bash(git:*)",
+      "WebFetch(domain:ai.google.dev)",
+      "Bash(pnpm facts:gemini:dry:*)",
+      "Bash(wait 97949:*)",
+      "Bash(jobs:*)",
+      "Bash(xargs head:*)",
+      "Bash(pip3 list:*)",
+      "Bash(open:*)",
+      "Bash(/tmp/streaming_summary.txt:*)",
+      "Read(//tmp/**)"
     ]
   }
 }

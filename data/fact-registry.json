@@ -1,0 +1,829 @@
+{
+  "$schema": "fact-registry-v1",
+  "generatedAt": "2026-03-08T16:03:44.450Z",
+  "stats": {
+    "total": 33,
+    "verified": 33,
+    "likely": 0,
+    "uncertain": 0,
+    "pending_review": 0,
+    "rejected": 0,
+    "by_category": {
+      "travel": 9,
+      "race": 11,
+      "reading": 13
+    }
+  },
+  "facts": [
+    {
+      "fact_id": "travel:美国",
+      "fact_type": "travel_destination",
+      "category": "travel",
+      "value": "美国",
+      "source_validation": "validated",
+      "provenance": "derived_from_sources",
+      "source_ids": [
+        "post:huawei-freebuds3",
+        "post:new-york-2019",
+        "post:oneplus-esim-usa-travel"
+      ],
+      "attributes": {
+        "kind": "country",
+        "trip_count_min": 2,
+        "count_mode": "at_least"
+      },
+      "review_status": "verified",
+      "review_note": "Conservative count based on explicit public USA travel posts.",
+      "reviewed_by": "codex",
+      "reviewed_at": "2026-03-08",
+      "confidence": "verified"
+    },
+    {
+      "fact_id": "travel:日本",
+      "fact_type": "travel_destination",
+      "category": "travel",
+      "value": "日本",
+      "source_validation": "validated",
+      "provenance": "derived_from_sources",
+      "source_ids": [
+        "post:kyoto-marathon-2025",
+        "post:tokyo-2024",
+        "post:we-got-usa-visa"
+      ],
+      "attributes": {
+        "kind": "country",
+        "trip_count_min": 2,
+        "count_mode": "at_least"
+      },
+      "review_status": "verified",
+      "review_note": "Conservative count based on explicit Tokyo and Kyoto public posts.",
+      "reviewed_by": "codex",
+      "reviewed_at": "2026-03-08",
+      "confidence": "verified"
+    },
+    {
+      "fact_id": "travel:菲律宾",
+      "fact_type": "travel_destination",
+      "category": "travel",
+      "value": "菲律宾",
+      "source_validation": "validated",
+      "provenance": "derived_from_sources",
+      "source_ids": [
+        "post:travel-philippines-bohol",
+        "post:hisense-a2-pro-unboxing",
+        "post:travel-to-boracay-2016"
+      ],
+      "attributes": {
+        "kind": "country",
+        "trip_count_min": 2,
+        "count_mode": "at_least"
+      },
+      "review_status": "verified",
+      "review_note": "Conservative count based on explicit Boracay and Bohol public posts.",
+      "reviewed_by": "codex",
+      "reviewed_at": "2026-03-08",
+      "confidence": "verified"
+    },
+    {
+      "fact_id": "travel:尼泊尔",
+      "fact_type": "travel_destination",
+      "category": "travel",
+      "value": "尼泊尔",
+      "source_validation": "validated",
+      "provenance": "derived_from_sources",
+      "source_ids": [
+        "post:trave-in-nepal-paragliding"
+      ],
+      "attributes": {
+        "kind": "country",
+        "trip_count_min": 1,
+        "count_mode": "at_least"
+      },
+      "review_status": "verified",
+      "review_note": "Only one directly supported Nepal trip is currently explicit in source docs.",
+      "reviewed_by": "codex",
+      "reviewed_at": "2026-03-08",
+      "confidence": "verified"
+    },
+    {
+      "fact_id": "travel:泰国",
+      "fact_type": "travel_destination",
+      "category": "travel",
+      "value": "泰国",
+      "source_validation": "validated",
+      "provenance": "derived_from_sources",
+      "source_ids": [
+        "post:zhuhai-marathon-2023",
+        "post:bangkok-shooting"
+      ],
+      "attributes": {
+        "kind": "country",
+        "trip_count_min": 1,
+        "count_mode": "at_least"
+      },
+      "review_status": "verified",
+      "review_note": "At least one explicit Thailand trip is public.",
+      "reviewed_by": "codex",
+      "reviewed_at": "2026-03-08",
+      "confidence": "verified"
+    },
+    {
+      "fact_id": "travel:韩国",
+      "fact_type": "travel_destination",
+      "category": "travel",
+      "value": "韩国",
+      "source_validation": "validated",
+      "provenance": "derived_from_sources",
+      "source_ids": [
+        "post:we-got-usa-visa",
+        "post:meet-in-seoul-day-3"
+      ],
+      "attributes": {
+        "kind": "country",
+        "trip_count_min": 1,
+        "count_mode": "at_least"
+      },
+      "review_status": "verified",
+      "review_note": "At least one explicit Seoul trip is public.",
+      "reviewed_by": "codex",
+      "reviewed_at": "2026-03-08",
+      "confidence": "verified"
+    },
+    {
+      "fact_id": "travel:中国香港",
+      "fact_type": "travel_destination",
+      "category": "travel",
+      "value": "中国香港",
+      "source_validation": "validated",
+      "provenance": "derived_from_sources",
+      "source_ids": [
+        "post:maclehose-trail",
+        "post:how-to-open-a-bank-account-in-hongkong-2024",
+        "post:hongkong-driver-lincense"
+      ],
+      "attributes": {
+        "kind": "region",
+        "trip_count_min": 3,
+        "count_mode": "at_least"
+      },
+      "review_status": "verified",
+      "review_note": "Conservative count based on three explicit Hong Kong posts.",
+      "reviewed_by": "codex",
+      "reviewed_at": "2026-03-08",
+      "confidence": "verified"
+    },
+    {
+      "fact_id": "travel:中国澳门",
+      "fact_type": "travel_destination",
+      "category": "travel",
+      "value": "中国澳门",
+      "source_validation": "validated",
+      "provenance": "derived_from_sources",
+      "source_ids": [
+        "post:macau-roaming-sim-card",
+        "post:travel-in-taiwan-2016"
+      ],
+      "attributes": {
+        "kind": "region",
+        "trip_count_min": 1,
+        "count_mode": "at_least"
+      },
+      "review_status": "verified",
+      "review_note": "At least one explicit Macau trip is public.",
+      "reviewed_by": "codex",
+      "reviewed_at": "2026-03-08",
+      "confidence": "verified"
+    },
+    {
+      "fact_id": "travel:中国台湾",
+      "fact_type": "travel_destination",
+      "category": "travel",
+      "value": "中国台湾",
+      "source_validation": "validated",
+      "provenance": "derived_from_sources",
+      "source_ids": [
+        "post:travel-in-taiwan-2016"
+      ],
+      "attributes": {
+        "kind": "region",
+        "trip_count_min": 1,
+        "count_mode": "at_least"
+      },
+      "review_status": "verified",
+      "review_note": "Explicit Taiwan travel post exists.",
+      "reviewed_by": "codex",
+      "reviewed_at": "2026-03-08",
+      "confidence": "verified"
+    },
+    {
+      "fact_id": "race:秦皇岛马拉松-2014",
+      "fact_type": "marathon_event",
+      "category": "race",
+      "value": "秦皇岛马拉松",
+      "source_validation": "validated",
+      "provenance": "derived_from_sources",
+      "source_ids": [
+        "post:zhuhai-marathon-2023"
+      ],
+      "attributes": {
+        "date": "2014",
+        "result": "4:46:12",
+        "location": null,
+        "event_class": "marathon"
+      },
+      "review_status": "verified",
+      "review_note": "Retrospective marathon summary publicly records this full marathon.",
+      "reviewed_by": "codex",
+      "reviewed_at": "2026-03-08",
+      "confidence": "verified"
+    },
+    {
+      "fact_id": "race:北京马拉松-2014",
+      "fact_type": "marathon_event",
+      "category": "race",
+      "value": "北京马拉松",
+      "source_validation": "validated",
+      "provenance": "derived_from_sources",
+      "source_ids": [
+        "post:zhuhai-marathon-2023"
+      ],
+      "attributes": {
+        "date": "2014",
+        "result": "4:28:43",
+        "location": null,
+        "event_class": "marathon"
+      },
+      "review_status": "verified",
+      "review_note": "Retrospective marathon summary publicly records this full marathon.",
+      "reviewed_by": "codex",
+      "reviewed_at": "2026-03-08",
+      "confidence": "verified"
+    },
+    {
+      "fact_id": "race:上海马拉松-2014",
+      "fact_type": "marathon_event",
+      "category": "race",
+      "value": "上海马拉松",
+      "source_validation": "validated",
+      "provenance": "derived_from_sources",
+      "source_ids": [
+        "post:zhuhai-marathon-2023"
+      ],
+      "attributes": {
+        "date": "2014",
+        "result": "5:43:01",
+        "location": null,
+        "event_class": "marathon"
+      },
+      "review_status": "verified",
+      "review_note": "Retrospective marathon summary publicly records this full marathon.",
+      "reviewed_by": "codex",
+      "reviewed_at": "2026-03-08",
+      "confidence": "verified"
+    },
+    {
+      "fact_id": "race:广州马拉松-2015",
+      "fact_type": "marathon_event",
+      "category": "race",
+      "value": "广州马拉松",
+      "source_validation": "validated",
+      "provenance": "derived_from_sources",
+      "source_ids": [
+        "post:zhuhai-marathon-2023"
+      ],
+      "attributes": {
+        "date": "2015",
+        "result": "4:34:34",
+        "location": null,
+        "event_class": "marathon"
+      },
+      "review_status": "verified",
+      "review_note": "Retrospective marathon summary publicly records this full marathon.",
+      "reviewed_by": "codex",
+      "reviewed_at": "2026-03-08",
+      "confidence": "verified"
+    },
+    {
+      "fact_id": "race:2015北京国际长跑节-2015-04-26",
+      "fact_type": "marathon_event",
+      "category": "race",
+      "value": "2015北京国际长跑节",
+      "source_validation": "validated",
+      "provenance": "derived_from_sources",
+      "source_ids": [
+        "post:beijing-run-2015"
+      ],
+      "attributes": {
+        "date": "2015-04-26",
+        "result": "57分钟",
+        "location": null,
+        "event_class": "non_marathon"
+      },
+      "review_status": "verified",
+      "review_note": "Publicly documented race event, but not counted as a full marathon.",
+      "reviewed_by": "codex",
+      "reviewed_at": "2026-03-08",
+      "confidence": "verified"
+    },
+    {
+      "fact_id": "race:深圳马拉松-2016",
+      "fact_type": "marathon_event",
+      "category": "race",
+      "value": "深圳马拉松",
+      "source_validation": "validated",
+      "provenance": "derived_from_sources",
+      "source_ids": [
+        "post:zhuhai-marathon-2023"
+      ],
+      "attributes": {
+        "date": "2016",
+        "result": "5:25:00",
+        "location": null,
+        "event_class": "marathon"
+      },
+      "review_status": "verified",
+      "review_note": "Retrospective marathon summary publicly records this full marathon.",
+      "reviewed_by": "codex",
+      "reviewed_at": "2026-03-08",
+      "confidence": "verified"
+    },
+    {
+      "fact_id": "race:杭州马拉松-2017",
+      "fact_type": "marathon_event",
+      "category": "race",
+      "value": "杭州马拉松",
+      "source_validation": "validated",
+      "provenance": "derived_from_sources",
+      "source_ids": [
+        "post:zhuhai-marathon-2023"
+      ],
+      "attributes": {
+        "date": "2017",
+        "result": "5:38:09",
+        "location": null,
+        "event_class": "marathon"
+      },
+      "review_status": "verified",
+      "review_note": "Retrospective marathon summary publicly records this full marathon.",
+      "reviewed_by": "codex",
+      "reviewed_at": "2026-03-08",
+      "confidence": "verified"
+    },
+    {
+      "fact_id": "race:普吉岛马拉松-2018",
+      "fact_type": "marathon_event",
+      "category": "race",
+      "value": "普吉岛马拉松",
+      "source_validation": "validated",
+      "provenance": "derived_from_sources",
+      "source_ids": [
+        "post:zhuhai-marathon-2023"
+      ],
+      "attributes": {
+        "date": "2018",
+        "result": "7:20:00",
+        "location": null,
+        "event_class": "marathon"
+      },
+      "review_status": "verified",
+      "review_note": "Retrospective marathon summary publicly records this full marathon.",
+      "reviewed_by": "codex",
+      "reviewed_at": "2026-03-08",
+      "confidence": "verified"
+    },
+    {
+      "fact_id": "race:珠海马拉松-2023-11-26",
+      "fact_type": "marathon_event",
+      "category": "race",
+      "value": "珠海马拉松",
+      "source_validation": "validated",
+      "provenance": "derived_from_sources",
+      "source_ids": [
+        "post:zhuhai-marathon-2023"
+      ],
+      "attributes": {
+        "date": "2023-11-26",
+        "result": "5小时21分",
+        "location": null,
+        "event_class": "marathon"
+      },
+      "review_status": "verified",
+      "review_note": "Direct public race recap exists.",
+      "reviewed_by": "codex",
+      "reviewed_at": "2026-03-08",
+      "confidence": "verified"
+    },
+    {
+      "fact_id": "race:长沙马拉松-2024-10-27",
+      "fact_type": "marathon_event",
+      "category": "race",
+      "value": "长沙马拉松",
+      "source_validation": "validated",
+      "provenance": "derived_from_sources",
+      "source_ids": [
+        "post:changsha-marathon-2024"
+      ],
+      "attributes": {
+        "date": "2024-10-27",
+        "result": "4小时56分",
+        "location": null,
+        "event_class": "marathon"
+      },
+      "review_status": "verified",
+      "review_note": "Direct public race recap exists.",
+      "reviewed_by": "codex",
+      "reviewed_at": "2026-03-08",
+      "confidence": "verified"
+    },
+    {
+      "fact_id": "race:2025京都马拉松-2025-02-16",
+      "fact_type": "marathon_event",
+      "category": "race",
+      "value": "2025京都马拉松",
+      "source_validation": "validated",
+      "provenance": "derived_from_sources",
+      "source_ids": [
+        "post:kyoto-marathon-2025"
+      ],
+      "attributes": {
+        "date": "2025-02-16",
+        "result": "完赛",
+        "location": null,
+        "event_class": "marathon"
+      },
+      "review_status": "verified",
+      "review_note": "Direct public race recap exists.",
+      "reviewed_by": "codex",
+      "reviewed_at": "2026-03-08",
+      "confidence": "verified"
+    },
+    {
+      "fact_id": "reading:2023-01-31-我在读什么:-2023-春节读书分享",
+      "fact_type": "reading_roundup",
+      "category": "reading",
+      "value": "我在读什么: 2023 春节读书分享",
+      "source_validation": "validated",
+      "provenance": "derived_from_sources",
+      "source_ids": [
+        "post:what-i-read-in-2023-spring"
+      ],
+      "attributes": {
+        "date": "2023-01-31",
+        "url": "https://luolei.org/what-i-read-in-2023-spring",
+        "book_count": 6,
+        "books": [
+          "双重冲击",
+          "现代中国的形成",
+          "制造消费者",
+          "可能性的艺术：比较政治学30讲",
+          "心中有数：生活中的数学思维",
+          "创造"
+        ]
+      },
+      "review_status": "verified",
+      "review_note": "Explicit reading-share post.",
+      "reviewed_by": "codex",
+      "reviewed_at": "2026-03-08",
+      "confidence": "verified"
+    },
+    {
+      "fact_id": "reading:2017-12-31-全球首发开箱:QQ阅读电子书・易",
+      "fact_type": "reading_roundup",
+      "category": "reading",
+      "value": "全球首发开箱:QQ阅读电子书・易",
+      "source_validation": "validated",
+      "provenance": "derived_from_sources",
+      "source_ids": [
+        "post:qqread-elink-reader-yi-2018-review"
+      ],
+      "attributes": {
+        "date": "2017-12-31",
+        "url": "https://luolei.org/qqread-elink-reader-yi-2018-review",
+        "book_count": 1,
+        "books": [
+          "冰与火之歌"
+        ]
+      },
+      "review_status": "verified",
+      "review_note": "Explicit public post about an e-reader / reading device.",
+      "reviewed_by": "codex",
+      "reviewed_at": "2026-03-09",
+      "confidence": "verified"
+    },
+    {
+      "fact_id": "reading:2017-07-21-不合格的旅行者:读《美洲小宇宙》有感",
+      "fact_type": "reading_roundup",
+      "category": "reading",
+      "value": "不合格的旅行者:读《美洲小宇宙》有感",
+      "source_validation": "validated",
+      "provenance": "derived_from_sources",
+      "source_ids": [
+        "post:read-microcosm-of-usa"
+      ],
+      "attributes": {
+        "date": "2017-07-21",
+        "url": "https://luolei.org/read-microcosm-of-usa",
+        "book_count": 3,
+        "books": [
+          "美洲小宇宙",
+          "文化苦旅",
+          "万物生长"
+        ]
+      },
+      "review_status": "verified",
+      "review_note": "Explicit reading reflection post.",
+      "reviewed_by": "codex",
+      "reviewed_at": "2026-03-08",
+      "confidence": "verified"
+    },
+    {
+      "fact_id": "reading:2017-02-15-年終卷-|-2016年我读了哪些书？",
+      "fact_type": "reading_roundup",
+      "category": "reading",
+      "value": "年終卷 | 2016年我读了哪些书？",
+      "source_validation": "validated",
+      "provenance": "derived_from_sources",
+      "source_ids": [
+        "post:what-i-read-in-2016"
+      ],
+      "attributes": {
+        "date": "2017-02-15",
+        "url": "https://luolei.org/what-i-read-in-2016",
+        "book_count": 3,
+        "books": [
+          "鱼羊野史",
+          "剪辑的语法",
+          "精进"
+        ]
+      },
+      "review_status": "verified",
+      "review_note": "Explicit yearly reading roundup.",
+      "reviewed_by": "codex",
+      "reviewed_at": "2026-03-08",
+      "confidence": "verified"
+    },
+    {
+      "fact_id": "reading:2016-05-08-我在读什么:2016春季读书分享",
+      "fact_type": "reading_roundup",
+      "category": "reading",
+      "value": "我在读什么:2016春季读书分享",
+      "source_validation": "validated",
+      "provenance": "derived_from_sources",
+      "source_ids": [
+        "post:what-i-read-in-2016-spring"
+      ],
+      "attributes": {
+        "date": "2016-05-08",
+        "url": "https://luolei.org/what-i-read-in-2016-spring",
+        "book_count": 18,
+        "books": [
+          "野火集",
+          "道",
+          "早晨",
+          "冯仑杂文集",
+          "克里斯·安德森的书",
+          "冯仑的书",
+          "张五常的书",
+          "吴晓波的书"
+        ]
+      },
+      "review_status": "verified",
+      "review_note": "Explicit seasonal reading roundup.",
+      "reviewed_by": "codex",
+      "reviewed_at": "2026-03-08",
+      "confidence": "verified"
+    },
+    {
+      "fact_id": "reading:2015-12-10-年終卷-|-2015年我读了哪些书？",
+      "fact_type": "reading_roundup",
+      "category": "reading",
+      "value": "年終卷 | 2015年我读了哪些书？",
+      "source_validation": "validated",
+      "provenance": "derived_from_sources",
+      "source_ids": [
+        "post:what-i-read-in-2015"
+      ],
+      "attributes": {
+        "date": "2015-12-10",
+        "url": "https://luolei.org/what-i-read-in-2015",
+        "book_count": 12,
+        "books": [
+          "设计中的复杂性",
+          "Becoming Steve Jobs",
+          "丹·布朗的小说",
+          "重新发现社会",
+          "光荣与梦想",
+          "娱乐至死",
+          "短暂飞行",
+          "字体故事"
+        ]
+      },
+      "review_status": "verified",
+      "review_note": "Explicit yearly reading roundup.",
+      "reviewed_by": "codex",
+      "reviewed_at": "2026-03-08",
+      "confidence": "verified"
+    },
+    {
+      "fact_id": "reading:2015-04-19-我在读什么:2015春季读书分享",
+      "fact_type": "reading_roundup",
+      "category": "reading",
+      "value": "我在读什么:2015春季读书分享",
+      "source_validation": "validated",
+      "provenance": "derived_from_sources",
+      "source_ids": [
+        "post:what-i-read-in-2015-spring"
+      ],
+      "attributes": {
+        "date": "2015-04-19",
+        "url": "https://luolei.org/what-i-read-in-2015-spring",
+        "book_count": 10,
+        "books": [
+          "DO NOT MAKE ME THINK",
+          "历代经济变革得失",
+          "甲骨文",
+          "观念的水位",
+          "统计数字会撒谎",
+          "简约至上：交互式设计四策略",
+          "亲爱的安德烈",
+          "从0到1"
+        ]
+      },
+      "review_status": "verified",
+      "review_note": "Explicit seasonal reading roundup.",
+      "reviewed_by": "codex",
+      "reviewed_at": "2026-03-08",
+      "confidence": "verified"
+    },
+    {
+      "fact_id": "reading:2014-12-13-年終卷-|-2014年我读了哪些书？",
+      "fact_type": "reading_roundup",
+      "category": "reading",
+      "value": "年終卷 | 2014年我读了哪些书？",
+      "source_validation": "validated",
+      "provenance": "derived_from_sources",
+      "source_ids": [
+        "post:what-i-read-in-2014"
+      ],
+      "attributes": {
+        "date": "2014-12-13",
+        "url": "https://luolei.org/what-i-read-in-2014",
+        "book_count": 12,
+        "books": [
+          "当我跑步时我谈些什么",
+          "冯唐诗百首",
+          "万物生长",
+          "活着活着就老了",
+          "物理学的未来",
+          "i问连岳",
+          "平行宇宙",
+          "中国人的焦虑从哪里来"
+        ]
+      },
+      "review_status": "verified",
+      "review_note": "Explicit yearly reading roundup.",
+      "reviewed_by": "codex",
+      "reviewed_at": "2026-03-08",
+      "confidence": "verified"
+    },
+    {
+      "fact_id": "reading:2014-04-04-我在读什么:2014春季读书分享",
+      "fact_type": "reading_roundup",
+      "category": "reading",
+      "value": "我在读什么:2014春季读书分享",
+      "source_validation": "validated",
+      "provenance": "derived_from_sources",
+      "source_ids": [
+        "post:what-i-read-in-2014-spring"
+      ],
+      "attributes": {
+        "date": "2014-04-04",
+        "url": "https://luolei.org/what-i-read-in-2014-spring",
+        "book_count": 16,
+        "books": [
+          "你一定爱读的极简欧洲史",
+          "众妙之门 : 网站UI设计之道2",
+          "批评官员的尺度 : 《纽约时报》诉警察局长沙利文案",
+          "寻路中国 : 从乡村到工厂的自驾之旅",
+          "麦田里的守望者",
+          "吾国教育病理",
+          "乔布斯的魔力演讲",
+          "魔鬼积木·白垩纪往事"
+        ]
+      },
+      "review_status": "verified",
+      "review_note": "Explicit seasonal reading roundup.",
+      "reviewed_by": "codex",
+      "reviewed_at": "2026-03-08",
+      "confidence": "verified"
+    },
+    {
+      "fact_id": "reading:2013-08-19-2013年我看过哪些值得推荐的好书？",
+      "fact_type": "reading_roundup",
+      "category": "reading",
+      "value": "2013年我看过哪些值得推荐的好书？",
+      "source_validation": "validated",
+      "provenance": "derived_from_sources",
+      "source_ids": [
+        "post:books-i-read-in-2013"
+      ],
+      "attributes": {
+        "date": "2013-08-19",
+        "url": "https://luolei.org/books-i-read-in-2013",
+        "book_count": 25,
+        "books": [
+          "谣言粉碎机",
+          "美国种族简史",
+          "三体 Ⅰ Ⅱ Ⅲ",
+          "把时间当朋友:运用心智获得解放",
+          "我们台湾这些年 : 讲述台湾老百姓自己的故事",
+          "万物简史",
+          "黑客与画家",
+          "我也有一个梦想 : 近距离看美国之三"
+        ]
+      },
+      "review_status": "verified",
+      "review_note": "Explicit yearly reading roundup.",
+      "reviewed_by": "codex",
+      "reviewed_at": "2026-03-08",
+      "confidence": "verified"
+    },
+    {
+      "fact_id": "reading:2013-02-03-Kindle-Paperwhite-入手",
+      "fact_type": "reading_roundup",
+      "category": "reading",
+      "value": "Kindle Paperwhite 入手评测",
+      "source_validation": "validated",
+      "provenance": "derived_from_sources",
+      "source_ids": [
+        "post:kindle-paper-white-review"
+      ],
+      "attributes": {
+        "date": "2013-02-03",
+        "url": "https://luolei.org/kindle-paper-white-review",
+        "book_count": 2,
+        "books": [
+          "美国种族简史",
+          "三体"
+        ]
+      },
+      "review_status": "verified",
+      "review_note": "Explicit public post about Kindle / reading device usage.",
+      "reviewed_by": "codex",
+      "reviewed_at": "2026-03-09",
+      "confidence": "verified"
+    },
+    {
+      "fact_id": "reading:2011-07-18-假期书单",
+      "fact_type": "reading_roundup",
+      "category": "reading",
+      "value": "假期书单",
+      "source_validation": "validated",
+      "provenance": "derived_from_sources",
+      "source_ids": [
+        "post:summer-read"
+      ],
+      "attributes": {
+        "date": "2011-07-18",
+        "url": "https://luolei.org/summer-read",
+        "book_count": 3,
+        "books": [
+          "1984",
+          "苏联往事",
+          "变化社会中的政治秩序"
+        ]
+      },
+      "review_status": "verified",
+      "review_note": "Explicit book list post.",
+      "reviewed_by": "codex",
+      "reviewed_at": "2026-03-08",
+      "confidence": "verified"
+    },
+    {
+      "fact_id": "reading:2011-06-07-六月书单",
+      "fact_type": "reading_roundup",
+      "category": "reading",
+      "value": "六月书单",
+      "source_validation": "validated",
+      "provenance": "derived_from_sources",
+      "source_ids": [
+        "post:june-book"
+      ],
+      "attributes": {
+        "date": "2011-06-07",
+        "url": "https://luolei.org/june-book",
+        "book_count": 3,
+        "books": [
+          "Nineteen Eighty-Four",
+          "亨延顿的作品",
+          "Robin Williams 的书"
+        ]
+      },
+      "review_status": "verified",
+      "review_note": "Explicit book list post.",
+      "reviewed_by": "codex",
+      "reviewed_at": "2026-03-08",
+      "confidence": "verified"
+    }
+  ]
+}

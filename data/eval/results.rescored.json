@@ -1,0 +1,1469 @@
+{
+  "meta": {
+    "generatedAt": "2026-03-08T06:25:27.081Z",
+    "baseUrl": "http://localhost:3000",
+    "goldSetPath": "/Users/luolei/DEV/luoleiorg-x/data/eval/gold-set.json",
+    "totalCases": 30,
+    "timeoutMs": 45000,
+    "delayMs": 4000,
+    "maxRetries": 2,
+    "rescoredAt": "2026-03-08T06:39:56.344Z",
+    "rescoredFrom": "/Users/luolei/DEV/luoleiorg-x/data/eval/results.json"
+  },
+  "summary": {
+    "totalCases": 30,
+    "completedCases": 30,
+    "failedCases": 0,
+    "passCount": 28,
+    "passRate": 0.933,
+    "avgLatencyMs": 16673,
+    "avgSourceCoverage": 0.854,
+    "avgTopicCoverage": 0.786,
+    "answerModeMatchRate": 0.833,
+    "answerModeExactMatchRate": 0.5,
+    "forbiddenViolationCount": 0,
+    "perCategory": {
+      "profile": {
+        "total": 2,
+        "failed": 0,
+        "passed": 1
+      },
+      "career": {
+        "total": 6,
+        "failed": 0,
+        "passed": 6
+      },
+      "project": {
+        "total": 6,
+        "failed": 0,
+        "passed": 6
+      },
+      "travel": {
+        "total": 5,
+        "failed": 0,
+        "passed": 5
+      },
+      "race": {
+        "total": 3,
+        "failed": 0,
+        "passed": 2
+      },
+      "reading": {
+        "total": 3,
+        "failed": 0,
+        "passed": 3
+      },
+      "opinion": {
+        "total": 1,
+        "failed": 0,
+        "passed": 1
+      },
+      "recommendation": {
+        "total": 1,
+        "failed": 0,
+        "passed": 1
+      },
+      "no_answer": {
+        "total": 3,
+        "failed": 0,
+        "passed": 3
+      }
+    }
+  },
+  "results": [
+    {
+      "id": "profile-self-intro-001",
+      "category": "profile",
+      "question": "介绍一下你自己",
+      "answerText": "我是罗磊，一个在深圳的全栈开发工程师，也是 [luolei.org](https://luolei.org) 这个博客的作者。\n\n技术上，我主要折腾 React、Next.js、Node.js 这些，最近几年特别沉迷用 AI 辅助开发——也就是大家说的 \"Vibe Coding\"。最近刚开源了一个叫 [Neko Master](https://github.com/foru17/neko-master) 的家庭网络流量分析工具，用 ClickHouse 做存储，意外拿到了 1K+ Star。之前还做过几个 Raycast 插件，比如 `raycast-sink` 和 `raycast-hoarder`，都是解决我自己信息采集和 URL 管理的痛点。\n\n工作经历的话，我在阅文集团待过两段时间，中间还创过业做 ZUOLUOTV™，搞科技生活方式内容。2024 年 4 月开始做独立开发者，现在主要接一些面向全球用户的 Web 应用项目。\n\n博客写了十多年，341 篇文章、799 条动态，主题挺杂的：技术、AI、前端、DevOps、Homelab、摄影、旅行都有。最近整了个大活——[把自己过去十多年的公开内容全部结构化，做成了现在这个 AI 数字分身](https://luolei.org/luolei-ai)，你可以直接在博客首页跟我聊天。\n\n旅行和马拉松也是老爱好，跑过 11 场全马，最好成绩 4 小时 28 分（2014 年北京马拉松），不过这几年佛系了很多。摄影主要是记录生活，Unsplash 上偶尔传几张图。\n\n有什么想聊的？技术问题、旅行经历、或者想让我推荐几篇博客文章，都行。",
+      "latencyMs": 19952,
+      "finalMessageId": "9aVbf0fSYOhEOs6K",
+      "metrics": {
+        "answerModeDetected": "list",
+        "answerModeExactMatched": false,
+        "answerModeMatched": true,
+        "matchedSourceIds": [
+          "exp:独立-2024年4月---至今",
+          "highlight:10",
+          "highlight:16"
+        ],
+        "directMatchedSourceIds": [
+          "exp:独立-2024年4月---至今",
+          "highlight:10",
+          "highlight:16"
+        ],
+        "semanticMatchedSourceIds": [],
+        "missingSourceIds": [],
+        "sourceCoverage": 1,
+        "caseLevelSourceSupport": {
+          "points": 0,
+          "signals": []
+        },
+        "expectedTopicHits": [
+          "独立开发",
+          "全栈",
+          "博客"
+        ],
+        "missingTopics": [],
+        "topicCoverage": 1,
+        "forbiddenHits": [],
+        "citedUrls": [
+          "https://luolei.org",
+          "https://github.com/foru17/neko-master",
+          "https://luolei.org/luolei-ai"
+        ],
+        "citedSourceIds": [
+          "exp:独立-2024年4月---至今",
+          "project:neko-master",
+          "post:luolei-ai"
+        ],
+        "uncataloguedCitedUrls": [],
+        "refusalDetected": false,
+        "passed": true
+      }
+    },
+    {
+      "id": "profile-pets-001",
+      "category": "profile",
+      "question": "你养宠物吗？",
+      "answerText": "养啊，家里现在有 3 只宠物，不过具体是什么种类我没在动态里细说。之前还吐槽过无线吸尘器对付它们的毛发有点吃力，后来换了个松下的有线吸尘器才搞定 😂\n\n你对宠物或者智能家居清洁有兴趣？我博客里写过一套[本地化的家庭监控方案](https://luolei.org/secure-home-camera-setup)，主要是用群晖 Surveillance Station 接 TP-Link 摄像头，完全不走厂商云服务，隐私可控。虽然初衷是看家，但用来观察宠物也挺实用的。",
+      "latencyMs": 10385,
+      "finalMessageId": "XIGD4rf6e07QZhUF",
+      "metrics": {
+        "answerModeDetected": "fact",
+        "answerModeExactMatched": true,
+        "answerModeMatched": true,
+        "matchedSourceIds": [
+          "highlight:11"
+        ],
+        "directMatchedSourceIds": [
+          "highlight:11"
+        ],
+        "semanticMatchedSourceIds": [],
+        "missingSourceIds": [],
+        "sourceCoverage": 1,
+        "caseLevelSourceSupport": {
+          "points": 0,
+          "signals": []
+        },
+        "expectedTopicHits": [],
+        "missingTopics": [
+          "2只猫",
+          "1只柴犬"
+        ],
+        "topicCoverage": 0,
+        "forbiddenHits": [],
+        "citedUrls": [
+          "https://luolei.org/secure-home-camera-setup"
+        ],
+        "citedSourceIds": [
+          "post:secure-home-camera-setup"
+        ],
+        "uncataloguedCitedUrls": [],
+        "refusalDetected": false,
+        "passed": false
+      }
+    },
+    {
+      "id": "career-current-focus-001",
+      "category": "career",
+      "question": "你现在主要在做什么？",
+      "answerText": "我现在主要在做两件事：\n\n**一是持续优化这个 AI 分身** —— 刚在 3 月初做了新一轮升级，增加了数据量、优化了提示词，还把接口改成流式输出，对话响应更快了。感觉以后可以针对不同场景做几个专门的分身，比如「面试版」「商务版」，24 小时替我接待 😂\n\n**二是折腾个人知识库的向量化** —— 把过去 10 多年 300 多篇博客、推文、GitHub 内容全部做了 Embedding，构建了一套基于 RAG 的检索系统。现在你已经可以直接在博客首页跟我这个数字分身聊天了。\n\n技术栈上主要还是 React、Vinext、Cloudflare Workers 这些，配合 Claude、Kimi 做 AI 辅助开发。最近也在用 Vibe Coding 的方式快速迭代一些小项目，比如 [Neko Master](https://github.com/foru17/neko-master) 那个家庭网络流量仪表板。\n\n对了，你是对 AI 分身的技术实现感兴趣，还是想聊聊 Vibe Coding 的工作流？",
+      "latencyMs": 19413,
+      "finalMessageId": "yRQXMOBnXfwZMUVH",
+      "metrics": {
+        "answerModeDetected": "list",
+        "answerModeExactMatched": false,
+        "answerModeMatched": true,
+        "matchedSourceIds": [
+          "exp:独立-2024年4月---至今",
+          "project:luoleiorg-x",
+          "project:neko-master"
+        ],
+        "directMatchedSourceIds": [
+          "project:neko-master"
+        ],
+        "semanticMatchedSourceIds": [
+          "exp:独立-2024年4月---至今",
+          "project:luoleiorg-x"
+        ],
+        "missingSourceIds": [],
+        "sourceCoverage": 1,
+        "caseLevelSourceSupport": {
+          "points": 0,
+          "signals": []
+        },
+        "expectedTopicHits": [
+          "开源项目",
+          "AI"
+        ],
+        "missingTopics": [
+          "独立开发"
+        ],
+        "topicCoverage": 0.6666666666666666,
+        "forbiddenHits": [],
+        "citedUrls": [
+          "https://github.com/foru17/neko-master"
+        ],
+        "citedSourceIds": [
+          "project:neko-master"
+        ],
+        "uncataloguedCitedUrls": [],
+        "refusalDetected": false,
+        "passed": true
+      }
+    },
+    {
+      "id": "career-timeline-001",
+      "category": "career",
+      "question": "你过去都在哪些公司工作过？",
+      "answerText": "我的职业经历跨度挺长的，从实习到独立开发，差不多十二年了。\n\n最早是 2013 年在北京的**金山猎豹移动**做实习生，参与旗舰产品的 Web 开发，算是正式入行的起点。然后 2015 年跳槽到**小蚁科技**，在上海负责智能硬件的官网和社区。同年底加入**阅文集团**，先在上海总部待了三年，用 Node.js 和 Koa 搭企业级 BFF 框架，后来 2021 年转到深圳分部，做手机厂商合作的内容服务前端。\n\n2019 到 2020 年有段插曲，我和伴侣一起做了**ZUOLUOTV™**，一个科技生活方式的自媒体品牌，在 YouTube 和 B 站做视频。2024 年 4 月之后我就彻底独立了，现在算是**独立全栈开发者**，主要做开源项目和 Shopify 应用，比如 [Neko Master](https://github.com/foru17/neko-master) 那套家庭网络流量分析工具。\n\n完整履历我在博客写过两篇长文：[《编程三年》](https://luolei.org/how-i-became-a-programmer) 讲怎么从文科生转码，[《编程五年，我辞职了》](https://luolei.org/new-journey) 记录离开阅文、南下深圳的决定。感兴趣可以翻翻，里面踩坑的心得比简历诚实多了。",
+      "latencyMs": 17712,
+      "finalMessageId": "nSMVCrFh0n2gjgGj",
+      "metrics": {
+        "answerModeDetected": "timeline",
+        "answerModeExactMatched": true,
+        "answerModeMatched": true,
+        "matchedSourceIds": [
+          "exp:金山猎豹网络科技纽交所cmcm--北京-2013年7月---2015年5月",
+          "exp:小蚁科技---上海-2015年5月---2015年9月",
+          "exp:阅文集团---上海总部-2015年10月---2018年10月",
+          "exp:zuoluotv---深圳-2019年1月---2020年10月",
+          "exp:阅文集团---深圳-2021年1月---2024年3月",
+          "exp:独立-2024年4月---至今"
+        ],
+        "directMatchedSourceIds": [
+          "exp:金山猎豹网络科技纽交所cmcm--北京-2013年7月---2015年5月",
+          "exp:小蚁科技---上海-2015年5月---2015年9月",
+          "exp:阅文集团---上海总部-2015年10月---2018年10月",
+          "exp:zuoluotv---深圳-2019年1月---2020年10月",
+          "exp:阅文集团---深圳-2021年1月---2024年3月",
+          "exp:独立-2024年4月---至今"
+        ],
+        "semanticMatchedSourceIds": [],
+        "missingSourceIds": [],
+        "sourceCoverage": 1,
+        "caseLevelSourceSupport": {
+          "points": 0,
+          "signals": []
+        },
+        "expectedTopicHits": [
+          "猎豹",
+          "小蚁",
+          "阅文",
+          "ZUOLUOTV",
+          "独立开发"
+        ],
+        "missingTopics": [],
+        "topicCoverage": 1,
+        "forbiddenHits": [],
+        "citedUrls": [
+          "https://github.com/foru17/neko-master",
+          "https://luolei.org/how-i-became-a-programmer",
+          "https://luolei.org/new-journey"
+        ],
+        "citedSourceIds": [
+          "project:neko-master",
+          "post:how-i-became-a-programmer",
+          "post:new-journey"
+        ],
+        "uncataloguedCitedUrls": [],
+        "refusalDetected": false,
+        "passed": true
+      }
+    },
+    {
+      "id": "career-yuewen-001",
+      "category": "career",
+      "question": "你在阅文做过什么？",
+      "answerText": "我在阅文集团前后待过两段，加起来差不多六年。\n\n第一段是 2015 年底到 2018 年底，在上海总部做高级前端开发。那时候主要做了两件事：一是用 Node.js 和 Koa 搭了一套企业级的 BFF（Backend-for-Frontend）框架；二是搞了一些基础设施 API，比如动态中文字体的实时交付，解决网页加载大量字体时的性能问题。\n\n第二段是 2021 年初到 2024 年初，回到阅文，不过这次base在深圳。这边的工作更偏业务侧，负责跟 OPPO、vivo、华为这些手机厂商合作的移动内容服务，主要是混合 App 的网页视图和快应用开发。当时做了个自动化工具，能把产品文档里的离线 HTML 提取解析出来，省了不少重复劳动；另外还接入了广告 SDK，支持变现策略的 A/B 测试。\n\n中间 2019 到 2020 年我出去做了一阵 ZUOLUOTV™，做科技生活方式的内容，所以履历上看起来是断了一截。\n\n对了，2017 年底我还写过一篇 [QQ阅读电子书・易的开箱](https://luolei.org/qqread-elink-reader-yi-2018-review)，算是内部员工\"撸羊毛\"的首发评测，那台阅读器后来主要给我老婆看网文用了。",
+      "latencyMs": 17216,
+      "finalMessageId": "4PN7uny7hITaXWB3",
+      "metrics": {
+        "answerModeDetected": "list",
+        "answerModeExactMatched": false,
+        "answerModeMatched": true,
+        "matchedSourceIds": [
+          "exp:阅文集团---上海总部-2015年10月---2018年10月",
+          "exp:阅文集团---深圳-2021年1月---2024年3月",
+          "activity:18"
+        ],
+        "directMatchedSourceIds": [
+          "exp:阅文集团---上海总部-2015年10月---2018年10月",
+          "exp:阅文集团---深圳-2021年1月---2024年3月",
+          "activity:18"
+        ],
+        "semanticMatchedSourceIds": [],
+        "missingSourceIds": [],
+        "sourceCoverage": 1,
+        "caseLevelSourceSupport": {
+          "points": 0,
+          "signals": []
+        },
+        "expectedTopicHits": [
+          "前端",
+          "BFF",
+          "移动内容服务"
+        ],
+        "missingTopics": [],
+        "topicCoverage": 1,
+        "forbiddenHits": [],
+        "citedUrls": [
+          "https://luolei.org/qqread-elink-reader-yi-2018-review"
+        ],
+        "citedSourceIds": [
+          "post:qqread-elink-reader-yi-2018-review"
+        ],
+        "uncataloguedCitedUrls": [],
+        "refusalDetected": false,
+        "passed": true
+      }
+    },
+    {
+      "id": "career-background-001",
+      "category": "career",
+      "question": "你是科班出身吗，怎么转成程序员的？",
+      "answerText": "不是科班，我是文科生转码的。\n\n大学学的是管理类专业，2012年大三休学骑了一趟川藏线，回来后发现找工作挺迷茫的。当时觉得编程这事\"可能有用\"，就开始在网上自学——主要是看 Tuts+、Codecademy 这些国外的教程，也啃了不少英文文档。\n\n具体路径挺曲折的：先是在北京猎豹移动实习做 Web 开发，然后去了小蚁科技，2015年加入阅文集团上海总部，一路从前端干到高级开发。非科班出身确实起步难一点，但项目实战经验补得很快，关键是得持续写代码、持续输出。\n\n我在博客里详细写过这段经历，包括怎么选第一份工作、技术栈怎么演进、踩过哪些坑。感兴趣可以看看这篇：[《编程三年：我的程序员成长经历》](https://luolei.org/how-i-become-a-programmer)。\n\n后来2019年又从阅文辞职创业做 ZUOLUOTV，现在算是独立开发者吧，感觉转来转去，写代码这事一直没放下。",
+      "latencyMs": 16916,
+      "finalMessageId": "rGejzanG29qer2Ya",
+      "metrics": {
+        "answerModeDetected": "timeline",
+        "answerModeExactMatched": true,
+        "answerModeMatched": true,
+        "matchedSourceIds": [
+          "post:how-i-became-a-programmer",
+          "post:liqi-interview-luolei"
+        ],
+        "directMatchedSourceIds": [
+          "post:how-i-became-a-programmer"
+        ],
+        "semanticMatchedSourceIds": [
+          "post:liqi-interview-luolei"
+        ],
+        "missingSourceIds": [],
+        "sourceCoverage": 1,
+        "caseLevelSourceSupport": {
+          "points": 0,
+          "signals": []
+        },
+        "expectedTopicHits": [
+          "非科班",
+          "程序员成长"
+        ],
+        "missingTopics": [
+          "转行前端"
+        ],
+        "topicCoverage": 0.6666666666666666,
+        "forbiddenHits": [],
+        "citedUrls": [
+          "https://luolei.org/how-i-become-a-programmer"
+        ],
+        "citedSourceIds": [],
+        "uncataloguedCitedUrls": [
+          "https://luolei.org/how-i-become-a-programmer"
+        ],
+        "refusalDetected": false,
+        "passed": true
+      }
+    },
+    {
+      "id": "career-speaking-001",
+      "category": "career",
+      "question": "你公开演讲过吗？",
+      "answerText": "嗯，有过几次公开分享的经历，但不算特别多。\n\n印象最深的是 2017 年受邀在**腾讯第二届前端体验大会**做嘉宾演讲，主题是《跨界-成长：非典型程序员之路》。当时聊了自己从管理专业转行、休学骑行西藏、再到成为前端工程师的折腾经历，感觉还挺多共鸣的。\n\n另外也在**阅文集团内部做过技术讲师**，给同事分享过前端实践相关的内容。\n\n不过说实话，我更喜欢写博客和做视频这种可以慢慢打磨的形式，现场演讲还是会紧张 😅 如果你对这些分享的具体内容感兴趣，可以看看这篇 [《非典型程序员之路:腾讯第二届前端体验大会 | 嘉宾分享》](https://luolei.org/feexp-2017-shenzhen)。",
+      "latencyMs": 17766,
+      "finalMessageId": "F4ae6kPUDnVNL80r",
+      "metrics": {
+        "answerModeDetected": "count",
+        "answerModeExactMatched": false,
+        "answerModeMatched": true,
+        "matchedSourceIds": [
+          "activity:17",
+          "activity:18"
+        ],
+        "directMatchedSourceIds": [
+          "activity:17",
+          "activity:18"
+        ],
+        "semanticMatchedSourceIds": [],
+        "missingSourceIds": [],
+        "sourceCoverage": 1,
+        "caseLevelSourceSupport": {
+          "points": 0,
+          "signals": []
+        },
+        "expectedTopicHits": [
+          "腾讯前端体验大会",
+          "内部技术分享"
+        ],
+        "missingTopics": [],
+        "topicCoverage": 1,
+        "forbiddenHits": [],
+        "citedUrls": [
+          "https://luolei.org/feexp-2017-shenzhen"
+        ],
+        "citedSourceIds": [
+          "post:feexp-2017-shenzhen"
+        ],
+        "uncataloguedCitedUrls": [],
+        "refusalDetected": false,
+        "passed": true
+      }
+    },
+    {
+      "id": "career-cooperation-001",
+      "category": "career",
+      "question": "你现在还接受合作或者全职机会吗？",
+      "answerText": "我现在是独立开发者状态，从 2024 年 4 月开始全职做自己的项目和开源创作。短期内没有回归全职坐班的计划，感觉现在的节奏更适合我——能深度投入自己真正想做的产品，比如 [Neko Master](https://github.com/foru17/neko-master) 和 Shopify 相关的 SaaS 应用。\n\n不过我对**有意思的合作**还是开放的，尤其是：\n- 技术咨询或架构评审（前端、Node、AI 集成方向）\n- 独立开发/开源项目的联合共建\n- 内容创作相关的技术合作\n\n之前有朋友问要不要\"加入团队开启财富人生\"，我调侃归调侃，但确实觉得**选择比努力重要**。如果你手头有具体的事想聊，可以直接发我细节，我让 AI 分身先 24 小时接待着 😂\n\n对了，我在[《2026 年，我把自己做成了一个 AI》](https://luolei.org/luolei-ai)里写过，以后商务合作可以让分身先聊，感兴趣可以去看看这套玩法。",
+      "latencyMs": 17155,
+      "finalMessageId": "OiqEq5WN2XJznL1l",
+      "metrics": {
+        "answerModeDetected": "list",
+        "answerModeExactMatched": false,
+        "answerModeMatched": true,
+        "matchedSourceIds": [
+          "highlight:16"
+        ],
+        "directMatchedSourceIds": [
+          "highlight:16"
+        ],
+        "semanticMatchedSourceIds": [],
+        "missingSourceIds": [],
+        "sourceCoverage": 1,
+        "caseLevelSourceSupport": {
+          "points": 0,
+          "signals": []
+        },
+        "expectedTopicHits": [
+          "合作"
+        ],
+        "missingTopics": [
+          "保持开放"
+        ],
+        "topicCoverage": 0.5,
+        "forbiddenHits": [],
+        "citedUrls": [
+          "https://github.com/foru17/neko-master",
+          "https://luolei.org/luolei-ai"
+        ],
+        "citedSourceIds": [
+          "project:neko-master",
+          "post:luolei-ai"
+        ],
+        "uncataloguedCitedUrls": [],
+        "refusalDetected": false,
+        "passed": true
+      }
+    },
+    {
+      "id": "project-neko-master-001",
+      "category": "project",
+      "question": "Neko Master 是什么？",
+      "answerText": "Neko Master 是我春节期间用 Vibe Coding 做的一个开源家庭网络流量分析仪表板，不是昵称，就是个正经的项目名。\n\n起因挺简单的——我想找个好看又实用的工具来监控家里路由器的流量，但市面上的要么太丑，要么太重。干脆自己撸一个，结果四小时搞出 MVP，上线一周拿了 1000+ Star，有点意外。\n\n技术栈上用了 React + NestJS + ClickHouse，后来还加了 Agent 模式支持多网关部署，能跑在 OpenWrt 或者路由器伴机上。中间踩过不少坑，比如早期用 SQLite 单条写入，一天能刷出 200GB I/O，后来优化到批量写入才解决。\n\n如果你也在折腾 Homelab 或者想监控家里网络，可以去 GitHub 看看：[Neko Master](https://github.com/foru17/neko-master)。部署文档和 Docker 镜像都有，开箱即用。\n\n详细的开发过程和踩坑记录我写在博客里了：[《Neko Master: 从 0 到 1K+ Star 的 Vibe Coding 实践》](https://luolei.org/neko-master-vibe-coding)。",
+      "latencyMs": 14879,
+      "finalMessageId": "PXvIho6vJHZH18Gr",
+      "metrics": {
+        "answerModeDetected": "fact",
+        "answerModeExactMatched": true,
+        "answerModeMatched": true,
+        "matchedSourceIds": [
+          "project:neko-master",
+          "post:neko-master-vibe-coding"
+        ],
+        "directMatchedSourceIds": [
+          "project:neko-master",
+          "post:neko-master-vibe-coding"
+        ],
+        "semanticMatchedSourceIds": [],
+        "missingSourceIds": [],
+        "sourceCoverage": 1,
+        "caseLevelSourceSupport": {
+          "points": 0,
+          "signals": []
+        },
+        "expectedTopicHits": [
+          "开源",
+          "网络流量分析",
+          "GitHub Star"
+        ],
+        "missingTopics": [],
+        "topicCoverage": 1,
+        "forbiddenHits": [],
+        "citedUrls": [
+          "https://github.com/foru17/neko-master",
+          "https://luolei.org/neko-master-vibe-coding"
+        ],
+        "citedSourceIds": [
+          "project:neko-master",
+          "post:neko-master-vibe-coding"
+        ],
+        "uncataloguedCitedUrls": [],
+        "refusalDetected": false,
+        "passed": true
+      }
+    },
+    {
+      "id": "project-blog-stack-001",
+      "category": "project",
+      "question": "你现在这个博客用什么技术栈？",
+      "answerText": "我现在这个博客用的是 **Vinext + Cloudflare Workers** 这套组合。\n\n其实就在上个月（2026-02-25），我刚把博客从 VitePress 迁到 Cloudflare 新发布的 Vinext 框架。迁移过程挺顺利的，实际就两步：VitePress → Next.js 16 → Vinext，全程用 Codex GPT-5.3 完成的。\n\nVinext 是 Cloudflare 基于 Next.js 改造的边缘渲染框架，保留了 Next.js 的开发体验，但部署在 Workers 上，全球访问速度很香。不过框架太新，部署时还是踩了点坑，比如一些 Node API 的兼容性问题。\n\n如果你也在折腾静态博客或者想试试边缘部署，可以看看我这篇迁移记录：[《2026 年，我把自己做成了一个 AI》](https://luolei.org/luolei-ai) 里面聊了聊这次技术选型的思考，还有 [luoleiorg-x](https://github.com/foru17/luoleiorg-x) 这个仓库是完整开源的。\n\n之前其实用过 VitePress、也折腾过 Hexo，但感觉现在的 AI 辅助开发环境下，选一个能灵活扩展、部署简单的方案更重要。",
+      "latencyMs": 15389,
+      "finalMessageId": "NJI4uQ7UcdkXfphv",
+      "metrics": {
+        "answerModeDetected": "list",
+        "answerModeExactMatched": false,
+        "answerModeMatched": true,
+        "matchedSourceIds": [
+          "project:luoleiorg-x",
+          "post:luolei-ai"
+        ],
+        "directMatchedSourceIds": [
+          "project:luoleiorg-x",
+          "post:luolei-ai"
+        ],
+        "semanticMatchedSourceIds": [],
+        "missingSourceIds": [],
+        "sourceCoverage": 1,
+        "caseLevelSourceSupport": {
+          "points": 0,
+          "signals": []
+        },
+        "expectedTopicHits": [
+          "Vinext",
+          "Cloudflare Workers",
+          "AI"
+        ],
+        "missingTopics": [],
+        "topicCoverage": 1,
+        "forbiddenHits": [],
+        "citedUrls": [
+          "https://luolei.org/luolei-ai",
+          "https://github.com/foru17/luoleiorg-x"
+        ],
+        "citedSourceIds": [
+          "post:luolei-ai",
+          "project:luoleiorg-x"
+        ],
+        "uncataloguedCitedUrls": [],
+        "refusalDetected": false,
+        "passed": true
+      }
+    },
+    {
+      "id": "project-raycast-001",
+      "category": "project",
+      "question": "你做过哪些 Raycast 插件？",
+      "answerText": "我做过两款 Raycast 插件，都是围绕效率和信息管理场景。\n\n**[Raycast Sink](https://luolei.org/raycast-sink)** —— 短链管理工具，用来管理我部署在 Cloudflare 上的开源短链服务 Sink。之前用 YOURLS 感觉太重了，迁移到 Sink 之后顺手做了这个插件，支持快捷查看、创建、搜索和编辑短链接，数据做了本地缓存，离线也能用。这个插件开发得很快，用 Cursor 大概 2 小时就搞定了。\n\n**[Raycast Hoarder](https://luolei.org/raycast-hoarder)** —— AI 书签管理插件，对接的是开源的 AI 书签工具 Hoarder（后来因商标原因改名 Karakeep，插件也跟着更新了）。功能包括书签的预览、搜索、标签管理，强调自部署的数据可控性。不过因为 Hoarder API 的限制，目前只能快捷添加文本类书签，网页链接的添加还得走其他方式。\n\n两款插件都上架了 Raycast 官方 Store，算是我在 Vibe Coding 实践里比较顺手的小项目。",
+      "latencyMs": 15612,
+      "finalMessageId": "kn3orhzTb2NPH6XM",
+      "metrics": {
+        "answerModeDetected": "list",
+        "answerModeExactMatched": true,
+        "answerModeMatched": true,
+        "matchedSourceIds": [
+          "project:raycast-插件",
+          "post:raycast-sink",
+          "post:raycast-hoarder"
+        ],
+        "directMatchedSourceIds": [
+          "project:raycast-插件",
+          "post:raycast-sink",
+          "post:raycast-hoarder"
+        ],
+        "semanticMatchedSourceIds": [],
+        "missingSourceIds": [],
+        "sourceCoverage": 1,
+        "caseLevelSourceSupport": {
+          "points": 0,
+          "signals": []
+        },
+        "expectedTopicHits": [
+          "Raycast Sink",
+          "Raycast Hoarder"
+        ],
+        "missingTopics": [],
+        "topicCoverage": 1,
+        "forbiddenHits": [],
+        "citedUrls": [
+          "https://luolei.org/raycast-sink",
+          "https://luolei.org/raycast-hoarder"
+        ],
+        "citedSourceIds": [
+          "post:raycast-sink",
+          "post:raycast-hoarder"
+        ],
+        "uncataloguedCitedUrls": [],
+        "refusalDetected": false,
+        "passed": true
+      }
+    },
+    {
+      "id": "project-cloudflare-001",
+      "category": "project",
+      "question": "你跟 Cloudflare 有哪些实际使用经验？",
+      "answerText": "我跟 Cloudflare 打交道挺久了，从 CDN 到 Workers 边缘计算都有实际项目在用。\n\n**最早是 CDN 和 DNS 层面。** 好几年前我就把博客的海外流量切到 Cloudflare，配合 DNSPod 做智能解析，国内走阿里云、海外走 CF，算是比较经典的\"双栈\"方案。后来也写过 [深圳电信环境下公共 DNS 的监控对比](https://luolei.org/shenzhen-chinanet-public-dns-realtime-benchmark)，里面测了 Cloudflare DNS 的延迟和稳定性数据。\n\n**Workers 和边缘计算是这两年重点玩的。** 最新的动作是把整个博客底层迁到 Cloudflare 了——[Vinext 框架](https://github.com/foru17/luoleiorg-x) 就是基于 Cloudflare Workers 重建的，集成了 AI 摘要、搜索和 SEO 工具。感觉比 Vercel 省心，至少不会再收到用量警告账单 😂\n\n**还有个实际薅到的羊毛：** 去年成功申请了 [Cloudflare 创业扶持计划](https://luolei.org/cloudflare-for-startups)，拿到了 5000 美元额度。申请门槛是公司成立 ≤5 年且融资在 5 万-500 万美元之间，如果你已经有 R2 或 Workers 的使用记录，通过率会高不少。\n\n**对比体验方面**，我也持续在关注国内厂商的进展。像 [阿里云 ESA](https://x.com/luoleiorg/status/1945769839051858128) 和 [腾讯 EdgeOne](https://x.com/luoleiorg/status/1934650774883307683) 现在都有免费套餐和内地节点，跟 Cloudflare 的取舍主要看用户分布——海外为主选 CF，国内用户多就值得试试 ESA 或 EdgeOne。\n\n你具体想了解哪块？Workers 开发、创业计划申请，还是和其他 CDN 的选型对比？",
+      "latencyMs": 20506,
+      "finalMessageId": "rJMQl51mzMgkWOPI",
+      "metrics": {
+        "answerModeDetected": "list",
+        "answerModeExactMatched": false,
+        "answerModeMatched": true,
+        "matchedSourceIds": [
+          "project:luoleiorg-x",
+          "post:cloudflare-for-startups"
+        ],
+        "directMatchedSourceIds": [
+          "project:luoleiorg-x",
+          "post:cloudflare-for-startups"
+        ],
+        "semanticMatchedSourceIds": [],
+        "missingSourceIds": [
+          "post:raycast-sink"
+        ],
+        "sourceCoverage": 0.6666666666666666,
+        "caseLevelSourceSupport": {
+          "points": 0,
+          "signals": []
+        },
+        "expectedTopicHits": [
+          "Workers",
+          "创业扶持计划"
+        ],
+        "missingTopics": [
+          "Cloudflare-based Sink"
+        ],
+        "topicCoverage": 0.6666666666666666,
+        "forbiddenHits": [],
+        "citedUrls": [
+          "https://luolei.org/shenzhen-chinanet-public-dns-realtime-benchmark",
+          "https://github.com/foru17/luoleiorg-x",
+          "https://luolei.org/cloudflare-for-startups",
+          "https://x.com/luoleiorg/status/1945769839051858128",
+          "https://x.com/luoleiorg/status/1934650774883307683"
+        ],
+        "citedSourceIds": [
+          "post:shenzhen-chinanet-public-dns-realtime-benchmark",
+          "project:luoleiorg-x",
+          "post:cloudflare-for-startups",
+          "tweet:1945769839051858128",
+          "tweet:1934650774883307683"
+        ],
+        "uncataloguedCitedUrls": [],
+        "refusalDetected": false,
+        "passed": true
+      }
+    },
+    {
+      "id": "project-ai-workflow-001",
+      "category": "project",
+      "question": "你是怎么把 AI 用到开发工作流里的？",
+      "answerText": "我算是比较早把 AI 塞进日常开发流程的那批人，从 2023 年 ChatGPT 爆火开始就一直在迭代这套工作流。\n\n**核心思路：让 AI 干它擅长的，我干我擅长的**\n\n具体怎么落地，我写过一篇 [《如何用 ChatGPT 助力开发》](https://luolei.org/chatgpt-in-development)，里面详细讲了国内用户的三道门槛（手机号、信用卡、IP）怎么绕，以及自建 Pandora 服务做 Token 缓存的方案。现在回头看，那套配置依然能用，只是模型换成了 Claude 和 Gemini 为主。\n\n**现在的日常开发流大概是：**\n\n- **代码生成与重构**：用 Claude 写核心逻辑，特别是 NestJS 后端和 React 前端这种样板多的场景。提示词工程我摸索了一套自己的模板，先给上下文边界，再提需求，最后要它主动问澄清问题。\n- **Debug 与 Code Review**：把报错信息直接丢进去，让它先分析可能原因，我再验证。比我自己肉眼扫日志快很多。\n- **Vibe Coding 实验**：今年春节我做了个极端测试——几乎纯靠 AI 把 [Neko Master](https://github.com/foru17/neko-master) 从 0 做到 1K+ Star，验证\"做工程化系统\"而不是\"做玩具\"的边界在哪里。那篇 [《Neko Master: 从 0 到 1K+ Star 的 Vibe Coding 实践》](https://luolei.org/neko-master-vibe-coding) 里有完整复盘。\n- **工具链增强**：自己写了几个 Raycast 插件，比如 [raycast-sink](https://github.com/foru17/raycast-sink) 管理短链，开发过程中 AI 帮我处理了大部分 TypeScript 类型体操和 API 封装。\n\n**踩过的坑也说说：**\n\nAI 生成的代码一开始跑得通，但维护性往往不行。我现在会强制要求它补单元测试、写 README、遵循项目已有的目录结构——这些约束条件比功能描述还重要。\n\n另外，Token 消耗是真的猛。2 月以来 Vibe Coding 工作量暴涨，我原本的 ChatGPT、Claude、Gemini 额度全都不够用了，现在基本是多模型轮着用，哪个快用哪个。\n\n你具体想了解哪一块？是提示词怎么写、本地模型部署、还是特定技术栈的 AI 辅助方案？",
+      "latencyMs": 24745,
+      "finalMessageId": "KafutSrA10i7SocA",
+      "metrics": {
+        "answerModeDetected": "list",
+        "answerModeExactMatched": false,
+        "answerModeMatched": false,
+        "matchedSourceIds": [
+          "highlight:10",
+          "post:chatgpt-in-development",
+          "post:neko-master-vibe-coding",
+          "post:luolei-ai"
+        ],
+        "directMatchedSourceIds": [
+          "highlight:10",
+          "post:chatgpt-in-development",
+          "post:neko-master-vibe-coding"
+        ],
+        "semanticMatchedSourceIds": [
+          "post:luolei-ai"
+        ],
+        "missingSourceIds": [],
+        "sourceCoverage": 1,
+        "caseLevelSourceSupport": {
+          "points": 0,
+          "signals": []
+        },
+        "expectedTopicHits": [
+          "AI-first"
+        ],
+        "missingTopics": [
+          "开发工作流",
+          "效率提升"
+        ],
+        "topicCoverage": 0.3333333333333333,
+        "forbiddenHits": [],
+        "citedUrls": [
+          "https://luolei.org/chatgpt-in-development",
+          "https://github.com/foru17/neko-master",
+          "https://luolei.org/neko-master-vibe-coding",
+          "https://github.com/foru17/raycast-sink"
+        ],
+        "citedSourceIds": [
+          "post:chatgpt-in-development",
+          "project:neko-master",
+          "post:neko-master-vibe-coding"
+        ],
+        "uncataloguedCitedUrls": [
+          "https://github.com/foru17/raycast-sink"
+        ],
+        "refusalDetected": false,
+        "passed": true
+      }
+    },
+    {
+      "id": "project-commercial-001",
+      "category": "project",
+      "question": "你做过商业化产品吗？",
+      "answerText": "做过，而且是从 0 到上架的完整经历。\n\n2024 年独立开发以来，我用 React、NestJS、PostgreSQL 和 GraphQL 做了一款面向国际商家的 Shopify SaaS 应用，已经正式上架 Shopify 官方应用商店。从需求分析、技术架构到发布后的迭代，全流程自己扛下来，算是完成了独立开发者最硬核的闭环之一。\n\n更早之前，2019 到 2020 年我和伴侣在深圳做过 ZUOLUOTV™，一个科技生活方式媒体品牌，在 YouTube、B 站和微信同步运营。虽然内容属性更强，但变现逻辑也是通的——广告、品牌合作、电商带货都跑过。\n\n如果你对 SaaS 产品的技术选型或者独立开发的冷启动有兴趣，可以告诉我，我在博客里写过不少踩坑记录。",
+      "latencyMs": 15056,
+      "finalMessageId": "oXKlM6nX2k4k8R8E",
+      "metrics": {
+        "answerModeDetected": "fact",
+        "answerModeExactMatched": true,
+        "answerModeMatched": true,
+        "matchedSourceIds": [
+          "exp:独立-2024年4月---至今"
+        ],
+        "directMatchedSourceIds": [],
+        "semanticMatchedSourceIds": [
+          "exp:独立-2024年4月---至今"
+        ],
+        "missingSourceIds": [],
+        "sourceCoverage": 1,
+        "caseLevelSourceSupport": {
+          "points": 0,
+          "signals": []
+        },
+        "expectedTopicHits": [
+          "Shopify",
+          "商业应用"
+        ],
+        "missingTopics": [],
+        "topicCoverage": 1,
+        "forbiddenHits": [],
+        "citedUrls": [],
+        "citedSourceIds": [],
+        "uncataloguedCitedUrls": [],
+        "refusalDetected": false,
+        "passed": true
+      }
+    },
+    {
+      "id": "travel-countries-001",
+      "category": "travel",
+      "question": "你去过哪些国家？",
+      "answerText": "根据博客里的记录，我去过这些国家/地区：\n\n**菲律宾** — 2018年国庆带家人去了薄荷岛和宿务，和弟弟一起考了OW潜水证，还去了巧克力山看眼镜猴。\n\n**美国** — 2017年春节走了趟美西自驾，从旧金山一路开到洛杉矶、拉斯维加斯，再绕到大峡谷，全程差不多6000里。这趟旅行后来还成了个故事，女友变成了前女友。\n\n**日本** — 去过至少4次。2017年之前去过一次，2024年5月跟妻子重访东京和镰仓，2025年2月专门去京都跑了马拉松。东京马拉松我抽了8次都没中，2026年还想继续试试。\n\n**韩国** — 去过首尔，用iPhone 6加智云稳定器拍了支旅行短片《遇见，首尔》。\n\n**中国台湾** — 2016年10月跟妻子东海岸线自由行了一周。\n\n另外动态里提到想跑2026年的国外马拉松，但具体目的地还没定。博客里有记录的海外旅行大概就这些，实际次数可能比列出来的多，有些短途的没写进去。",
+      "latencyMs": 17433,
+      "finalMessageId": "GqJPc8HBnvcJPhhP",
+      "metrics": {
+        "answerModeDetected": "list",
+        "answerModeExactMatched": true,
+        "answerModeMatched": true,
+        "matchedSourceIds": [
+          "post:tokyo-2024",
+          "post:travel-philippines-bohol"
+        ],
+        "directMatchedSourceIds": [],
+        "semanticMatchedSourceIds": [
+          "post:tokyo-2024",
+          "post:travel-philippines-bohol"
+        ],
+        "missingSourceIds": [
+          "post:oneplus-esim-usa-travel",
+          "post:travel-to-boracay-2016",
+          "post:trave-in-nepal-paragliding"
+        ],
+        "sourceCoverage": 0.4,
+        "caseLevelSourceSupport": {
+          "points": 0,
+          "signals": []
+        },
+        "expectedTopicHits": [
+          "美国",
+          "日本",
+          "菲律宾"
+        ],
+        "missingTopics": [
+          "尼泊尔"
+        ],
+        "topicCoverage": 0.75,
+        "forbiddenHits": [],
+        "citedUrls": [],
+        "citedSourceIds": [],
+        "uncataloguedCitedUrls": [],
+        "refusalDetected": false,
+        "passed": true
+      }
+    },
+    {
+      "id": "travel-japan-count-001",
+      "category": "travel",
+      "question": "你去过日本几次？",
+      "answerText": "至少去过 4 次。\n\n第一次是 2016 年 6 月，和杨左一起跑了东京、仙台、松岛、白石，还拍了左罗 TV 第一集旅行短片「遇见，日本」。同年 7 月好像又去了一趟东京和仙台，不过博客里主要记录的是 6 月那次。\n\n然后是 2024 年 5 月，带老婆重访日本，五天四晚的东京・镰仓放松之旅，跑了皇居晨跑环线，还第一次远眺到了富士山。\n\n最近一次是 2025 年 2 月，专门去京都跑马拉松，那是我第四次赴日，也是个人第 10 场全马。赛前一周感冒发烧，差点退赛，最后抱着「完赛就是胜利」的心态硬撑下来的。\n\n另外今年 2 月还在 X 上看了大阪马拉松的回放，但那是云观赛，不算亲自去。",
+      "latencyMs": 15802,
+      "finalMessageId": "FAaVseugXWeJzEgA",
+      "metrics": {
+        "answerModeDetected": "count",
+        "answerModeExactMatched": true,
+        "answerModeMatched": true,
+        "matchedSourceIds": [
+          "post:kyoto-marathon-2025",
+          "post:tokyo-2024"
+        ],
+        "directMatchedSourceIds": [],
+        "semanticMatchedSourceIds": [
+          "post:kyoto-marathon-2025",
+          "post:tokyo-2024"
+        ],
+        "missingSourceIds": [],
+        "sourceCoverage": 1,
+        "caseLevelSourceSupport": {
+          "points": 0,
+          "signals": []
+        },
+        "expectedTopicHits": [
+          "至少",
+          "日本"
+        ],
+        "missingTopics": [],
+        "topicCoverage": 1,
+        "forbiddenHits": [],
+        "citedUrls": [],
+        "citedSourceIds": [],
+        "uncataloguedCitedUrls": [],
+        "refusalDetected": false,
+        "passed": true
+      }
+    },
+    {
+      "id": "travel-usa-001",
+      "category": "travel",
+      "question": "你去过美国吗？",
+      "answerText": "去过，2017年春节跑了趟美西自驾，从旧金山出发，沿着一号公路到洛杉矶，再奔拉斯维加斯和大峡谷，全程大概6000里。那趟旅行还挺难忘的，不过结局有点戏剧性——女友变成了前女友，所以那篇游记标题直接叫[《美西6000里：一趟旅行，女友成了前女友》](https://luolei.org/usa-road-travel-feb)。\n\n现在手里还留着美国手机号，主要是为了用那些US Only的AI服务，比如Claude的某些功能。不过人一直在深圳，远程薅羊毛而已。",
+      "latencyMs": 11310,
+      "finalMessageId": "S8jloyffDCI2xyLk",
+      "metrics": {
+        "answerModeDetected": "count",
+        "answerModeExactMatched": false,
+        "answerModeMatched": true,
+        "matchedSourceIds": [
+          "post:we-got-usa-visa"
+        ],
+        "directMatchedSourceIds": [],
+        "semanticMatchedSourceIds": [
+          "post:we-got-usa-visa"
+        ],
+        "missingSourceIds": [
+          "post:oneplus-esim-usa-travel"
+        ],
+        "sourceCoverage": 1,
+        "caseLevelSourceSupport": {
+          "points": 1,
+          "signals": [
+            "post:usa-road-travel-feb"
+          ]
+        },
+        "expectedTopicHits": [
+          "美国"
+        ],
+        "missingTopics": [],
+        "topicCoverage": 1,
+        "forbiddenHits": [],
+        "citedUrls": [
+          "https://luolei.org/usa-road-travel-feb"
+        ],
+        "citedSourceIds": [
+          "post:usa-road-travel-feb"
+        ],
+        "uncataloguedCitedUrls": [],
+        "refusalDetected": false,
+        "passed": true
+      }
+    },
+    {
+      "id": "travel-philippines-001",
+      "category": "travel",
+      "question": "你去过菲律宾吗？",
+      "answerText": "去过，而且去过好几次。印象最深的是带家人去薄荷岛考 OW 潜水证那次——我妈、我弟还有我，国庆长假从香港飞宿务再转船，折腾但挺值的。11岁的老弟成了当时我们潜店里最小的学员，我在 [《菲律宾 | 18米深蓝:薄荷岛&宿务 OW潜水旅行》](https://luolei.org/travel-philippines-bohol) 里详细写了行程、潜店选择和避坑建议，比如薄荷岛其实可以直飞，没必要走宿务转船那条线，省时间。\n\n另外还去过长滩、科隆这些地方，主要是潜水+躺平，东南亚的海岛里菲律宾性价比确实高。你想了解哪方面的？潜水考证、跳岛路线还是交通住宿？",
+      "latencyMs": 15635,
+      "finalMessageId": "bunQynDYf6LxTnvv",
+      "metrics": {
+        "answerModeDetected": "fact",
+        "answerModeExactMatched": true,
+        "answerModeMatched": true,
+        "matchedSourceIds": [
+          "post:travel-philippines-bohol"
+        ],
+        "directMatchedSourceIds": [
+          "post:travel-philippines-bohol"
+        ],
+        "semanticMatchedSourceIds": [],
+        "missingSourceIds": [
+          "post:travel-to-boracay-2016"
+        ],
+        "sourceCoverage": 0.5,
+        "caseLevelSourceSupport": {
+          "points": 0,
+          "signals": []
+        },
+        "expectedTopicHits": [
+          "薄荷岛",
+          "菲律宾"
+        ],
+        "missingTopics": [
+          "长滩岛"
+        ],
+        "topicCoverage": 0.6666666666666666,
+        "forbiddenHits": [],
+        "citedUrls": [
+          "https://luolei.org/travel-philippines-bohol"
+        ],
+        "citedSourceIds": [
+          "post:travel-philippines-bohol"
+        ],
+        "uncataloguedCitedUrls": [],
+        "refusalDetected": false,
+        "passed": true
+      }
+    },
+    {
+      "id": "travel-nepal-001",
+      "category": "travel",
+      "question": "你去过尼泊尔吗？",
+      "answerText": "去过，而且去了不止一次。尼泊尔算是我比较偏爱的旅行目的地，博客里至少记录过三次，主要是冲着徒步去的。\n\n最经典的是 [EBC（珠峰大本营）徒步](https://luolei.org/ebc-trekking)，2017年走的，从卢卡拉机场开始，十几天高海拔徒步，一路经过南池、丁波切、 Gorak Shep，最后到5364米的珠峰大本营。那趟给我印象最深的是高反和风景的反差——身体在地狱，眼睛在天堂，真的是字面意思。\n\n后来还走过 [ABC（安纳普尔纳大本营）](https://luolei.org/abc-trekking-2019)，2019年带老婆一起，这条线相对轻松，海拔最高4130米，但雪山环绕的感觉更密集，鱼尾峰就在眼前，很震撼。\n\n加德满都也待过几次，泰米尔区的混乱和杜巴广场的古老形成很有意思的对比，烧尸庙第一次看确实冲击挺大的。\n\n你是对尼泊尔哪块感兴趣？徒步路线选择、装备准备，还是加德满都的玩法？我可以帮你翻翻博客里的具体记录。",
+      "latencyMs": 24835,
+      "finalMessageId": "jJ4XCDRXLTuDHiS0",
+      "metrics": {
+        "answerModeDetected": "list",
+        "answerModeExactMatched": false,
+        "answerModeMatched": true,
+        "matchedSourceIds": [],
+        "directMatchedSourceIds": [],
+        "semanticMatchedSourceIds": [],
+        "missingSourceIds": [
+          "post:trave-in-nepal-paragliding"
+        ],
+        "sourceCoverage": 1,
+        "caseLevelSourceSupport": {
+          "points": 1,
+          "signals": [
+            "https://luolei.org/ebc-trekking",
+            "https://luolei.org/abc-trekking-2019"
+          ]
+        },
+        "expectedTopicHits": [
+          "尼泊尔"
+        ],
+        "missingTopics": [
+          "博卡拉"
+        ],
+        "topicCoverage": 0.5,
+        "forbiddenHits": [],
+        "citedUrls": [
+          "https://luolei.org/ebc-trekking",
+          "https://luolei.org/abc-trekking-2019"
+        ],
+        "citedSourceIds": [],
+        "uncataloguedCitedUrls": [
+          "https://luolei.org/ebc-trekking",
+          "https://luolei.org/abc-trekking-2019"
+        ],
+        "refusalDetected": false,
+        "passed": true
+      }
+    },
+    {
+      "id": "race-total-marathons-001",
+      "category": "race",
+      "question": "你大概跑过多少场全马？",
+      "answerText": "我博客里记录过至少 6 场全程马拉松，从 2014 年秦皇岛首马开始，中间断断续续跑了北京、广州、深圳、珠海这些，最近一场是 2025 年 2 月的京都马拉松。\n\n不过说实话，中间有些年份的记录我没整理得那么细，比如 2016 到 2023 之间可能还有几场没单独成文。如果你对我某场具体比赛的体验感兴趣，比如雾霾天跑北马 PB 那次，或者京都马拉松抱病完赛的经历，我可以帮你找详细的文章。",
+      "latencyMs": 14893,
+      "finalMessageId": "6J1OPtCqvlZ3mGCO",
+      "metrics": {
+        "answerModeDetected": "count",
+        "answerModeExactMatched": true,
+        "answerModeMatched": true,
+        "matchedSourceIds": [
+          "post:kyoto-marathon-2025",
+          "highlight:15"
+        ],
+        "directMatchedSourceIds": [],
+        "semanticMatchedSourceIds": [
+          "post:kyoto-marathon-2025",
+          "highlight:15"
+        ],
+        "missingSourceIds": [
+          "post:zhuhai-marathon-2023",
+          "post:changsha-marathon-2024"
+        ],
+        "sourceCoverage": 0.5,
+        "caseLevelSourceSupport": {
+          "points": 0,
+          "signals": []
+        },
+        "expectedTopicHits": [
+          "全马"
+        ],
+        "missingTopics": [
+          "10场左右"
+        ],
+        "topicCoverage": 0.5,
+        "forbiddenHits": [],
+        "citedUrls": [],
+        "citedSourceIds": [],
+        "uncataloguedCitedUrls": [],
+        "refusalDetected": false,
+        "passed": true
+      }
+    },
+    {
+      "id": "race-latest-001",
+      "category": "race",
+      "question": "你最近一次公开写的马拉松是哪一场？",
+      "answerText": "最近一次公开写的马拉松是 [2024 年长沙马拉松](https://luolei.org/changsha-marathon-2024)，完赛成绩 4 小时 56 分。\n\n这场比赛对我挺有意义的——疫情中断三年后重新恢复训练，成功把成绩拉回 5 小时内。赛前其实挺忐忑的，毕竟体重比十年前多了 20 斤，耐力明显滑坡。比赛当天前半程还能稳住 10km/h 的配速，25 公里后就开始掉速，最后只能走跑结合撑到终点。\n\n不过能完赛已经满意了，毕竟这是第 9 场全马。跑完还在长沙多待了两天，吃了不少东西 😂",
+      "latencyMs": 15010,
+      "finalMessageId": "aKWIzaEePuv6nSgX",
+      "metrics": {
+        "answerModeDetected": "count",
+        "answerModeExactMatched": false,
+        "answerModeMatched": false,
+        "matchedSourceIds": [],
+        "directMatchedSourceIds": [],
+        "semanticMatchedSourceIds": [],
+        "missingSourceIds": [
+          "post:kyoto-marathon-2025"
+        ],
+        "sourceCoverage": 0,
+        "caseLevelSourceSupport": {
+          "points": 0,
+          "signals": []
+        },
+        "expectedTopicHits": [],
+        "missingTopics": [
+          "京都马拉松",
+          "2025"
+        ],
+        "topicCoverage": 0,
+        "forbiddenHits": [],
+        "citedUrls": [
+          "https://luolei.org/changsha-marathon-2024"
+        ],
+        "citedSourceIds": [
+          "post:changsha-marathon-2024"
+        ],
+        "uncataloguedCitedUrls": [],
+        "refusalDetected": false,
+        "passed": false
+      }
+    },
+    {
+      "id": "race-pb-001",
+      "category": "race",
+      "question": "你全马 PB 大概是多少？",
+      "answerText": "我全马 PB 是 **4 小时 28 分 43 秒**，2014 年北京马拉松跑的。\n\n那场比赛挺难忘的——当天北京 PM2.5 爆表，超过 400 的雾霾天，天安门起跑、鸟巢终点，最后俯身亲了下地面。这个成绩比我首马（秦皇岛）快了 15 分钟，达成了当时定的 430 目标。\n\n不过说实话，后来几年状态起伏挺大，2016 深马跑到 5 小时 27 分，2023 珠海 5 小时 21 分，2024 长沙 4 小时 56 分，都没再破这个纪录。去年京都马拉松更是抱病完赛，只求安全到终点。\n\n感觉 4:28 这个 PB 可能要跟我一辈子了 😂",
+      "latencyMs": 17309,
+      "finalMessageId": "WjVnEqOe6FmhhioW",
+      "metrics": {
+        "answerModeDetected": "fact",
+        "answerModeExactMatched": true,
+        "answerModeMatched": true,
+        "matchedSourceIds": [
+          "highlight:15"
+        ],
+        "directMatchedSourceIds": [],
+        "semanticMatchedSourceIds": [
+          "highlight:15"
+        ],
+        "missingSourceIds": [],
+        "sourceCoverage": 1,
+        "caseLevelSourceSupport": {
+          "points": 0,
+          "signals": []
+        },
+        "expectedTopicHits": [
+          "4小时28分"
+        ],
+        "missingTopics": [],
+        "topicCoverage": 1,
+        "forbiddenHits": [],
+        "citedUrls": [],
+        "citedSourceIds": [],
+        "uncataloguedCitedUrls": [],
+        "refusalDetected": false,
+        "passed": true
+      }
+    },
+    {
+      "id": "reading-recent-share-001",
+      "category": "reading",
+      "question": "你最近有公开分享过读书记录吗？",
+      "answerText": "有的，不过说实话，这几年阅读量确实下滑得厉害。\n\n最近一次是 [2023 年春节](https://luolei.org/what-i-read-in-2023-spring)，当时回了四川娘家，趁假期集中读了 6 本书，主要是社会、科技、政治、商业类的非虚构作品。那篇文章里也自嘲过，2017 年结婚后阅读量断崖式下跌，2019-2022 年甚至跌到每年 1 本，感觉个人成长都跟着停滞了。\n\n更早之前还有 [2014 年](https://luolei.org/what-i-read-in-2014) 和 [2016 年](https://luolei.org/what-i-read-in-2016) 的年度读书总结，分别是 18 本和 13 本。对比下来，2014 年那会儿还在读冯唐、量子物理这些\"无用之书\"，2016 年就开始转向功利性阅读了——毕竟时间和精力都不够用，得优先服务内容生产。\n\n2024 年 7 月还在 X 上发过一条[动态](https://x.com/luoleiorg/status/1811248144073822425)，吐槽做读书笔记时翻书和打字姿势别扭，最后靠 PDF + OCR 解决。算是偶尔还在读，但确实不像以前那样系统记录了。\n\n你对哪类书感兴趣？技术、社科还是别的，我可以帮你翻翻博客里有没有相关的读书笔记。",
+      "latencyMs": 19401,
+      "finalMessageId": "0j7lsNhpZlTp6Egh",
+      "metrics": {
+        "answerModeDetected": "list",
+        "answerModeExactMatched": false,
+        "answerModeMatched": true,
+        "matchedSourceIds": [
+          "post:what-i-read-in-2023-spring"
+        ],
+        "directMatchedSourceIds": [
+          "post:what-i-read-in-2023-spring"
+        ],
+        "semanticMatchedSourceIds": [],
+        "missingSourceIds": [],
+        "sourceCoverage": 1,
+        "caseLevelSourceSupport": {
+          "points": 0,
+          "signals": []
+        },
+        "expectedTopicHits": [
+          "2023 春节读书分享",
+          "6本书"
+        ],
+        "missingTopics": [],
+        "topicCoverage": 1,
+        "forbiddenHits": [],
+        "citedUrls": [
+          "https://luolei.org/what-i-read-in-2023-spring",
+          "https://luolei.org/what-i-read-in-2014",
+          "https://luolei.org/what-i-read-in-2016",
+          "https://x.com/luoleiorg/status/1811248144073822425"
+        ],
+        "citedSourceIds": [
+          "post:what-i-read-in-2023-spring",
+          "post:what-i-read-in-2014",
+          "post:what-i-read-in-2016",
+          "tweet:1811248144073822425"
+        ],
+        "uncataloguedCitedUrls": [],
+        "refusalDetected": false,
+        "passed": true
+      }
+    },
+    {
+      "id": "reading-long-term-001",
+      "category": "reading",
+      "question": "你有长期写书单或读书分享吗？",
+      "answerText": "有的，我从 2013 年开始就有写书单的习惯，基本上每年或每半年会整理一次阅读总结。\n\n比较成系列的有这几篇：\n- [《2013年我看过哪些值得推荐的好书？》](https://luolei.org/books-i-read-in-2013) —— 那年 1-8 月读了 29 本，也是我刚用 Kindle Paperwhite 的时候，阅读效率特别高\n- [《年終卷 | 2014年我读了哪些书？》](https://luolei.org/what-i-read-in-2014) —— 全年 18 本，那阵子迷冯唐，读了他三分之一的作品\n- [《我在读什么:2015春季读书分享》](https://luolei.org/what-i-read-in-2015-spring) —— 16 本，开始往商业、设计类拓展\n- [《年終卷 | 2016年我读了哪些书？》](https://luolei.org/what-i-read-in-2016) —— 13 本，下半年读的，风格明显转向功利性阅读，优先服务内容生产\n- [《我在读什么: 2023 春节读书分享》](https://luolei.org/what-i-read-in-2023-spring) —— 中间断了好几年，2019-2022 年每年大概只读 1 本，那次趁春节假期在四川娘家一口气补了 6 本\n\n说实话，2017 年结婚后阅读量断崖式下跌，生活节奏变了，很难有整块时间静下来看书。现在更偏向\"按需阅读\"，有问题了再去找书，而不是像以前那样系统性刷书了。",
+      "latencyMs": 18205,
+      "finalMessageId": "o3HwBhvtWgYrYFXw",
+      "metrics": {
+        "answerModeDetected": "list",
+        "answerModeExactMatched": false,
+        "answerModeMatched": false,
+        "matchedSourceIds": [
+          "post:books-i-read-in-2013",
+          "post:what-i-read-in-2014-spring",
+          "post:what-i-read-in-2015-spring",
+          "post:what-i-read-in-2016",
+          "post:what-i-read-in-2023-spring"
+        ],
+        "directMatchedSourceIds": [
+          "post:books-i-read-in-2013",
+          "post:what-i-read-in-2015-spring",
+          "post:what-i-read-in-2016",
+          "post:what-i-read-in-2023-spring"
+        ],
+        "semanticMatchedSourceIds": [
+          "post:what-i-read-in-2014-spring"
+        ],
+        "missingSourceIds": [
+          "post:june-book"
+        ],
+        "sourceCoverage": 0.8333333333333334,
+        "caseLevelSourceSupport": {
+          "points": 0,
+          "signals": []
+        },
+        "expectedTopicHits": [
+          "长期写书单",
+          "多次读书分享"
+        ],
+        "missingTopics": [],
+        "topicCoverage": 1,
+        "forbiddenHits": [],
+        "citedUrls": [
+          "https://luolei.org/books-i-read-in-2013",
+          "https://luolei.org/what-i-read-in-2014",
+          "https://luolei.org/what-i-read-in-2015-spring",
+          "https://luolei.org/what-i-read-in-2016",
+          "https://luolei.org/what-i-read-in-2023-spring"
+        ],
+        "citedSourceIds": [
+          "post:books-i-read-in-2013",
+          "post:what-i-read-in-2014",
+          "post:what-i-read-in-2015-spring",
+          "post:what-i-read-in-2016",
+          "post:what-i-read-in-2023-spring"
+        ],
+        "uncataloguedCitedUrls": [],
+        "refusalDetected": false,
+        "passed": true
+      }
+    },
+    {
+      "id": "reading-2016-001",
+      "category": "reading",
+      "question": "你 2016 年读过哪些类型的书？",
+      "answerText": "2016 年我读了 13 本书，全是下半年看的，类型挺杂的：历史杂文、成功学、媒体批判、设计入门、影视理论、效率工具、理财启蒙，还有摄影技法。\n\n那年的阅读转向挺明显的——从之前偏人文理想的方向，改成更功利实用的选书逻辑。毕竟时间和精力都有限，得优先服务内容生产嘛。对成功学和财商类书我保持警惕，主要是图个启发，不是真想复制什么路径。\n\n具体书单和每本的短评我记在[《年終卷 | 2016年我读了哪些书？》](https://luolei.org/what-i-read-in-2016)这篇里，感兴趣可以翻翻看。",
+      "latencyMs": 14095,
+      "finalMessageId": "WygSEcOpFy1u37YN",
+      "metrics": {
+        "answerModeDetected": "count",
+        "answerModeExactMatched": false,
+        "answerModeMatched": false,
+        "matchedSourceIds": [
+          "post:what-i-read-in-2016"
+        ],
+        "directMatchedSourceIds": [
+          "post:what-i-read-in-2016"
+        ],
+        "semanticMatchedSourceIds": [],
+        "missingSourceIds": [],
+        "sourceCoverage": 1,
+        "caseLevelSourceSupport": {
+          "points": 0,
+          "signals": []
+        },
+        "expectedTopicHits": [
+          "历史",
+          "影视理论",
+          "效率工具",
+          "摄影"
+        ],
+        "missingTopics": [],
+        "topicCoverage": 1,
+        "forbiddenHits": [],
+        "citedUrls": [
+          "https://luolei.org/what-i-read-in-2016"
+        ],
+        "citedSourceIds": [
+          "post:what-i-read-in-2016"
+        ],
+        "uncataloguedCitedUrls": [],
+        "refusalDetected": false,
+        "passed": true
+      }
+    },
+    {
+      "id": "opinion-ai-developers-001",
+      "category": "opinion",
+      "question": "你怎么看 AI 对开发者的影响？",
+      "answerText": "我觉得 AI 对开发者的影响正在从\"效率工具\"变成\"工作流重构\"。\n\n最直接的体验是，我现在写代码的方式跟两年前完全不一样了。以前是先查文档、想架构、再动手；现在是先跟 AI 描述需求，让它生成骨架，然后我在这个基础上迭代。这种\"Vibe Coding\"模式让我能把更多精力放在产品逻辑和用户体验上，而不是纠结语法细节。\n\n但这里有个但是——AI 降低的是\"写代码\"的门槛，不是\"做好工程\"的门槛。我最近用纯 Vibe Coding 把 [Neko Master](https://github.com/foru17/neko-master) 从 0 做到 1K+ Star，过程中发现普通开发者能走多远，其实取决于你能不能把 AI 生成的代码组织成可维护的系统。AI 很擅长写函数，但架构设计、边界情况处理、长期演进这些还得人来把控。\n\n另外我注意到一个隐蔽的问题：AI 工具链里的话语权战争。比如我开发时系统和软件都默认英文，有次才发现 AI 自动\"贴心\"处理了某些敏感地区的中文显示——这种细节如果不主动检查，很容易在不知情的情况下被植入特定立场。\n\n总的来说，AI 让独立开发者有了以前小团队才能做的产能，但工程化能力和批判性思维反而更重要了。推荐看看我这篇 [《Neko Master: 从 0 到 1K+ Star 的 Vibe Coding 实践》](https://luolei.org/neko-master-vibe-coding)，里面记录了具体的踩坑过程。",
+      "latencyMs": 18615,
+      "finalMessageId": "Rs3lcf7iTfPeOa2L",
+      "metrics": {
+        "answerModeDetected": "opinion",
+        "answerModeExactMatched": true,
+        "answerModeMatched": true,
+        "matchedSourceIds": [
+          "post:luolei-ai",
+          "post:neko-master-vibe-coding"
+        ],
+        "directMatchedSourceIds": [
+          "post:neko-master-vibe-coding"
+        ],
+        "semanticMatchedSourceIds": [
+          "post:luolei-ai"
+        ],
+        "missingSourceIds": [
+          "post:chatgpt-in-development"
+        ],
+        "sourceCoverage": 0.6666666666666666,
+        "caseLevelSourceSupport": {
+          "points": 0,
+          "signals": []
+        },
+        "expectedTopicHits": [
+          "效率提升",
+          "工程能力仍重要",
+          "审美/架构判断"
+        ],
+        "missingTopics": [],
+        "topicCoverage": 1,
+        "forbiddenHits": [],
+        "citedUrls": [
+          "https://github.com/foru17/neko-master",
+          "https://luolei.org/neko-master-vibe-coding"
+        ],
+        "citedSourceIds": [
+          "project:neko-master",
+          "post:neko-master-vibe-coding"
+        ],
+        "uncataloguedCitedUrls": [],
+        "refusalDetected": false,
+        "passed": true
+      }
+    },
+    {
+      "id": "recommendation-first-reads-001",
+      "category": "recommendation",
+      "question": "如果第一次看你的博客，你会推荐我先读哪几篇？",
+      "answerText": "如果是第一次来，我会推荐这几篇，基本能代表我博客的几个主线：\n\n**技术/效率类**\n- [《dotfiles 新手教程》](https://luolei.org/dotfiles-tutorial) —— 开发者环境管理的入门，我自己用了很多年的 workflow\n- [《Neko Master: 从 0 到 1K+ Star 的 Vibe Coding 实践》](https://luolei.org/neko-master-vibe-coding) —— 最近用 AI 辅助开发的一个完整项目复盘，能感受到我现在的技术状态\n\n**生活方式/实用类**\n- [《美股开户新手教程:写给老婆的家庭投资手册》](https://luolei.org/start-investing) —— 给完全零基础的人写的，步骤很细，也是博客里阅读量很高的一篇\n- [《我的新电脑: 2025 年 MATX 小主机》](https://luolei.org/pc-2025) —— 硬件折腾，算是 Homelab 系列的新篇\n\n**偏个人/实验性**\n- [《2026 年，我把自己做成了一个 AI》](https://luolei.org/luolei-ai) —— 就是你现在在对话的这个东西的由来 😄\n\n如果你对某个方向特别感兴趣 —— 比如旅行、摄影、前端具体技术栈 —— 告诉我，我可以再精准推荐。",
+      "latencyMs": 17351,
+      "finalMessageId": "G7JpPWZLPxUNKb8G",
+      "metrics": {
+        "answerModeDetected": "list",
+        "answerModeExactMatched": false,
+        "answerModeMatched": false,
+        "matchedSourceIds": [
+          "post:luolei-ai",
+          "post:neko-master-vibe-coding"
+        ],
+        "directMatchedSourceIds": [
+          "post:luolei-ai",
+          "post:neko-master-vibe-coding"
+        ],
+        "semanticMatchedSourceIds": [],
+        "missingSourceIds": [
+          "post:chatgpt-in-development",
+          "post:kyoto-marathon-2025"
+        ],
+        "sourceCoverage": 0.5,
+        "caseLevelSourceSupport": {
+          "points": 0,
+          "signals": []
+        },
+        "expectedTopicHits": [
+          "技术"
+        ],
+        "missingTopics": [
+          "推荐文章",
+          "个人风格"
+        ],
+        "topicCoverage": 0.3333333333333333,
+        "forbiddenHits": [],
+        "citedUrls": [
+          "https://luolei.org/dotfiles-tutorial",
+          "https://luolei.org/neko-master-vibe-coding",
+          "https://luolei.org/start-investing",
+          "https://luolei.org/pc-2025",
+          "https://luolei.org/luolei-ai"
+        ],
+        "citedSourceIds": [
+          "post:dotfiles-tutorial",
+          "post:neko-master-vibe-coding",
+          "post:start-investing",
+          "post:pc-2025",
+          "post:luolei-ai"
+        ],
+        "uncataloguedCitedUrls": [],
+        "refusalDetected": false,
+        "passed": true
+      }
+    },
+    {
+      "id": "no-answer-income-001",
+      "category": "no_answer",
+      "question": "你现在每个月赚多少钱？",
+      "answerText": "这个具体数字我没在博客里留记录。\n\n2018年辞职离开阅文的时候，我写过那篇[《编程五年：我辞职了》](https://luolei.org/new-journey)，里面提过放弃了百万级股权激励选择跨界创业。但那是七年前的决定了，现在的收入结构跟当时完全不同——独立开发、开源项目、内容创作，几块加起来怎么算都挺复杂的，我自己也没按月仔细算过。\n\n感觉你可能是想了解独立开发者或者副业变现的路径？这方面我倒是可以分享一些踩过的坑和实际体验。",
+      "latencyMs": 13862,
+      "finalMessageId": "BKo9MorbgbxEi0Cg",
+      "metrics": {
+        "answerModeDetected": "unknown",
+        "answerModeExactMatched": true,
+        "answerModeMatched": true,
+        "matchedSourceIds": [],
+        "directMatchedSourceIds": [],
+        "semanticMatchedSourceIds": [],
+        "missingSourceIds": [],
+        "sourceCoverage": null,
+        "caseLevelSourceSupport": {
+          "points": 0,
+          "signals": []
+        },
+        "expectedTopicHits": [
+          "未公开"
+        ],
+        "missingTopics": [],
+        "topicCoverage": 1,
+        "forbiddenHits": [],
+        "citedUrls": [
+          "https://luolei.org/new-journey"
+        ],
+        "citedSourceIds": [
+          "post:new-journey"
+        ],
+        "uncataloguedCitedUrls": [],
+        "refusalDetected": true,
+        "passed": true
+      }
+    },
+    {
+      "id": "no-answer-family-name-001",
+      "category": "no_answer",
+      "question": "你老婆叫什么名字？",
+      "answerText": "这个细节我没在博客里记录。\n\n从公开内容来看，我写过一篇[《美股开户新手教程：写给老婆的家庭投资手册》](https://luolei.org/start-investing)，也发过一条动态提到\"为我和妻子提供了很大的参考价值\"，但确实没提过具体姓名。\n\n感觉你对我家庭方面还挺好奇的？不过博客和动态里聊得更多的其实是技术、旅行、还有最近折腾的 AI 项目。有什么想聊的方向吗。",
+      "latencyMs": 10462,
+      "finalMessageId": "MACQMZQircUFf3nZ",
+      "metrics": {
+        "answerModeDetected": "unknown",
+        "answerModeExactMatched": true,
+        "answerModeMatched": true,
+        "matchedSourceIds": [],
+        "directMatchedSourceIds": [],
+        "semanticMatchedSourceIds": [],
+        "missingSourceIds": [],
+        "sourceCoverage": null,
+        "caseLevelSourceSupport": {
+          "points": 0,
+          "signals": []
+        },
+        "expectedTopicHits": [
+          "未公开"
+        ],
+        "missingTopics": [],
+        "topicCoverage": 1,
+        "forbiddenHits": [],
+        "citedUrls": [
+          "https://luolei.org/start-investing"
+        ],
+        "citedSourceIds": [
+          "post:start-investing"
+        ],
+        "uncataloguedCitedUrls": [],
+        "refusalDetected": true,
+        "passed": true
+      }
+    },
+    {
+      "id": "no-answer-address-001",
+      "category": "no_answer",
+      "question": "你家具体住在哪个小区？",
+      "answerText": "这个细节我没在博客里记录。\n\n不过可以聊聊我在 [X 动态](https://x.com/luoleiorg/status/2028667842875580795) 里分享过的一个观察：过去七八年去了惠州二十多次，感觉那边 remote 生活性价比挺高的——海景公寓房租一千多，配套也齐全，比一线城市松弛不少。\n\n你是对这种生活方式感兴趣，还是想了解深圳这边的居住体验？",
+      "latencyMs": 13280,
+      "finalMessageId": "xgFe6GAJYCbq6buy",
+      "metrics": {
+        "answerModeDetected": "unknown",
+        "answerModeExactMatched": true,
+        "answerModeMatched": true,
+        "matchedSourceIds": [],
+        "directMatchedSourceIds": [],
+        "semanticMatchedSourceIds": [],
+        "missingSourceIds": [],
+        "sourceCoverage": null,
+        "caseLevelSourceSupport": {
+          "points": 0,
+          "signals": []
+        },
+        "expectedTopicHits": [
+          "不提供具体住址"
+        ],
+        "missingTopics": [],
+        "topicCoverage": 1,
+        "forbiddenHits": [],
+        "citedUrls": [
+          "https://x.com/luoleiorg/status/2028667842875580795"
+        ],
+        "citedSourceIds": [
+          "tweet:2028667842875580795"
+        ],
+        "uncataloguedCitedUrls": [],
+        "refusalDetected": true,
+        "passed": true
+      }
+    }
+  ]
+}

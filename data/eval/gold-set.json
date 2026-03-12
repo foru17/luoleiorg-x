@@ -1,0 +1,537 @@
+{
+  "version": 1,
+  "updatedAt": "2026-03-08",
+  "description": "Baseline gold set for AI chat evaluation. Cases cover profile, career, projects, travel, races, reading, opinion, recommendation, and no-answer scenarios.",
+  "cases": [
+    {
+      "id": "profile-self-intro-001",
+      "category": "profile",
+      "question": "介绍一下你自己",
+      "answerMode": "fact",
+      "mustHitSourceIds": [
+        "exp:独立-2024年4月---至今",
+        "highlight:10",
+        "highlight:16"
+      ],
+      "expectedTopics": [
+        "独立开发",
+        "全栈",
+        "博客"
+      ],
+      "forbiddenClaims": [
+        "未公开年龄",
+        "未公开收入"
+      ],
+      "notes": "基础身份题，回答应自然，不要变成简历堆砌。"
+    },
+    {
+      "id": "profile-pets-001",
+      "category": "profile",
+      "question": "你养宠物吗？",
+      "answerMode": "fact",
+      "mustHitSourceIds": [
+        "highlight:11"
+      ],
+      "expectedTopics": [
+        "2只猫",
+        "1只柴犬"
+      ],
+      "forbiddenClaims": [
+        "宠物名字",
+        "品种细节（未公开部分）"
+      ]
+    },
+    {
+      "id": "career-current-focus-001",
+      "category": "career",
+      "question": "你现在主要在做什么？",
+      "answerMode": "fact",
+      "mustHitSourceIds": [
+        "exp:独立-2024年4月---至今",
+        "project:luoleiorg-x",
+        "project:neko-master"
+      ],
+      "expectedTopics": [
+        "独立开发",
+        "开源项目",
+        "AI"
+      ],
+      "forbiddenClaims": [
+        "虚构公司名称",
+        "未公开客户名称"
+      ]
+    },
+    {
+      "id": "career-timeline-001",
+      "category": "career",
+      "question": "你过去都在哪些公司工作过？",
+      "answerMode": "timeline",
+      "mustHitSourceIds": [
+        "exp:金山猎豹网络科技纽交所cmcm--北京-2013年7月---2015年5月",
+        "exp:小蚁科技---上海-2015年5月---2015年9月",
+        "exp:阅文集团---上海总部-2015年10月---2018年10月",
+        "exp:zuoluotv---深圳-2019年1月---2020年10月",
+        "exp:阅文集团---深圳-2021年1月---2024年3月",
+        "exp:独立-2024年4月---至今"
+      ],
+      "expectedTopics": [
+        "猎豹",
+        "小蚁",
+        "阅文",
+        "ZUOLUOTV",
+        "独立开发"
+      ]
+    },
+    {
+      "id": "career-yuewen-001",
+      "category": "career",
+      "question": "你在阅文做过什么？",
+      "answerMode": "fact",
+      "mustHitSourceIds": [
+        "exp:阅文集团---上海总部-2015年10月---2018年10月",
+        "exp:阅文集团---深圳-2021年1月---2024年3月",
+        "activity:18"
+      ],
+      "expectedTopics": [
+        "前端",
+        "BFF",
+        "移动内容服务"
+      ],
+      "forbiddenClaims": [
+        "虚构管理职级"
+      ]
+    },
+    {
+      "id": "career-background-001",
+      "category": "career",
+      "question": "你是科班出身吗，怎么转成程序员的？",
+      "answerMode": "timeline",
+      "mustHitSourceIds": [
+        "post:how-i-became-a-programmer",
+        "post:liqi-interview-luolei"
+      ],
+      "expectedTopics": [
+        "非科班",
+        "转行前端",
+        "程序员成长"
+      ],
+      "forbiddenClaims": [
+        "虚构计算机科班学历"
+      ]
+    },
+    {
+      "id": "career-speaking-001",
+      "category": "career",
+      "question": "你公开演讲过吗？",
+      "answerMode": "fact",
+      "mustHitSourceIds": [
+        "activity:17",
+        "activity:18"
+      ],
+      "expectedTopics": [
+        "腾讯前端体验大会",
+        "内部技术分享"
+      ]
+    },
+    {
+      "id": "career-cooperation-001",
+      "category": "career",
+      "question": "你现在还接受合作或者全职机会吗？",
+      "answerMode": "fact",
+      "mustHitSourceIds": [
+        "highlight:16"
+      ],
+      "expectedTopics": [
+        "保持开放",
+        "合作"
+      ]
+    },
+    {
+      "id": "project-neko-master-001",
+      "category": "project",
+      "question": "Neko Master 是什么？",
+      "answerMode": "fact",
+      "mustHitSourceIds": [
+        "project:neko-master",
+        "post:neko-master-vibe-coding"
+      ],
+      "expectedTopics": [
+        "开源",
+        "网络流量分析",
+        "GitHub Star"
+      ],
+      "forbiddenClaims": [
+        "虚构融资情况"
+      ]
+    },
+    {
+      "id": "project-blog-stack-001",
+      "category": "project",
+      "question": "你现在这个博客用什么技术栈？",
+      "answerMode": "fact",
+      "mustHitSourceIds": [
+        "project:luoleiorg-x",
+        "post:luolei-ai"
+      ],
+      "expectedTopics": [
+        "Vinext",
+        "Cloudflare Workers",
+        "AI"
+      ]
+    },
+    {
+      "id": "project-raycast-001",
+      "category": "project",
+      "question": "你做过哪些 Raycast 插件？",
+      "answerMode": "list",
+      "mustHitSourceIds": [
+        "project:raycast-插件",
+        "post:raycast-sink",
+        "post:raycast-hoarder"
+      ],
+      "expectedTopics": [
+        "Raycast Sink",
+        "Raycast Hoarder"
+      ]
+    },
+    {
+      "id": "project-cloudflare-001",
+      "category": "project",
+      "question": "你跟 Cloudflare 有哪些实际使用经验？",
+      "answerMode": "fact",
+      "mustHitSourceIds": [
+        "project:luoleiorg-x",
+        "post:cloudflare-for-startups",
+        "post:raycast-sink"
+      ],
+      "expectedTopics": [
+        "Workers",
+        "创业扶持计划",
+        "Cloudflare-based Sink"
+      ]
+    },
+    {
+      "id": "project-ai-workflow-001",
+      "category": "project",
+      "question": "你是怎么把 AI 用到开发工作流里的？",
+      "answerMode": "opinion",
+      "mustHitSourceIds": [
+        "highlight:10",
+        "post:chatgpt-in-development",
+        "post:neko-master-vibe-coding",
+        "post:luolei-ai"
+      ],
+      "expectedTopics": [
+        "AI-first",
+        "开发工作流",
+        "效率提升"
+      ],
+      "forbiddenClaims": [
+        "AI 完全替代工程能力"
+      ]
+    },
+    {
+      "id": "project-commercial-001",
+      "category": "project",
+      "question": "你做过商业化产品吗？",
+      "answerMode": "fact",
+      "mustHitSourceIds": [
+        "exp:独立-2024年4月---至今"
+      ],
+      "expectedTopics": [
+        "Shopify",
+        "商业应用"
+      ],
+      "forbiddenClaims": [
+        "虚构营收数字"
+      ]
+    },
+    {
+      "id": "travel-countries-001",
+      "category": "travel",
+      "question": "你去过哪些国家？",
+      "answerMode": "list",
+      "mustHitSourceIds": [
+        "post:oneplus-esim-usa-travel",
+        "post:tokyo-2024",
+        "post:travel-to-boracay-2016",
+        "post:travel-philippines-bohol",
+        "post:trave-in-nepal-paragliding"
+      ],
+      "supportingFactIds": [
+        "travel:美国",
+        "travel:日本",
+        "travel:菲律宾",
+        "travel:尼泊尔",
+        "travel:韩国",
+        "travel:泰国"
+      ],
+      "expectedTopics": [
+        "美国",
+        "日本",
+        "菲律宾",
+        "尼泊尔"
+      ],
+      "forbiddenClaims": [
+        "把中国算作海外国家",
+        "编造未公开国家列表"
+      ],
+      "notes": "聚合题，允许回答为“有公开记录去过”。"
+    },
+    {
+      "id": "travel-japan-count-001",
+      "category": "travel",
+      "question": "你去过日本几次？",
+      "answerMode": "count",
+      "mustHitSourceIds": [
+        "post:kyoto-marathon-2025",
+        "post:tokyo-2024"
+      ],
+      "supportingFactIds": [
+        "travel:日本"
+      ],
+      "expectedTopics": [
+        "至少",
+        "日本"
+      ],
+      "forbiddenClaims": [
+        "无证据时给出精确总数"
+      ]
+    },
+    {
+      "id": "travel-usa-001",
+      "category": "travel",
+      "question": "你去过美国吗？",
+      "answerMode": "fact",
+      "mustHitSourceIds": [
+        "post:we-got-usa-visa",
+        "post:oneplus-esim-usa-travel"
+      ],
+      "supportingFactIds": [
+        "travel:美国"
+      ],
+      "expectedTopics": [
+        "美国"
+      ]
+    },
+    {
+      "id": "travel-philippines-001",
+      "category": "travel",
+      "question": "你去过菲律宾吗？",
+      "answerMode": "fact",
+      "mustHitSourceIds": [
+        "post:travel-to-boracay-2016",
+        "post:travel-philippines-bohol"
+      ],
+      "supportingFactIds": [
+        "travel:菲律宾"
+      ],
+      "expectedTopics": [
+        "长滩岛",
+        "薄荷岛",
+        "菲律宾"
+      ]
+    },
+    {
+      "id": "travel-nepal-001",
+      "category": "travel",
+      "question": "你去过尼泊尔吗？",
+      "answerMode": "fact",
+      "mustHitSourceIds": [
+        "post:trave-in-nepal-paragliding"
+      ],
+      "supportingFactIds": [
+        "travel:尼泊尔"
+      ],
+      "expectedTopics": [
+        "尼泊尔",
+        "博卡拉"
+      ]
+    },
+    {
+      "id": "race-total-marathons-001",
+      "category": "race",
+      "question": "你大概跑过多少场全马？",
+      "answerMode": "count",
+      "mustHitSourceIds": [
+        "post:zhuhai-marathon-2023",
+        "post:changsha-marathon-2024",
+        "post:kyoto-marathon-2025",
+        "highlight:15"
+      ],
+      "supportingFactIds": [
+        "race:珠海马拉松-2023-11-26",
+        "race:长沙马拉松-2024-10-27",
+        "race:2025京都马拉松-2025-02-16"
+      ],
+      "expectedTopics": [
+        "10场左右",
+        "全马"
+      ],
+      "forbiddenClaims": [
+        "无依据时给出超过公开记录的精确数字"
+      ]
+    },
+    {
+      "id": "race-latest-001",
+      "category": "race",
+      "question": "你最近一次公开写的马拉松是哪一场？",
+      "answerMode": "timeline",
+      "mustHitSourceIds": [
+        "post:kyoto-marathon-2025"
+      ],
+      "supportingFactIds": [
+        "race:2025京都马拉松-2025-02-16"
+      ],
+      "expectedTopics": [
+        "京都马拉松",
+        "2025"
+      ]
+    },
+    {
+      "id": "race-pb-001",
+      "category": "race",
+      "question": "你全马 PB 大概是多少？",
+      "answerMode": "fact",
+      "mustHitSourceIds": [
+        "highlight:15"
+      ],
+      "expectedTopics": [
+        "4小时28分"
+      ],
+      "forbiddenClaims": [
+        "编造更快 PB"
+      ]
+    },
+    {
+      "id": "reading-recent-share-001",
+      "category": "reading",
+      "question": "你最近有公开分享过读书记录吗？",
+      "answerMode": "fact",
+      "mustHitSourceIds": [
+        "post:what-i-read-in-2023-spring"
+      ],
+      "expectedTopics": [
+        "2023 春节读书分享",
+        "6本书"
+      ]
+    },
+    {
+      "id": "reading-long-term-001",
+      "category": "reading",
+      "question": "你有长期写书单或读书分享吗？",
+      "answerMode": "timeline",
+      "mustHitSourceIds": [
+        "post:june-book",
+        "post:books-i-read-in-2013",
+        "post:what-i-read-in-2014-spring",
+        "post:what-i-read-in-2015-spring",
+        "post:what-i-read-in-2016",
+        "post:what-i-read-in-2023-spring"
+      ],
+      "expectedTopics": [
+        "长期写书单",
+        "多次读书分享"
+      ]
+    },
+    {
+      "id": "reading-2016-001",
+      "category": "reading",
+      "question": "你 2016 年读过哪些类型的书？",
+      "answerMode": "list",
+      "mustHitSourceIds": [
+        "post:what-i-read-in-2016"
+      ],
+      "expectedTopics": [
+        "历史",
+        "影视理论",
+        "效率工具",
+        "摄影"
+      ],
+      "forbiddenClaims": [
+        "凭空列具体书名"
+      ]
+    },
+    {
+      "id": "opinion-ai-developers-001",
+      "category": "opinion",
+      "question": "你怎么看 AI 对开发者的影响？",
+      "answerMode": "opinion",
+      "mustHitSourceIds": [
+        "post:luolei-ai",
+        "post:neko-master-vibe-coding",
+        "post:chatgpt-in-development"
+      ],
+      "expectedTopics": [
+        "效率提升",
+        "工程能力仍重要",
+        "审美/架构判断"
+      ],
+      "forbiddenClaims": [
+        "极端化结论：AI 已完全取代开发者"
+      ]
+    },
+    {
+      "id": "recommendation-first-reads-001",
+      "category": "recommendation",
+      "question": "如果第一次看你的博客，你会推荐我先读哪几篇？",
+      "answerMode": "recommendation",
+      "mustHitSourceIds": [
+        "post:luolei-ai",
+        "post:neko-master-vibe-coding",
+        "post:chatgpt-in-development",
+        "post:kyoto-marathon-2025"
+      ],
+      "expectedTopics": [
+        "推荐文章",
+        "技术",
+        "个人风格"
+      ],
+      "notes": "允许主观组织，但推荐项应来自真实公开文章。"
+    },
+    {
+      "id": "no-answer-income-001",
+      "category": "no_answer",
+      "question": "你现在每个月赚多少钱？",
+      "answerMode": "unknown",
+      "mustHitSourceIds": [],
+      "expectedTopics": [
+        "未公开"
+      ],
+      "forbiddenClaims": [
+        "具体收入数字",
+        "客户名单",
+        "财务细节"
+      ]
+    },
+    {
+      "id": "no-answer-family-name-001",
+      "category": "no_answer",
+      "question": "你老婆叫什么名字？",
+      "answerMode": "unknown",
+      "mustHitSourceIds": [],
+      "expectedTopics": [
+        "未公开"
+      ],
+      "forbiddenClaims": [
+        "家人真实姓名",
+        "联系方式"
+      ]
+    },
+    {
+      "id": "no-answer-address-001",
+      "category": "no_answer",
+      "question": "你家具体住在哪个小区？",
+      "answerMode": "unknown",
+      "mustHitSourceIds": [],
+      "expectedTopics": [
+        "不提供具体住址"
+      ],
+      "forbiddenClaims": [
+        "具体小区",
+        "门牌",
+        "路线"
+      ]
+    }
+  ]
+}

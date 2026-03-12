@@ -61,6 +61,7 @@ export interface ChatNotification {
     total?: TokenUsageStats;
     chatCompletion?: TokenUsageStats;
     keywordExtraction?: TokenUsageStats;
+    evidenceAnalysis?: TokenUsageStats;
   };
   timings?: RequestTimingStats;
 }
@@ -76,9 +77,9 @@ export interface TokenUsageStats {
 export interface RequestTimingStats {
   totalMs?: number;
   keywordExtractionMs?: number;
+  evidenceAnalysisMs?: number;
   searchMs?: number;
   promptBuildMs?: number;
-  responseRepairMs?: number;
   reusedSearchContext?: boolean;
 }
 
@@ -86,6 +87,7 @@ export interface ChatModelConfig {
   apiBaseUrl?: string;
   chatModel?: string;
   keywordModel?: string;
+  evidenceModel?: string;
 }
 
 function hasTokenValue(value: number | undefined): value is number {
@@ -211,11 +213,22 @@ export async function sendChatNotification(
         chatModel && keywordModel === chatModel ? "同主对话模型" : escapeHtml(keywordModel);
       lines.push(`  · 关键词模型: ${label}`);
     }
+    const evidenceModel = modelConfig?.evidenceModel?.trim();
+    if (evidenceModel) {
+      const label =
+        chatModel && evidenceModel === chatModel
+          ? "同主对话模型"
+          : keywordModel && evidenceModel === keywordModel
+            ? "同关键词模型"
+            : escapeHtml(evidenceModel);
+      lines.push(`  · 证据分析模型: ${label}`);
+    }
   }
 
   const totalUsageLine = formatUsageLine("本次请求合计", tokenUsage?.total);
   const chatUsageLine = formatUsageLine("主对话", tokenUsage?.chatCompletion);
   const keywordUsageLine = formatUsageLine("关键词提取", tokenUsage?.keywordExtraction);
+  const evidenceUsageLine = formatUsageLine("证据分析", tokenUsage?.evidenceAnalysis);
 
   const usageLines: string[] = [];
   if (totalUsageLine) usageLines.push(totalUsageLine);
@@ -225,6 +238,7 @@ export async function sendChatNotification(
     usageLines.push("  · 主对话: 未返回（流式上游可能未提供 usage）");
   }
   if (keywordUsageLine) usageLines.push(keywordUsageLine);
+  if (evidenceUsageLine) usageLines.push(evidenceUsageLine);
 
   if (usageLines.length > 0) {
     lines.push(``, `<b>🧮 Token 用量:</b>`, ...usageLines);
@@ -246,15 +260,15 @@ export async function sendChatNotification(
   if (hasTokenValue(timings?.keywordExtractionMs)) {
     timingLines.push(`  · 关键词提取: ${formatTimingValue(timings?.keywordExtractionMs)}`);
   }
+  if (hasTokenValue(timings?.evidenceAnalysisMs)) {
+    timingLines.push(`  · 证据分析: ${formatTimingValue(timings?.evidenceAnalysisMs)}`);
+  }
   if (hasTokenValue(timings?.searchMs)) {
     const searchLabel = timings?.reusedSearchContext ? "检索复用命中" : "检索执行";
     timingLines.push(`  · ${searchLabel}: ${formatTimingValue(timings?.searchMs)}`);
   }
   if (hasTokenValue(timings?.promptBuildMs)) {
     timingLines.push(`  · Prompt 构建: ${formatTimingValue(timings?.promptBuildMs)}`);
-  }
-  if (hasTokenValue(timings?.responseRepairMs)) {
-    timingLines.push(`  · 尾句补全: ${formatTimingValue(timings?.responseRepairMs)}`);
   }
   if (timingLines.length > 0) {
     lines.push(``, `<b>⏱️ 阶段耗时:</b>`, ...timingLines);

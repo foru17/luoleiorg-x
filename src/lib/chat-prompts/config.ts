@@ -48,8 +48,8 @@ export interface ChatPromptRuntimeConfig {
 }
 
 export function getChatPromptRuntimeConfig(): ChatPromptRuntimeConfig {
-  const versionRaw = (process.env.CHAT_PROMPT_VERSION || "v1").trim().toLowerCase();
-  const promptVersion: PromptVersion = versionRaw === "v2" ? "v2" : "v1";
+  const versionRaw = (process.env.CHAT_PROMPT_VERSION || "v2").trim().toLowerCase();
+  const promptVersion: PromptVersion = versionRaw === "v1" ? "v1" : "v2";
 
   return {
     promptVersion,
@@ -59,13 +59,9 @@ export function getChatPromptRuntimeConfig(): ChatPromptRuntimeConfig {
     maxArticlesInPrompt: parseIntEnv(process.env.MAX_ARTICLES_IN_PROMPT, DEFAULT_MAX_ARTICLES_IN_PROMPT),
     maxTweetsInPrompt: parseIntEnv(process.env.MAX_TWEETS_IN_PROMPT, DEFAULT_MAX_TWEETS_IN_PROMPT),
     enableIntentRanking: parseBooleanEnv(process.env.ENABLE_INTENT_RANKING, true),
-    sensitiveHighlightPatterns: parseListEnv(process.env.SENSITIVE_HIGHLIGHT_PATTERNS, [
-      "pet parent",
-      "铲屎官",
-      "猫",
-      "狗",
-      "cat",
-      "dog",
-    ]),
+    sensitiveHighlightPatterns: parseListEnv(
+      process.env.SENSITIVE_HIGHLIGHT_PATTERNS,
+      [],
+    ),
   };
 }

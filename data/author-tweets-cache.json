@@ -1,19 +1,361 @@
 {
   "meta": {
-    "lastUpdated": "2026-03-06T05:31:54.937Z",
+    "lastUpdated": "2026-03-10T08:47:57.218Z",
     "username": "luoleiorg",
-    "fetchedCount": 799,
-    "requestCount": 4,
+    "fetchedCount": 814,
+    "requestCount": 1,
     "includeReplies": false
   },
   "user": {
+    "description": "💻 Full-Stack Developer / 📖 Lifetime Learner / 🚧 Building & Sharing / 🎬 YouTuber https://t.co/7g47VdNMnN / 📝 https://t.co/6ucNiJ2gyg / 👨‍🚀 More https://t.co/smbFyIb6Hc",
     "profile_image_url": "https://pbs.twimg.com/profile_images/1550157622300786688/672YmCpB_normal.jpg",
     "username": "luoleiorg",
     "id": "52468378",
-    "description": "💻 Full-Stack Developer / 📖 Lifetime Learner / 🚧 Building & Sharing / 🎬 YouTuber https://t.co/7g47VdNMnN / 📝 https://t.co/6ucNiJ2gyg / 👨‍🚀 More https://t.co/smbFyIb6Hc",
     "name": "luolei"
   },
   "tweets": [
+    {
+      "id": "2031259837875753375",
+      "text": "测试下我的安卓还能不被发推。",
+      "created_at": "2026-03-10T06:44:18.000Z",
+      "public_metrics": {
+        "retweet_count": 0,
+        "reply_count": 0,
+        "like_count": 3,
+        "quote_count": 0,
+        "bookmark_count": 0,
+        "impression_count": 981
+      },
+      "media": [],
+      "conversation_id": "2031259837875753375",
+      "referenced_tweets": []
+    },
+    {
+      "id": "2031245723258466794",
+      "text": "过去 10 年，我给自己设了个「人生马拉松」计划：每年至少一场全马 🏃‍♂️，今年刚好 10 场。\n现在准备开启另一个长期项目「人生 AI」：持续迭代我的 AI 分身 🤖，也顺手记录这波 AI 浪潮的技术演进。\n拍了个视频，记录这次有趣的尝试👇\n https://t.co/T71sbDwvKZ",
+      "created_at": "2026-03-10T05:48:13.000Z",
+      "public_metrics": {
+        "retweet_count": 1,
+        "reply_count": 1,
+        "like_count": 15,
+        "quote_count": 0,
+        "bookmark_count": 0,
+        "impression_count": 2866
+      },
+      "media": [],
+      "conversation_id": "2031245723258466794",
+      "referenced_tweets": []
+    },
+    {
+      "id": "2031234497275113605",
+      "text": "杯具，忘记备选不加糖，毁了这杯美式 🫣 https://t.co/eYR3mj0BJ5",
+      "created_at": "2026-03-10T05:03:37.000Z",
+      "public_metrics": {
+        "retweet_count": 0,
+        "reply_count": 4,
+        "like_count": 5,
+        "quote_count": 0,
+        "bookmark_count": 0,
+        "impression_count": 2008
+      },
+      "media": [
+        {
+          "type": "photo",
+          "url": "https://pbs.twimg.com/media/HDBlAQpaMAEWWb4.jpg",
+          "width": 1536,
+          "height": 2048
+        }
+      ],
+      "conversation_id": "2031234497275113605",
+      "referenced_tweets": []
+    },
+    {
+      "id": "2030954958171033860",
+      "text": "即梦: 重新定义 2 小时 https://t.co/JpD3el5Q3q",
+      "created_at": "2026-03-09T10:32:50.000Z",
+      "public_metrics": {
+        "retweet_count": 0,
+        "reply_count": 2,
+        "like_count": 5,
+        "quote_count": 0,
+        "bookmark_count": 0,
+        "impression_count": 4539
+      },
+      "media": [
+        {
+          "type": "photo",
+          "url": "https://pbs.twimg.com/media/HC9msK3aoAA8I6K.jpg",
+          "width": 1100,
+          "height": 670
+        }
+      ],
+      "conversation_id": "2030954958171033860",
+      "referenced_tweets": []
+    },
+    {
+      "id": "2030881286047625298",
+      "text": "又发现一个适合 Vibe Coding 时听的乐队 A R I Z O N A，风格是流行加电子风 #为啥我不自觉又要蹭VibeCoding 🤡 https://t.co/S7Jg0UDtni",
+      "created_at": "2026-03-09T05:40:05.000Z",
+      "public_metrics": {
+        "retweet_count": 0,
+        "reply_count": 0,
+        "like_count": 1,
+        "quote_count": 0,
+        "bookmark_count": 0,
+        "impression_count": 510
+      },
+      "media": [
+        {
+          "type": "photo",
+          "url": "https://pbs.twimg.com/media/HC8jG-Sa0AAGmxo.jpg",
+          "width": 3456,
+          "height": 2168
+        }
+      ],
+      "conversation_id": "2030881286047625298",
+      "referenced_tweets": []
+    },
+    {
+      "id": "2030864433803874525",
+      "text": "在考虑要不要把手上这台 MBP 卖掉，换成 MacBook Air 或者 Neo + Mac Mini 的组合。去年把闲置的 M2 Mini 卖了，现在感觉血亏。🤡 https://t.co/BE8wKxHXPY",
+      "created_at": "2026-03-09T04:33:07.000Z",
+      "public_metrics": {
+        "retweet_count": 0,
+        "reply_count": 15,
+        "like_count": 17,
+        "quote_count": 1,
+        "bookmark_count": 6,
+        "impression_count": 8451
+      },
+      "media": [
+        {
+          "type": "photo",
+          "url": "https://pbs.twimg.com/media/HC8UZQXagAATFBR.jpg",
+          "width": 1446,
+          "height": 1870
+        }
+      ],
+      "conversation_id": "2030864433803874525",
+      "referenced_tweets": []
+    },
+    {
+      "id": "2030812519028392058",
+      "text": "？？ https://t.co/A7Ygxlyvu8",
+      "created_at": "2026-03-09T01:06:49.000Z",
+      "public_metrics": {
+        "retweet_count": 0,
+        "reply_count": 5,
+        "like_count": 14,
+        "quote_count": 0,
+        "bookmark_count": 5,
+        "impression_count": 15261
+      },
+      "media": [
+        {
+          "type": "photo",
+          "url": "https://pbs.twimg.com/media/HC7lOLYbAAAuVBn.jpg",
+          "width": 1179,
+          "height": 1796
+        }
+      ],
+      "conversation_id": "2030812519028392058",
+      "referenced_tweets": []
+    },
+    {
+      "id": "2030647243536232452",
+      "text": "花费 $10 巨资，在咸鱼找手工给我的 Freebuds 换了个电池，感觉还能再战两年🥸 https://t.co/6eEh4xl39c",
+      "created_at": "2026-03-08T14:10:05.000Z",
+      "public_metrics": {
+        "retweet_count": 0,
+        "reply_count": 3,
+        "like_count": 8,
+        "quote_count": 0,
+        "bookmark_count": 5,
+        "impression_count": 5649
+      },
+      "media": [
+        {
+          "type": "photo",
+          "url": "https://pbs.twimg.com/media/HC5O5rIbwAAK46x.jpg",
+          "width": 1536,
+          "height": 2048
+        }
+      ],
+      "conversation_id": "2030647243536232452",
+      "referenced_tweets": []
+    },
+    {
+      "id": "2030575691436343716",
+      "text": "大家觉得这个直播画质 O 不 OK 🥹 https://t.co/dgfOQiOVDz",
+      "created_at": "2026-03-08T09:25:45.000Z",
+      "public_metrics": {
+        "retweet_count": 0,
+        "reply_count": 35,
+        "like_count": 24,
+        "quote_count": 0,
+        "bookmark_count": 2,
+        "impression_count": 10972
+      },
+      "media": [
+        {
+          "type": "photo",
+          "url": "https://pbs.twimg.com/media/HC4N09-bwAArlaM.jpg",
+          "width": 1616,
+          "height": 1080
+        }
+      ],
+      "conversation_id": "2030575691436343716",
+      "referenced_tweets": []
+    },
+    {
+      "id": "2030115976675729597",
+      "text": "❌ 疯狂测试 Prompt Injection，试图套出「罗磊 AI」的系统提示词\n✅ 直接点网页底部的 GitHub 链接，源码全开源\n大家学会了吗？🤡 https://t.co/DTYB9j3nAY",
+      "created_at": "2026-03-07T02:59:01.000Z",
+      "public_metrics": {
+        "retweet_count": 1,
+        "reply_count": 1,
+        "like_count": 14,
+        "quote_count": 0,
+        "bookmark_count": 11,
+        "impression_count": 5559
+      },
+      "media": [
+        {
+          "type": "photo",
+          "url": "https://pbs.twimg.com/media/HCxqw-NaUAMCQF2.jpg",
+          "width": 918,
+          "height": 616
+        },
+        {
+          "type": "photo",
+          "url": "https://pbs.twimg.com/media/HCxraA8aoAAoBag.jpg",
+          "width": 1720,
+          "height": 1352
+        }
+      ],
+      "conversation_id": "2030115976675729597",
+      "referenced_tweets": []
+    },
+    {
+      "id": "2029901560533409920",
+      "text": "Nano Banana 2 真的太棒了。 https://t.co/ZskLMsHUcE",
+      "created_at": "2026-03-06T12:47:00.000Z",
+      "public_metrics": {
+        "retweet_count": 0,
+        "reply_count": 1,
+        "like_count": 11,
+        "quote_count": 0,
+        "bookmark_count": 6,
+        "impression_count": 3274
+      },
+      "media": [
+        {
+          "type": "photo",
+          "url": "https://pbs.twimg.com/media/HCuotFwacAA66Ij.jpg",
+          "width": 1376,
+          "height": 768
+        }
+      ],
+      "conversation_id": "2029901560533409920",
+      "referenced_tweets": []
+    },
+    {
+      "id": "2029901262712623437",
+      "text": "遇到件怪情，我发现使用日本 IP 也无法调用我在美区的 Gemini API 了，甚至连进入 Gemini 的 API 管理 Api Keys 后台也被登出了。这哪跟哪呀。🤡 https://t.co/MMg7zvoShB",
+      "created_at": "2026-03-06T12:45:49.000Z",
+      "public_metrics": {
+        "retweet_count": 0,
+        "reply_count": 20,
+        "like_count": 13,
+        "quote_count": 0,
+        "bookmark_count": 7,
+        "impression_count": 16716
+      },
+      "media": [
+        {
+          "type": "photo",
+          "url": "https://pbs.twimg.com/media/HCunxGGa4AA9yhZ.jpg",
+          "width": 1382,
+          "height": 646
+        }
+      ],
+      "conversation_id": "2029901262712623437",
+      "referenced_tweets": []
+    },
+    {
+      "id": "2029832268081156294",
+      "text": "腾讯云也推出了 Coding Plan 计划，Pro 套餐原价 ¥199，首月优惠价同样为 ¥39.9，明显对标阿里云。不过腾讯云支持的模型表现一般，不知道是不是我的错觉，感觉腾讯在 AI 生产力这波浪潮中已明显掉队。 https://t.co/uegK53NTU1",
+      "created_at": "2026-03-06T08:11:39.000Z",
+      "public_metrics": {
+        "retweet_count": 0,
+        "reply_count": 14,
+        "like_count": 23,
+        "quote_count": 1,
+        "bookmark_count": 18,
+        "impression_count": 25047
+      },
+      "media": [
+        {
+          "type": "photo",
+          "url": "https://pbs.twimg.com/media/HCtprwoaAAAEjoV.jpg",
+          "width": 2798,
+          "height": 2288
+        }
+      ],
+      "conversation_id": "2029832268081156294",
+      "referenced_tweets": []
+    },
+    {
+      "id": "2029807794237722810",
+      "text": "今天推上「API 中转站」的黑幕，揭露了这个灰色领域，也是我一直对「非官方」、尤其是不知名渠道心存顾虑的原因。但地主家余粮尚且不足，何况我们这些码农。刚和朋友对昨天提到的一个中转站做了「指纹校验」，与声明「不降智」基本一致，中转站对我而言只是备用，大家在正式业务使用时，谨慎评估。😂 https://t.co/KdriACTtPO https://t.co/FodsnSIyqg",
+      "created_at": "2026-03-06T06:34:24.000Z",
+      "public_metrics": {
+        "retweet_count": 4,
+        "reply_count": 12,
+        "like_count": 103,
+        "quote_count": 1,
+        "bookmark_count": 110,
+        "impression_count": 41848
+      },
+      "media": [
+        {
+          "type": "photo",
+          "url": "https://pbs.twimg.com/media/HCtTbTSaUAEFWJl.jpg",
+          "width": 918,
+          "height": 792
+        }
+      ],
+      "conversation_id": "2029807794237722810",
+      "referenced_tweets": [
+        {
+          "type": "quoted",
+          "id": "2029109382450204720"
+        }
+      ]
+    },
+    {
+      "id": "2029797304602087922",
+      "text": "？？？ https://t.co/Xhjnqw1x1W",
+      "created_at": "2026-03-06T05:52:43.000Z",
+      "public_metrics": {
+        "retweet_count": 1,
+        "reply_count": 4,
+        "like_count": 37,
+        "quote_count": 0,
+        "bookmark_count": 6,
+        "impression_count": 26822
+      },
+      "media": [
+        {
+          "type": "photo",
+          "url": "https://pbs.twimg.com/media/HCtJ3uQaUAIczva.jpg",
+          "width": 966,
+          "height": 518
+        }
+      ],
+      "conversation_id": "2029797304602087922",
+      "referenced_tweets": []
+    },
     {
       "id": "2029785847768531084",
       "text": "奥特曼又送了我一个月免费的 ChatGPT Plus 🤪 https://t.co/EL8ZLRJzIi",

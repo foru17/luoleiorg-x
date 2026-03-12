@@ -1,0 +1,783 @@
+{
+  "generatedAt": "2026-03-07T05:28:25.293Z",
+  "model": "gemini-3-flash-preview",
+  "travel": {
+    "countries": [
+      {
+        "name": "美国",
+        "tripCount": 5,
+        "countMode": "at_least",
+        "firstMentionedAt": "2014-04-27",
+        "latestMentionedAt": "2019-11-08",
+        "evidence": [
+          {
+            "title": "即刻抽离: FreeBuds 3 无线降噪耳机 - 城市旅行",
+            "date": "2019-11-08",
+            "url": "https://luolei.org/huawei-freebuds3"
+          },
+          {
+            "title": "纽约 |  2019，我在时代广场跨年  | NYC深度行摄",
+            "date": "2019-06-25",
+            "url": "https://luolei.org/new-york-2019"
+          },
+          {
+            "title": "去美国旅行，不要用一加的国际上网|  eSIM境外上网跳坑记 | VLOG28",
+            "date": "2019-01-11",
+            "url": "https://luolei.org/oneplus-esim-usa-travel"
+          }
+        ],
+        "provenance": "auto_extracted",
+        "confidence": "medium"
+      },
+      {
+        "name": "日本",
+        "tripCount": 3,
+        "countMode": "at_least",
+        "firstMentionedAt": "2016-07-03",
+        "latestMentionedAt": "2025-2-28",
+        "evidence": [
+          {
+            "title": "京都马拉松: 第一次去日本跑马",
+            "date": "2025-2-28",
+            "url": "https://luolei.org/kyoto-marathon-2025"
+          },
+          {
+            "title": "日本旅行 2024: 东京晨跑・镰仓",
+            "date": "2024-09-05",
+            "url": "https://luolei.org/tokyo-2024"
+          },
+          {
+            "title": "美国 | USA B1/B2 十年签证到手记",
+            "date": "2016-08-20",
+            "url": "https://luolei.org/we-got-usa-visa"
+          }
+        ],
+        "provenance": "auto_extracted",
+        "confidence": "medium"
+      },
+      {
+        "name": "菲律宾",
+        "tripCount": 3,
+        "countMode": "at_least",
+        "firstMentionedAt": "2016-10-09",
+        "latestMentionedAt": "2018-11-26",
+        "evidence": [
+          {
+            "title": "菲律宾 | 18米深蓝:薄荷岛&宿务 OW潜水旅行",
+            "date": "2018-11-26",
+            "url": "https://luolei.org/travel-philippines-bohol"
+          },
+          {
+            "title": "海信A2 Pro:一部给喜欢阅读的人准备的手机",
+            "date": "2017-10-16",
+            "url": "https://luolei.org/hisense-a2-pro-unboxing"
+          },
+          {
+            "title": "长滩岛:亚洲最美白沙滩",
+            "date": "2016-10-13",
+            "url": "https://luolei.org/travel-to-boracay-2016"
+          }
+        ],
+        "provenance": "auto_extracted",
+        "confidence": "medium"
+      },
+      {
+        "name": "尼泊尔",
+        "tripCount": 3,
+        "countMode": "at_least",
+        "firstMentionedAt": "2014-04-27",
+        "latestMentionedAt": "2018-03-27",
+        "evidence": [
+          {
+            "title": "「等风来:博卡拉滑翔伞飞翔」尼泊尔随记(贰)",
+            "date": "2014-04-30",
+            "url": "https://luolei.org/trave-in-nepal-paragliding"
+          }
+        ],
+        "provenance": "auto_extracted",
+        "confidence": "medium"
+      },
+      {
+        "name": "泰国",
+        "tripCount": 2,
+        "countMode": "at_least",
+        "firstMentionedAt": "2016-11-27",
+        "latestMentionedAt": "2023-11-30",
+        "evidence": [
+          {
+            "title": "珠海马拉松:时隔五年,我又跑了一个马拉松",
+            "date": "2023-11-30",
+            "url": "https://luolei.org/zhuhai-marathon-2023"
+          },
+          {
+            "title": "泰国 | 曼谷军事基地 | 体验军用枪械实弹射击",
+            "date": "2016-12-11",
+            "url": "https://luolei.org/bangkok-shooting"
+          }
+        ],
+        "provenance": "auto_extracted",
+        "confidence": "medium"
+      },
+      {
+        "name": "韩国",
+        "tripCount": 2,
+        "countMode": "at_least",
+        "firstMentionedAt": "2016-04-02",
+        "latestMentionedAt": "2018-04-08",
+        "evidence": [
+          {
+            "title": "美国 | USA B1/B2 十年签证到手记",
+            "date": "2016-08-20",
+            "url": "https://luolei.org/we-got-usa-visa"
+          },
+          {
+            "title": "首尔 | DAY3:韩屋村・景福宫・三清洞",
+            "date": "2016-04-05",
+            "url": "https://luolei.org/meet-in-seoul-day-3"
+          }
+        ],
+        "provenance": "auto_extracted",
+        "confidence": "medium"
+      }
+    ],
+    "regions": [
+      {
+        "name": "中国香港",
+        "tripCount": 10,
+        "countMode": "at_least",
+        "firstMentionedAt": "2012-10-30",
+        "latestMentionedAt": "2024-10-06",
+        "evidence": [
+          {
+            "title": "香港徒步:麦理浩径第二段",
+            "date": "2024-10-06",
+            "url": "https://luolei.org/maclehose-trail"
+          },
+          {
+            "title": "香港银行开户：2024 年更新 | 中银、汇丰、众安开户经验分享",
+            "date": "2024-01-01",
+            "url": "https://luolei.org/how-to-open-a-bank-account-in-hongkong-2024"
+          },
+          {
+            "title": "最容易获得的境外驾照:内地驾照免试换取香港十年驾照攻略",
+            "date": "2020-06-07",
+            "url": "https://luolei.org/hongkong-driver-lincense"
+          }
+        ],
+        "provenance": "auto_extracted",
+        "confidence": "high"
+      },
+      {
+        "name": "中国澳门",
+        "tripCount": 2,
+        "countMode": "at_least",
+        "firstMentionedAt": "2016-11-23",
+        "latestMentionedAt": "2019-07-03",
+        "evidence": [
+          {
+            "title": "澳门旅行手机上网卡推荐 | CUniq CMLink | VLOG52",
+            "date": "2019-07-02",
+            "url": "https://luolei.org/macau-roaming-sim-card"
+          },
+          {
+            "title": "台湾 | 精选集・ 2016十月",
+            "date": "2016-11-23",
+            "url": "https://luolei.org/travel-in-taiwan-2016"
+          }
+        ],
+        "provenance": "auto_extracted",
+        "confidence": "high"
+      },
+      {
+        "name": "中国台湾",
+        "tripCount": 1,
+        "countMode": "at_least",
+        "firstMentionedAt": "2016-10-09",
+        "latestMentionedAt": "2016-11-23",
+        "evidence": [
+          {
+            "title": "台湾 | 精选集・ 2016十月",
+            "date": "2016-11-23",
+            "url": "https://luolei.org/travel-in-taiwan-2016"
+          }
+        ],
+        "provenance": "auto_extracted",
+        "confidence": "high"
+      }
+    ]
+  },
+  "races": {
+    "completedEvents": [
+      {
+        "name": "秦皇岛马拉松",
+        "date": "2014",
+        "result": "4:46:12",
+        "url": "https://luolei.org/zhuhai-marathon-2023",
+        "provenance": "auto_extracted",
+        "confidence": "medium"
+      },
+      {
+        "name": "北京马拉松",
+        "date": "2014",
+        "result": "4:28:43",
+        "url": "https://luolei.org/zhuhai-marathon-2023",
+        "provenance": "auto_extracted",
+        "confidence": "medium"
+      },
+      {
+        "name": "上海马拉松",
+        "date": "2014",
+        "result": "5:43:01",
+        "url": "https://luolei.org/zhuhai-marathon-2023",
+        "provenance": "auto_extracted",
+        "confidence": "medium"
+      },
+      {
+        "name": "广州马拉松",
+        "date": "2015",
+        "result": "4:34:34",
+        "url": "https://luolei.org/zhuhai-marathon-2023",
+        "provenance": "auto_extracted",
+        "confidence": "medium"
+      },
+      {
+        "name": "2015北京国际长跑节",
+        "date": "2015-04-26",
+        "result": "57分钟",
+        "url": "https://luolei.org/beijing-run-2015",
+        "provenance": "auto_extracted",
+        "confidence": "medium"
+      },
+      {
+        "name": "深圳马拉松",
+        "date": "2016",
+        "result": "5:25:00",
+        "url": "https://luolei.org/zhuhai-marathon-2023",
+        "provenance": "auto_extracted",
+        "confidence": "medium"
+      },
+      {
+        "name": "杭州马拉松",
+        "date": "2017",
+        "result": "5:38:09",
+        "url": "https://luolei.org/zhuhai-marathon-2023",
+        "provenance": "auto_extracted",
+        "confidence": "medium"
+      },
+      {
+        "name": "普吉岛马拉松",
+        "date": "2018",
+        "result": "7:20:00",
+        "url": "https://luolei.org/zhuhai-marathon-2023",
+        "provenance": "auto_extracted",
+        "confidence": "medium"
+      },
+      {
+        "name": "珠海马拉松",
+        "date": "2023-11-26",
+        "result": "5小时21分",
+        "url": "https://luolei.org/zhuhai-marathon-2023",
+        "provenance": "auto_extracted",
+        "confidence": "medium"
+      },
+      {
+        "name": "长沙马拉松",
+        "date": "2024-10-27",
+        "result": "4小时56分",
+        "url": "https://luolei.org/changsha-marathon-2024",
+        "provenance": "auto_extracted",
+        "confidence": "medium"
+      },
+      {
+        "name": "2025京都马拉松",
+        "date": "2025-02-16",
+        "result": "完赛",
+        "url": "https://luolei.org/kyoto-marathon-2025",
+        "provenance": "auto_extracted",
+        "confidence": "medium"
+      }
+    ]
+  },
+  "reading": {
+    "roundupPosts": [
+      {
+        "title": "我在读什么: 2023 春节读书分享",
+        "date": "2023-01-31",
+        "url": "https://luolei.org/what-i-read-in-2023-spring",
+        "bookCount": 6,
+        "books": [
+          "双重冲击",
+          "现代中国的形成",
+          "制造消费者",
+          "可能性的艺术：比较政治学30讲",
+          "心中有数：生活中的数学思维",
+          "创造"
+        ],
+        "provenance": "auto_extracted",
+        "confidence": "high"
+      },
+      {
+        "title": "如何看待年仅 28 岁的郭宇宣布从字节跳动退休？",
+        "date": "2020-06-16",
+        "url": "https://luolei.org/my-friend-guoyu",
+        "bookCount": 5,
+        "books": [
+          "王小波全集",
+          "沉默的大多数",
+          "时代三部曲",
+          "一只特立独行的猪",
+          "李银河全集"
+        ],
+        "provenance": "auto_extracted",
+        "confidence": "high"
+      },
+      {
+        "title": "全球首发开箱:QQ阅读电子书・易",
+        "date": "2017-12-31",
+        "url": "https://luolei.org/qqread-elink-reader-yi-2018-review",
+        "bookCount": 1,
+        "books": [
+          "冰与火之歌"
+        ],
+        "provenance": "auto_extracted",
+        "confidence": "high"
+      },
+      {
+        "title": "不合格的旅行者:读《美洲小宇宙》有感",
+        "date": "2017-07-21",
+        "url": "https://luolei.org/read-microcosm-of-usa",
+        "bookCount": 3,
+        "books": [
+          "美洲小宇宙",
+          "文化苦旅",
+          "万物生长"
+        ],
+        "provenance": "auto_extracted",
+        "confidence": "high"
+      },
+      {
+        "title": "过去10年,我用过的13部手机",
+        "date": "2017-02-24",
+        "url": "https://luolei.org/mobile-phone-i-used-in-the-past-10-years",
+        "bookCount": 1,
+        "books": [
+          "雅思词汇"
+        ],
+        "provenance": "auto_extracted",
+        "confidence": "high"
+      },
+      {
+        "title": "年終卷 | 2016年我读了哪些书？",
+        "date": "2017-02-15",
+        "url": "https://luolei.org/what-i-read-in-2016",
+        "bookCount": 3,
+        "books": [
+          "鱼羊野史",
+          "剪辑的语法",
+          "精进"
+        ],
+        "provenance": "auto_extracted",
+        "confidence": "high"
+      },
+      {
+        "title": "作为一个程序员，我是如何找到女朋友的？",
+        "date": "2016-08-05",
+        "url": "https://luolei.org/love-story-how-i-fall-in-love-with-zoel",
+        "bookCount": 1,
+        "books": [
+          "毛姆的一套书"
+        ],
+        "provenance": "auto_extracted",
+        "confidence": "high"
+      },
+      {
+        "title": "我在读什么:2016春季读书分享",
+        "date": "2016-05-08",
+        "url": "https://luolei.org/what-i-read-in-2016-spring",
+        "bookCount": 18,
+        "books": [
+          "野火集",
+          "道",
+          "早晨",
+          "冯仑杂文集",
+          "克里斯·安德森的书",
+          "冯仑的书",
+          "张五常的书",
+          "吴晓波的书"
+        ],
+        "provenance": "auto_extracted",
+        "confidence": "high"
+      },
+      {
+        "title": "成为什么样的人？",
+        "date": "2016-02-19",
+        "url": "https://luolei.org/being-who",
+        "bookCount": 2,
+        "books": [
+          "与机器赛跑",
+          "浅薄"
+        ],
+        "provenance": "auto_extracted",
+        "confidence": "high"
+      },
+      {
+        "title": "对信息和技术的一些看法",
+        "date": "2016-01-09",
+        "url": "https://luolei.org/the-value-of-tech-and-information",
+        "bookCount": 2,
+        "books": [
+          "技术元素",
+          "数字命运"
+        ],
+        "provenance": "auto_extracted",
+        "confidence": "high"
+      },
+      {
+        "title": "年終卷 | 2015年我读了哪些书？",
+        "date": "2015-12-10",
+        "url": "https://luolei.org/what-i-read-in-2015",
+        "bookCount": 12,
+        "books": [
+          "设计中的复杂性",
+          "Becoming Steve Jobs",
+          "丹·布朗的小说",
+          "重新发现社会",
+          "光荣与梦想",
+          "娱乐至死",
+          "短暂飞行",
+          "字体故事"
+        ],
+        "provenance": "auto_extracted",
+        "confidence": "high"
+      },
+      {
+        "title": "让你的网站升级到HTTP/2",
+        "date": "2015-10-05",
+        "url": "https://luolei.org/update-http2-nginx",
+        "bookCount": 1,
+        "books": [
+          "HTTP权威指南"
+        ],
+        "provenance": "auto_extracted",
+        "confidence": "high"
+      },
+      {
+        "title": "知乎 | 是什么支撑你跑完五公里？",
+        "date": "2015-06-23",
+        "url": "https://luolei.org/everything-behind-the-road-i-runned",
+        "bookCount": 1,
+        "books": [
+          "人生的枷锁"
+        ],
+        "provenance": "auto_extracted",
+        "confidence": "high"
+      },
+      {
+        "title": "我在读什么:2015春季读书分享",
+        "date": "2015-04-19",
+        "url": "https://luolei.org/what-i-read-in-2015-spring",
+        "bookCount": 10,
+        "books": [
+          "DO NOT MAKE ME THINK",
+          "历代经济变革得失",
+          "甲骨文",
+          "观念的水位",
+          "统计数字会撒谎",
+          "简约至上：交互式设计四策略",
+          "亲爱的安德烈",
+          "从0到1"
+        ],
+        "provenance": "auto_extracted",
+        "confidence": "high"
+      },
+      {
+        "title": "年終卷 | 2014年我读了哪些书？",
+        "date": "2014-12-13",
+        "url": "https://luolei.org/what-i-read-in-2014",
+        "bookCount": 12,
+        "books": [
+          "当我跑步时我谈些什么",
+          "冯唐诗百首",
+          "万物生长",
+          "活着活着就老了",
+          "物理学的未来",
+          "i问连岳",
+          "平行宇宙",
+          "中国人的焦虑从哪里来"
+        ],
+        "provenance": "auto_extracted",
+        "confidence": "high"
+      },
+      {
+        "title": "马拉松 | 2014上海国际马拉松 | 跑崩了",
+        "date": "2014-11-15",
+        "url": "https://luolei.org/shanghai-marathon-2014",
+        "bookCount": 3,
+        "books": [
+          "青年文摘",
+          "中国民航",
+          "精子战争"
+        ],
+        "provenance": "auto_extracted",
+        "confidence": "high"
+      },
+      {
+        "title": "谈情说下爱:浪漫爱情的本质和化学",
+        "date": "2014-09-09",
+        "url": "https://luolei.org/the-nature-and-chemistry-of-romantic-love",
+        "bookCount": 7,
+        "books": [
+          "心理学原理",
+          "李银河文选",
+          "酷儿理论",
+          "福柯与性",
+          "情种起源",
+          "心灵鸡汤",
+          "卡耐基全集"
+        ],
+        "provenance": "auto_extracted",
+        "confidence": "high"
+      },
+      {
+        "title": "foru17 : 我，17，ID的故事",
+        "date": "2014-06-09",
+        "url": "https://luolei.org/story-behind-my-id",
+        "bookCount": 2,
+        "books": [
+          "挪威的森林",
+          "万物生长"
+        ],
+        "provenance": "auto_extracted",
+        "confidence": "high"
+      },
+      {
+        "title": "看电影识音乐:电影中的经典古典乐",
+        "date": "2014-05-05",
+        "url": "https://luolei.org/classical-music-in-movies",
+        "bookCount": 2,
+        "books": [
+          "将古典",
+          "神曲"
+        ],
+        "provenance": "auto_extracted",
+        "confidence": "high"
+      },
+      {
+        "title": "「等风来:博卡拉滑翔伞飞翔」尼泊尔随记(贰)",
+        "date": "2014-04-30",
+        "url": "https://luolei.org/trave-in-nepal-paragliding",
+        "bookCount": 1,
+        "books": [
+          "等风来"
+        ],
+        "provenance": "auto_extracted",
+        "confidence": "high"
+      },
+      {
+        "title": "大陆居民申请尼泊尔签证（香港领事馆）2014最新攻略",
+        "date": "2014-04-27",
+        "url": "https://luolei.org/da-lu-ju-min-shen-qing-ni-bo-er-qian-zheng-xiang-gang-ling-shi-guan-2014zui-xin-gong-lue",
+        "bookCount": 1,
+        "books": [
+          "Lonely Planet: 尼泊尔"
+        ],
+        "provenance": "auto_extracted",
+        "confidence": "high"
+      },
+      {
+        "title": "我在读什么:2014春季读书分享",
+        "date": "2014-04-04",
+        "url": "https://luolei.org/what-i-read-in-2014-spring",
+        "bookCount": 16,
+        "books": [
+          "你一定爱读的极简欧洲史",
+          "众妙之门 : 网站UI设计之道2",
+          "批评官员的尺度 : 《纽约时报》诉警察局长沙利文案",
+          "寻路中国 : 从乡村到工厂的自驾之旅",
+          "麦田里的守望者",
+          "吾国教育病理",
+          "乔布斯的魔力演讲",
+          "魔鬼积木·白垩纪往事"
+        ],
+        "provenance": "auto_extracted",
+        "confidence": "high"
+      },
+      {
+        "title": "地心引力:我们、科技、国家、未来",
+        "date": "2013-11-23",
+        "url": "https://luolei.org/gravity-review-about-technology-future",
+        "bookCount": 3,
+        "books": [
+          "三体",
+          "失控",
+          "乌合之众"
+        ],
+        "provenance": "auto_extracted",
+        "confidence": "high"
+      },
+      {
+        "title": "2013年我看过哪些值得推荐的好书？",
+        "date": "2013-08-19",
+        "url": "https://luolei.org/books-i-read-in-2013",
+        "bookCount": 25,
+        "books": [
+          "谣言粉碎机",
+          "美国种族简史",
+          "三体 Ⅰ Ⅱ Ⅲ",
+          "把时间当朋友:运用心智获得解放",
+          "我们台湾这些年 : 讲述台湾老百姓自己的故事",
+          "万物简史",
+          "黑客与画家",
+          "我也有一个梦想 : 近距离看美国之三"
+        ],
+        "provenance": "auto_extracted",
+        "confidence": "high"
+      },
+      {
+        "title": "比特素养:信息过载时代的生产力",
+        "date": "2013-07-25",
+        "url": "https://luolei.org/bit-literacy-productivity-in-the-age-of-information-overload",
+        "bookCount": 1,
+        "books": [
+          "Bit Literacy: Productivity in the Age of Information and E-mail Overload"
+        ],
+        "provenance": "auto_extracted",
+        "confidence": "high"
+      },
+      {
+        "title": "数字时代工匠:创客",
+        "date": "2013-06-15",
+        "url": "https://luolei.org/maker-time",
+        "bookCount": 1,
+        "books": [
+          "创客"
+        ],
+        "provenance": "auto_extracted",
+        "confidence": "high"
+      },
+      {
+        "title": "魔幻、科幻与情怀",
+        "date": "2013-06-03",
+        "url": "https://luolei.org/imagination-story",
+        "bookCount": 5,
+        "books": [
+          "冰与火之歌",
+          "西游记",
+          "三国演义",
+          "哈利波特",
+          "三体"
+        ],
+        "provenance": "auto_extracted",
+        "confidence": "high"
+      },
+      {
+        "title": "大学 | 致青春，致朋友",
+        "date": "2013-05-21",
+        "url": "https://luolei.org/to-colleage-last-time",
+        "bookCount": 1,
+        "books": [
+          "钢铁是怎样炼成的"
+        ],
+        "provenance": "auto_extracted",
+        "confidence": "high"
+      },
+      {
+        "title": "四月谈:简历，杂想，未来",
+        "date": "2013-04-09",
+        "url": "https://luolei.org/profile-me",
+        "bookCount": 1,
+        "books": [
+          "人生的枷锁"
+        ],
+        "provenance": "auto_extracted",
+        "confidence": "high"
+      },
+      {
+        "title": "Kindle Paperwhite 入手评测",
+        "date": "2013-02-03",
+        "url": "https://luolei.org/kindle-paper-white-review",
+        "bookCount": 2,
+        "books": [
+          "美国种族简史",
+          "三体"
+        ],
+        "provenance": "auto_extracted",
+        "confidence": "high"
+      },
+      {
+        "title": "骑行去西藏.壹 | 谈死亡",
+        "date": "2012-04-15",
+        "url": "https://luolei.org/biket2tibet1",
+        "bookCount": 1,
+        "books": [
+          "身份的焦虑"
+        ],
+        "provenance": "auto_extracted",
+        "confidence": "high"
+      },
+      {
+        "title": "每月一个好习惯NO.1:早睡早起",
+        "date": "2012-03-26",
+        "url": "https://luolei.org/morning-world",
+        "bookCount": 1,
+        "books": [
+          "身份的焦虑"
+        ],
+        "provenance": "auto_extracted",
+        "confidence": "high"
+      },
+      {
+        "title": "草根威尼斯",
+        "date": "2011-11-20",
+        "url": "https://luolei.org/jnufan",
+        "bookCount": 2,
+        "books": [
+          "泰戈尔的诗歌",
+          "亨廷顿的名著"
+        ],
+        "provenance": "auto_extracted",
+        "confidence": "high"
+      },
+      {
+        "title": "假期书单",
+        "date": "2011-07-18",
+        "url": "https://luolei.org/summer-read",
+        "bookCount": 3,
+        "books": [
+          "1984",
+          "苏联往事",
+          "变化社会中的政治秩序"
+        ],
+        "provenance": "auto_extracted",
+        "confidence": "high"
+      },
+      {
+        "title": "六月书单",
+        "date": "2011-06-07",
+        "url": "https://luolei.org/june-book",
+        "bookCount": 3,
+        "books": [
+          "Nineteen Eighty-Four",
+          "亨延顿的作品",
+          "Robin Williams 的书"
+        ],
+        "provenance": "auto_extracted",
+        "confidence": "high"
+      },
+      {
+        "title": "6月计划",
+        "date": "2011-05-31",
+        "url": "https://luolei.org/june-plan",
+        "bookCount": 2,
+        "books": [
+          "经济学原理",
+          "新闻英语视听说"
+        ],
+        "provenance": "auto_extracted",
+        "confidence": "high"
+      }
+    ]
+  },
+  "cleanedAt": "2026-03-07T16:06:47.085Z",
+  "cleanedBy": "scripts/clean-structured-facts.mjs"
+}

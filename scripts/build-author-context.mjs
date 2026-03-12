@@ -11,6 +11,7 @@
 
 import fs from "fs/promises";
 import path from "path";
+import { createHash } from "crypto";
 import matter from "gray-matter";
 import { fileURLToPath } from "url";
 import { loadEnv } from "./utils/load-env.mjs";
@@ -24,9 +25,9 @@ const OUTPUT_FILE = path.join(DATA_DIR, "author-context.json");
 
 const DEFAULT_SITE_URL = "https://luolei.org";
 const DEFAULT_USERNAME = "luoleiorg";
-const MAX_RECENT_POSTS = 150;
+const MAX_RECENT_POSTS = 400;
 const MAX_HOT_POSTS = 100;
-const MAX_TWEETS = 300;
+const MAX_TWEETS = 1000;
 const MAX_PROJECTS = 10;
 const TWEET_CACHE_MAX_AGE_DAYS = 7;
 const GITHUB_PROFILE_REPO = "foru17/foru17";
@@ -35,6 +36,101 @@ const GITHUB_RESUME_FILE = path.join(DATA_DIR, "github-resume.json");
 
 const UMAMI_API_URL = "https://u.is26.com/api";
 const UMAMI_WEBSITE_ID = "185ef031-29b2-49e3-bc50-1c9f80b4e831";
+
+const CATEGORY_LABELS = {
+  code: "编程开发",
+  tech: "数码科技",
+  travel: "旅行",
+  lifestyle: "生活方式",
+  photography: "摄影",
+  run: "跑步",
+  zuoluotv: "视频创作",
+};
+
+const THEME_STOPWORDS = new Set([
+  "可以", "这个", "那个", "一些", "以及", "并且", "如果", "因为", "所以", "还是",
+  "一个", "我们", "他们", "你们", "自己", "进行", "使用", "通过", "关于", "相关",
+  "作者", "文章", "项目", "内容", "技术", "博客", "推文", "最近", "持续", "方式",
+  "经验", "记录", "分享", "实践", "问题", "方案", "以及", "已经", "觉得", "真的",
+  "就是", "应该", "动态", "小时", "支持", "采用", "开箱", "体验", "实现", "喜欢",
+  "感觉", "东西", "更新", "完成", "开始", "准备", "今天", "昨天", "继续",
+]);
+const THEME_TOKEN_BLOCKLIST = new Set([
+  "http",
+  "https",
+  "www",
+  "com",
+  "cn",
+  "net",
+  "org",
+  "t",
+  "co",
+  "tco",
+  "amp",
+  "html",
+  "jpg",
+  "jpeg",
+  "png",
+  "webp",
+  "svg",
+  "gif",
+  "pro",
+  "plus",
+  "mini",
+  "ultra",
+  "max",
+  "gb",
+  "mb",
+  "tb",
+]);
+const THEME_SHORT_TOKEN_ALLOWLIST = new Set([
+  "ai",
+  "ui",
+  "ux",
+  "js",
+  "ts",
+  "go",
+  "ci",
+  "cd",
+  "db",
+  "ip",
+  "tv",
+  "3d",
+  "llm",
+  "rag",
+  "api",
+  "ios",
+  "mac",
+  "dns",
+  "vpn",
+  "rss",
+]);
+const TRAVEL_FACT_LOCATIONS = [
+  { name: "日本", kind: "country", aliases: ["日本", "东京", "京都", "大阪", "仙台", "松岛", "白石", "镰仓", "皇居", "成田"] },
+  { name: "韩国", kind: "country", aliases: ["韩国", "首尔"] },
+  { name: "菲律宾", kind: "country", aliases: ["菲律宾", "马尼拉", "长滩岛", "薄荷岛", "宿务"] },
+  { name: "美国", kind: "country", aliases: ["美国", "美西", "纽约", "nyc", "洛杉矶", "拉斯维加斯", "旧金山"] },
+  { name: "加拿大", kind: "country", aliases: ["加拿大"] },
+  { name: "泰国", kind: "country", aliases: ["泰国", "曼谷"] },
+  { name: "中国台湾", kind: "region", aliases: ["台湾", "台北"] },
+  { name: "中国香港", kind: "region", aliases: ["香港"] },
+  { name: "中国澳门", kind: "region", aliases: ["澳门"] },
+];
+const TRAVEL_FACT_CUES = [
+  "旅行", "游记", "跑马", "徒步", "自驾", "潜水", "跨年", "蜜月",
+  "day1", "day2", "day3", "day4", "day5", "day6", "day7", "day8", "day9",
+  "day 1", "day 2", "day 3", "day 4", "day 5", "晨跑", "机场",
+];
+const READING_POST_PATTERNS = [/我在读什么/u, /年終卷/u, /年终卷/u, /读书分享/u];
+const DEVICE_CATEGORY_PATTERNS = [
+  { category: "显示器", keywords: ["显示器", "monitor", "rd280u"] },
+  { category: "电脑", keywords: ["mac mini", "macbook", "电脑", "主机", "imac"] },
+  { category: "网络/通信", keywords: ["nas", "wifi", "wi-fi", "路由", "esim", "sim", "宽带", "dns"] },
+  { category: "音频", keywords: ["耳机", "音箱", "bose", "freebuds", "pamu"] },
+  { category: "摄影", keywords: ["相机", "镜头", "摄影", "ricoh", "索尼", "富士", "小蚁"] },
+  { category: "外设", keywords: ["键盘", "鼠标", "硬盘", "拓展坞", "dockcase", "手电筒"] },
+  { category: "手机", keywords: ["iphone", "手机", "f50"] },
+];
 
 // ─── 工具函数 ────────────────────────────────────────────────
 
@@ -97,6 +193,537 @@ function truncate(text, max = 120) {
   if (!text) return "";
   if (text.length <= max) return text;
   return `${text.slice(0, max - 1)}…`;
+}
+
+function normalizeSpace(text) {
+  return String(text ?? "").replace(/\s+/g, " ").trim();
+}
+
+function toPlainDate(value) {
+  if (!value) return "";
+  const parsed = new Date(value);
+  if (Number.isNaN(parsed.getTime())) return String(value).slice(0, 10);
+  return parsed.toISOString().slice(0, 10);
+}
+
+function cleanTweetText(text, max = 90) {
+  const normalized = normalizeSpace(String(text ?? "").replace(/https?:\/\/t\.co\/\S+/g, ""));
+  return truncate(normalized, max);
+}
+
+function sanitizeThemeSourceText(text) {
+  return normalizeSpace(
+    String(text ?? "")
+      .replace(/https?:\/\/\S+/gi, " ")
+      .replace(/\bwww\.\S+/gi, " ")
+      .replace(/\[[^\]]+\]\([^)]+\)/g, " ")
+      .replace(/[#*_`<>()[\]{}]/g, " "),
+  );
+}
+
+function isNoiseThemeToken(token) {
+  const normalized = String(token ?? "").trim();
+  if (!normalized) return true;
+
+  const lower = normalized.toLowerCase();
+  if (THEME_TOKEN_BLOCKLIST.has(lower)) return true;
+  if (/^\d+$/.test(lower)) return true;
+  if (/^[a-z]{1,2}$/i.test(lower) && !THEME_SHORT_TOKEN_ALLOWLIST.has(lower)) {
+    return true;
+  }
+
+  return false;
+}
+
+function tokenizeThemeText(text) {
+  const raw = sanitizeThemeSourceText(text);
+  const tokens = raw.match(/[A-Za-z][A-Za-z0-9.+#-]{1,}|[\u4e00-\u9fa5]{2,6}/g) ?? [];
+  return tokens.filter((token) => {
+    const lower = token.toLowerCase?.() ?? token;
+    return !THEME_STOPWORDS.has(lower) && !isNoiseThemeToken(token);
+  });
+}
+
+function textIncludesAny(text, keywords) {
+  const source = String(text ?? "").toLowerCase();
+  return keywords.some((keyword) => source.includes(String(keyword).toLowerCase()));
+}
+
+function daysBetween(dateA, dateB) {
+  const timeA = new Date(dateA).getTime();
+  const timeB = new Date(dateB).getTime();
+  if (!Number.isFinite(timeA) || !Number.isFinite(timeB)) return Number.POSITIVE_INFINITY;
+  return Math.abs(timeA - timeB) / (24 * 60 * 60 * 1000);
+}
+
+function pickEvidencePosts(posts, max = 3) {
+  return posts
+    .slice()
+    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+    .slice(0, max)
+    .map((post) => ({
+      title: post.title,
+      date: post.date,
+      url: post.url,
+    }));
+}
+
+function buildPostAnalysisText(post) {
+  return normalizeSpace(
+    [post.title, post.summary, ...(post.keyPoints ?? []), post.analysisText ?? ""].join("\n"),
+  );
+}
+
+function buildThemeStats(posts, tweets) {
+  const counts = new Map();
+  const addToken = (token, weight = 1) => {
+    if (!token || token.length < 2) return;
+    counts.set(token, (counts.get(token) ?? 0) + weight);
+  };
+
+  for (const post of posts) {
+    for (const category of post.categories ?? []) {
+      addToken(CATEGORY_LABELS[category] ?? category, 3);
+    }
+    for (const token of tokenizeThemeText(post.title)) addToken(token, 3);
+    for (const token of tokenizeThemeText(post.summary)) addToken(token, 2);
+    for (const point of post.keyPoints ?? []) {
+      for (const token of tokenizeThemeText(point)) addToken(token, 2);
+    }
+  }
+
+  for (const tweet of tweets) {
+    for (const token of tokenizeThemeText(tweet.text)) addToken(token, 1);
+  }
+
+  return [...counts.entries()]
+    .sort((a, b) => b[1] - a[1])
+    .map(([token]) => token);
+}
+
+function selectRepresentativePosts(posts, limit = 5, recentCount = 2) {
+  if (posts.length <= limit) return posts.slice(0, limit);
+
+  const recent = posts.slice(0, Math.min(recentCount, limit));
+  const recentUrls = new Set(recent.map((post) => post.url));
+  const categorySeen = new Map();
+  for (const post of recent) {
+    for (const category of post.categories ?? []) {
+      categorySeen.set(category, (categorySeen.get(category) ?? 0) + 1);
+    }
+  }
+
+  const candidates = posts
+    .filter((post) => !recentUrls.has(post.url))
+    .map((post, index) => {
+      const categoryScore = (post.categories ?? []).reduce(
+        (score, category) => score + 1 / (1 + (categorySeen.get(category) ?? 0)),
+        0,
+      );
+      const keyPointScore = Math.min((post.keyPoints ?? []).length, 3) * 0.4;
+      const summaryScore = post.summary ? 0.3 : 0;
+      const recencyScore = 1 / (1 + index * 0.08);
+
+      return {
+        post,
+        score: categoryScore + keyPointScore + summaryScore + recencyScore,
+      };
+    })
+    .sort((a, b) => b.score - a.score)
+    .slice(0, Math.max(0, limit - recent.length))
+    .map((entry) => entry.post);
+
+  return [...recent, ...candidates].sort(
+    (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime(),
+  );
+}
+
+function findTravelLocations(text) {
+  const normalized = String(text ?? "").toLowerCase();
+  return TRAVEL_FACT_LOCATIONS.filter((location) =>
+    location.aliases.some((alias) => normalized.includes(alias.toLowerCase())));
+}
+
+function isTravelFactCandidate(post) {
+  const text = buildPostAnalysisText(post);
+  const hasTravelCategory = (post.categories ?? []).some((category) =>
+    ["travel", "photography"].includes(String(category).toLowerCase()));
+  return hasTravelCategory || textIncludesAny(text, TRAVEL_FACT_CUES);
+}
+
+function buildTravelFacts(posts) {
+  const candidates = [];
+  for (const post of posts) {
+    if (!isTravelFactCandidate(post)) continue;
+
+    const locations = findTravelLocations(buildPostAnalysisText(post));
+    if (locations.length === 0) continue;
+
+    for (const location of locations) {
+      candidates.push({
+        ...location,
+        title: post.title,
+        date: post.date,
+        url: post.url,
+      });
+    }
+  }
+
+  const grouped = new Map();
+  for (const candidate of candidates) {
+    const key = `${candidate.kind}:${candidate.name}`;
+    if (!grouped.has(key)) grouped.set(key, []);
+    grouped.get(key).push(candidate);
+  }
+
+  const buildEntries = (kind) => {
+    return [...grouped.entries()]
+      .filter(([key]) => key.startsWith(`${kind}:`))
+      .map(([, items]) => {
+        const sorted = items
+          .slice()
+          .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
+
+        const tripGroups = [];
+        for (const item of sorted) {
+          const latestGroup = tripGroups[tripGroups.length - 1];
+          if (!latestGroup || daysBetween(latestGroup.lastDate, item.date) > 21) {
+            tripGroups.push({
+              lastDate: item.date,
+              posts: [item],
+            });
+            continue;
+          }
+          latestGroup.posts.push(item);
+          latestGroup.lastDate = item.date;
+        }
+
+        const evidence = pickEvidencePosts(
+          tripGroups.map((group) => {
+            const latest = group.posts[group.posts.length - 1];
+            return {
+              title: latest.title,
+              date: latest.date,
+              url: latest.url,
+            };
+          }),
+          3,
+        );
+
+        return {
+          name: sorted[0]?.name ?? "",
+          kind,
+          tripCount: tripGroups.length,
+          countMode: "at_least",
+          firstMentionedAt: sorted[0]?.date ?? "",
+          latestMentionedAt: sorted[sorted.length - 1]?.date ?? "",
+          evidence,
+        };
+      })
+      .sort(
+        (a, b) =>
+          b.tripCount - a.tripCount ||
+          new Date(b.latestMentionedAt).getTime() - new Date(a.latestMentionedAt).getTime(),
+      );
+  };
+
+  return {
+    countries: buildEntries("country"),
+    regions: buildEntries("region"),
+  };
+}
+
+function extractRaceName(title) {
+  let normalized = String(title ?? "")
+    .replace(/^跑步\s*\|\s*/u, "")
+    .replace(/^马拉松\s*\|\s*/u, "")
+    .trim();
+
+  const pipeSegments = normalized.split("|").map((segment) => segment.trim()).filter(Boolean);
+  const pipeMatch = pipeSegments.find((segment) => /马拉松|长跑节/u.test(segment));
+  if (pipeMatch) {
+    normalized = pipeMatch;
+  }
+
+  normalized = normalized.split(/[：:]/u)[0]?.trim() ?? normalized;
+  normalized = normalized.replace(/比赛日$/u, "").trim();
+  return normalized;
+}
+
+function extractRaceResult(text) {
+  const normalized = String(text ?? "");
+  const hourMinuteMatch = normalized.match(/(\d+\s*小时\s*\d+\s*分(?:\s*\d+\s*秒)?)/u);
+  if (hourMinuteMatch?.[1]) {
+    return normalizeSpace(hourMinuteMatch[1]);
+  }
+  const clockMatch = normalized.match(/\b(\d{1,2}:\d{2}:\d{2})\b/);
+  return clockMatch?.[1] ?? "";
+}
+
+function extractMarathonSequence(text) {
+  const match = String(text ?? "").match(/第\s*(\d+)\s*场全马/u);
+  return match?.[1] ? Number.parseInt(match[1], 10) : null;
+}
+
+function buildRaceFacts(posts) {
+  const events = new Map();
+  let totalMarathons = null;
+
+  for (const post of posts) {
+    const text = buildPostAnalysisText(post);
+    if (!/马拉松|长跑节/u.test(text)) continue;
+    if (/训练小记/u.test(post.title)) continue;
+
+    const eventName = extractRaceName(post.title);
+    if (!eventName) continue;
+
+    const eventType = /长跑节/u.test(eventName)
+      ? "road_run"
+      : /半马|半程/u.test(text)
+        ? "half_marathon"
+        : "full_marathon";
+
+    const sequenceNumber = extractMarathonSequence(text);
+    if (eventType === "full_marathon" && sequenceNumber) {
+      if (!totalMarathons || sequenceNumber > totalMarathons.value) {
+        totalMarathons = {
+          value: sequenceNumber,
+          mode: "at_least",
+          sourceTitle: post.title,
+          sourceUrl: post.url,
+          sourceDate: post.date,
+        };
+      }
+    }
+
+    const raceKey = normalizeSpace(eventName.toLowerCase());
+    const existing = events.get(raceKey);
+    const current = {
+      name: eventName,
+      date: post.date,
+      url: post.url,
+      title: post.title,
+      eventType,
+      result: extractRaceResult(text),
+      sequenceNumber: sequenceNumber ?? undefined,
+      location: findTravelLocations(text)[0]?.name ?? "",
+    };
+
+    const currentScore =
+      (current.sequenceNumber ?? 0) * 3 +
+      (current.result ? 4 : 0) +
+      (current.location ? 2 : 0) +
+      text.length / 1000;
+    const existingScore =
+      existing
+        ? (existing.sequenceNumber ?? 0) * 3 +
+          (existing.result ? 4 : 0) +
+          (existing.location ? 2 : 0) +
+          String(existing.title ?? "").length / 1000
+        : Number.NEGATIVE_INFINITY;
+
+    if (!existing || currentScore >= existingScore) {
+      events.set(raceKey, current);
+    }
+  }
+
+  const completedEvents = [...events.values()]
+    .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
+
+  return {
+    totalMarathons,
+    completedEvents,
+  };
+}
+
+function extractBookTitlesFromMarkdown(markdown) {
+  const matches = [...String(markdown ?? "").matchAll(/^\s*\d+\.\s*\[?《([^》]+)》/gmu)];
+  const titles = [];
+  const seen = new Set();
+  for (const match of matches) {
+    const title = normalizeSpace(match[1]);
+    if (!title || seen.has(title)) continue;
+    seen.add(title);
+    titles.push(title);
+  }
+  return titles;
+}
+
+function extractReadingCount(text) {
+  const normalized = String(text ?? "");
+  const patterns = [
+    /分享[^。]{0,20}?(\d+)\s*本书/u,
+    /读的\s*(\d+)\s*本书/u,
+    /集中阅读\s*(\d+)\s*本书/u,
+    /读了\s*(\d+)\s*本书/u,
+  ];
+  for (const pattern of patterns) {
+    const match = normalized.match(pattern);
+    if (match?.[1]) return Number.parseInt(match[1], 10);
+  }
+  return null;
+}
+
+function extractLifetimeReadCount(text) {
+  const match = String(text ?? "").match(/已(?:经)?读了\s*(\d+)\s*本书/u);
+  return match?.[1] ? Number.parseInt(match[1], 10) : null;
+}
+
+function buildReadingFacts(posts) {
+  const roundupPosts = [];
+  let lifetimeReadCount = null;
+
+  for (const post of posts) {
+    const title = String(post.title ?? "");
+    const text = buildPostAnalysisText(post);
+
+    const lifetimeCount = extractLifetimeReadCount(text);
+    if (lifetimeCount && (!lifetimeReadCount || lifetimeCount > lifetimeReadCount.value)) {
+      lifetimeReadCount = {
+        value: lifetimeCount,
+        mode: "approx_public_record",
+        sourceTitle: post.title,
+        sourceUrl: post.url,
+        sourceDate: post.date,
+      };
+    }
+
+    if (!READING_POST_PATTERNS.some((pattern) => pattern.test(title))) continue;
+
+    roundupPosts.push({
+      title: post.title,
+      date: post.date,
+      url: post.url,
+      bookCount: extractReadingCount(text) ?? undefined,
+      books: extractBookTitlesFromMarkdown(post.analysisText).slice(0, 8),
+    });
+  }
+
+  roundupPosts.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+
+  return {
+    lifetimeReadCount,
+    roundupPosts,
+  };
+}
+
+function inferDeviceCategory(text) {
+  for (const rule of DEVICE_CATEGORY_PATTERNS) {
+    if (textIncludesAny(text, rule.keywords)) {
+      return rule.category;
+    }
+  }
+  return "";
+}
+
+function buildDeviceFacts(posts) {
+  const featuredPosts = [];
+  for (const post of posts) {
+    const category = inferDeviceCategory(`${post.title}\n${post.summary}`);
+    if (!category) continue;
+
+    featuredPosts.push({
+      title: post.title,
+      date: post.date,
+      url: post.url,
+      category,
+    });
+  }
+
+  return {
+    featuredPosts: featuredPosts
+      .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+      .slice(0, 12),
+  };
+}
+
+function buildStructuredFacts(posts) {
+  return {
+    travel: buildTravelFacts(posts),
+    races: buildRaceFacts(posts),
+    reading: buildReadingFacts(posts),
+    devices: buildDeviceFacts(posts),
+  };
+}
+
+function buildStableFacts({ posts, tweets, profile }) {
+  const categoryCounts = new Map();
+  for (const post of posts) {
+    for (const category of post.categories ?? []) {
+      categoryCounts.set(category, (categoryCounts.get(category) ?? 0) + 1);
+    }
+  }
+
+  const focusAreas = [...categoryCounts.entries()]
+    .sort((a, b) => b[1] - a[1])
+    .slice(0, 5)
+    .map(([category]) => CATEGORY_LABELS[category] ?? category);
+
+  const recurringTopics = buildThemeStats(posts, tweets)
+    .filter((token) => !focusAreas.includes(token))
+    .slice(0, 10);
+
+  const flagshipPosts = selectRepresentativePosts(posts, 5).map((post) => ({
+    title: post.title,
+    date: post.date,
+    url: post.url,
+  }));
+
+  const publicPlatforms = Object.entries(profile?.social ?? {})
+    .filter(([, url]) => typeof url === "string" && url.trim())
+    .slice(0, 8)
+    .map(([label, url]) => ({ label, url }));
+
+  return {
+    focusAreas,
+    recurringTopics,
+    flagshipPosts,
+    publicPlatforms,
+    contentFootprint: {
+      posts: posts.length,
+      tweets: tweets.length,
+    },
+  };
+}
+
+function buildTimelineFacts({ posts, tweets, experience }) {
+  const latestPosts = posts.slice(0, 5).map((post) => ({
+    date: post.date,
+    title: post.title,
+    url: post.url,
+  }));
+
+  const latestTweets = [...tweets]
+    .filter((tweet) => tweet.date)
+    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+    .slice(0, 8)
+    .map((tweet) => ({
+      date: toPlainDate(tweet.date),
+      text: cleanTweetText(tweet.text, 84),
+      url: tweet.url,
+    }));
+
+  const careerMoments = (experience ?? [])
+    .slice(0, 8)
+    .map((exp) => ({
+      period: normalizeSpace(exp.period),
+      title: normalizeSpace(exp.title),
+      company: normalizeSpace(exp.company),
+    }))
+    .filter((item) => item.period || item.title || item.company);
+
+  return {
+    latestPosts,
+    latestTweets,
+    careerMoments,
+  };
+}
+
+function computeContextHash(payload) {
+  return createHash("sha256")
+    .update(JSON.stringify(payload))
+    .digest("hex")
+    .slice(0, 16);
 }
 
 async function fetchHotSlugs() {
@@ -178,6 +805,7 @@ async function collectBlogDigest(siteUrl) {
       keyPoints: Array.isArray(summaryEntry?.keyPoints)
         ? summaryEntry.keyPoints
         : [],
+      analysisText: parsed.content,
     });
   }
 
@@ -216,16 +844,16 @@ async function collectBlogDigest(siteUrl) {
   return result;
 }
 
+function toPublicPosts(posts) {
+  return posts.map(({ slug, analysisText, ...post }) => post);
+}
+
 // ─── 推文数据 ────────────────────────────────────────────────
 
-function tweetScore(tweet) {
-  const m = tweet.metrics ?? {};
-  const likes = Number(m.like_count ?? 0);
-  const bookmarks = Number(m.bookmark_count ?? 0);
-  const retweets = Number(m.retweet_count ?? 0);
-  const replies = Number(m.reply_count ?? 0);
-  const quotes = Number(m.quote_count ?? 0);
-  return likes + bookmarks * 1.5 + retweets * 1.8 + replies + quotes * 1.2;
+function sortTweetsByDateDesc(tweets) {
+  return [...tweets].sort(
+    (a, b) => new Date(b.date ?? 0).getTime() - new Date(a.date ?? 0).getTime(),
+  );
 }
 
 function normalizeAuthorTweetsCache(payload) {
@@ -269,7 +897,7 @@ async function collectTweets() {
   if (authorCache?.tweets?.length) {
     const tweets = normalizeAuthorTweetsCache(authorCache);
     return {
-      tweets: [...tweets].sort((a, b) => tweetScore(b) - tweetScore(a)).slice(0, MAX_TWEETS),
+      tweets: sortTweetsByDateDesc(tweets).slice(0, MAX_TWEETS),
       source: "author-tweets-cache",
       fetchedAt: authorCache?.meta?.lastUpdated ?? new Date().toISOString(),
       count: tweets.length,
@@ -284,7 +912,7 @@ async function collectTweets() {
   );
   const tweets = normalizeTweetCardCache(tweetCardCache);
   return {
-    tweets: [...tweets].sort((a, b) => tweetScore(b) - tweetScore(a)).slice(0, MAX_TWEETS),
+    tweets: sortTweetsByDateDesc(tweets).slice(0, MAX_TWEETS),
     source: "tweets-cache",
     fetchedAt: tweetCardCache?.lastUpdated ?? new Date().toISOString(),
     count: tweets.length,
@@ -577,7 +1205,8 @@ async function main() {
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || DEFAULT_SITE_URL;
 
   console.log("📦 收集博客文章数据...");
-  const posts = await collectBlogDigest(siteUrl);
+  const rawPosts = await collectBlogDigest(siteUrl);
+  const posts = toPublicPosts(rawPosts);
 
   // 保存博客摘要到 sources
   await writeJson(path.join(SOURCES_DIR, "blog-digest.json"), {
@@ -627,9 +1256,35 @@ async function main() {
     ...github,
   });
 
+  const stableFacts = buildStableFacts({
+    posts,
+    tweets: tweetResult.tweets,
+    profile: github.profile,
+  });
+  const timelineFacts = buildTimelineFacts({
+    posts,
+    tweets: tweetResult.tweets,
+    experience: github.experience,
+  });
+  const structuredFacts = await (async () => {
+    const geminiFactsFile = path.join(DATA_DIR, "structured-facts-aggregated.json");
+    const geminiFacts = await readJson(geminiFactsFile, null);
+    if (geminiFacts) {
+      console.log("   ✨ 使用 Gemini 聚合的 structuredFacts（运行 pnpm facts:gemini 可更新）");
+      return {
+        travel: geminiFacts.travel,
+        races: geminiFacts.races,
+        reading: geminiFacts.reading,
+        devices: buildStructuredFacts(rawPosts).devices, // devices 仍用规则提取
+      };
+    }
+    console.log("   ⚠️  未找到 structured-facts-aggregated.json，使用规则提取（运行 pnpm facts:gemini 生成）");
+    return buildStructuredFacts(rawPosts);
+  })();
+
   // ── 构建统一上下文 ──
-  const context = {
-    $schema: "author-context-v1",
+  const baseContext = {
+    $schema: "author-context-v2",
     generatedAt: new Date().toISOString(),
     profile: {
       name: github.profile?.name ?? "罗磊",
@@ -653,20 +1308,30 @@ async function main() {
     posts,
     tweets: tweetResult.tweets,
     projects: github.projects,
+    stableFacts,
+    timelineFacts,
+    structuredFacts,
     sourceVersions: {
       tweets: {
         fetchedAt: tweetResult.fetchedAt,
         count: tweetResult.count,
         source: tweetResult.source,
+        latestTweetAt: timelineFacts.latestTweets[0]?.date ?? null,
       },
       posts: {
         scannedAt: new Date().toISOString(),
         count: posts.length,
+        latestPostAt: posts[0]?.date ?? null,
       },
       github: {
         updatedAt: github.updatedAt,
       },
     },
+  };
+
+  const context = {
+    ...baseContext,
+    contextHash: computeContextHash(baseContext),
   };
 
   await writeJson(OUTPUT_FILE, context);

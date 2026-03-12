@@ -30,7 +30,7 @@ export function ArticleAISummary({ summary }: ArticleAISummaryProps) {
 
       {isOpen && (
         <div className="mt-3 rounded-lg border border-zinc-200 bg-white/80 px-6 py-5 backdrop-blur-sm dark:border-zinc-700 dark:bg-zinc-800/60">
-          <p className="text-base leading-[1.9] text-zinc-600 dark:text-zinc-400">
+          <p className="text-base leading-[1.9] text-zinc-600 dark:text-zinc-400 ">
             {summary.abstract}
           </p>
 

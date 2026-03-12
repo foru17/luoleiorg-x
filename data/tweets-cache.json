@@ -10,12 +10,12 @@
         "profile_image_url": "https://pbs.twimg.com/profile_images/1550157622300786688/672YmCpB_normal.jpg"
       },
       "public_metrics": {
-        "retweet_count": 9,
-        "reply_count": 5,
-        "like_count": 96,
+        "retweet_count": 10,
+        "reply_count": 6,
+        "like_count": 102,
         "quote_count": 0,
-        "bookmark_count": 123,
-        "impression_count": 48071
+        "bookmark_count": 130,
+        "impression_count": 55291
       },
       "media": []
     },
@@ -31,10 +31,10 @@
       "public_metrics": {
         "retweet_count": 40,
         "reply_count": 19,
-        "like_count": 392,
+        "like_count": 391,
         "quote_count": 1,
         "bookmark_count": 207,
-        "impression_count": 114840
+        "impression_count": 114845
       },
       "media": [
         {
@@ -67,10 +67,10 @@
       "public_metrics": {
         "retweet_count": 13,
         "reply_count": 25,
-        "like_count": 138,
+        "like_count": 137,
         "quote_count": 6,
         "bookmark_count": 89,
-        "impression_count": 44122
+        "impression_count": 44157
       },
       "media": [
         {
@@ -94,7 +94,7 @@
         "like_count": 510,
         "quote_count": 0,
         "bookmark_count": 21,
-        "impression_count": 130693
+        "impression_count": 130699
       },
       "media": [
         {
@@ -115,10 +115,10 @@
       "public_metrics": {
         "retweet_count": 325,
         "reply_count": 1150,
-        "like_count": 1568,
+        "like_count": 1567,
         "quote_count": 101,
         "bookmark_count": 690,
-        "impression_count": 1396549
+        "impression_count": 1396575
       },
       "media": [
         {
@@ -142,7 +142,7 @@
         "like_count": 3,
         "quote_count": 0,
         "bookmark_count": 1,
-        "impression_count": 393
+        "impression_count": 394
       },
       "media": [
         {
@@ -163,10 +163,10 @@
       "public_metrics": {
         "retweet_count": 570,
         "reply_count": 98,
-        "like_count": 2322,
+        "like_count": 2323,
         "quote_count": 20,
-        "bookmark_count": 2437,
-        "impression_count": 501468
+        "bookmark_count": 2434,
+        "impression_count": 501585
       },
       "media": [
         {
@@ -174,6 +174,25 @@
           "url": "https://pbs.twimg.com/media/GCvsKH1WYAAnveW.jpg"
         }
       ]
+    },
+    "2031245723258466794": {
+      "id": "2031245723258466794",
+      "text": "过去 10 年，我给自己设了个「人生马拉松」计划：每年至少一场全马 🏃‍♂️，今年刚好 10 场。\n现在准备开启另一个长期项目「人生 AI」：持续迭代我的 AI 分身 🤖，也顺手记录这波 AI 浪潮的技术演进。\n拍了个视频，记录这次有趣的尝试👇\n https://t.co/T71sbDwvKZ",
+      "created_at": "2026-03-10T05:48:13.000Z",
+      "author": {
+        "name": "luolei",
+        "username": "luoleiorg",
+        "profile_image_url": "https://pbs.twimg.com/profile_images/1550157622300786688/672YmCpB_normal.jpg"
+      },
+      "public_metrics": {
+        "retweet_count": 1,
+        "reply_count": 1,
+        "like_count": 15,
+        "quote_count": 0,
+        "bookmark_count": 0,
+        "impression_count": 2868
+      },
+      "media": []
     },
     "1744017015256346724": {
       "id": "1744017015256346724",
@@ -190,7 +209,7 @@
         "like_count": 150,
         "quote_count": 2,
         "bookmark_count": 117,
-        "impression_count": 40870
+        "impression_count": 40886
       },
       "media": [
         {
@@ -209,12 +228,12 @@
         "profile_image_url": "https://pbs.twimg.com/profile_images/1550157622300786688/672YmCpB_normal.jpg"
       },
       "public_metrics": {
-        "retweet_count": 37,
+        "retweet_count": 36,
         "reply_count": 40,
-        "like_count": 442,
+        "like_count": 444,
         "quote_count": 2,
-        "bookmark_count": 334,
-        "impression_count": 68014
+        "bookmark_count": 332,
+        "impression_count": 68313
       },
       "media": [
         {
@@ -241,12 +260,12 @@
         "profile_image_url": "https://pbs.twimg.com/profile_images/1550157622300786688/672YmCpB_normal.jpg"
       },
       "public_metrics": {
-        "retweet_count": 70,
+        "retweet_count": 69,
         "reply_count": 29,
-        "like_count": 733,
+        "like_count": 734,
         "quote_count": 2,
-        "bookmark_count": 807,
-        "impression_count": 78642
+        "bookmark_count": 815,
+        "impression_count": 79119
       },
       "media": [
         {
@@ -282,7 +301,7 @@
         "like_count": 82,
         "quote_count": 2,
         "bookmark_count": 61,
-        "impression_count": 27335
+        "impression_count": 27344
       },
       "media": [
         {
@@ -306,7 +325,7 @@
         "like_count": 294,
         "quote_count": 8,
         "bookmark_count": 317,
-        "impression_count": 129532
+        "impression_count": 129549
       },
       "media": []
     },
@@ -349,7 +368,7 @@
         "like_count": 475,
         "quote_count": 7,
         "bookmark_count": 568,
-        "impression_count": 191993
+        "impression_count": 191995
       },
       "media": [
         {
@@ -377,7 +396,7 @@
         "like_count": 4,
         "quote_count": 0,
         "bookmark_count": 0,
-        "impression_count": 6599
+        "impression_count": 6601
       },
       "media": [
         {
@@ -395,5 +414,5 @@
       ]
     }
   },
-  "lastUpdated": "2026-03-01T17:47:29.420Z"
+  "lastUpdated": "2026-03-10T08:48:39.064Z"
 }

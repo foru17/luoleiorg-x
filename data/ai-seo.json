@@ -1,8 +1,8 @@
 {
   "meta": {
-    "lastUpdated": "2026-03-05T06:41:37.851Z",
+    "lastUpdated": "2026-03-10T13:45:58.724Z",
     "model": "kimi",
-    "totalProcessed": 340
+    "totalProcessed": 341
   },
   "articles": {
     "pc-2025": {
@@ -6205,6 +6205,24 @@
       },
       "contentHash": "a63768be",
       "processedAt": "2026-03-05T06:37:48.381Z"
+    },
+    "life-ai": {
+      "data": {
+        "metaDescription": "博主罗磊启动「人生 AI」长期计划，通过AI分身重新整理十余年公开创作内容。基于Cloudflare Vinext框架搭建可对话的数字分身，探索长期创作者在AI时代如何将碎片化表达沉淀为可迭代的个人知识系统，同时讨论公开数据AI化的准确性与隐私边界问题。",
+        "keywords": [
+          "AI数字分身",
+          "人生AI",
+          "长期创作",
+          "个人知识管理",
+          "AI内容整理",
+          "Cloudflare Vinext",
+          "数字分身准确性",
+          "公开数据AI化"
+        ],
+        "ogDescription": "跑了10年马拉松后，博主罗磊开启新长期项目「人生AI」：把十余年博客、视频、开源项目喂给AI，造了一个能聊天的数字分身。这不仅是一次技术实验，更是在重新整理自己。你会愿意让AI系统分析你的公开足迹吗？"
+      },
+      "contentHash": "5faebc2f",
+      "processedAt": "2026-03-10T13:45:58.724Z"
     }
   }
 }

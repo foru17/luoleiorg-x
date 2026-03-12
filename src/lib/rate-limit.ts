@@ -14,10 +14,38 @@ interface ClientRecord {
   lastCleanup: number;
 }
 
+function parsePositiveIntEnv(value: string | undefined, fallback: number): number {
+  const parsed = Number.parseInt(value ?? "", 10);
+  return Number.isFinite(parsed) && parsed > 0 ? parsed : fallback;
+}
+
+function parseBooleanEnv(value: string | undefined, fallback: boolean): boolean {
+  if (!value) return fallback;
+
+  const normalized = value.trim().toLowerCase();
+  if (["1", "true", "yes", "on"].includes(normalized)) return true;
+  if (["0", "false", "no", "off"].includes(normalized)) return false;
+  return fallback;
+}
+
+const RATE_LIMIT_ENABLED = parseBooleanEnv(
+  process.env.CHAT_RATE_LIMIT_ENABLED,
+  process.env.NODE_ENV === "production",
+);
+
 const DEFAULT_CONFIG: RateLimitConfig = {
-  burst: { maxRequests: 3, windowMs: 10_000 },
-  sustained: { maxRequests: 20, windowMs: 60_000 },
-  daily: { maxRequests: 100, windowMs: 86_400_000 },
+  burst: {
+    maxRequests: parsePositiveIntEnv(process.env.CHAT_RATE_LIMIT_BURST_MAX, 3),
+    windowMs: parsePositiveIntEnv(process.env.CHAT_RATE_LIMIT_BURST_WINDOW_MS, 10_000),
+  },
+  sustained: {
+    maxRequests: parsePositiveIntEnv(process.env.CHAT_RATE_LIMIT_SUSTAINED_MAX, 20),
+    windowMs: parsePositiveIntEnv(process.env.CHAT_RATE_LIMIT_SUSTAINED_WINDOW_MS, 60_000),
+  },
+  daily: {
+    maxRequests: parsePositiveIntEnv(process.env.CHAT_RATE_LIMIT_DAILY_MAX, 100),
+    windowMs: parsePositiveIntEnv(process.env.CHAT_RATE_LIMIT_DAILY_WINDOW_MS, 86_400_000),
+  },
 };
 
 const clients = new Map<string, ClientRecord>();
@@ -63,6 +91,17 @@ export function checkRateLimit(
   ip: string,
   config: RateLimitConfig = DEFAULT_CONFIG,
 ): RateLimitResult {
+  if (!RATE_LIMIT_ENABLED) {
+    return {
+      allowed: true,
+      retryAfterMs: 0,
+      limit: config.sustained.maxRequests,
+      remaining: config.sustained.maxRequests,
+      resetMs: config.sustained.windowMs,
+      triggeredBy: null,
+    };
+  }
+
   const now = Date.now();
 
   pruneStaleClients(now);

@@ -65,6 +65,16 @@ interface AuthorContext {
   skills: AuthorSkills;
   education: AuthorEducation;
   highlights: string[];
+  stableFacts?: {
+    focusAreas?: string[];
+    recurringTopics?: string[];
+    flagshipPosts?: Array<{ title: string; date?: string; url: string }>;
+    contentFootprint?: { posts?: number; tweets?: number };
+  };
+  timelineFacts?: {
+    latestPosts?: Array<{ date?: string; title: string; url: string }>;
+    latestTweets?: Array<{ date?: string; text: string; url: string }>;
+  };
 }
 
 let cachedAuthorContext: AuthorContext | null = null;
@@ -135,7 +145,7 @@ function buildAuthorBio(): string {
 - 摄影：Unsplash 摄影师 https://unsplash.com/@luolei`;
   }
 
-  const { profile, experience, skills, highlights } = ctx;
+  const { profile, experience, skills, highlights, stableFacts, timelineFacts } = ctx;
 
   // Build social links section
   const socialLinks = [
@@ -179,6 +189,27 @@ function buildAuthorBio(): string {
       return h.replace(/\[([^\]]+)\]\([^)]+\)/g, "$1");
     });
 
+  const stableFactLines = [
+    stableFacts?.focusAreas?.length
+      ? `- 长期方向：${stableFacts.focusAreas.slice(0, 4).join("、")}`
+      : "",
+    stableFacts?.recurringTopics?.length
+      ? `- 高频主题：${stableFacts.recurringTopics.slice(0, 6).join("、")}`
+      : "",
+    stableFacts?.contentFootprint
+      ? `- 内容规模：${stableFacts.contentFootprint.posts ?? 0} 篇文章 / ${stableFacts.contentFootprint.tweets ?? 0} 条动态`
+      : "",
+  ].filter(Boolean);
+
+  const recentLines = [
+    ...(timelineFacts?.latestPosts ?? [])
+      .slice(0, 3)
+      .map((post) => `- 文章：${post.date ?? "日期未记录"}｜《${post.title}》｜${post.url}`),
+    ...(timelineFacts?.latestTweets ?? [])
+      .slice(0, 3)
+      .map((tweet) => `- 动态：${tweet.date ?? "日期未记录"}｜${truncateText(tweet.text, 64)}｜${tweet.url}`),
+  ];
+
   return `- 姓名：${profile.name}（Luolei），坐标${profile.location.replace(", China", "")}
 - 身份：全栈开发者、独立开发者、内容创作者
 ${socialLinks.map(s => `- ${s}`).join("\n")}
@@ -190,7 +221,9 @@ ${experienceSection}
 ${skillsSection}
 
 ## 个人亮点
-${relevantHighlights.map(h => `- ${h}`).join("\n")}`;
+${relevantHighlights.map(h => `- ${h}`).join("\n")}
+${stableFactLines.length > 0 ? `\n\n## 长期公开主线\n${stableFactLines.join("\n")}` : ""}
+${recentLines.length > 0 ? `\n\n## 近期公开动态\n${recentLines.join("\n")}` : ""}`;
 }
 
 function truncateText(text: string, maxLength = 220): string {

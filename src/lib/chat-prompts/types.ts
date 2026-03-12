@@ -16,6 +16,12 @@ export interface TweetContext {
   dateTime?: number;
 }
 
+export interface ProjectContext {
+  name: string;
+  url: string;
+  description: string;
+}
+
 export type PromptVersion = "v1" | "v2";
 
 export type PromptIntent =
@@ -25,4 +31,19 @@ export type PromptIntent =
   | "frontend_fullstack"
   | "photo_travel"
   | "lifestyle"
+  | "unknown";
+
+export type VoiceStyleMode =
+  | "technical"
+  | "travel"
+  | "life"
+  | "recommendation";
+
+export type PromptAnswerMode =
+  | "fact"
+  | "list"
+  | "count"
+  | "timeline"
+  | "opinion"
+  | "recommendation"
   | "unknown";

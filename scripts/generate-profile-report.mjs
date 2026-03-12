@@ -13,6 +13,7 @@
 
 import fs from "fs/promises";
 import path from "path";
+import { createHash } from "crypto";
 import { fileURLToPath } from "url";
 import { loadEnv } from "./utils/load-env.mjs";
 
@@ -23,10 +24,11 @@ const CONTEXT_FILE = path.join(DATA_DIR, "author-context.json");
 const REPORTS_DIR = path.join(DATA_DIR, "reports");
 const MANIFEST_FILE = path.join(REPORTS_DIR, "manifest.json");
 const MODELS_CONFIG_FILE = path.join(ROOT_DIR, ".profile-models.json");
-const MODELS_EXAMPLE_FILE = path.join(ROOT_DIR, ".profile-models.example.json");
 const DEFAULT_TIMEOUT_MS = 300_000;
 const MAX_API_RETRIES = 3;
-const MAX_CONCURRENCY = 2;
+const MAX_CONCURRENCY = 6;
+const PROFILE_PROMPT_VERSION = "v3-public-facts";
+const DISCLOSURE_POLICY_VERSION = "public-facts-v1";
 
 // ─── 模型配置加载 ────────────────────────────────────────────
 
@@ -93,6 +95,16 @@ function truncate(text, max = 120) {
   return `${text.slice(0, max - 1)}…`;
 }
 
+function sanitizeThemeSourceText(text) {
+  return String(text ?? "")
+    .replace(/https?:\/\/\S+/gi, " ")
+    .replace(/\bwww\.\S+/gi, " ")
+    .replace(/\[[^\]]+\]\([^)]+\)/g, " ")
+    .replace(/[#*_`<>()[\]{}]/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
 function stripMarkdown(text) {
   return text
     .replace(/```[\s\S]*?```/g, " ")
@@ -106,6 +118,31 @@ function stripMarkdown(text) {
 
 function compactText(text, max = 60) {
   return truncate(stripMarkdown(String(text ?? "")), max);
+}
+
+function normalizeUrl(url) {
+  const raw = String(url ?? "").trim();
+  if (!raw) return "";
+  try {
+    const parsed = new URL(raw);
+    parsed.hash = "";
+    if (parsed.pathname !== "/") {
+      parsed.pathname = parsed.pathname.replace(/\/+$/, "");
+    }
+    return parsed.toString();
+  } catch {
+    return raw.replace(/\/+$/, "");
+  }
+}
+
+function computeContextHash(context) {
+  if (context?.contextHash) return String(context.contextHash);
+  const payload = { ...context };
+  delete payload.contextHash;
+  return createHash("sha256")
+    .update(JSON.stringify(payload))
+    .digest("hex")
+    .slice(0, 16);
 }
 
 function sleep(ms) {
@@ -132,14 +169,29 @@ async function runWithConcurrency(taskFns, limit) {
 }
 
 function tokenize(text) {
-  const raw = String(text ?? "");
+  const raw = sanitizeThemeSourceText(text);
   const tokens = raw.match(/[A-Za-z][A-Za-z0-9.+#-]{1,}|[\u4e00-\u9fa5]{2,6}/g) ?? [];
   const stop = new Set([
     "可以", "这个", "那个", "一些", "以及", "并且", "如果", "因为", "所以", "还是",
     "一个", "我们", "他们", "你们", "自己", "进行", "使用", "通过", "关于", "相关",
     "作者", "文章", "项目", "内容", "技术", "博客", "推文", "最近", "持续", "方式",
+    "小时", "支持", "采用", "开箱", "体验", "实现", "喜欢", "感觉", "东西", "更新",
+    "完成", "开始", "准备", "今天", "昨天", "继续",
+    "http", "https", "www", "com", "cn", "net", "org", "t", "co", "tco",
+    "amp", "html", "jpg", "jpeg", "png", "webp", "svg", "gif",
+    "pro", "plus", "mini", "ultra", "max", "gb", "mb", "tb",
   ]);
-  return tokens.filter((t) => t.length >= 2 && !stop.has(t.toLowerCase?.() ?? t));
+  const shortAllowList = new Set([
+    "ai", "ui", "ux", "js", "ts", "go", "ci", "cd", "db", "ip",
+    "tv", "3d", "llm", "rag", "api", "ios", "mac", "dns", "vpn", "rss",
+  ]);
+  return tokens.filter((t) => {
+    const lower = t.toLowerCase?.() ?? t;
+    if (t.length < 2 || stop.has(lower)) return false;
+    if (/^\d+$/.test(lower)) return false;
+    if (/^[a-z]{1,2}$/i.test(lower) && !shortAllowList.has(lower)) return false;
+    return true;
+  });
 }
 
 function buildThemeStats(context) {
@@ -169,6 +221,98 @@ function buildThemeStats(context) {
     .sort((a, b) => b[1] - a[1])
     .slice(0, 30)
     .map(([token, score]) => `${token}(${score})`);
+}
+
+function buildSourceLookup(context) {
+  const postMap = new Map(
+    (context.posts ?? []).map((post) => [normalizeUrl(post.url), post]),
+  );
+  const tweetMap = new Map(
+    (context.tweets ?? []).map((tweet) => [normalizeUrl(tweet.url), tweet]),
+  );
+  const projectMap = new Map(
+    (context.projects ?? []).map((project) => [normalizeUrl(project.url), project]),
+  );
+
+  const identityAllowed = new Set([
+    ...postMap.keys(),
+    ...tweetMap.keys(),
+    ...projectMap.keys(),
+    ...Object.values(context.profile?.social ?? {})
+      .map((url) => normalizeUrl(url))
+      .filter(Boolean),
+  ]);
+
+  return { postMap, tweetMap, projectMap, identityAllowed };
+}
+
+function containsRawUrl(text) {
+  return /https?:\/\/\S+/i.test(String(text ?? ""));
+}
+
+function canonicalizeProofItems(items, sourceMap, kind, violations) {
+  if (!Array.isArray(items)) return [];
+
+  return items
+    .map((item) => {
+      const raw = item ?? {};
+      const urlKey = normalizeUrl(raw.url);
+      if (!urlKey) {
+        violations.push(`${kind}: 存在缺少 URL 的条目`);
+        return null;
+      }
+
+      const source = sourceMap.get(urlKey);
+      if (!source) {
+        violations.push(`${kind}: ${raw.url} 不在上下文来源中`);
+        return null;
+      }
+
+      const canonicalTitle =
+        kind === "projects"
+          ? source.name || raw.title
+          : source.title || raw.title;
+      const canonicalDate =
+        kind === "projects" ? undefined : (source.date || raw.date || undefined);
+
+      return {
+        ...raw,
+        title: canonicalTitle,
+        url: source.url || raw.url,
+        ...(canonicalDate ? { date: canonicalDate } : {}),
+      };
+    })
+    .filter(Boolean);
+}
+
+function validateAndNormalizeReport(report, context) {
+  const violations = [];
+  const lookup = buildSourceLookup(context);
+  const normalized = {
+    ...report,
+    identities: Array.isArray(report.identities)
+      ? report.identities.map((identity) => {
+          const next = { ...identity };
+          if (containsRawUrl(next.description) || containsRawUrl(next.evidence)) {
+            violations.push(`identities: ${next.name || "未命名"} 的 description/evidence 含裸 URL`);
+          }
+          if (next.link) {
+            const linkKey = normalizeUrl(next.link);
+            if (!lookup.identityAllowed.has(linkKey)) {
+              violations.push(`identities: ${next.name || "未命名"} 的 link 不在上下文来源中`);
+            }
+          }
+          return next;
+        })
+      : [],
+    proofs: {
+      posts: canonicalizeProofItems(report.proofs?.posts, lookup.postMap, "posts", violations),
+      tweets: canonicalizeProofItems(report.proofs?.tweets, lookup.tweetMap, "tweets", violations),
+      projects: canonicalizeProofItems(report.proofs?.projects, lookup.projectMap, "projects", violations),
+    },
+  };
+
+  return { report: normalized, violations };
 }
 
 // ─── AI API 调用 ─────────────────────────────────────────────
@@ -319,38 +463,6 @@ function parseJsonText(text) {
   }
 }
 
-// ─── 隐私校验 ──────────────────────────────────────────────
-
-const PRIVACY_BANNED_TERMS = [
-  // 家庭成员
-  "妻子", "老婆", "爱人", "伴侣", "家人", "父母", "父亲", "母亲",
-  "孩子", "女儿", "儿子", "丈夫", "配偶",
-  // 健康与疾病
-  "抗癌", "癌症", "化疗", "疾病", "病情", "住院", "手术", "肿瘤",
-  // 职级（只拦截明确的职级代号，不拦截通用词汇如"架构师"）
-  "总监", "P7", "P8", "P9", "P10",
-];
-
-/**
- * 扫描报告 JSON 中是否包含隐私敏感词，返回违规列表。
- * 如果返回非空数组，报告不应被保存。
- *
- * 注意：数量词（如"20K 订阅"）不再作为违规处理——
- * prompt 约束"只能引用上下文已有数据，不得编造"即可。
- */
-function checkPrivacyViolations(report) {
-  const violations = [];
-  const jsonStr = JSON.stringify(report);
-
-  for (const term of PRIVACY_BANNED_TERMS) {
-    if (jsonStr.includes(term)) {
-      violations.push(term);
-    }
-  }
-
-  return violations;
-}
-
 // ─── AI 报告生成 ──────────────────────────────────────────────
 
 function buildSystemPrompt() {
@@ -377,12 +489,12 @@ function buildSystemPrompt() {
 - styles 要让读者脑补出画面，可以带一点轻松幽默：例如"进度条体质：做着做着就顺手发个更新""对比党：买东西/选方案都要拉表、跑测试"。
 - 如果上下文里明确出现公开影响力数据（例如 YouTube 订阅数、X 关注数），允许提及一次，帮助读者建立直觉；**禁止新增数字、禁止夸大、禁止把不确定写成事实**。
 
-## 隐私保护（违反即为生成失败）
+## 公开信息使用规则
 
-以下信息即使出现在上下文中，也绝对不能出现在输出里：
-- 家庭成员相关：妻子、老婆、爱人、伴侣、家人、父母、孩子、女儿、儿子
-- 健康与疾病：抗癌、癌症、化疗、疾病、病情、住院、手术
-- 公司与职级：不要提及具体公司名、职级（P几/总监）、薪资
+- 上下文中的文章、公开履历、GitHub、X 动态都视为可公开引用资料，可以正常使用。
+- 可以提及上下文里明确出现的公司名、项目名、时间线、公开经历，但前提是上下文真的写了。
+- 不要把零散的私人细节放大成主体标签；只有当它在内容中反复出现、确实能帮助访客理解作者时，才适度写入画像。
+- 禁止补充上下文之外的猜测，例如未出现的薪资、未公开的家庭关系推断、心理判断、未来计划。
 
 ## 写作要求
 
@@ -568,6 +680,46 @@ function buildUserPrompt(context) {
     sections.push(`## 公共活动\n${context.publicActivities.map((a) => `- ${a}`).join("\n")}`);
   }
 
+  if (context.stableFacts) {
+    const facts = context.stableFacts;
+    const platformLines = (facts.publicPlatforms ?? [])
+      .slice(0, 6)
+      .map((item) => `- ${item.label}: ${item.url}`)
+      .join("\n");
+    const flagshipLines = (facts.flagshipPosts ?? [])
+      .slice(0, 4)
+      .map((post) => `- ${post.date} | ${compactText(post.title, 36)} | ${post.url}`)
+      .join("\n");
+
+    sections.push(`## 长期公开主线
+重点方向: ${(facts.focusAreas ?? []).join("、")}
+高频主题: ${(facts.recurringTopics ?? []).slice(0, 10).join("、")}
+内容规模: ${(facts.contentFootprint?.posts ?? 0)} 篇文章 / ${(facts.contentFootprint?.tweets ?? 0)} 条推文
+${platformLines ? `公开平台:\n${platformLines}` : ""}
+${flagshipLines ? `代表文章:\n${flagshipLines}` : ""}`);
+  }
+
+  if (context.timelineFacts) {
+    const facts = context.timelineFacts;
+    const careerLines = (facts.careerMoments ?? [])
+      .slice(0, 6)
+      .map((item) => `- ${item.period} | ${item.title} @ ${item.company}`)
+      .join("\n");
+    const latestPostLines = (facts.latestPosts ?? [])
+      .slice(0, 5)
+      .map((post) => `- ${post.date} | ${compactText(post.title, 36)} | ${post.url}`)
+      .join("\n");
+    const latestTweetLines = (facts.latestTweets ?? [])
+      .slice(0, 6)
+      .map((tweet) => `- ${tweet.date} | ${compactText(tweet.text, 56)} | ${tweet.url}`)
+      .join("\n");
+
+    sections.push(`## 时间线与近期公开动态
+${careerLines ? `公开履历时间线:\n${careerLines}` : ""}
+${latestPostLines ? `最近文章:\n${latestPostLines}` : ""}
+${latestTweetLines ? `最近动态:\n${latestTweetLines}` : ""}`);
+  }
+
   if (context.projects?.length) {
     const projLines = context.projects
       .map((proj) => `- ${proj.name}: ${proj.description} (${proj.url}) [${(proj.tags ?? []).join(", ")}]`)
@@ -578,17 +730,21 @@ function buildUserPrompt(context) {
   // ─ 全量数据统计概览（本地预分析，信息无损）
   const posts = context.posts ?? [];
   const tweets = context.tweets ?? [];
+  const tweetsByDateDesc = [...tweets].sort(
+    (a, b) => new Date(b.date ?? 0).getTime() - new Date(a.date ?? 0).getTime(),
+  );
+  const tweetsByDateAsc = [...tweetsByDateDesc].reverse();
   const projects = context.projects ?? [];
 
   sections.push(
     `## 全量数据统计概览（基于 ${posts.length} 篇文章 + ${tweets.length} 条推文 + ${projects.length} 个项目的预分析）
 文章分类分布: ${buildCategoryDistribution(posts) || "无分类"}
 文章年份分布: ${buildYearDistribution(posts)}
-推文年份分布: ${buildYearDistribution(tweets)}
+推文年份分布: ${buildYearDistribution(tweetsByDateDesc)}
 推文互动统计: ${buildTweetStats(tweets)}
 高频主题词（按权重）: ${themes.join("、")}
 最早文章: ${posts[posts.length - 1]?.date?.slice(0, 10) ?? "未知"} / 最新文章: ${posts[0]?.date?.slice(0, 10) ?? "未知"}
-最早推文: ${tweets[tweets.length - 1]?.date?.slice(0, 10) ?? "未知"} / 最新推文: ${tweets[0]?.date?.slice(0, 10) ?? "未知"}`,
+最早推文: ${tweetsByDateAsc[0]?.date?.slice(0, 10) ?? "未知"} / 最新推文: ${tweetsByDateDesc[0]?.date?.slice(0, 10) ?? "未知"}`,
   );
 
   // ─ 代表性文章（精选，含完整信息供引用）
@@ -646,7 +802,7 @@ function buildUserPrompt(context) {
 - "全量数据统计概览"是对全部原始数据的预分析结论，可以放心引用。
 - "代表性文章"和"高互动推文"的 URL 可用于 proofs 引用；"速览"部分仅用于了解主题广度，不要引用其中的 URL。
 - 如果数据中出现公开的影响力数字（如 YouTube 订阅数、X 关注数），允许提及一次帮读者建立直觉；禁止新增数字或夸大。
-- 隐私保护：绝对不要提及家庭成员、健康状况、具体公司名或职级。
+- 公开事实可以正常使用，但不要补充上下文之外的推测。
 
 ${sections.join("\n\n")}`;
 }
@@ -691,11 +847,9 @@ async function generateReportWithAI(context, modelEntry) {
     throw new Error("AI 返回缺少 report 字段");
   }
 
-  // 隐私校验
-  const violations = checkPrivacyViolations(report);
+  const { report: normalizedReport, violations } = validateAndNormalizeReport(report, context);
   if (violations.length > 0) {
-    console.warn(`      ⚠️  隐私校验未通过，检测到敏感词: ${violations.join(", ")}`);
-    console.warn("      → 报告将被标记，请检查内容后决定是否保留。");
+    throw new Error(`报告引用/披露校验失败: ${violations.join("；")}`);
   }
 
   return {
@@ -706,8 +860,11 @@ async function generateReportWithAI(context, modelEntry) {
       provider: modelEntry.provider,
       generatedBy: "ai",
       sources: ["posts", "tweets", "github"],
+      contextHash: computeContextHash(context),
+      promptVersion: PROFILE_PROMPT_VERSION,
+      disclosurePolicyVersion: DISCLOSURE_POLICY_VERSION,
     },
-    report,
+    report: normalizedReport,
   };
 }
 
@@ -729,7 +886,8 @@ function buildRuleBasedReport(context) {
     date: post.date,
   }));
 
-  const tweets = (context.tweets ?? []).slice(0, 3).map((tweet) => ({
+  const recentTweets = (context.timelineFacts?.latestTweets ?? []).slice(0, 3);
+  const tweets = recentTweets.map((tweet) => ({
     title: `X 动态 · ${tweet.date ? tweet.date.slice(0, 10) : "未知日期"}`,
     url: tweet.url,
     reason: toProofReasonFromTweet(tweet.text),
@@ -758,6 +916,9 @@ function buildRuleBasedReport(context) {
       provider: "Local",
       generatedBy: "rule-based",
       sources: ["posts", "tweets", "github"],
+      contextHash: computeContextHash(context),
+      promptVersion: PROFILE_PROMPT_VERSION,
+      disclosurePolicyVersion: DISCLOSURE_POLICY_VERSION,
     },
     report: {
       hero: {
@@ -882,12 +1043,20 @@ async function updateManifest(modelEntry, reportMeta) {
 
 async function generateForModel(context, modelEntry, { noAI = false, force = false } = {}) {
   const reportFile = path.join(REPORTS_DIR, `${modelEntry.id}.json`);
+  const currentContextHash = computeContextHash(context);
 
   // 检查是否已有 AI 生成的报告，无 --force 则跳过
   if (!force && !noAI) {
     const existing = await readJson(reportFile, null);
-    if (existing?.meta?.generatedBy === "ai") {
-      console.log(`   ⏭️  ${modelEntry.name} 已有 AI 报告 (${existing.meta.lastUpdated?.slice(0, 10)})，跳过。使用 --force 强制重新生成`);
+    if (
+      existing?.meta?.generatedBy === "ai" &&
+      existing?.meta?.contextHash === currentContextHash &&
+      existing?.meta?.promptVersion === PROFILE_PROMPT_VERSION &&
+      existing?.meta?.disclosurePolicyVersion === DISCLOSURE_POLICY_VERSION
+    ) {
+      console.log(
+        `   ⏭️  ${modelEntry.name} 已有最新 AI 报告 (${existing.meta.lastUpdated?.slice(0, 10)})，上下文与 prompt 未变化，跳过。使用 --force 强制重新生成`,
+      );
       return existing;
     }
   }

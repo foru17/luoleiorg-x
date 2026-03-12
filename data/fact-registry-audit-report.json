@@ -1,0 +1,19 @@
+{
+  "generatedAt": "2026-03-08T16:04:03.029Z",
+  "registrySummary": {
+    "totalFacts": 33,
+    "confidenceValues": [
+      "verified"
+    ],
+    "reviewStatusValues": [
+      "verified"
+    ]
+  },
+  "schemaWarnings": [
+    "Audit report only lists non-verified facts. Verified facts are assumed to be already reviewed."
+  ],
+  "flaggedCount": 0,
+  "flaggedByCategory": {},
+  "flaggedByReason": {},
+  "flaggedFacts": []
+}

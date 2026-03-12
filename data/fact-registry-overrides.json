@@ -1,0 +1,297 @@
+{
+  "$schema": "fact-registry-overrides-v1",
+  "updatedAt": "2026-03-08T23:59:00+08:00",
+  "overrides": [
+    {
+      "fact_id": "travel:美国",
+      "review_status": "verified",
+      "reviewed_by": "codex",
+      "reviewed_at": "2026-03-08",
+      "note": "Conservative count based on explicit public USA travel posts.",
+      "attributes_patch": {
+        "trip_count_min": 2
+      }
+    },
+    {
+      "fact_id": "travel:日本",
+      "review_status": "verified",
+      "reviewed_by": "codex",
+      "reviewed_at": "2026-03-08",
+      "note": "Conservative count based on explicit Tokyo and Kyoto public posts.",
+      "attributes_patch": {
+        "trip_count_min": 2
+      }
+    },
+    {
+      "fact_id": "travel:菲律宾",
+      "review_status": "verified",
+      "reviewed_by": "codex",
+      "reviewed_at": "2026-03-08",
+      "note": "Conservative count based on explicit Boracay and Bohol public posts.",
+      "attributes_patch": {
+        "trip_count_min": 2
+      }
+    },
+    {
+      "fact_id": "travel:尼泊尔",
+      "review_status": "verified",
+      "reviewed_by": "codex",
+      "reviewed_at": "2026-03-08",
+      "note": "Only one directly supported Nepal trip is currently explicit in source docs.",
+      "attributes_patch": {
+        "trip_count_min": 1
+      }
+    },
+    {
+      "fact_id": "travel:泰国",
+      "review_status": "verified",
+      "reviewed_by": "codex",
+      "reviewed_at": "2026-03-08",
+      "note": "At least one explicit Thailand trip is public.",
+      "attributes_patch": {
+        "trip_count_min": 1
+      }
+    },
+    {
+      "fact_id": "travel:韩国",
+      "review_status": "verified",
+      "reviewed_by": "codex",
+      "reviewed_at": "2026-03-08",
+      "note": "At least one explicit Seoul trip is public.",
+      "attributes_patch": {
+        "trip_count_min": 1
+      }
+    },
+    {
+      "fact_id": "travel:中国香港",
+      "review_status": "verified",
+      "reviewed_by": "codex",
+      "reviewed_at": "2026-03-08",
+      "note": "Conservative count based on three explicit Hong Kong posts.",
+      "attributes_patch": {
+        "trip_count_min": 3
+      }
+    },
+    {
+      "fact_id": "travel:中国澳门",
+      "review_status": "verified",
+      "reviewed_by": "codex",
+      "reviewed_at": "2026-03-08",
+      "note": "At least one explicit Macau trip is public.",
+      "attributes_patch": {
+        "trip_count_min": 1
+      }
+    },
+    {
+      "fact_id": "travel:中国台湾",
+      "review_status": "verified",
+      "reviewed_by": "codex",
+      "reviewed_at": "2026-03-08",
+      "note": "Explicit Taiwan travel post exists.",
+      "attributes_patch": {
+        "trip_count_min": 1
+      }
+    },
+    {
+      "fact_id": "race:秦皇岛马拉松-2014",
+      "review_status": "verified",
+      "reviewed_by": "codex",
+      "reviewed_at": "2026-03-08",
+      "note": "Retrospective marathon summary publicly records this full marathon.",
+      "attributes_patch": {
+        "event_class": "marathon"
+      }
+    },
+    {
+      "fact_id": "race:北京马拉松-2014",
+      "review_status": "verified",
+      "reviewed_by": "codex",
+      "reviewed_at": "2026-03-08",
+      "note": "Retrospective marathon summary publicly records this full marathon.",
+      "attributes_patch": {
+        "event_class": "marathon"
+      }
+    },
+    {
+      "fact_id": "race:上海马拉松-2014",
+      "review_status": "verified",
+      "reviewed_by": "codex",
+      "reviewed_at": "2026-03-08",
+      "note": "Retrospective marathon summary publicly records this full marathon.",
+      "attributes_patch": {
+        "event_class": "marathon"
+      }
+    },
+    {
+      "fact_id": "race:广州马拉松-2015",
+      "review_status": "verified",
+      "reviewed_by": "codex",
+      "reviewed_at": "2026-03-08",
+      "note": "Retrospective marathon summary publicly records this full marathon.",
+      "attributes_patch": {
+        "event_class": "marathon"
+      }
+    },
+    {
+      "fact_id": "race:2015北京国际长跑节-2015-04-26",
+      "review_status": "verified",
+      "reviewed_by": "codex",
+      "reviewed_at": "2026-03-08",
+      "note": "Publicly documented race event, but not counted as a full marathon.",
+      "attributes_patch": {
+        "event_class": "non_marathon"
+      }
+    },
+    {
+      "fact_id": "race:深圳马拉松-2016",
+      "review_status": "verified",
+      "reviewed_by": "codex",
+      "reviewed_at": "2026-03-08",
+      "note": "Retrospective marathon summary publicly records this full marathon.",
+      "attributes_patch": {
+        "event_class": "marathon"
+      }
+    },
+    {
+      "fact_id": "race:杭州马拉松-2017",
+      "review_status": "verified",
+      "reviewed_by": "codex",
+      "reviewed_at": "2026-03-08",
+      "note": "Retrospective marathon summary publicly records this full marathon.",
+      "attributes_patch": {
+        "event_class": "marathon"
+      }
+    },
+    {
+      "fact_id": "race:普吉岛马拉松-2018",
+      "review_status": "verified",
+      "reviewed_by": "codex",
+      "reviewed_at": "2026-03-08",
+      "note": "Retrospective marathon summary publicly records this full marathon.",
+      "attributes_patch": {
+        "event_class": "marathon"
+      }
+    },
+    {
+      "fact_id": "race:珠海马拉松-2023-11-26",
+      "review_status": "verified",
+      "reviewed_by": "codex",
+      "reviewed_at": "2026-03-08",
+      "note": "Direct public race recap exists.",
+      "attributes_patch": {
+        "event_class": "marathon"
+      }
+    },
+    {
+      "fact_id": "race:长沙马拉松-2024-10-27",
+      "review_status": "verified",
+      "reviewed_by": "codex",
+      "reviewed_at": "2026-03-08",
+      "note": "Direct public race recap exists.",
+      "attributes_patch": {
+        "event_class": "marathon"
+      }
+    },
+    {
+      "fact_id": "race:2025京都马拉松-2025-02-16",
+      "review_status": "verified",
+      "reviewed_by": "codex",
+      "reviewed_at": "2026-03-08",
+      "note": "Direct public race recap exists.",
+      "attributes_patch": {
+        "event_class": "marathon"
+      }
+    },
+    {
+      "fact_id": "reading:2023-01-31-我在读什么:-2023-春节读书分享",
+      "review_status": "verified",
+      "reviewed_by": "codex",
+      "reviewed_at": "2026-03-08",
+      "note": "Explicit reading-share post."
+    },
+    {
+      "fact_id": "reading:2017-12-31-全球首发开箱:QQ阅读电子书・易",
+      "review_status": "verified",
+      "reviewed_by": "codex",
+      "reviewed_at": "2026-03-09",
+      "note": "Explicit public post about an e-reader / reading device."
+    },
+    {
+      "fact_id": "reading:2017-07-21-不合格的旅行者:读《美洲小宇宙》有感",
+      "review_status": "verified",
+      "reviewed_by": "codex",
+      "reviewed_at": "2026-03-08",
+      "note": "Explicit reading reflection post."
+    },
+    {
+      "fact_id": "reading:2017-02-15-年終卷-|-2016年我读了哪些书？",
+      "review_status": "verified",
+      "reviewed_by": "codex",
+      "reviewed_at": "2026-03-08",
+      "note": "Explicit yearly reading roundup."
+    },
+    {
+      "fact_id": "reading:2016-05-08-我在读什么:2016春季读书分享",
+      "review_status": "verified",
+      "reviewed_by": "codex",
+      "reviewed_at": "2026-03-08",
+      "note": "Explicit seasonal reading roundup."
+    },
+    {
+      "fact_id": "reading:2015-12-10-年終卷-|-2015年我读了哪些书？",
+      "review_status": "verified",
+      "reviewed_by": "codex",
+      "reviewed_at": "2026-03-08",
+      "note": "Explicit yearly reading roundup."
+    },
+    {
+      "fact_id": "reading:2015-04-19-我在读什么:2015春季读书分享",
+      "review_status": "verified",
+      "reviewed_by": "codex",
+      "reviewed_at": "2026-03-08",
+      "note": "Explicit seasonal reading roundup."
+    },
+    {
+      "fact_id": "reading:2014-12-13-年終卷-|-2014年我读了哪些书？",
+      "review_status": "verified",
+      "reviewed_by": "codex",
+      "reviewed_at": "2026-03-08",
+      "note": "Explicit yearly reading roundup."
+    },
+    {
+      "fact_id": "reading:2014-04-04-我在读什么:2014春季读书分享",
+      "review_status": "verified",
+      "reviewed_by": "codex",
+      "reviewed_at": "2026-03-08",
+      "note": "Explicit seasonal reading roundup."
+    },
+    {
+      "fact_id": "reading:2013-08-19-2013年我看过哪些值得推荐的好书？",
+      "review_status": "verified",
+      "reviewed_by": "codex",
+      "reviewed_at": "2026-03-08",
+      "note": "Explicit yearly reading roundup."
+    },
+    {
+      "fact_id": "reading:2013-02-03-Kindle-Paperwhite-入手",
+      "review_status": "verified",
+      "reviewed_by": "codex",
+      "reviewed_at": "2026-03-09",
+      "note": "Explicit public post about Kindle / reading device usage."
+    },
+    {
+      "fact_id": "reading:2011-07-18-假期书单",
+      "review_status": "verified",
+      "reviewed_by": "codex",
+      "reviewed_at": "2026-03-08",
+      "note": "Explicit book list post."
+    },
+    {
+      "fact_id": "reading:2011-06-07-六月书单",
+      "review_status": "verified",
+      "reviewed_by": "codex",
+      "reviewed_at": "2026-03-08",
+      "note": "Explicit book list post."
+    }
+  ]
+}

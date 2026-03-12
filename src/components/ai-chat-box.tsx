@@ -36,6 +36,13 @@ const WELCOME_MESSAGE: UIMessage = {
 
 const transport = new DefaultChatTransport({ api: "/api/chat" });
 
+function generateSessionId(): string {
+  if (typeof crypto !== "undefined" && crypto.randomUUID) {
+    return crypto.randomUUID();
+  }
+  return `${Date.now().toString(36)}-${Math.random().toString(36).slice(2)}`;
+}
+
 function getTextFromMessage(message: UIMessage): string {
   return message.parts
     .filter((p): p is { type: "text"; text: string } => p.type === "text")
@@ -370,7 +377,7 @@ function ChatPanel({
             )}
             {shouldShowTypingIndicator && (
               <TypingIndicator
-                statusMessage={status === "submitted" ? latestStatusData?.message : undefined}
+                statusMessage={latestStatusData?.message}
               />
             )}
             {error && errorInfo && (
@@ -438,10 +445,15 @@ function ChatPanel({
 export function AIChatBox() {
   const { open, setOpen } = useAIChat();
   const [hasInteracted, setHasInteracted] = useState(false);
+  const sessionId = useMemo(() => generateSessionId(), []);
+  const sessionTransport = useMemo(
+    () => new DefaultChatTransport({ api: "/api/chat", headers: { "x-session-id": sessionId } }),
+    [sessionId],
+  );
 
   const { messages, sendMessage, status, setMessages, error, clearError } =
     useChat({
-      transport,
+      transport: sessionTransport,
       messages: [WELCOME_MESSAGE],
     });
 

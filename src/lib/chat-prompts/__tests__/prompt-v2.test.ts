@@ -1,8 +1,15 @@
 import test from "node:test";
 import assert from "node:assert/strict";
+import { getChatPromptRuntimeConfig } from "../config.ts";
+import { buildCoreIdentity } from "../core-identity.ts";
 import { buildCoreRules, fallbackResponseTemplates } from "../core-rules.ts";
-import { rankArticlesByIntent } from "../intent-ranking.ts";
-import type { ArticleContext } from "../types.ts";
+import {
+  rankArticlesByIntent,
+  resolveAnswerMode,
+  resolveVoiceStyleMode,
+} from "../intent-ranking.ts";
+import { buildRuntimeContext } from "../runtime-context.ts";
+import type { ArticleContext, TweetContext } from "../types.ts";
 
 function createArticle(params: {
   title: string;
@@ -17,6 +24,21 @@ function createArticle(params: {
     categories: params.categories,
     summary: params.summary,
     keyPoints: params.keyPoints,
+    dateTime: Date.now() - (params.daysAgo ?? 30) * 24 * 60 * 60 * 1000,
+  };
+}
+
+function createTweet(params: {
+  title: string;
+  text: string;
+  date: string;
+  daysAgo?: number;
+}): TweetContext {
+  return {
+    title: params.title,
+    url: `https://x.com/luoleiorg/status/${encodeURIComponent(params.title)}`,
+    text: params.text,
+    date: params.date,
     dateTime: Date.now() - (params.daysAgo ?? 30) * 24 * 60 * 60 * 1000,
   };
 }
@@ -83,6 +105,10 @@ test("core rules should include mandatory contracts and fixed templates", () => 
   assert.equal((rules.match(/数字协议/g) ?? []).length, 1);
   assert.equal((rules.match(/履历协议/g) ?? []).length, 1);
   assert.equal((rules.match(/链接协议/g) ?? []).length, 1);
+  assert.match(rules, /来源分层协议/);
+  assert.match(rules, /回答模式协议/);
+  assert.match(rules, /L1「相关文章\/相关动态」/);
+  assert.match(rules, /recommendation 先给 2-4 个推荐项/);
   assert.match(rules, /禁止输出内部证据编号（如 A1、T1、\[A、\[T）/);
 });
 
@@ -124,4 +150,104 @@ test("unknown intent should fallback to original article order", () => {
     rankedArticles.map((item) => item.title),
     baseline.map((item) => item.title),
   );
+});
+
+test("recent query should prefer the newest equally relevant article", () => {
+  const marathonArticles = [
+    createArticle({
+      title: "长沙马拉松:回到 5 小时内",
+      categories: ["lifestyle"],
+      summary: "2024 年长沙马拉松完赛记录。",
+      keyPoints: ["马拉松", "长沙", "4小时56分"],
+      daysAgo: 500,
+    }),
+    createArticle({
+      title: "京都马拉松: 第一次去日本跑马",
+      categories: ["travel"],
+      summary: "2025 年京都马拉松完赛记录。",
+      keyPoints: ["马拉松", "京都", "完赛"],
+      daysAgo: 380,
+    }),
+  ];
+
+  const { rankedArticles } = rankArticlesByIntent({
+    query: "你最近一次公开写的马拉松是哪一场？",
+    articles: marathonArticles,
+    enabled: true,
+  });
+
+  assert.equal(rankedArticles[0]?.title, "京都马拉松: 第一次去日本跑马");
+});
+
+test("default prompt config should not hide public pet highlights", () => {
+  const config = getChatPromptRuntimeConfig();
+
+  assert.deepEqual(config.sensitiveHighlightPatterns, []);
+});
+
+test("voice style mode should match query intent", () => {
+  assert.equal(resolveVoiceStyleMode("Cloudflare Workers 和 Docker 怎么部署"), "technical");
+  assert.equal(resolveVoiceStyleMode("东京旅行有什么推荐"), "recommendation");
+  assert.equal(resolveVoiceStyleMode("你最近一次去京都跑马是什么体验"), "travel");
+  assert.equal(resolveVoiceStyleMode("最近生活上有什么折腾"), "life");
+  assert.equal(resolveVoiceStyleMode("你今天心情如何"), null);
+});
+
+test("answer mode should match query shape", () => {
+  assert.equal(resolveAnswerMode("你过去都在哪些公司工作过？"), "timeline");
+  assert.equal(resolveAnswerMode("你去过哪些国家？"), "list");
+  assert.equal(resolveAnswerMode("你去过日本几次？"), "count");
+  assert.equal(resolveAnswerMode("你怎么看 AI 对开发者的影响？"), "opinion");
+  assert.equal(resolveAnswerMode("如果第一次看你的博客，你会推荐我先读哪几篇？"), "recommendation");
+  assert.equal(resolveAnswerMode("你老婆叫什么名字？"), "unknown");
+  assert.equal(resolveAnswerMode("介绍一下你自己"), "fact");
+});
+
+test("core identity should only inject the active voice mode", () => {
+  const recommendationIdentity = buildCoreIdentity("推荐几篇 AI RAG 入门文章");
+
+  assert.match(recommendationIdentity, /当前回答风格模式：推荐类回答（recommendation）/);
+  assert.match(recommendationIdentity, /本轮表达参考：/);
+  assert.match(recommendationIdentity, /## 语言风格（L5 style_only，仅影响表达）/);
+  assert.doesNotMatch(recommendationIdentity, /技术类回答（technical）/);
+  assert.doesNotMatch(recommendationIdentity, /旅行类回答（travel）/);
+  assert.doesNotMatch(recommendationIdentity, /生活类回答（life）/);
+
+  const neutralIdentity = buildCoreIdentity("你今天心情如何");
+
+  assert.doesNotMatch(neutralIdentity, /当前回答风格模式：/);
+});
+
+test("runtime context should expose provenance layers and expected answer mode", () => {
+  const runtime = buildRuntimeContext({
+    articles: articlePool,
+    tweets: [
+      createTweet({
+        title: "tweet-1",
+        text: "最近在东京和京都之间来回折腾，顺手还跑了场马拉松。",
+        date: "2025-02-20",
+        daysAgo: 20,
+      }),
+    ],
+    projects: [
+      {
+        name: "Raycast Sink",
+        url: "https://github.com/foru17/raycast-sink",
+        description: "基于 Cloudflare Sink 的 Raycast 插件。",
+      },
+    ],
+    userQuery: "如果第一次看你的博客，你会推荐我先读哪几篇？",
+    config: getChatPromptRuntimeConfig(),
+  });
+
+  assert.match(runtime, /## 关于你（L2 curated_public）/);
+  assert.match(runtime, /## 结构化事实索引（L3 validated_derived，辅助参考）/);
+  assert.match(runtime, /## 相关文章（博客，L1 authored_public）/);
+  assert.match(runtime, /## 相关动态（X，L1 authored_public）/);
+  assert.match(runtime, /## 相关项目\/经历（L2 curated_public）/);
+  assert.match(runtime, /腾讯前端体验大会/);
+  assert.match(runtime, /内部技术分享讲师/);
+  assert.match(runtime, /预期回答模式：recommendation/);
+  assert.match(runtime, /模式提示：先推荐 2-4 个具体项目\/文章/);
+  assert.match(runtime, /来源优先级：L1 相关文章\/相关动态 > L2 关于你\/相关项目 > L3 结构化事实索引 > L5 语言风格/);
 });

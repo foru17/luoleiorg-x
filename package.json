@@ -15,6 +15,7 @@
     "deploy:vinext:preview": "pnpm exec vinext deploy --preview",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
+    "eval:chat": "node scripts/eval-ai-chat.mjs",
     "test:chat-prompt": "node --test --experimental-strip-types --experimental-specifier-resolution=node src/lib/chat-prompts/__tests__/prompt-v2.test.ts",
     "test:ai-search": "node --test --experimental-strip-types --experimental-specifier-resolution=node src/lib/ai/__tests__/search-query.test.ts",
     "sync:content": "node scripts/sync-content.mjs",
@@ -30,6 +31,9 @@
     "profile:generate": "node scripts/generate-profile-report.mjs",
     "profile:all": "node scripts/build-author-context.mjs && node scripts/generate-profile-report.mjs --all",
     "profile:force": "node scripts/build-author-context.mjs && node scripts/generate-profile-report.mjs --all --force",
+    "facts:gemini": "node scripts/build-structured-facts-gemini.mjs",
+    "facts:gemini:force": "node scripts/build-structured-facts-gemini.mjs --force",
+    "facts:gemini:dry": "node scripts/build-structured-facts-gemini.mjs --dry-run",
     "pre-publish": "node scripts/pre-publish.mjs"
   },
   "dependencies": {
