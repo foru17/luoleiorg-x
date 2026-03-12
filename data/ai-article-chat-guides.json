@@ -1,6 +1,6 @@
 {
   "meta": {
-    "lastUpdated": "2026-03-12T12:50:50.397Z",
+    "lastUpdated": "2026-03-12T16:34:48.991Z",
     "model": "kimi",
     "totalProcessed": 341
   },
@@ -55,19 +55,19 @@
     },
     "raycast-hoarder": {
       "data": {
-        "openingLine": "我可以先帮你理清这篇文章的主线，再继续聊你关心的细节。",
+        "openingLine": "Karakeep 改名之后，插件也跟着更新了。",
         "focusQuestions": [
-          "自部署需要准备什么服务器？",
-          "Raycast 插件能预览哪些格式？",
-          "API 现在加图片书签有问题吗？"
+          "这个插件具体能预览哪三种格式？",
+          "搜索的本地权重是什么意思？",
+          "现在添加书签有哪些限制？"
         ],
         "extensionTopics": [
-          "和之前那个 Sink 插件比起来哪个常用？",
-          "Hoarder 的 AI 标签识别准不准？"
+          "和 Sink 插件开发对比有哪些不同？",
+          "部署 Karakeep 推荐什么配置的服务器？"
         ]
       },
-      "contentHash": "9f94ea0c",
-      "processedAt": "2026-03-12T12:48:59.449Z"
+      "contentHash": "17bd2520",
+      "processedAt": "2026-03-12T16:34:48.991Z"
     },
     "neko-master-vibe-coding": {
       "data": {

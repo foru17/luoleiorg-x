@@ -1,6 +1,6 @@
 {
   "meta": {
-    "lastUpdated": "2026-03-10T13:46:31.510Z",
+    "lastUpdated": "2026-03-12T16:34:42.126Z",
     "model": "kimi",
     "totalProcessed": 342
   },
@@ -178,26 +178,27 @@
     },
     "raycast-hoarder": {
       "data": {
-        "summary": "作者基于Hoarder开源书签管理工具开发了一款Raycast插件，实现快捷查看、搜索、编辑书签及标签管理功能，强调自部署方案的数据可控性优势。",
-        "abstract": "文章介绍作者开发的Raycast Hoarder插件，该插件对接基于AI的开源自托管书签工具Hoarder。Hoarder支持Docker一键部署，具备自动网页摘录、AI生成标签摘要、多端同步等特性。作者此前已开发Raycast Sink短链插件，本次利用已有经验一天完成开发上架。插件核心功能包括：列表预览网址/图片/文本三种格式书签、本地权重搜索与在线搜索双模式、书签详情页的查看编辑删除操作、列表与标签分类浏览，以及快捷添加文本和链接（因API限制暂不支持其他类型）。文末强调选择Hoarder的关键原因在于Self-Hosting自部署能力，可实现数据自主可控，规避国内内容审查与国外服务的高成本问题。",
+        "summary": "作者开发了Raycast插件Raycast Karakeep，用于管理自托管的开源AI书签工具Karakeep（原Hoarder），实现快速搜索、预览和管理书签，强调数据自主可控的Self-Hosting理念。",
+        "abstract": "作者基于先前开发Raycast Sink插件的经验，仅用一天时间完成Raycast Karakeep插件开发并上架。Karakeep（原Hoarder）是一款支持自部署的开源AI书签管理工具，具备自动网页摘录、AI内容分析与标签生成能力。作者开发的Raycast插件支持列表浏览、多格式预览（网址/图片/文本）、本地权重与在线搜索、书签编辑删除、列表和标签管理等核心功能。因API限制，暂仅支持快捷添加文本和链接书签。文章重点阐述选择Self-Hosting的原因：国内服务存在内容审查，国外服务价格高昂或访问慢，Karakeep凭借完全开源、Docker一键部署、数据自主可控等特性，成为技术用户的理想选择。",
         "keyPoints": [
-          "Hoarder是基于AI的自托管书签工具，支持自动标签生成与内容分析",
-          "Raycast插件提供三种格式预览、双模式搜索、标签管理功能",
-          "因Hoarder API限制，插件暂仅支持快捷添加文本和链接类型",
-          "采用Docker部署，建议使用境外服务器提升抓取分析速度",
-          "Self-Hosting实现数据自主可控是核心选型考量"
+          "Karakeep支持Docker自部署，数据自主可控避免审查",
+          "插件实现本地权重搜索与在线搜索双模式",
+          "支持网址、图片、文本三种格式书签预览",
+          "因API限制暂仅支持快捷添加文本和链接书签",
+          "开发周期仅一天，基于Raycast官方SDK快速迭代",
+          "Raycast Store与GitHub双渠道开源分发"
         ],
         "tags": [
           "Raycast",
+          "Karakeep",
           "Hoarder",
-          "书签管理",
           "Self-Hosting",
-          "Docker"
+          "书签管理"
         ],
         "readingTime": 3
       },
-      "contentHash": "9f94ea0c",
-      "processedAt": "2026-03-05T06:09:09.907Z"
+      "contentHash": "17bd2520",
+      "processedAt": "2026-03-12T16:34:42.126Z"
     },
     "raycast-sink": {
       "data": {

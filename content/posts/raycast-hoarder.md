@@ -1,5 +1,5 @@
 ---
-title: "Raycast Hoarder: 开源 AI 书签管理插件"
+title: "Raycast Karakeep: 开源 AI 书签管理插件"
 date: "2024-11-24"
 cover: https://c2.is26.com/blog/2024/11/hoarder/h-2.jpg
 categories:
@@ -10,18 +10,20 @@ tags:
 
 上周我开发了一个基于 Sink 的短链管理插件[《我开发了一个短链管理插件: Raycast Sink》](https://luolei.org/raycast-sink)，上架官方插件商店后，看到已经有几十个用户在使用。
 
-昨天又开发了一个基于 Hoarder 的书签管理插件，有了上次的开发经验，这次从初始化项目到最后提交上架，只花了一天时间。同样开源到了我的 Github 上。
+昨天又开发了一个基于 Karakeep（当时名为 Hoarder）的书签管理插件，有了上次的开发经验，这次从初始化项目到最后提交上架，只花了一天时间。同样开源到了我的 Github 上。
 
-- [Github:Raycast Hoarder](https://github.com/foru17/raycast-hoarder)
-- [Raycast Store: Hoarder](https://www.raycast.com/luolei/hoarder)
+> 更新：Hoarder 现已更名为 Karakeep，Raycast Hoarder 也已同步更名为 Raycast Karakeep。本文中的项目名称和链接已按当前版本更新。
 
-## Hoarder 简介
+- [Github: Raycast Karakeep](https://github.com/foru17/raycast-karakeep)
+- [Raycast Store: Karakeep](https://www.raycast.com/luolei/karakeep)
 
-Hoarder 是一个**基于 AI 的书签管理工具，可以自动摘录、识别网页，通过 AI 分析内容、生成标签和摘要**。
+## Karakeep 简介
 
-- 官网: [Hoarder](https://hoarder.app/)
-- 仓库: [Github: Hoarder](https://github.com/hoarder-app/hoarder)
-- 体验网站: [Hoarder Demo](https://try.hoarder.app/)
+Karakeep（原 Hoarder）是一个**基于 AI 的书签管理工具，可以自动摘录、识别网页，通过 AI 分析内容、生成标签和摘要**。
+
+- 官网: [Karakeep](https://karakeep.app/)
+- 仓库: [Github: Karakeep](https://github.com/karakeep-app/karakeep)
+- 体验网站: [Karakeep Demo](https://try.karakeep.app/)
 
 有关这个项目的介绍，大家可以直接看官网和官方文档，官方的文档写得很详细。
 
@@ -36,9 +38,9 @@ Hoarder 是一个**基于 AI 的书签管理工具，可以自动摘录、识别
 - **Docker 一键部署**，建议用境外服务器，抓取和分析更快。
 - 开放 API 支持拓展
 
-## Raycast Hoarder
+## Raycast Karakeep
 
-我部署完 Hoarder 之后，也安装了浏览器插件和 iOS 应用，感觉整个产品的完成度很高，加上有 API 支持，所以就顺手开发了一个 Raycast 插件，方便管理和使用 Hoarder。
+我部署完 Karakeep 之后，也安装了浏览器插件和 iOS 应用，感觉整个产品的完成度很高，加上有 API 支持，所以就顺手开发了一个 Raycast 插件，方便管理和使用 Karakeep。
 
 ![](https://c2.is26.com/blog/2024/11/hoarder/h-1.jpg)
 列表直接查看书签，支持网址、图片、文本三种格式的预览。
@@ -54,7 +56,7 @@ Hoarder 是一个**基于 AI 的书签管理工具，可以自动摘录、识别
 支持列表和标签列表。
 
 ![](https://c2.is26.com/blog/2024/11/hoarder/h-5.jpg)
-由于 Hoarder API有点问题，暂时支持快捷增加文本和链接的书签。
+由于 Karakeep API 有点问题，暂时支持快捷增加文本和链接的书签。
 
 ## 为什么要自部署
 
@@ -64,4 +66,4 @@ Hoarder 是一个**基于 AI 的书签管理工具，可以自动摘录、识别
 
 其实市面上有许多书签管理和笔记管理工具及服务。但是，出于众所周知的原因，在国内的所有内容平台服务都需要进行内容审查。国外也有很多优秀服务，但价格高昂或速度慢。
 
-Hoarder这种完全开源、可以自行部署、数据可控性强的工具对于像我这样有技术背景的人来说是一个好选择。
+Karakeep 这种完全开源、可以自行部署、数据可控性强的工具对于像我这样有技术背景的人来说是一个好选择。

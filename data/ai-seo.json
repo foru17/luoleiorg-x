@@ -1,6 +1,6 @@
 {
   "meta": {
-    "lastUpdated": "2026-03-10T13:45:58.724Z",
+    "lastUpdated": "2026-03-12T16:34:46.128Z",
     "model": "kimi",
     "totalProcessed": 341
   },
@@ -137,21 +137,21 @@
     },
     "raycast-hoarder": {
       "data": {
-        "metaDescription": "Raycast Hoarder 是一款开源 AI 书签管理插件，支持在 Raycast 中快速查看、搜索和管理 Hoarder 书签。基于 Hoarder API 开发，提供本地权重搜索、多格式预览及标签管理功能，适合已自部署 Hoarder 的用户提升效率。",
+        "metaDescription": "Raycast Karakeep 是一款开源 AI 书签管理插件，支持在 Raycast 中快速搜索、预览和管理 Karakeep 书签。基于 Karakeep 自托管服务，实现数据自主可控，提供本地权重搜索、在线搜索、标签管理等功能，适合注重隐私的技术用户。",
         "keywords": [
-          "Raycast Hoarder",
-          "Hoarder 自部署",
+          "Raycast Karakeep",
+          "Karakeep 自部署",
           "AI 书签管理工具",
           "Raycast 插件开发",
-          "Hoarder Docker 部署",
+          "Karakeep Docker 部署",
           "开源书签管理",
-          "Hoarder API 使用",
-          "书签管理插件"
+          "自托管书签方案",
+          "Raycast 书签搜索"
         ],
-        "ogDescription": "用 Raycast 一键管理你的 AI 书签库。支持本地+在线搜索、多格式预览、快捷添加，配合自托管的 Hoarder 实现数据自主可控。"
+        "ogDescription": "用 Raycast 一键管理 AI 书签：快速搜索、预览、编辑 Karakeep 收藏，支持自托管保障数据隐私，开发者的效率利器。"
       },
-      "contentHash": "9f94ea0c",
-      "processedAt": "2026-03-05T06:37:54.837Z"
+      "contentHash": "17bd2520",
+      "processedAt": "2026-03-12T16:34:46.128Z"
     },
     "raycast-sink": {
       "data": {
