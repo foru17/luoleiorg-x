@@ -16,6 +16,7 @@
 | [./ai-chat-review-report.md](./ai-chat-review-report.md) | AI 对话数据流 Review 报告 | ✅ 已更新 |
 | [./ai-chat-handoff-2026-03-06.md](./ai-chat-handoff-2026-03-06.md) | 2026-03-06 AI 对话链路调试与交接记录 | 🧪 新增 |
 | [./article-page-ai-chat-framework.md](./article-page-ai-chat-framework.md) | 文章页自动弹出式 AI 对话增强方案 | 🧪 新增 |
+| [./article-share-card-feature.md](./article-share-card-feature.md) | 文章页分享卡片功能设计与实现说明 | 🧪 新增 |
 | [./codebase-quality-pass-2026-03.md](./codebase-quality-pass-2026-03.md) | 代码库工程化优化与模块边界收敛记录 | ✅ 已完成 |
 
 ### 开发指南

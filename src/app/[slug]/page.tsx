@@ -199,7 +199,16 @@ export default async function PostPage({ params }: PostPageProps) {
         <section className="min-w-0 flex-1 lg:max-w-[860px]">
           <ArticleChatBootstrap guide={articleChatGuide} />
           <ArticleMeta post={post} hits={hits} />
-          {aiSummary && <ArticleAISummary summary={aiSummary} />}
+          {aiSummary && (
+            <ArticleAISummary
+              summary={aiSummary}
+              share={{
+                slug: post.slug,
+                title: post.title,
+                articleUrl: canonicalUrl,
+              }}
+            />
+          )}
           <ContentEnhancer />
 
           <article className="article-body article-content mt-6 pb-6 lg:pb-12 ">

@@ -46,5 +46,197 @@
     "failCount": 1,
     "lastFailedAt": "2026-03-12T12:50:30.659Z",
     "firstFailedAt": "2026-03-12T12:50:30.659Z"
+  },
+  "summary:cmlink-global-borderless-internet-roaming-card": {
+    "slug": "cmlink-global-borderless-internet-roaming-card",
+    "task": "summary",
+    "reason": "fetch failed",
+    "failCount": 1,
+    "lastFailedAt": "2026-03-13T18:21:44.011Z",
+    "firstFailedAt": "2026-03-13T18:21:44.011Z"
+  },
+  "summary:huawei-freebuds3": {
+    "slug": "huawei-freebuds3",
+    "task": "summary",
+    "reason": "fetch failed",
+    "failCount": 1,
+    "lastFailedAt": "2026-03-13T18:21:44.012Z",
+    "firstFailedAt": "2026-03-13T18:21:44.012Z"
+  },
+  "summary:how-much-i-spend-on-cloud-monthly-2020": {
+    "slug": "how-much-i-spend-on-cloud-monthly-2020",
+    "task": "summary",
+    "reason": "fetch failed",
+    "failCount": 1,
+    "lastFailedAt": "2026-03-13T18:21:44.014Z",
+    "firstFailedAt": "2026-03-13T18:21:44.014Z"
+  },
+  "summary:my-ricoh-gr-was-crashed-by-a-car": {
+    "slug": "my-ricoh-gr-was-crashed-by-a-car",
+    "task": "summary",
+    "reason": "fetch failed",
+    "failCount": 1,
+    "lastFailedAt": "2026-03-13T18:21:44.014Z",
+    "firstFailedAt": "2026-03-13T18:21:44.014Z"
+  },
+  "summary:migrate-from-ghost-to-wordpress": {
+    "slug": "migrate-from-ghost-to-wordpress",
+    "task": "summary",
+    "reason": "fetch failed",
+    "failCount": 1,
+    "lastFailedAt": "2026-03-13T18:21:44.014Z",
+    "firstFailedAt": "2026-03-13T18:21:44.014Z"
+  },
+  "summary:i-fix-my-broken-bose-qc35": {
+    "slug": "i-fix-my-broken-bose-qc35",
+    "task": "summary",
+    "reason": "fetch failed",
+    "failCount": 1,
+    "lastFailedAt": "2026-03-13T18:21:44.015Z",
+    "firstFailedAt": "2026-03-13T18:21:44.015Z"
+  },
+  "summary:macau-roaming-sim-card": {
+    "slug": "macau-roaming-sim-card",
+    "task": "summary",
+    "reason": "fetch failed",
+    "failCount": 1,
+    "lastFailedAt": "2026-03-13T18:22:23.200Z",
+    "firstFailedAt": "2026-03-13T18:22:23.200Z"
+  },
+  "summary:simbox-review": {
+    "slug": "simbox-review",
+    "task": "summary",
+    "reason": "fetch failed",
+    "failCount": 1,
+    "lastFailedAt": "2026-03-13T18:22:23.200Z",
+    "firstFailedAt": "2026-03-13T18:22:23.201Z"
+  },
+  "summary:realme-x-unboxing": {
+    "slug": "realme-x-unboxing",
+    "task": "summary",
+    "reason": "fetch failed",
+    "failCount": 1,
+    "lastFailedAt": "2026-03-13T18:22:23.201Z",
+    "firstFailedAt": "2026-03-13T18:22:23.201Z"
+  },
+  "summary:7-select-chinese-websites": {
+    "slug": "7-select-chinese-websites",
+    "task": "summary",
+    "reason": "fetch failed",
+    "failCount": 1,
+    "lastFailedAt": "2026-03-13T18:22:23.202Z",
+    "firstFailedAt": "2026-03-13T18:22:23.202Z"
+  },
+  "summary:vlog-gear-2019": {
+    "slug": "vlog-gear-2019",
+    "task": "summary",
+    "reason": "fetch failed",
+    "failCount": 1,
+    "lastFailedAt": "2026-03-13T18:22:23.202Z",
+    "firstFailedAt": "2026-03-13T18:22:23.202Z"
+  },
+  "summary:freshman-internet-guidebook": {
+    "slug": "freshman-internet-guidebook",
+    "task": "summary",
+    "reason": "fetch failed",
+    "failCount": 1,
+    "lastFailedAt": "2026-03-13T18:22:23.203Z",
+    "firstFailedAt": "2026-03-13T18:22:23.203Z"
+  },
+  "summary:zuoluo-life-log-sony-a7s2": {
+    "slug": "zuoluo-life-log-sony-a7s2",
+    "task": "summary",
+    "reason": "超过最大重试次数",
+    "failCount": 1,
+    "lastFailedAt": "2026-03-13T18:37:06.390Z",
+    "firstFailedAt": "2026-03-13T18:37:06.390Z"
+  },
+  "chat-guide:zeiss-glasses": {
+    "slug": "zeiss-glasses",
+    "task": "chat-guide",
+    "reason": "Expected ',' or ']' after array element in JSON at position 242 (line 1 column 243)",
+    "failCount": 1,
+    "lastFailedAt": "2026-03-13T19:05:38.878Z",
+    "firstFailedAt": "2026-03-13T19:05:38.878Z"
+  },
+  "chat-guide:sony-a6500-unboxing": {
+    "slug": "sony-a6500-unboxing",
+    "task": "chat-guide",
+    "reason": "Expected ',' or ']' after array element in JSON at position 253 (line 1 column 254)",
+    "failCount": 1,
+    "lastFailedAt": "2026-03-13T19:09:06.847Z",
+    "firstFailedAt": "2026-03-13T19:09:06.847Z"
+  },
+  "chat-guide:qqread-elink-reader-yi-2018-review": {
+    "slug": "qqread-elink-reader-yi-2018-review",
+    "task": "chat-guide",
+    "reason": "Expected ',' or ']' after array element in JSON at position 259 (line 1 column 260)",
+    "failCount": 1,
+    "lastFailedAt": "2026-03-13T19:09:34.414Z",
+    "firstFailedAt": "2026-03-13T19:09:34.414Z"
+  },
+  "chat-guide:to-the-east-end-of-china-dongji-island": {
+    "slug": "to-the-east-end-of-china-dongji-island",
+    "task": "chat-guide",
+    "reason": "Expected ',' or ']' after array element in JSON at position 237 (line 1 column 238)",
+    "failCount": 1,
+    "lastFailedAt": "2026-03-13T19:10:40.106Z",
+    "firstFailedAt": "2026-03-13T19:10:40.106Z"
+  },
+  "chat-guide:imac-5k-external-usb-ssd-update": {
+    "slug": "imac-5k-external-usb-ssd-update",
+    "task": "chat-guide",
+    "reason": "Expected ',' or ']' after array element in JSON at position 296 (line 1 column 297)",
+    "failCount": 1,
+    "lastFailedAt": "2026-03-13T19:12:14.974Z",
+    "firstFailedAt": "2026-03-13T19:12:14.974Z"
+  },
+  "chat-guide:nike-move-free-5-2014": {
+    "slug": "nike-move-free-5-2014",
+    "task": "chat-guide",
+    "reason": "Expected ',' or ']' after array element in JSON at position 230 (line 1 column 231)",
+    "failCount": 1,
+    "lastFailedAt": "2026-03-13T19:13:42.887Z",
+    "firstFailedAt": "2026-03-13T19:13:42.887Z"
+  },
+  "chat-guide:node-js-nginx-proxy": {
+    "slug": "node-js-nginx-proxy",
+    "task": "chat-guide",
+    "reason": "Expected ',' or ']' after array element in JSON at position 182 (line 1 column 183)",
+    "failCount": 1,
+    "lastFailedAt": "2026-03-13T19:15:13.763Z",
+    "firstFailedAt": "2026-03-13T19:15:13.764Z"
+  },
+  "chat-guide:318-debate": {
+    "slug": "318-debate",
+    "task": "chat-guide",
+    "reason": "Expected ',' or ']' after array element in JSON at position 142 (line 1 column 143)",
+    "failCount": 1,
+    "lastFailedAt": "2026-03-13T19:16:39.007Z",
+    "firstFailedAt": "2026-03-13T19:16:39.007Z"
+  },
+  "chat-guide:weibo-no-cheat": {
+    "slug": "weibo-no-cheat",
+    "task": "chat-guide",
+    "reason": "Expected ',' or ']' after array element in JSON at position 251 (line 1 column 252)",
+    "failCount": 1,
+    "lastFailedAt": "2026-03-13T19:17:37.315Z",
+    "firstFailedAt": "2026-03-13T19:17:37.315Z"
+  },
+  "chat-guide:card-design": {
+    "slug": "card-design",
+    "task": "chat-guide",
+    "reason": "Expected ',' or ']' after array element in JSON at position 173 (line 1 column 174)",
+    "failCount": 1,
+    "lastFailedAt": "2026-03-13T19:17:54.729Z",
+    "firstFailedAt": "2026-03-13T19:17:54.729Z"
+  },
+  "chat-guide:nuffnang": {
+    "slug": "nuffnang",
+    "task": "chat-guide",
+    "reason": "Expected ',' or ']' after array element in JSON at position 134 (line 1 column 135)",
+    "failCount": 1,
+    "lastFailedAt": "2026-03-13T19:18:08.491Z",
+    "firstFailedAt": "2026-03-13T19:18:08.491Z"
   }
 }
