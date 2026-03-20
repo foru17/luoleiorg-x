@@ -8,6 +8,7 @@ import { SiteFooter } from "@/components/site-footer";
 import { ThemeColorMeta } from "@/components/theme-color-meta";
 import { UmamiScript } from "@/components/umami-script";
 import { GoogleAnalyticsScript } from "@/components/google-analytics-script";
+import { RouteTransitionProgress } from "@/components/route-transition-progress";
 import { getThemeBootstrapScript } from "@/lib/theme";
 
 export const metadata: Metadata = {
@@ -116,6 +117,7 @@ export default function RootLayout({
         />
       </head>
       <body className="flex min-h-screen flex-col antialiased pt-[60px]">
+        <RouteTransitionProgress />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: structuredData }}

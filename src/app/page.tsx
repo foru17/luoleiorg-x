@@ -4,6 +4,7 @@ import { AIChatTrigger } from "@/components/ai-chat-box";
 import { ArticleList } from "@/components/article-list";
 import { CategoryNav } from "@/components/category-nav";
 import { PaginationNav } from "@/components/pagination-nav";
+import { RouteTransitionComplete } from "@/components/route-transition-complete";
 import { getPostListing, isKnownCategory } from "@/lib/content/listings";
 import { siteConfig } from "@/lib/site-config";
 import { categoryPageUrl, parsePositivePage } from "@/lib/utils";
@@ -81,6 +82,7 @@ export default async function Home({ searchParams }: HomePageProps) {
 
   return (
     <main className="pb-8 pt-2">
+      <RouteTransitionComplete />
       <CategoryNav />
       <AIChatTrigger />
       <ArticleList

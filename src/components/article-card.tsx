@@ -125,9 +125,13 @@ export function ArticleCard({
             ) : (
               <IconEye className="mr-1 h-3 w-3 text-gray-400 dark:text-slate-400" />
             )}
-            <span className={isHot ? "text-red-400 dark:text-red-500" : ""}>
-              {hits.toLocaleString()}
-            </span>
+            {hitsLoading ? (
+              <span className="text-gray-300 dark:text-gray-500">--</span>
+            ) : (
+              <span className={isHot ? "text-red-400 dark:text-red-500" : ""}>
+                {hits.toLocaleString()}
+              </span>
+            )}
           </div>
         </div>
       </div>

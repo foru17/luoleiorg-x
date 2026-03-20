@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { RouteTransitionComplete } from "@/components/route-transition-complete";
 import { getMultiModelProfileData } from "@/lib/content/author-profile";
 import { getAllPosts } from "@/lib/content/posts";
 import { getPreviewImage } from "@/lib/content/utils";
@@ -46,6 +47,7 @@ export default function AboutPage() {
 
   return (
     <main className="mx-auto w-full max-w-[980px] px-4 pb-14 pt-8 md:px-8 md:pt-10">
+      <RouteTransitionComplete />
       <AboutPageClient
         manifest={manifest}
         reports={serializedReports}

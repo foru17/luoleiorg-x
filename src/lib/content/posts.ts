@@ -18,6 +18,19 @@ const markdownFiles = import.meta.glob("/content/posts/**/*.md", {
   eager: true,
 });
 
+interface PostSource {
+  slug: string;
+  title: string;
+  date: string;
+  dateTime: number;
+  formatShowDate: string;
+  cover?: string;
+  categories: string[];
+  excerpt: string;
+  readingTime: string;
+  rawContent: string;
+}
+
 function extractExcerpt(content: string): string {
   const lines = content
     .split("\n")
@@ -48,30 +61,7 @@ function filePathToSlug(filePath: string): string {
     .replace(/\//g, "-");
 }
 
-function getPossiblePostPaths(slug: string): string[] {
-  return [
-    `/content/posts/${slug}.md`,
-    `/content/posts/${slug.replace(/-/g, "/")}.md`,
-  ];
-}
-
-function findRawMarkdownBySlug(slug: string): string | null {
-  for (const path of getPossiblePostPaths(slug)) {
-    if (markdownFiles[path]) {
-      return markdownFiles[path] as string;
-    }
-  }
-
-  for (const [filePath, content] of Object.entries(markdownFiles)) {
-    if (filePathToSlug(filePath) === slug) {
-      return content as string;
-    }
-  }
-
-  return null;
-}
-
-function parsePostContent(filePath: string, raw: string): PostItem | null {
+function parsePostSource(filePath: string, raw: string): PostSource | null {
   const { data, content } = matter(raw);
   const frontmatter = data as PostFrontmatter;
 
@@ -85,7 +75,6 @@ function parsePostContent(filePath: string, raw: string): PostItem | null {
 
   return {
     slug,
-    url: `/${slug}`,
     title: frontmatter.title,
     date: formatDate(frontmatter.date),
     dateTime: new Date(frontmatter.date).getTime(),
@@ -94,20 +83,47 @@ function parsePostContent(filePath: string, raw: string): PostItem | null {
     categories: frontmatter.categories ?? [],
     excerpt: frontmatter.description ?? extractExcerpt(content),
     readingTime: `${Math.max(1, Math.round(stats.minutes))} 分钟`,
+    rawContent: content,
   };
 }
 
-export const getAllPosts = cache((): PostItem[] => {
-  const posts: PostItem[] = [];
+function toPostItem(source: PostSource): PostItem {
+  return {
+    slug: source.slug,
+    url: `/${source.slug}`,
+    title: source.title,
+    date: source.date,
+    dateTime: source.dateTime,
+    formatShowDate: source.formatShowDate,
+    cover: source.cover,
+    categories: source.categories,
+    excerpt: source.excerpt,
+    readingTime: source.readingTime,
+  };
+}
+
+const postCatalog = (() => {
+  const sources: PostSource[] = [];
+  const sourceMap = new Map<string, PostSource>();
 
   for (const [filePath, content] of Object.entries(markdownFiles)) {
-    const post = parsePostContent(filePath, content as string);
-    if (post) {
-      posts.push(post);
+    const source = parsePostSource(filePath, content as string);
+    if (source) {
+      sources.push(source);
+      sourceMap.set(source.slug, source);
     }
   }
 
-  return posts.sort((a, b) => b.dateTime - a.dateTime);
+  sources.sort((a, b) => b.dateTime - a.dateTime);
+
+  return {
+    sources,
+    sourceMap,
+  };
+})();
+
+export const getAllPosts = cache((): PostItem[] => {
+  return postCatalog.sources.map((source) => toPostItem(source));
 });
 
 export const getCategoryMeta = cache(() => {
@@ -123,27 +139,18 @@ export const getCategoryMeta = cache(() => {
 export const getSearchDocuments = cache((): SearchDocument[] => {
   const docs: SearchDocument[] = [];
 
-  for (const [filePath, content] of Object.entries(markdownFiles)) {
-    const raw = content as string;
-    const { data, content: markdownContent } = matter(raw);
-    const frontmatter = data as PostFrontmatter;
-
-    if (!frontmatter.title || !frontmatter.date || frontmatter.hide) {
-      continue;
-    }
-
-    const slug = filePathToSlug(filePath);
-    const searchableContent = stripMarkdown(markdownContent).slice(0, 4000);
-    const aiSummary = getAISummary(slug);
+  for (const source of postCatalog.sources) {
+    const searchableContent = stripMarkdown(source.rawContent).slice(0, 4000);
+    const aiSummary = getAISummary(source.slug);
     docs.push({
-      id: slug,
-      title: frontmatter.title,
-      url: `/${slug}`,
-      cover: frontmatter.cover ? getPreviewImage(frontmatter.cover) : undefined,
-      excerpt: frontmatter.description ?? extractExcerpt(markdownContent),
+      id: source.slug,
+      title: source.title,
+      url: `/${source.slug}`,
+      cover: source.cover ? getPreviewImage(source.cover) : undefined,
+      excerpt: source.excerpt,
       content: searchableContent,
-      categories: frontmatter.categories ?? [],
-      dateTime: new Date(frontmatter.date).getTime(),
+      categories: source.categories,
+      dateTime: source.dateTime,
       keyPoints: aiSummary?.keyPoints,
     });
   }
@@ -151,45 +158,48 @@ export const getSearchDocuments = cache((): SearchDocument[] => {
   return docs;
 });
 
+const postItemMap = cache(() => {
+  return new Map(getAllPosts().map((post) => [post.slug, post]));
+});
+
+const postDetailCache = new Map<string, Promise<PostDetail | null>>();
+
+export function getPostSummaryBySlug(slug: string): PostItem | null {
+  return postItemMap().get(slug) ?? null;
+}
+
 export async function getPostBySlug(slug: string): Promise<PostDetail | null> {
-  const raw = findRawMarkdownBySlug(slug);
-  if (!raw) return null;
+  const cached = postDetailCache.get(slug);
+  if (cached) {
+    return cached;
+  }
 
-  const { data, content } = matter(raw);
-  const frontmatter = data as PostFrontmatter;
-  if (!frontmatter.title || !frontmatter.date || frontmatter.hide) return null;
+  const source = postCatalog.sourceMap.get(slug);
+  if (!source) {
+    return null;
+  }
 
-  const { html, headings } = await renderPostHtml(content);
+  const promise = renderPostHtml(source.rawContent)
+    .then(({ html, headings }) => ({
+      ...toPostItem(source),
+      headings,
+      html,
+    }))
+    .catch((error) => {
+      postDetailCache.delete(slug);
+      throw error;
+    });
 
-  const stats = readingTime(content);
+  postDetailCache.set(slug, promise);
 
-  return {
-    slug,
-    url: `/${slug}`,
-    title: frontmatter.title,
-    date: formatDate(frontmatter.date),
-    dateTime: new Date(frontmatter.date).getTime(),
-    formatShowDate: formatShowDate(frontmatter.date),
-    cover: frontmatter.cover,
-    categories: frontmatter.categories ?? [],
-    excerpt: frontmatter.description ?? extractExcerpt(content),
-    readingTime: `${Math.max(1, Math.round(stats.minutes))} 分钟`,
-    headings,
-    html,
-  };
+  return promise;
 }
 
 /**
  * Get raw markdown content for a post by slug (used by RSS feed)
  */
 export function getPostRawContent(slug: string): string | null {
-  for (const [filePath, content] of Object.entries(markdownFiles)) {
-    if (filePathToSlug(filePath) === slug) {
-      const { content: markdownContent } = matter(content as string);
-      return markdownContent;
-    }
-  }
-  return null;
+  return postCatalog.sourceMap.get(slug)?.rawContent ?? null;
 }
 
 export function getPostSiblings(slug: string) {

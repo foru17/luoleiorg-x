@@ -3,11 +3,23 @@ import { notFound, permanentRedirect } from "next/navigation";
 import { ArticleList } from "@/components/article-list";
 import { CategoryNav } from "@/components/category-nav";
 import { PaginationNav } from "@/components/pagination-nav";
+import { RouteTransitionComplete } from "@/components/route-transition-complete";
 import { getPostListing } from "@/lib/content/listings";
-import { siteConfig } from "@/lib/site-config";
+import { getAllPosts } from "@/lib/content/posts";
+import { articlePageSize, siteConfig } from "@/lib/site-config";
 
 interface PagePageProps {
   params: Promise<{ page: string }>;
+}
+
+export const dynamicParams = false;
+
+export function generateStaticParams() {
+  const totalPages = Math.max(1, Math.ceil(getAllPosts().length / articlePageSize));
+
+  return Array.from({ length: Math.max(0, totalPages - 1) }, (_, index) => ({
+    page: String(index + 2),
+  }));
 }
 
 export async function generateMetadata({
@@ -40,6 +52,7 @@ export default async function PagePage({ params }: PagePageProps) {
 
   return (
     <main className="pb-8 pt-2">
+      <RouteTransitionComplete />
       <CategoryNav />
       <ArticleList
         posts={listing.visiblePosts}

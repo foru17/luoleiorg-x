@@ -3,16 +3,37 @@ import { notFound, permanentRedirect } from "next/navigation";
 import { ArticleList } from "@/components/article-list";
 import { CategoryNav } from "@/components/category-nav";
 import { PaginationNav } from "@/components/pagination-nav";
+import { RouteTransitionComplete } from "@/components/route-transition-complete";
 import {
   getCategoryName,
   getPostListing,
   isKnownCategory,
 } from "@/lib/content/listings";
-import { siteConfig } from "@/lib/site-config";
+import { getAllPosts } from "@/lib/content/posts";
+import { articlePageSize, categoryMap, siteConfig } from "@/lib/site-config";
 import { categoryPageUrl, normalizeCategory } from "@/lib/utils";
 
 interface CategoryPagedPageProps {
   params: Promise<{ category: string; page: string }>;
+}
+
+export const dynamicParams = false;
+
+export function generateStaticParams() {
+  const allPosts = getAllPosts();
+
+  return categoryMap.flatMap((category) => {
+    const totalPosts =
+      category.text === "hot"
+        ? allPosts.length
+        : allPosts.filter((post) => post.categories.includes(category.text)).length;
+    const totalPages = Math.ceil(totalPosts / articlePageSize);
+
+    return Array.from({ length: Math.max(0, totalPages - 1) }, (_, index) => ({
+      category: category.text,
+      page: String(index + 2),
+    }));
+  });
 }
 
 function parsePageSegment(page: string): number | null {
@@ -83,6 +104,7 @@ export default async function CategoryPagedPage({ params }: CategoryPagedPagePro
 
   return (
     <main className="pb-8 pt-2">
+      <RouteTransitionComplete />
       <CategoryNav currentCategory={normalizedCategory} />
       <ArticleList
         posts={listing.visiblePosts}

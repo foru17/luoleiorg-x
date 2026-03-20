@@ -13,6 +13,7 @@ import {
   CommandList,
 } from "@/components/ui/command";
 import { SKELETON_ROWS } from "@/lib/constants";
+import { dispatchRouteTransitionStart } from "@/lib/route-transition";
 import { useSearchCommandState } from "@/hooks/use-search-command";
 
 export function SearchCommand() {
@@ -82,6 +83,7 @@ export function SearchCommand() {
                       onSelect={() => {
                         handleOpenChange(false);
                         resetQuery();
+                        dispatchRouteTransitionStart({ href: item.url });
                         router.push(item.url);
                       }}
                     >

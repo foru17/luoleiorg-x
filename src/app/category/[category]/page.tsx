@@ -3,17 +3,35 @@ import { notFound, permanentRedirect } from "next/navigation";
 import { ArticleList } from "@/components/article-list";
 import { CategoryNav } from "@/components/category-nav";
 import { PaginationNav } from "@/components/pagination-nav";
+import { RouteTransitionComplete } from "@/components/route-transition-complete";
 import {
   getCategoryName,
   getPostListing,
   isKnownCategory,
 } from "@/lib/content/listings";
-import { siteConfig } from "@/lib/site-config";
+import { getAllPosts } from "@/lib/content/posts";
+import { categoryMap, siteConfig } from "@/lib/site-config";
 import { categoryUrl, normalizeCategory, parsePositivePage } from "@/lib/utils";
 
 interface CategoryPageProps {
   params: Promise<{ category: string }>;
   searchParams: Promise<{ page?: string }>;
+}
+
+export const dynamicParams = false;
+
+export function generateStaticParams() {
+  const categories = new Set<string>(["hot"]);
+
+  for (const post of getAllPosts()) {
+    for (const category of post.categories) {
+      categories.add(category);
+    }
+  }
+
+  return categoryMap
+    .filter((category) => categories.has(category.text))
+    .map((category) => ({ category: category.text }));
 }
 
 export async function generateMetadata({
@@ -79,6 +97,7 @@ export default async function CategoryPage({
 
   return (
     <main className="pb-8 pt-2">
+      <RouteTransitionComplete />
       <CategoryNav currentCategory={normalizedCategory} />
       <ArticleList
         posts={listing.visiblePosts}

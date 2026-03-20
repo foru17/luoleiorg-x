@@ -12,6 +12,18 @@
   }
 }
 
+@keyframes route-progress {
+  0% {
+    transform: translateX(-100%) scaleX(0.38);
+  }
+  55% {
+    transform: translateX(30%) scaleX(0.72);
+  }
+  100% {
+    transform: translateX(180%) scaleX(0.46);
+  }
+}
+
 @keyframes about-glow {
   0%,
   100% {

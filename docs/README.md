@@ -11,6 +11,7 @@
 | [../AGENTS.md](../AGENTS.md) | AI Agent 工作规范 | ✅ 活跃 |
 | [./TWEET_CARD_USAGE.md](./TWEET_CARD_USAGE.md) | TweetCard 系统使用指南 | ✅ 活跃 |
 | [./about-page-ai-profile-prd.md](./about-page-ai-profile-prd.md) | About 页面 AI 第三方画像需求文档 | 🧪 评审中 |
+| [./navigation-transition-optimization.md](./navigation-transition-optimization.md) | 导航过渡与统计链路优化说明 | ✅ 已完成 |
 | [./chat-prompt-v2-refactor.md](./chat-prompt-v2-refactor.md) | 首页 AI 分身 Prompt v2 分层重构说明 | ✅ 已完成 |
 | [./ai-chat-v3-optimization.md](./ai-chat-v3-optimization.md) | AI 对话架构与流程升级规划 | ✅ 已更新 |
 | [./ai-chat-review-report.md](./ai-chat-review-report.md) | AI 对话数据流 Review 报告 | ✅ 已更新 |

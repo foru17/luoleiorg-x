@@ -13,12 +13,13 @@ const CACHE_VERSION = 2;
 interface HitsCache {
   data: Map<string, number>;
   timestamp: number;
-  loading: boolean;
   version?: number;
 }
 
 let hitsCache: HitsCache | null = null;
+let hitsRefreshPromise: Promise<void> | null = null;
 const CACHE_TTL_MS = 6 * 60 * 60 * 1000;
+const EMPTY_HITS_MAP = new Map<string, number>();
 
 export interface PostListingResult {
   category?: string;
@@ -32,46 +33,69 @@ export interface PostListingResult {
   pageTotal: number;
 }
 
-async function getHitsMap(): Promise<{
-  hitsMap: Map<string, number>;
-  hitsLoading: boolean;
-}> {
-  if (hitsCache && 
-      hitsCache.version === CACHE_VERSION &&
-      Date.now() - hitsCache.timestamp < CACHE_TTL_MS) {
-    return { hitsMap: hitsCache.data, hitsLoading: hitsCache.loading };
+function hasFreshHitsCache(cache: HitsCache | null): cache is HitsCache {
+  return !!cache &&
+    cache.version === CACHE_VERSION &&
+    Date.now() - cache.timestamp < CACHE_TTL_MS;
+}
+
+function scheduleHitsRefresh() {
+  if (hitsRefreshPromise) {
+    return hitsRefreshPromise;
   }
 
-  const staleCache = hitsCache;
-
-  const fetchPromise = (async () => {
-    const hitsMap = new Map<string, number>();
-    let loading = true;
+  hitsRefreshPromise = (async () => {
+    const nextHitsMap = new Map<string, number>();
 
     try {
-      // 直接使用 Umami API 获取数据
       const result = await fetchUmamiPageViews();
 
       for (const item of result.data) {
         const slug = extractSlug(item.page);
-        const existing = hitsMap.get(slug) ?? 0;
-        hitsMap.set(slug, existing + item.hit);
+        const existing = nextHitsMap.get(slug) ?? 0;
+        nextHitsMap.set(slug, existing + item.hit);
       }
-      loading = false;
+
+      hitsCache = {
+        data: nextHitsMap,
+        timestamp: Date.now(),
+        version: CACHE_VERSION,
+      };
     } catch (error) {
       console.error("[Server] Failed to fetch hits:", error);
     }
+  })().finally(() => {
+    hitsRefreshPromise = null;
+  });
 
-    hitsCache = { data: hitsMap, timestamp: Date.now(), loading, version: CACHE_VERSION };
-    return { hitsMap, hitsLoading: loading };
-  })();
+  return hitsRefreshPromise;
+}
 
-  if (staleCache) {
-    fetchPromise.catch(() => {});
-    return { hitsMap: staleCache.data, hitsLoading: staleCache.loading };
+async function getHitsMapWithStrategy(options?: {
+  awaitWarmCache?: boolean;
+}): Promise<{
+  hitsMap: Map<string, number>;
+  hitsLoading: boolean;
+}> {
+  if (hasFreshHitsCache(hitsCache)) {
+    return { hitsMap: hitsCache.data, hitsLoading: false };
   }
 
-  return fetchPromise;
+  const refreshPromise = scheduleHitsRefresh();
+
+  if (options?.awaitWarmCache && !hitsCache) {
+    await refreshPromise;
+
+    if (hitsCache) {
+      return { hitsMap: hitsCache.data, hitsLoading: false };
+    }
+  }
+
+  if (hitsCache) {
+    return { hitsMap: hitsCache.data, hitsLoading: false };
+  }
+
+  return { hitsMap: EMPTY_HITS_MAP, hitsLoading: true };
 }
 
 export function isKnownCategory(category: string): boolean {
@@ -90,7 +114,10 @@ export async function getPostListing(params: {
   const requestedPage = parsePositivePage(params.pageParam);
   const allPosts = getAllPosts();
 
-  const hitsPromise = getHitsMap();
+  const needsStableHitOrder = category === "hot";
+  const hitsPromise = getHitsMapWithStrategy({
+    awaitWarmCache: needsStableHitOrder,
+  });
 
   const posts =
     category && category !== "hot"

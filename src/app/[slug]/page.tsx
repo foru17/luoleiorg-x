@@ -6,10 +6,12 @@ import { ArticleCopyright } from "@/components/article-copyright";
 import { ArticleMeta } from "@/components/article-meta";
 import { ArticleToc } from "@/components/article-toc";
 import { ContentEnhancer } from "@/components/content-enhancer";
+import { RouteTransitionComplete } from "@/components/route-transition-complete";
 import {
   getAllPosts,
   getPostBySlug,
   getPostSiblings,
+  getPostSummaryBySlug,
 } from "@/lib/content/posts";
 import { ArticleAISummary } from "@/components/article-ai-summary";
 import { ArticleChatBootstrap } from "@/components/article-chat-bootstrap";
@@ -17,11 +19,11 @@ import { ScrollToTop } from "@/components/scroll-to-top";
 import { getAISeo, getAISummary } from "@/lib/content/ai-data";
 import { getArticleChatGuideWithFallback } from "@/lib/content/article-chat-guides";
 import { categoryMap, siteConfig } from "@/lib/site-config";
-import { getPageHits } from "@/lib/analytics";
 
 const categoryNameMap = new Map<string, string>(
   categoryMap.map((item) => [item.text, item.name]),
 );
+export const dynamicParams = false;
 
 function toAbsoluteUrl(url: string): string {
   if (url.startsWith("http://") || url.startsWith("https://")) {
@@ -44,7 +46,7 @@ export async function generateMetadata({
   params,
 }: PostPageProps): Promise<Metadata> {
   const { slug } = await params;
-  const post = await getPostBySlug(slug);
+  const post = getPostSummaryBySlug(slug);
   if (!post) {
     return { title: "文章不存在" };
   }
@@ -97,9 +99,6 @@ export default async function PostPage({ params }: PostPageProps) {
   const { slug } = await params;
   const post = await getPostBySlug(slug);
   if (!post) notFound();
-
-  // 服务端获取文章浏览量，避免客户端请求全量数据
-  const hits = await getPageHits(slug);
 
   const siblings = getPostSiblings(slug);
   const aiSummary = getAISummary(slug);
@@ -187,6 +186,7 @@ export default async function PostPage({ params }: PostPageProps) {
 
   return (
     <main className="mx-auto w-full max-w-[1220px] px-4 pb-12 pt-6 md:px-6">
+      <RouteTransitionComplete />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
@@ -198,7 +198,7 @@ export default async function PostPage({ params }: PostPageProps) {
       <div className="flex flex-col lg:flex-row lg:gap-12">
         <section className="min-w-0 flex-1 lg:max-w-[860px]">
           <ArticleChatBootstrap guide={articleChatGuide} />
-          <ArticleMeta post={post} hits={hits} />
+          <ArticleMeta post={post} />
           {aiSummary && (
             <ArticleAISummary
               summary={aiSummary}

@@ -55,12 +55,16 @@ async function fetchHitsData(): Promise<PageHitItem[]> {
   return globalCache.promise;
 }
 
-export function useArticleHits() {
-  const [loading, setLoading] = useState(!globalCache.data);
+export function useArticleHits(enabled: boolean = true) {
+  const [loading, setLoading] = useState(enabled && !globalCache.data);
   const [items, setItems] = useState<PageHitItem[]>(globalCache.data ?? []);
   const mountedRef = useRef(true);
 
   useEffect(() => {
+    if (!enabled) {
+      return;
+    }
+
     mountedRef.current = true;
     
     async function load() {
@@ -91,7 +95,7 @@ export function useArticleHits() {
     return () => {
       mountedRef.current = false;
     };
-  }, []);
+  }, [enabled]);
 
   const map = useMemo(() => {
     const m = new Map<string, number>();
@@ -104,7 +108,7 @@ export function useArticleHits() {
     return m;
   }, [items]);
 
-  return { loading, map };
+  return { loading: enabled ? loading : false, map };
 }
 
 export function usePageHits(slug: string, enabled: boolean = true) {
