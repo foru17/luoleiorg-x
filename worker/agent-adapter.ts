@@ -46,75 +46,75 @@ export function prefersMarkdown(request: Request): boolean {
 /* ─────────────────────────  /.well-known/* 静态资源  ───────────────────────── */
 
 function serveMcpServerCard(): Response {
-  // 遵循 modelcontextprotocol.io 的 well-known 资源约定 + Anthropic MCP server card 草案：
-  // 描述本站对外暴露的只读能力，让 MCP 客户端（Claude/Cursor/Cline）能直接拿来用。
+  // 遵循 MCP server card 草案（PR #2127）+ MCP 2025-06-18 协议版本：
+  // 必填字段 serverInfo / transport / capabilities，URL 指向真实可调用的
+  // /api/mcp（JSON-RPC 2.0 over HTTP）端点。
+  // 额外字段（publisher / license / resources / extras）作为元信息，方便
+  // 浏览器和兼容 PR #2127 之前草案的客户端读取。
   const card = {
-    schemaVersion: "2025-06-18",
+    serverInfo: {
+      name: "luolei.org",
+      version: "1.0.0",
+    },
     name: "luolei.org",
     title: "罗磊的独立博客 · MCP Server Card",
     description:
-      "Read-only access to the personal blog of 罗磊 (luolei.org): article markdown, AI-generated summaries, full search and author profile.",
+      "Read-only MCP server for the personal blog of 罗磊 (luolei.org): full-text search, article markdown, AI-generated summaries and recent post listing.",
+    url: `${SITE_URL}/api/mcp`,
+    transport: {
+      type: "streamable-http",
+      url: `${SITE_URL}/api/mcp`,
+    },
+    protocolVersion: "2025-06-18",
+    capabilities: {
+      tools: { listChanged: false },
+    },
+    tools: [
+      {
+        name: "search_articles",
+        description: "Full-text search of luolei.org blog articles.",
+      },
+      {
+        name: "read_article",
+        description: "Fetch full markdown of a single article by slug.",
+      },
+      {
+        name: "list_recent_articles",
+        description: "List recently published articles in reverse-chronological order.",
+      },
+    ],
     publisher: {
       name: "罗磊",
       url: SITE_URL,
       contact: "i@luolei.org",
     },
-    capabilities: {
-      resources: [
-        {
-          uri: `${SITE_URL}/llms.txt`,
-          name: "llms-index",
-          description: "Site overview, categories, key entry points (text/plain).",
-          mimeType: "text/plain",
-        },
-        {
-          uri: `${SITE_URL}/llms-full.txt`,
-          name: "llms-full",
-          description:
-            "Every published article with AI-generated summary, URL and markdown link.",
-          mimeType: "text/plain",
-        },
-        {
-          uriTemplate: `${SITE_URL}/{slug}.md`,
-          name: "article-markdown",
-          description:
-            "Full markdown of a single article (also reachable by setting Accept: text/markdown on /{slug}).",
-          mimeType: "text/markdown",
-        },
-        {
-          uri: `${SITE_URL}/sitemap.xml`,
-          name: "sitemap",
-          description: "Canonical URL list for the entire site.",
-          mimeType: "application/xml",
-        },
-      ],
-      endpoints: [
-        {
-          name: "search-articles",
-          description: "Full-text + AI-tag search across all blog articles.",
-          method: "GET",
-          url: `${SITE_URL}/api/search/docs`,
-          params: {
-            q: "Search keywords (UTF-8)",
-            limit: "Max results, 1–50 (default 20)",
-            related: "Slug to find semantically related articles for",
-          },
-        },
-        {
-          name: "fetch-author-profile",
-          description:
-            "Structured author profile (bio, social, AI-generated highlights, stats).",
-          method: "GET",
-          url: `${SITE_URL}/api/profile`,
-        },
-        {
-          name: "fetch-article-markdown",
-          description: "Get the markdown source of an article by slug.",
-          method: "GET",
-          urlTemplate: `${SITE_URL}/api/raw/{slug}`,
-        },
-      ],
-    },
+    resources: [
+      {
+        uri: `${SITE_URL}/llms.txt`,
+        name: "llms-index",
+        description: "Site overview, categories, key entry points (text/plain).",
+        mimeType: "text/plain",
+      },
+      {
+        uri: `${SITE_URL}/llms-full.txt`,
+        name: "llms-full",
+        description: "Every published article with AI summary and markdown link.",
+        mimeType: "text/plain",
+      },
+      {
+        uriTemplate: `${SITE_URL}/{slug}.md`,
+        name: "article-markdown",
+        description:
+          "Full markdown of a single article (also reachable by setting Accept: text/markdown on /{slug}).",
+        mimeType: "text/markdown",
+      },
+      {
+        uri: `${SITE_URL}/sitemap.xml`,
+        name: "sitemap",
+        description: "Canonical URL list for the entire site.",
+        mimeType: "application/xml",
+      },
+    ],
     license: "CC BY-NC-ND 4.0",
     documentation: `${SITE_URL}/llms.txt`,
     botPolicy: `${SITE_URL}/robots.txt`,
