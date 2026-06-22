@@ -1,58 +1,49 @@
 {
-  "defaultModel": "gpt-5.2",
+  "defaultModel": "deepseek-v4-pro",
   "models": [
     {
-      "id": "gpt-5.2",
-      "name": "GPT-5.2",
+      "id": "gpt-5.5",
+      "name": "GPT-5.5",
       "provider": "OpenAI",
       "providerSite": "https://chatgpt.com/",
       "icon": "openai",
-      "generatedAt": "2026-03-09T06:35:23.643Z",
-      "generatedBy": "ai"
-    },
-    {
-      "id": "gemini-3-flash-preview",
-      "name": "Gemini 3",
-      "provider": "Google",
-      "providerSite": "https://gemini.google.com/",
-      "icon": "gemini",
-      "generatedAt": "2026-03-09T06:34:57.668Z",
-      "generatedBy": "ai"
-    },
-    {
-      "id": "qwen3.5-plus",
-      "name": "Qwen 3.5 Plus",
-      "provider": "Alibaba",
-      "providerSite": "https://tongyi.aliyun.com/",
-      "icon": "qwen",
-      "generatedAt": "2026-03-09T06:39:31.605Z",
+      "generatedAt": "2026-06-18T02:23:22.405Z",
       "generatedBy": "rule-based"
     },
     {
-      "id": "kimi-k2.5",
-      "name": "Kimi K2.5",
-      "provider": "Moonshot",
-      "providerSite": "https://www.kimi.com/",
-      "icon": "kimi",
-      "generatedAt": "2026-03-09T06:35:49.762Z",
+      "id": "minimax-latest",
+      "name": "MiniMax Latest",
+      "provider": "MiniMax",
+      "providerSite": "https://www.minimaxi.com/",
+      "icon": "minimax",
+      "generatedAt": "2026-06-18T02:20:14.188Z",
       "generatedBy": "ai"
     },
     {
-      "id": "doubao-seed-2-0-pro-260215",
-      "name": "Doubao Seed2.0 ",
-      "provider": "Bytedance",
-      "providerSite": "https://www.doubao.com/chat/",
-      "icon": "doubao",
-      "generatedAt": "2026-03-09T06:36:33.370Z",
-      "generatedBy": "ai"
-    },
-    {
-      "id": "glm-5",
-      "name": "GLM 5.0 ",
+      "id": "glm-5.1",
+      "name": "GLM 5.1",
       "provider": "Zhipu",
       "providerSite": "https://chat.z.ai/",
       "icon": "zhipu",
-      "generatedAt": "2026-03-09T06:36:37.203Z",
+      "generatedAt": "2026-06-18T02:07:43.735Z",
+      "generatedBy": "ai"
+    },
+    {
+      "id": "deepseek-v4-pro",
+      "name": "DeepSeek V4 Pro",
+      "provider": "DeepSeek",
+      "providerSite": "https://www.deepseek.com/",
+      "icon": "deepseek",
+      "generatedAt": "2026-06-18T02:07:40.494Z",
+      "generatedBy": "ai"
+    },
+    {
+      "id": "kimi-k2.6",
+      "name": "Kimi K2.6",
+      "provider": "Moonshot",
+      "providerSite": "https://www.kimi.com/",
+      "icon": "kimi",
+      "generatedAt": "2026-06-18T02:09:18.247Z",
       "generatedBy": "ai"
     }
   ]

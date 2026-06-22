@@ -223,6 +223,43 @@
 - [ ] 你确认需求方向
 - [ ] 进入页面开发与实现
 
+## 2026-04-30 模型渠道更新
+
+About 页面多模型画像切换到新的本地 `.profile-models.json` 配置。当前启用模型为：
+
+- `gpt-5.5`：OpenAI compatible 渠道 `https://api.ttttt.ai/v1`
+- `minimax-latest`：Ark coding v3 渠道
+- `glm-5.1`：Ark coding v3 渠道
+- `deepseek-v4-pro`：DeepSeek 官方 OpenAI-compatible 渠道 `https://api.deepseek.com`
+- `kimi-k2.6`：Ark coding v3 渠道
+
+Ark coding v3 渠道需要在请求头中带：
+
+- `User-Agent: claude-code/2.1.37`
+- `Cache-Control: no-cache`
+
+脚本侧已支持按模型配置自定义 `headers` 与 `maxTokens`，并在更新 manifest 时清理不再启用的旧模型条目。
+
+2026-04-30 本轮 `pnpm profile:force` 结果：
+
+- AI 成功：`glm-5.1`、`deepseek-v3.2`、`kimi-k2.6`
+- 规则兜底：`gpt-5.5` 上游返回 500/超时；`minimax-latest` 返回内容但引用了上下文外 GitHub URL，未通过报告校验。
+
+## 2026-05-01 DeepSeek V4 Pro 更新
+
+按最新 DeepSeek 官方渠道替换 About 页面中的旧 DeepSeek 视角：
+
+- 模型 ID：`deepseek-v4-pro`
+- Base URL：`https://api.deepseek.com`
+- 请求参数：`stream: false`、`thinking.type: enabled`、`reasoning_effort: high`
+- 脚本支持：`scripts/generate-profile-report.mjs` 新增 `extraBody` 透传，并在请求前清洗孤立 Unicode surrogate，避免 DeepSeek JSON 解析失败。
+
+本轮 `node scripts/generate-profile-report.mjs --model=deepseek-v4-pro --force` 结果：
+
+- AI 成功：`deepseek-v4-pro`
+- 旧报告：`data/reports/deepseek-v3.2.json` 已移除
+- Manifest：`data/reports/manifest.json` 已替换为 `DeepSeek V4 Pro`
+
 ---
 创建时间: 2026-03-01  
-最后更新: 2026-03-01
+最后更新: 2026-05-01

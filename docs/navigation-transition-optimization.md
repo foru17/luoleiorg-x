@@ -39,7 +39,8 @@
    - `src/components/route-transition-complete.tsx`
    - `src/app/[slug]/loading.tsx`
    - 增加全局顶部导航进度条。
-   - 新页面真正挂载后才结束进度反馈。
+   - 进度反馈优先在 App Router `pathname` commit 到目标路径后结束，页面级完成事件作为兼容回退。
+   - 异常情况下兜底超时会在 3 秒后自动收起，避免影响阅读。
    - 文章动态路由补上 `loading.tsx`，让动态路由预取和 fallback 有明确边界。
 
 ## 结果

@@ -21,6 +21,7 @@ const CACHE_TTL_MS = 2 * 60 * 1000; // 2 分钟
 **特点**:
 - 全局共享缓存（所有组件共用一份）
 - 页面内切换不重复请求
+- 只接受非空统计数据，避免临时失败把有效数据覆盖成 0
 - 刷新页面后缓存失效
 - 站内外链跳转保留缓存
 
@@ -35,8 +36,7 @@ const CACHE_TTL_MS = 2 * 60 * 1000; // 2 分钟
 **文件**: `src/app/api/analytics/hits/route.ts`
 
 ```typescript
-export const revalidate = 21600; // 6 小时
-const CACHE_TTL = 6 * 60 * 60 * 1000; // 6 小时内存缓存
+const CACHE_TTL_SECONDS = 6 * 60 * 60; // 6 小时
 ```
 
 **特点**:
@@ -44,6 +44,7 @@ const CACHE_TTL = 6 * 60 * 60 * 1000; // 6 小时内存缓存
 - 大幅减少回源请求
 - 缓存命中时响应时间 < 50ms
 - 通过 `X-Cache: HIT/MISS` 头部可观察
+- 使用 `umami_pageviews_cache_v2`，并且不会把 `{ total: 0, data: [] }` 写入 KV
 
 **实际效果**:
 ```
@@ -61,8 +62,10 @@ const CACHE_TTL_MS = 6 * 60 * 60 * 1000; // 6 小时
 
 **特点**:
 - SSR 渲染时共享缓存
+- 冷启动时优先读取 Cloudflare KV 的有效统计数据
 - 服务端渲染文章列表时使用
 - 避免每个请求都调用内部 API
+- Umami 返回空数据时保留旧缓存
 
 ## 3. 数据流向详解
 

@@ -19,6 +19,8 @@
 | [./article-page-ai-chat-framework.md](./article-page-ai-chat-framework.md) | 文章页自动弹出式 AI 对话增强方案 | 🧪 新增 |
 | [./article-share-card-feature.md](./article-share-card-feature.md) | 文章页分享卡片功能设计与实现说明 | 🧪 新增 |
 | [./codebase-quality-pass-2026-03.md](./codebase-quality-pass-2026-03.md) | 代码库工程化优化与模块边界收敛记录 | ✅ 已完成 |
+| [./framework-dependency-upgrade-2026-04.md](./framework-dependency-upgrade-2026-04.md) | Vinext 与框架依赖升级记录 | ✅ 已完成 |
+| [./open-source-roadmap.md](./open-source-roadmap.md) | 开源博客框架改造规划（完整 code review + 路线图） | 🧪 新增 |
 
 ### 开发指南
 

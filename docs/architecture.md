@@ -60,7 +60,7 @@ graph TD
 3. **页面 SSR (React Server Components)**: 
    - 用户访问文章内页时，触发 `Vinext` 的 Server Component 渲染。
    - 文章的 Markdown 依靠 Vite 编译时的 `import.meta.glob` 以字符串形式硬编码打包在 Worker 代码中，省去了耗时的 FS I/O。
-   - 文章阅读量尝试走全局 `Cloudflare KV` (缓存键: `umami_pageviews_cache`)。
+   - 文章阅读量优先走全局 `Cloudflare KV` (缓存键: `umami_pageviews_cache_v2`)，仅在没有有效缓存时回源到 Umami。
 4. **统计数据 API (Umami)**: 
    - 依赖于第三方的自托管 Umami。
    - 使用 Edge KV 进行长达 6 小时的缓存，防止 Umami 后端被频繁扫描或 DDoS 击穿，实现真正的 Serverless Native 边缘保护。

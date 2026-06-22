@@ -1,0 +1,146 @@
+{
+  "meta": {
+    "lastUpdated": "2026-06-18T02:23:22.405Z",
+    "model": "gpt-5.5",
+    "modelName": "GPT-5.5",
+    "provider": "OpenAI",
+    "generatedBy": "rule-based",
+    "sources": [
+      "posts",
+      "tweets",
+      "github"
+    ],
+    "contextHash": "d8504c2ee6828db3",
+    "promptVersion": "v4-natural",
+    "disclosurePolicyVersion": "public-facts-v1"
+  },
+  "report": {
+    "hero": {
+      "title": "AI 视角下的罗磊",
+      "summary": "白天写代码、做开源，业余时间折腾家里的网络和各种工具，也会到处跑跑、拍点照片——然后把这些都写进博客。",
+      "intro": "从他的内容来看，技术是主线，但旅行、跑步和日常生活的比重一点都不低。最近他写得比较多的是：资深前端 / 全栈工程师：擅长 React、Next.js、Node.js 和 Docker。"
+    },
+    "identities": [
+      {
+        "name": "把折腾写成教程",
+        "description": "他喜欢把一个东西研究透，再顺手写成别人能照着做的文章，从项目搭建到部署上线都有记录。",
+        "evidence": "GitHub 上的 Neko Master、Raycast 插件 就是这种\"做完顺手开源\"的产物。",
+        "link": "https://github.com/foru17"
+      },
+      {
+        "name": "工具用得很讲究",
+        "description": "选工具、调工作流、写点小脚本把重复的活自动化——这类内容在他博客里很常见。",
+        "evidence": "比如最近的《开启我的「人生 AI」计划》就在聊这方面。",
+        "link": "https://luolei.org"
+      },
+      {
+        "name": "旅行和生活也照写不误",
+        "description": "出门旅行、城市里的吃住行、日常用的东西，他都会随手记下来发出来。",
+        "evidence": "X 上能看到他对旅行、居住和日常工具的持续分享。"
+      }
+    ],
+    "strengths": [
+      {
+        "title": "他做事的方式",
+        "points": [
+          "喜欢把一件事从头摸到尾，再整理成能复现的记录。",
+          "遇到重复的活，倾向于写个脚本让它自动跑。",
+          "把 AI 直接接进日常的活里用，而不是单独拿出来讨论。"
+        ]
+      },
+      {
+        "title": "他怎么写东西",
+        "points": [
+          "折腾完一件事，习惯写成别人照着也能做一遍的文章。",
+          "挺在意排版和图片，文章读起来比较舒服。"
+        ]
+      }
+    ],
+    "styles": [
+      {
+        "trait": "先动手再下结论",
+        "description": "很多文章都是自己先做一遍实验、跑一轮数据，再写结论，很少空谈理论。"
+      },
+      {
+        "trait": "踩过的坑也照写",
+        "description": "不光写怎么做成的，连中间走的弯路、踩的坑也会一起发出来。"
+      },
+      {
+        "trait": "一个主题会反复写",
+        "description": "看时间线就知道，不少话题他会隔段时间又写一篇更新，不是发一次蹭个热度就完。"
+      }
+    ],
+    "proofs": {
+      "posts": [
+        {
+          "title": "开启我的「人生 AI」计划",
+          "url": "https://luolei.org/life-ai",
+          "reason": "文章以博主将博客迁移到 Vinext 并顺手打造 AI 分身为契机，提出长期项目「人生 AI」，希望用 AI 系统整理与理解多年创作痕迹，探索内容创作者在 AI 时代的新意义与可能性。",
+          "date": "2026-03-10"
+        },
+        {
+          "title": "2026 年，我把自己做成了一个 AI",
+          "url": "https://luolei.org/luolei-ai",
+          "reason": "文章讲述作者如何基于多年多平台公开内容，构建多模型生成的「AI 眼中的罗磊」画像和可对话的 RAG 数字分身系统，以主动掌控个人知识结构与内容解释权。",
+          "date": "2026-03-03"
+        },
+        {
+          "title": "Neko Master: 从 0 到 1K+ Star 的 Vibe Coding 实践",
+          "url": "https://luolei.org/neko-master-vibe-coding",
+          "reason": "文章以开源网络流量分析面板 Neko Master 为案例，完整回顾作者如何借助多款 AI 编码工具进行 Vibe Coding，从数小时内完成 MVP 到逐步解决 I/O、架构与审美问题，最终在真实用户反馈驱动下实现从“能跑”到“好用”的产品演进。",
+          "date": "2026-03-01"
+        },
+        {
+          "title": "实现 AI 自由：我为未来准备的 4 个数字通行证",
+          "url": "https://luolei.org/ai-2026",
+          "reason": "文章通过回顾近两年 AI 发展与海外服务访问门槛，提到作者以资深开发者身份实践商业应用，并提出将分享 4 个数字通行证，帮助读者在未来更好接入全球 AI 产品与实现更高程度的“AI 自由”。",
+          "date": "2026-02-04"
+        },
+        {
+          "title": "我的新电脑: 2025 年 MATX 小主机",
+          "url": "https://luolei.org/pc-2025",
+          "reason": "文章记录作者以约3200元预算，在消费降级背景下由Intel平台升级到AMD Ryzen 7 9700X + RTX 5070的MATX白色小主机，兼顾游戏与轻度生产力，并分享装机思路、选件理由、装配细节与性能实测表现。",
+          "date": "2025-05-25"
+        }
+      ],
+      "tweets": [
+        {
+          "title": "X 动态 · 2026-06-17",
+          "url": "https://x.com/luoleiorg/status/2067251262811476326",
+          "reason": "来到中国最大的在线娱乐集团的园区总部，听说这个园区的头头姓马，在这工作的人工资都好高的 👀",
+          "date": "2026-06-17"
+        },
+        {
+          "title": "X 动态 · 2026-06-17",
+          "url": "https://x.com/luoleiorg/status/2067164056902090764",
+          "reason": "阿里云有了新欢 Token Plan 后，对 Coding Plan 冷处理。对我这种拼命跑的用户居然不风控了 🤡",
+          "date": "2026-06-17"
+        },
+        {
+          "title": "X 动态 · 2026-06-17",
+          "url": "https://x.com/luoleiorg/status/2067158442570297758",
+          "reason": "今日落雨，找个地下咖啡厅 Vibe Coding",
+          "date": "2026-06-17"
+        }
+      ],
+      "projects": [
+        {
+          "title": "Neko Master",
+          "url": "https://github.com/foru17/neko-master",
+          "reason": "设计并打造优雅的开源家庭网络流量分析仪表板，集成 ClickHouse 存储，并凭借产品完成度与高效 AI 辅助迭代获得 1000+ GitHub Stars。"
+        },
+        {
+          "title": "Raycast 插件",
+          "url": "https://github.com/foru17",
+          "reason": "开发 `raycast-sink`、`raycast-hoarder` 等生产力扩展，提升信息采集、URL 管理与书签整理效率。"
+        },
+        {
+          "title": "luoleiorg-x",
+          "url": "https://github.com/foru17/luoleiorg-x",
+          "reason": "基于 Vinext 与 Cloudflare Workers 重建个人内容发布系统，集成 AI 驱动的摘要、搜索与 SEO 工具。"
+        }
+      ]
+    },
+    "disclaimer": "该页面由 AI 基于博客文章、社交动态和 GitHub 项目生成，旨在帮助访客快速了解作者。内容可能存在概括偏差，请以原始文章和项目为准。"
+  }
+}

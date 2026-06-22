@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generatedAt": "2026-03-19T09:55:37.499Z",
+    "generatedAt": "2026-06-22T10:43:26.070Z",
     "totalArticles": 342,
     "version": 3
   },
@@ -11109,7 +11109,7 @@
       "autoOpenEnabled": true,
       "autoOpenDelayMs": 7000,
       "contentHash": "a063afe7",
-      "processedAt": "2026-03-19T09:55:37.374Z"
+      "processedAt": "2026-06-22T10:43:25.954Z"
     },
     "card-design": {
       "slug": "card-design",
