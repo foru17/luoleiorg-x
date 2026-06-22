@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { IconGitHub } from "@/components/icons";
+import { IconGitHub, IconLlms } from "@/components/icons";
 import {
   countryCodeToEmoji,
   formatAnalyticsNumber,
@@ -119,6 +119,17 @@ export function SiteFooter() {
             <span className="hidden md:inline text-zinc-300 dark:text-zinc-700">·</span>
             <a href="http://beian.miit.gov.cn/" target="_blank" rel="noreferrer" className="hover:text-zinc-600 dark:hover:text-zinc-300">
               {siteConfig.beian}
+            </a>
+            <span className="hidden md:inline text-zinc-300 dark:text-zinc-700">·</span>
+            <a
+              href="/llms.txt"
+              target="_blank"
+              rel="noreferrer"
+              title="面向 AI 的站点元数据 (llms.txt)"
+              className="inline-flex items-center gap-1 font-mono hover:text-zinc-600 dark:hover:text-zinc-300"
+            >
+              <IconLlms className="inline-block h-3.5 w-3.5" />
+              llms.txt
             </a>
           </div>
         </div>

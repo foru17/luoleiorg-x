@@ -32,6 +32,16 @@ const MODEL_COLORS: Record<string, { bg: string; border: string; text: string }>
     border: "border-emerald-200 dark:border-emerald-800",
     text: "text-emerald-700 dark:text-emerald-300",
   },
+  minimax: {
+    bg: "bg-indigo-50 dark:bg-indigo-950/30",
+    border: "border-indigo-200 dark:border-indigo-800",
+    text: "text-indigo-700 dark:text-indigo-300",
+  },
+  deepseek: {
+    bg: "bg-cyan-50 dark:bg-cyan-950/30",
+    border: "border-cyan-200 dark:border-cyan-800",
+    text: "text-cyan-700 dark:text-cyan-300",
+  },
   doubao: {
     bg: "bg-sky-50 dark:bg-sky-950/30",
     border: "border-sky-200 dark:border-sky-800",

@@ -7,6 +7,10 @@ const CLIENT_CACHE_KEY = "umami_analytics_cache";
 const CLIENT_CACHE_TTL_MS = 5 * 60 * 1000;
 const LOADING_INDICATOR_DELAY_MS = 300;
 
+function hasUsableSummary(data: AnalyticsSummary): boolean {
+  return data.totalPageViews > 0 || data.totalVisitors > 0 || data.totalVisits > 0;
+}
+
 function readClientCache(): AnalyticsSummary | null {
   if (typeof window === "undefined") return null;
 
@@ -19,6 +23,7 @@ function readClientCache(): AnalyticsSummary | null {
       timestamp: number;
     };
     if (Date.now() - timestamp > CLIENT_CACHE_TTL_MS) return null;
+    if (!hasUsableSummary(data)) return null;
 
     return data;
   } catch {
@@ -28,6 +33,7 @@ function readClientCache(): AnalyticsSummary | null {
 
 function writeClientCache(data: AnalyticsSummary) {
   if (typeof window === "undefined") return;
+  if (!hasUsableSummary(data)) return;
 
   try {
     localStorage.setItem(CLIENT_CACHE_KEY, JSON.stringify({ data, timestamp: Date.now() }));
@@ -43,8 +49,11 @@ export function useAnalyticsSummary() {
 
   useEffect(() => {
     if (!isLoading) {
-      setShowLoading(false);
-      return;
+      const hideTimerId = window.setTimeout(() => {
+        setShowLoading(false);
+      }, 0);
+
+      return () => window.clearTimeout(hideTimerId);
     }
 
     const timerId = window.setTimeout(() => {
@@ -57,9 +66,6 @@ export function useAnalyticsSummary() {
   useEffect(() => {
     let isActive = true;
     const cached = readClientCache();
-    if (cached) {
-      setSummary(cached);
-    }
 
     async function fetchAnalyticsSummary() {
       setIsLoading(true);
@@ -70,6 +76,7 @@ export function useAnalyticsSummary() {
 
         const data = (await response.json()) as AnalyticsSummary;
         if (!isActive) return;
+        if (!hasUsableSummary(data)) return;
 
         setSummary(data);
         writeClientCache(data);
@@ -82,10 +89,19 @@ export function useAnalyticsSummary() {
       }
     }
 
-    void fetchAnalyticsSummary();
+    const fetchTimerId = window.setTimeout(() => {
+      if (!isActive) return;
+
+      if (cached) {
+        setSummary(cached);
+      }
+
+      void fetchAnalyticsSummary();
+    }, 0);
 
     return () => {
       isActive = false;
+      window.clearTimeout(fetchTimerId);
     };
   }, []);
 

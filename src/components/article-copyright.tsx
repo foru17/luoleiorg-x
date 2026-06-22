@@ -9,7 +9,7 @@ interface ArticleCopyrightProps {
 
 export function ArticleCopyright({ title, date, slug }: ArticleCopyrightProps) {
   const articleLink = `${siteConfig.siteUrl}/${slug}`;
-  const markdownLink = `https://github.com/${siteConfig.contentRepo.owner}/${siteConfig.contentRepo.repo}/tree/${siteConfig.contentRepo.branch}/${siteConfig.contentRepo.contentPath}/${slug}.md`;
+  const markdownLink = `https://github.com/${siteConfig.contentRepo.owner}/${siteConfig.contentRepo.repo}/blob/${siteConfig.contentRepo.branch}/${siteConfig.contentRepo.contentPath}/${slug}.md`;
 
   return (
     <aside className="rounded-lg border border-zinc-300 dark:border-zinc-700 px-5 py-4 text-sm">

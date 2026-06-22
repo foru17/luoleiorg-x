@@ -12,10 +12,9 @@
 
 import fs from "fs/promises";
 import path from "path";
-import { fileURLToPath } from "url";
 
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const ROOT_DIR = path.join(__dirname, "..");
+const SCRIPT_DIR = import.meta.dirname;
+const ROOT_DIR = path.join(SCRIPT_DIR, "..");
 
 // 加载 .env 文件
 async function loadEnv() {
@@ -44,7 +43,7 @@ async function loadEnv() {
 
 // 推文 ID 列表 - 自动从 content/posts 目录提取
 async function extractTweetIds() {
-  const postsDir = path.join(__dirname, "../content/posts");
+  const postsDir = path.join(SCRIPT_DIR, "../content/posts");
   const tweetIds = new Set();
   
   async function scanDir(dir) {
@@ -195,7 +194,7 @@ async function main() {
     allData.lastUpdated = new Date().toISOString();
 
     // 确保 data 目录存在
-    const dataDir = path.join(__dirname, "../data");
+    const dataDir = path.join(SCRIPT_DIR, "../data");
     await fs.mkdir(dataDir, { recursive: true });
 
     // 写入缓存文件

@@ -115,6 +115,31 @@ export function IconCopyright(props: IconProps) {
   );
 }
 
+export function IconLlms(props: IconProps) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      {...props}
+    >
+      {/* 左花括号 */}
+      <path d="M9 4c-2 0-3 1-3 3v3.5c0 1.2-.7 2-2 2 1.3 0 2 .8 2 2V18c0 2 1 3 3 3" />
+      {/* 右花括号 */}
+      <path d="M15 4c2 0 3 1 3 3v3.5c0 1.2.7 2 2 2-1.3 0-2 .8-2 2V18c0 2-1 3-3 3" />
+      {/* 中央 sparkle */}
+      <path
+        d="M12 9.5l.9 2 2 .9-2 .9-.9 2-.9-2-2-.9 2-.9z"
+        fill="currentColor"
+        stroke="none"
+      />
+    </svg>
+  );
+}
+
 export function IconMarkdown(props: IconProps) {
   return (
     <svg

@@ -8,13 +8,12 @@
  */
 
 import { readFileSync, writeFileSync, readdirSync, existsSync } from 'fs'
-import { join, dirname } from 'path'
-import { fileURLToPath } from 'url'
+import { join } from 'path'
 import matter from 'gray-matter'
 import { execSync } from 'child_process'
 
-const __dirname = dirname(fileURLToPath(import.meta.url))
-const ROOT = join(__dirname, '..')
+const SCRIPT_DIR = import.meta.dirname
+const ROOT = join(SCRIPT_DIR, '..')
 const POSTS_DIR = join(ROOT, 'content/posts')
 const OUTPUT_HTML = join(ROOT, 'dist/blog-export.html')
 const OUTPUT_PDF = join(ROOT, 'dist/blog-export.pdf')

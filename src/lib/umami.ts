@@ -182,6 +182,28 @@ export interface WebsiteSummary {
 /**
  * 从 Umami API 获取网站总统计
  */
+function readUmamiMetric(value: unknown): number {
+  if (typeof value === "number" && Number.isFinite(value)) {
+    return value;
+  }
+
+  if (value && typeof value === "object") {
+    const metric = value as { value?: unknown; total?: unknown; count?: unknown };
+
+    if (typeof metric.value === "number" && Number.isFinite(metric.value)) {
+      return metric.value;
+    }
+    if (typeof metric.total === "number" && Number.isFinite(metric.total)) {
+      return metric.total;
+    }
+    if (typeof metric.count === "number" && Number.isFinite(metric.count)) {
+      return metric.count;
+    }
+  }
+
+  return 0;
+}
+
 export async function fetchUmamiStats(): Promise<{
   pageviews: number;
   visitors: number;
@@ -224,13 +246,13 @@ export async function fetchUmamiStats(): Promise<{
     clearTimeout(timeoutId);
     
     if (response.ok) {
-      const data = (await response.json()) as {
-        pageviews: number;
-        visitors: number;
-        visits: number;
-      };
+      const data = (await response.json()) as Record<string, unknown>;
 
-      return data;
+      return {
+        pageviews: readUmamiMetric(data.pageviews ?? data.views),
+        visitors: readUmamiMetric(data.visitors ?? data.uniques),
+        visits: readUmamiMetric(data.visits ?? data.sessions),
+      };
     } else {
       const errorText = await response.text().catch(() => "Unknown error");
       console.error("[Umami] Stats API error:", response.status, errorText);
@@ -395,12 +417,18 @@ export async function fetchWebsiteSummary(): Promise<WebsiteSummary> {
     fetchUmamiStats(),
     fetchRecentVisitor(),
   ]);
+
+  let totalPageViews = stats?.pageviews || 0;
+
+  if (totalPageViews === 0) {
+    const pageViews = await fetchUmamiPageViews();
+    totalPageViews = pageViews.total;
+  }
   
   return {
-    totalPageViews: stats?.pageviews || 0,
+    totalPageViews,
     totalVisitors: stats?.visitors || 0,
     totalVisits: stats?.visits || 0,
     recentVisitor,
   };
 }
-

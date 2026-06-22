@@ -1,4 +1,10 @@
 import { articlePageSize, categoryMap } from "@/lib/site-config";
+import {
+  hasUsablePageHits,
+  KV_CACHE_KEY,
+  type PageHitItem,
+  type PageHitsPayload,
+} from "@/lib/analytics";
 import { fetchUmamiPageViews } from "@/lib/umami";
 import { extractSlug, parsePositivePage } from "@/lib/utils";
 import { getAllPosts } from "./posts";
@@ -9,7 +15,7 @@ const categoryNameMap = new Map<string, string>(
 );
 
 // 服务端缓存（6小时）
-const CACHE_VERSION = 2;
+const CACHE_VERSION = 3;
 interface HitsCache {
   data: Map<string, number>;
   timestamp: number;
@@ -39,21 +45,67 @@ function hasFreshHitsCache(cache: HitsCache | null): cache is HitsCache {
     Date.now() - cache.timestamp < CACHE_TTL_MS;
 }
 
+function readHitsCache(): HitsCache | null {
+  return hitsCache;
+}
+
+function buildHitsMap(items: PageHitItem[]) {
+  const hitsMap = new Map<string, number>();
+
+  for (const item of items) {
+    const slug = extractSlug(item.page);
+    const existing = hitsMap.get(slug) ?? 0;
+    hitsMap.set(slug, existing + item.hit);
+  }
+
+  return hitsMap;
+}
+
+async function readHitsMapFromKV(): Promise<Map<string, number> | null> {
+  const KV = (globalThis as unknown as { CACHE_KV?: KVNamespace }).CACHE_KV;
+  if (!KV) return null;
+
+  try {
+    const cachedData = await KV.get<PageHitsPayload>(KV_CACHE_KEY, "json");
+    if (!hasUsablePageHits(cachedData)) {
+      return null;
+    }
+
+    const hitsMap = buildHitsMap(cachedData.data);
+    if (hitsMap.size === 0) {
+      return null;
+    }
+
+    hitsCache = {
+      data: hitsMap,
+      timestamp: Date.now(),
+      version: CACHE_VERSION,
+    };
+
+    return hitsMap;
+  } catch (error) {
+    console.warn("[Server] Failed to read hits cache from KV:", error);
+    return null;
+  }
+}
+
 function scheduleHitsRefresh() {
   if (hitsRefreshPromise) {
     return hitsRefreshPromise;
   }
 
   hitsRefreshPromise = (async () => {
-    const nextHitsMap = new Map<string, number>();
-
     try {
       const result = await fetchUmamiPageViews();
+      if (!hasUsablePageHits(result)) {
+        console.warn("[Server] Skipped empty hits refresh result");
+        return;
+      }
 
-      for (const item of result.data) {
-        const slug = extractSlug(item.page);
-        const existing = nextHitsMap.get(slug) ?? 0;
-        nextHitsMap.set(slug, existing + item.hit);
+      const nextHitsMap = buildHitsMap(result.data);
+      if (nextHitsMap.size === 0) {
+        console.warn("[Server] Skipped empty hits refresh map");
+        return;
       }
 
       hitsCache = {
@@ -61,6 +113,23 @@ function scheduleHitsRefresh() {
         timestamp: Date.now(),
         version: CACHE_VERSION,
       };
+
+      const KV = (globalThis as unknown as { CACHE_KV?: KVNamespace }).CACHE_KV;
+      if (KV) {
+        try {
+          await KV.put(
+            KV_CACHE_KEY,
+            JSON.stringify({
+              total: result.total,
+              data: result.data,
+              timestamp: Date.now(),
+            }),
+            { expirationTtl: CACHE_TTL_MS / 1000 },
+          );
+        } catch (error) {
+          console.warn("[Server] Failed to write hits cache to KV:", error);
+        }
+      }
     } catch (error) {
       console.error("[Server] Failed to fetch hits:", error);
     }
@@ -81,18 +150,25 @@ async function getHitsMapWithStrategy(options?: {
     return { hitsMap: hitsCache.data, hitsLoading: false };
   }
 
+  const kvHitsMap = await readHitsMapFromKV();
+  if (kvHitsMap) {
+    return { hitsMap: kvHitsMap, hitsLoading: false };
+  }
+
   const refreshPromise = scheduleHitsRefresh();
 
   if (options?.awaitWarmCache && !hitsCache) {
     await refreshPromise;
 
-    if (hitsCache) {
-      return { hitsMap: hitsCache.data, hitsLoading: false };
+    const warmedCache = readHitsCache();
+    if (warmedCache) {
+      return { hitsMap: warmedCache.data, hitsLoading: false };
     }
   }
 
-  if (hitsCache) {
-    return { hitsMap: hitsCache.data, hitsLoading: false };
+  const staleCache = readHitsCache();
+  if (staleCache) {
+    return { hitsMap: staleCache.data, hitsLoading: false };
   }
 
   return { hitsMap: EMPTY_HITS_MAP, hitsLoading: true };

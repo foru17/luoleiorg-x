@@ -12,6 +12,12 @@ export interface PageHitItem {
   hit: number;
 }
 
+export interface PageHitsPayload {
+  total: number;
+  data: PageHitItem[];
+  timestamp?: number;
+}
+
 // 兼容旧代码的导出
 export { fetchUmamiPageViews as fetchPageViews } from "./umami";
 export type { UmamiStatsResult as StatsResult } from "./umami";
@@ -23,11 +29,27 @@ interface HitsCache {
 }
 
 // 强制重置缓存（部署后清除旧缓存）
-const CACHE_VERSION = 2;
+const CACHE_VERSION = 3;
 let serverHitsCache: (HitsCache & { version?: number }) | null = null;
-const SERVER_CACHE_TTL = 5 * 60 * 1000; // 5 minutes
+const SERVER_CACHE_TTL = 6 * 60 * 60 * 1000; // 6 hours
 
-export const KV_CACHE_KEY = "umami_pageviews_cache";
+export const KV_CACHE_KEY = "umami_pageviews_cache_v2";
+
+export function hasUsablePageHits(
+  payload: Partial<Pick<PageHitsPayload, "total" | "data">> | null | undefined,
+): payload is Pick<PageHitsPayload, "total" | "data"> {
+  return !!payload &&
+    typeof payload.total === "number" &&
+    payload.total > 0 &&
+    Array.isArray(payload.data) &&
+    payload.data.some(
+      (item) =>
+        typeof item.page === "string" &&
+        item.page.length > 0 &&
+        Number.isFinite(item.hit) &&
+        item.hit > 0,
+    );
+}
 
 /**
  * 服务端获取单篇文章的浏览量（用于 Server Components）
@@ -39,8 +61,13 @@ export async function getPageHits(slug: string): Promise<number> {
   // 1. 优先尝试从全局 CF KV 读取最新数据
   if (KV) {
     try {
-      const cached = await KV.get<{ total: number; data: PageHitItem[]; timestamp: number }>(KV_CACHE_KEY, "json");
-      if (cached && Date.now() - cached.timestamp < SERVER_CACHE_TTL) {
+      const cached = await KV.get<PageHitsPayload>(KV_CACHE_KEY, "json");
+      if (
+        cached &&
+        cached.timestamp &&
+        Date.now() - cached.timestamp < SERVER_CACHE_TTL &&
+        hasUsablePageHits(cached)
+      ) {
         return calculateHitsForSlug(cached.data, slug);
       }
     } catch (err) {
@@ -59,32 +86,46 @@ export async function getPageHits(slug: string): Promise<number> {
     const result = await fetchUmamiPageViews();
     const data = result.data || [];
 
-    // 更新内存缓存
-    serverHitsCache = { data, timestamp: Date.now(), version: CACHE_VERSION };
+    if (hasUsablePageHits({ total: result.total, data })) {
+      // 更新内存缓存
+      serverHitsCache = { data, timestamp: Date.now(), version: CACHE_VERSION };
 
-    // 如果绑定了 KV，同步更新到 KV
-    if (KV) {
-      try {
-        await KV.put(
-          KV_CACHE_KEY,
-          JSON.stringify({ total: result.total, data, timestamp: Date.now() }),
-          { expirationTtl: SERVER_CACHE_TTL / 1000 }
-        );
-      } catch (err) {
-        console.warn("[getPageHits] KV put failed", err);
+      // 如果绑定了 KV，同步更新到 KV
+      if (KV) {
+        try {
+          await KV.put(
+            KV_CACHE_KEY,
+            JSON.stringify({ total: result.total, data, timestamp: Date.now() }),
+            { expirationTtl: SERVER_CACHE_TTL / 1000 }
+          );
+        } catch (err) {
+          console.warn("[getPageHits] KV put failed", err);
+        }
       }
+
+      const hits = calculateHitsForSlug(data, slug);
+      return hits;
     }
 
-    const hits = calculateHitsForSlug(data, slug);
-    return hits;
+    if (KV) {
+      try {
+        const stale = await KV.get<PageHitsPayload>(KV_CACHE_KEY, "json");
+        if (hasUsablePageHits(stale)) return calculateHitsForSlug(stale.data, slug);
+      } catch {}
+    }
+
+    if (serverHitsCache) {
+      return calculateHitsForSlug(serverHitsCache.data, slug);
+    }
+    return 0;
   } catch (error) {
     console.error("[getPageHits] Error:", error);
     
     // 如果失败且有 KV，尝试拿 stale KV 数据
     if (KV) {
       try {
-        const stale = await KV.get<{ data: PageHitItem[] }>(KV_CACHE_KEY, "json");
-        if (stale?.data) return calculateHitsForSlug(stale.data, slug);
+        const stale = await KV.get<PageHitsPayload>(KV_CACHE_KEY, "json");
+        if (hasUsablePageHits(stale)) return calculateHitsForSlug(stale.data, slug);
       } catch {}
     }
 

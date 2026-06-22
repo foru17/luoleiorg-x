@@ -9,11 +9,10 @@
 
 import fs from "fs/promises";
 import path from "path";
-import { fileURLToPath } from "url";
 import matter from "gray-matter";
 
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const ROOT_DIR = path.join(__dirname, "..");
+const SCRIPT_DIR = import.meta.dirname;
+const ROOT_DIR = path.join(SCRIPT_DIR, "..");
 const CACHE_FILE = path.join(ROOT_DIR, "data/image-dimensions.json");
 
 // 匹配 Markdown 图片语法: ![](url) 或 ![alt](url)

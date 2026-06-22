@@ -7,7 +7,37 @@ export const revalidate = 300; // 5 分钟缓存
 const CACHE_TTL_SECONDS = 5 * 60; // 5 minutes
 const CACHE_TTL_MS = CACHE_TTL_SECONDS * 1000;
 
-const CACHE_KEY = "umami_summary_cache";
+const CACHE_KEY = "umami_summary_cache_v4";
+
+interface CachedAnalyticsSummary {
+  totalPageViews: number;
+  totalVisitors: number;
+  totalVisits: number;
+  recentVisitor: {
+    country: string;
+    region: string;
+    city: string;
+    lastAt: string;
+  } | null;
+  timestamp?: number;
+}
+
+function hasUsableTotals(data: Pick<CachedAnalyticsSummary, "totalPageViews" | "totalVisitors" | "totalVisits">) {
+  return data.totalPageViews > 0 || data.totalVisitors > 0 || data.totalVisits > 0;
+}
+
+function hasCompleteTotals(data: Pick<CachedAnalyticsSummary, "totalPageViews" | "totalVisitors" | "totalVisits">) {
+  return data.totalPageViews > 0 && data.totalVisitors > 0 && data.totalVisits > 0;
+}
+
+function toResponseData(data: CachedAnalyticsSummary) {
+  return {
+    totalPageViews: data.totalPageViews,
+    totalVisitors: data.totalVisitors,
+    totalVisits: data.totalVisits,
+    recentVisitor: data.recentVisitor,
+  };
+}
 
 export async function GET() {
   try {
@@ -16,27 +46,16 @@ export async function GET() {
     // 检查缓存
     if (KV) {
       try {
-        const cachedData = await KV.get<{
-          totalPageViews: number;
-          totalVisitors: number;
-          totalVisits: number;
-          recentVisitor: {
-            country: string;
-            region: string;
-            city: string;
-            lastAt: string;
-          } | null;
-          timestamp: number;
-        }>(CACHE_KEY, "json");
+        const cachedData = await KV.get<CachedAnalyticsSummary>(CACHE_KEY, "json");
 
-        if (cachedData && Date.now() - cachedData.timestamp < CACHE_TTL_MS) {
+        if (
+          cachedData &&
+          cachedData.timestamp &&
+          Date.now() - cachedData.timestamp < CACHE_TTL_MS &&
+          hasUsableTotals(cachedData)
+        ) {
           return NextResponse.json(
-            {
-              totalPageViews: cachedData.totalPageViews,
-              totalVisitors: cachedData.totalVisitors,
-              totalVisits: cachedData.totalVisits,
-              recentVisitor: cachedData.recentVisitor,
-            },
+            toResponseData(cachedData),
             {
               headers: {
                 "Cache-Control": "public, max-age=300",
@@ -61,8 +80,8 @@ export async function GET() {
       recentVisitor: summary.recentVisitor,
     };
 
-    // 更新缓存
-    if (KV) {
+    // 更新缓存。避免把 Umami 临时失败造成的 0 或半截结果写入边缘缓存。
+    if (KV && hasCompleteTotals(data)) {
       try {
         await KV.put(
           CACHE_KEY,
@@ -76,8 +95,8 @@ export async function GET() {
 
     return NextResponse.json(data, {
       headers: {
-        "Cache-Control": "public, max-age=300",
-        "X-Cache": "MISS",
+        "Cache-Control": hasCompleteTotals(data) ? "public, max-age=300" : "no-store",
+        "X-Cache": hasCompleteTotals(data) ? "MISS" : "BYPASS",
       },
     });
   } catch (error) {
@@ -87,19 +106,9 @@ export async function GET() {
     const KV = (globalThis as unknown as { CACHE_KV?: KVNamespace }).CACHE_KV;
     if (KV) {
       try {
-        const staleData = await KV.get<{
-          totalPageViews: number;
-          totalVisitors: number;
-          totalVisits: number;
-          recentVisitor: {
-            country: string;
-            region: string;
-            city: string;
-            lastAt: string;
-          } | null;
-        }>(CACHE_KEY, "json");
-        if (staleData) {
-          return NextResponse.json(staleData, {
+        const staleData = await KV.get<CachedAnalyticsSummary>(CACHE_KEY, "json");
+        if (staleData && hasUsableTotals(staleData)) {
+          return NextResponse.json(toResponseData(staleData), {
             headers: {
               "Cache-Control": "public, max-age=60",
               "X-Cache": "STALE",

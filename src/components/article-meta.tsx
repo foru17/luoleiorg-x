@@ -30,6 +30,7 @@ export function ArticleMeta({ post, hits: serverHits }: ArticleMetaProps) {
       : Math.max(normalizedServerHits, clientHits);
 
   const loading = normalizedServerHits === undefined && clientLoading;
+  const isoDate = new Date(post.dateTime).toISOString();
 
   return (
     <header
@@ -38,19 +39,22 @@ export function ArticleMeta({ post, hits: serverHits }: ArticleMetaProps) {
     >
       {/* 遮罩层 */}
       <div className="absolute inset-0 bg-black/30" />
-      
+
       {/* 内容 */}
       <div className="relative h-full flex items-center px-5 md:px-10">
         <div className="max-w-xl">
           <h1 className="text-xl md:text-2xl font-bold text-white leading-tight line-clamp-3 md:line-clamp-2">
             {post.title}
           </h1>
-          
+
           <div className="mt-3 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs md:text-sm text-neutral-200">
-            <span className="inline-flex items-center gap-1">
+            <time
+              dateTime={isoDate}
+              className="inline-flex items-center gap-1"
+            >
               <IconCalendar className="h-3.5 w-3.5" />
               {post.date}
-            </span>
+            </time>
             <span className="text-neutral-400/60 hidden sm:inline">·</span>
             <span className="inline-flex items-center gap-1">
               <IconEye className="h-3.5 w-3.5" />

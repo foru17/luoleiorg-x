@@ -36,7 +36,7 @@ export function getUmamiConfig(): UmamiConfig {
   return {
     apiUrl: DEFAULT_CONFIG.apiUrl,
     websiteId: DEFAULT_CONFIG.websiteId,
-    apiToken: envToken || globalToken || "",
+    apiToken: globalToken || envToken || "",
     scriptUrl: DEFAULT_CONFIG.scriptUrl,
   };
 }

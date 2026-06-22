@@ -12,13 +12,11 @@
 
 import fs from 'fs';
 import path from 'path';
-import { fileURLToPath } from 'url';
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+const SCRIPT_DIR = import.meta.dirname;
 
-const inputPath = path.join(__dirname, '../data/structured-facts-aggregated.json');
-const outputPath = path.join(__dirname, '../data/structured-facts-aggregated.json');
+const inputPath = path.join(SCRIPT_DIR, '../data/structured-facts-aggregated.json');
+const outputPath = path.join(SCRIPT_DIR, '../data/structured-facts-aggregated.json');
 
 console.log('📖 读取原始数据...');
 const rawData = JSON.parse(fs.readFileSync(inputPath, 'utf-8'));

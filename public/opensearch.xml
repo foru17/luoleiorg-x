@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<OpenSearchDescription xmlns="http://a9.com/-/spec/opensearch/1.1/"
+                       xmlns:moz="http://www.mozilla.org/2006/browser/search/">
+  <ShortName>罗磊的独立博客</ShortName>
+  <Description>搜索罗磊独立博客 (luolei.org) 的文章、视频与笔记</Description>
+  <Tags>luolei zuoluotv 罗磊 博客 编程 摄影 旅行 跑步</Tags>
+  <InputEncoding>UTF-8</InputEncoding>
+  <Image width="32" height="32" type="image/png">https://luolei.org/legacy/favicon.png</Image>
+  <Url type="text/html"
+       method="get"
+       template="https://luolei.org/?q={searchTerms}"/>
+  <Url type="application/opensearchdescription+xml"
+       rel="self"
+       template="https://luolei.org/opensearch.xml"/>
+  <moz:SearchForm>https://luolei.org/</moz:SearchForm>
+</OpenSearchDescription>

@@ -72,6 +72,9 @@ export async function generateMetadata({
     ...(keywords ? { keywords } : {}),
     alternates: {
       canonical: articleUrl,
+      types: {
+        "text/markdown": `${articleUrl}.md`,
+      },
     },
     openGraph: {
       title: post.title,

@@ -17,11 +17,10 @@
 import fs from "fs/promises";
 import path from "path";
 import crypto from "crypto";
-import { fileURLToPath } from "url";
 import matter from "gray-matter";
 
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const ROOT_DIR = path.join(__dirname, "..");
+const SCRIPT_DIR = import.meta.dirname;
+const ROOT_DIR = path.join(SCRIPT_DIR, "..");
 const POSTS_DIR = path.join(ROOT_DIR, "content/posts");
 const DATA_DIR = path.join(ROOT_DIR, "data");
 const OUTPUT_FILE = path.join(DATA_DIR, "structured-facts-gemini.json");

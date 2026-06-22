@@ -10,10 +10,9 @@
 
 import fs from "fs/promises";
 import path from "path";
-import { fileURLToPath } from "url";
 
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const ROOT_DIR = path.join(__dirname, "..");
+const SCRIPT_DIR = import.meta.dirname;
+const ROOT_DIR = path.join(SCRIPT_DIR, "..");
 const OUTPUT_PATH = path.join(ROOT_DIR, "data", "author-tweets-cache.json");
 const TWEET_CACHE_MAX_AGE_DAYS = 7;
 

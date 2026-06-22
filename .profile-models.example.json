@@ -1,35 +1,85 @@
 {
   "$schema": "profile-models-config",
-  "$comment": "多模型 AI Profile 配置文件 — 复制此文件为 .profile-models.json 并填入真实 API Key",
+  "$comment": "多模型 AI Profile 配置文件 — 复制此文件为 .profile-models.json 并填入真实 API Key；不要提交 .profile-models.json",
   "models": [
     {
-      "id": "gemini-3-flash-preview",
-      "name": "Gemini 3",
-      "provider": "Google",
-      "providerSite": "https://gemini.google.com/",
-      "icon": "gemini",
-      "baseUrl": "https://generativelanguage.googleapis.com/v1beta/openai",
-      "apiKey": "YOUR_GOOGLE_API_KEY",
+      "id": "gpt-5.5",
+      "name": "GPT-5.5",
+      "provider": "OpenAI",
+      "providerSite": "https://chatgpt.com/",
+      "icon": "openai",
+      "baseUrl": "https://api.ttttt.ai/v1",
+      "apiKey": "YOUR_GPT_5_5_API_KEY",
+      "maxTokens": 2048,
+      "temperature": 0,
+      "stream": false,
       "enabled": true
     },
     {
-      "id": "qwen3.5-plus",
-      "name": "Qwen 3.5 Plus",
-      "provider": "Alibaba",
-      "providerSite": "https://tongyi.aliyun.com/",
-      "icon": "qwen",
-      "baseUrl": "https://dashscope.aliyuncs.com/compatible-mode/v1",
-      "apiKey": "YOUR_QWEN_API_KEY",
+      "id": "minimax-latest",
+      "name": "MiniMax Latest",
+      "provider": "MiniMax",
+      "providerSite": "https://www.minimaxi.com/",
+      "icon": "minimax",
+      "baseUrl": "https://ark.cn-beijing.volces.com/api/coding/v3",
+      "apiKey": "YOUR_ARK_API_KEY",
+      "headers": {
+        "Cache-Control": "no-cache",
+        "User-Agent": "claude-code/2.1.37"
+      },
+      "temperature": 1,
+      "stream": false,
       "enabled": true
     },
     {
-      "id": "kimi-k2.5",
-      "name": "Kimi K2.5",
+      "id": "glm-5.1",
+      "name": "GLM 5.1",
+      "provider": "Zhipu",
+      "providerSite": "https://chat.z.ai/",
+      "icon": "zhipu",
+      "baseUrl": "https://ark.cn-beijing.volces.com/api/coding/v3",
+      "apiKey": "YOUR_ARK_API_KEY",
+      "headers": {
+        "Cache-Control": "no-cache",
+        "User-Agent": "claude-code/2.1.37"
+      },
+      "temperature": 1,
+      "stream": false,
+      "enabled": true
+    },
+    {
+      "id": "deepseek-v4-pro",
+      "name": "DeepSeek V4 Pro",
+      "provider": "DeepSeek",
+      "providerSite": "https://www.deepseek.com/",
+      "icon": "deepseek",
+      "baseUrl": "https://api.deepseek.com",
+      "apiKey": "YOUR_DEEPSEEK_API_KEY",
+      "maxTokens": 8192,
+      "temperature": null,
+      "stream": false,
+      "extraBody": {
+        "thinking": {
+          "type": "enabled"
+        },
+        "reasoning_effort": "high"
+      },
+      "enabled": true
+    },
+    {
+      "id": "kimi-k2.6",
+      "name": "Kimi K2.6",
       "provider": "Moonshot",
       "providerSite": "https://www.kimi.com/",
       "icon": "kimi",
-      "baseUrl": "https://api.moonshot.cn/v1",
-      "apiKey": "YOUR_KIMI_API_KEY",
+      "baseUrl": "https://ark.cn-beijing.volces.com/api/coding/v3",
+      "apiKey": "YOUR_ARK_API_KEY",
+      "headers": {
+        "Cache-Control": "no-cache",
+        "User-Agent": "claude-code/2.1.37"
+      },
+      "temperature": 1,
+      "stream": false,
       "enabled": true
     }
   ]

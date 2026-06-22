@@ -1,7 +1,12 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState, useCallback } from "react";
-import { API_PAGE_HITS, type PageHitItem } from "@/lib/analytics";
+import {
+  API_PAGE_HITS,
+  hasUsablePageHits,
+  type PageHitItem,
+  type PageHitsPayload,
+} from "@/lib/analytics";
 import { extractSlug } from "@/lib/utils";
 
 // Global cache shared across all hook instances
@@ -37,10 +42,18 @@ async function fetchHitsData(): Promise<PageHitItem[]> {
         cache: "no-store",
         signal: AbortSignal.timeout(5000), // 5 second timeout
       });
-      const json = (await res.json()) as { data?: PageHitItem[] };
-      const data = Array.isArray(json.data) ? json.data : [];
+      if (!res.ok) {
+        return globalCache.data ?? [];
+      }
+
+      const json = (await res.json()) as Partial<PageHitsPayload>;
+      if (!hasUsablePageHits(json)) {
+        return globalCache.data ?? [];
+      }
+
+      const data = json.data;
       
-      // Update cache
+      // Update cache only with a complete, non-empty analytics payload.
       globalCache.data = data;
       globalCache.timestamp = Date.now();
       

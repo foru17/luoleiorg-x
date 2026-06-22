@@ -89,15 +89,19 @@ export function ArticleShareDialog({
   }, [shareCardSourceUrl]);
 
   useEffect(() => {
-    setPngBlob(null);
-    setShareImageState("idle");
-    setPreviewUrl((currentPreviewUrl) => {
-      if (currentPreviewUrl) {
-        URL.revokeObjectURL(currentPreviewUrl);
-      }
+    const resetTimerId = window.setTimeout(() => {
+      setPngBlob(null);
+      setShareImageState("idle");
+      setPreviewUrl((currentPreviewUrl) => {
+        if (currentPreviewUrl) {
+          URL.revokeObjectURL(currentPreviewUrl);
+        }
 
-      return null;
-    });
+        return null;
+      });
+    }, 0);
+
+    return () => window.clearTimeout(resetTimerId);
   }, [shareCardSourceUrl]);
 
   useEffect(() => {
@@ -151,7 +155,11 @@ export function ArticleShareDialog({
 
   useEffect(() => {
     if (open && shareImageState === "idle") {
-      void ensurePngImage();
+      const loadTimerId = window.setTimeout(() => {
+        void ensurePngImage();
+      }, 0);
+
+      return () => window.clearTimeout(loadTimerId);
     }
   }, [ensurePngImage, open, shareImageState]);
 

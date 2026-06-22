@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useEffectEvent, useRef, useState } from "react";
+import { usePathname } from "next/navigation";
 import {
   ROUTE_TRANSITION_COMPLETE_EVENT,
   ROUTE_TRANSITION_START_EVENT,
@@ -10,7 +11,7 @@ import { cn } from "@/lib/utils";
 
 const SHOW_DELAY_MS = 80;
 const HIDE_DELAY_MS = 220;
-const FAILSAFE_TIMEOUT_MS = 12000;
+const FAILSAFE_TIMEOUT_MS = 3000;
 
 function isPlainLeftClick(event: MouseEvent): boolean {
   return event.button === 0 &&
@@ -23,6 +24,10 @@ function isPlainLeftClick(event: MouseEvent): boolean {
 
 function getCurrentHref(): string {
   return `${window.location.pathname}${window.location.search}${window.location.hash}`;
+}
+
+function getPathnameFromHref(href: string): string {
+  return new URL(href, window.location.href).pathname;
 }
 
 function getTrackedHref(anchor: HTMLAnchorElement): string | null {
@@ -38,11 +43,15 @@ function getTrackedHref(anchor: HTMLAnchorElement): string | null {
 
   const nextHref = `${nextUrl.pathname}${nextUrl.search}${nextUrl.hash}`;
   if (nextHref === getCurrentHref()) return null;
+  if (nextUrl.pathname === window.location.pathname && nextUrl.search === window.location.search) {
+    return null;
+  }
 
   return nextHref;
 }
 
 export function RouteTransitionProgress() {
+  const pathname = usePathname();
   const [visible, setVisible] = useState(false);
   const [settling, setSettling] = useState(false);
   const showTimerRef = useRef<number | null>(null);
@@ -102,6 +111,14 @@ export function RouteTransitionProgress() {
   });
 
   useEffect(() => {
+    const activeHref = activeHrefRef.current;
+    if (!activeHref) return;
+    if (getPathnameFromHref(activeHref) !== pathname) return;
+
+    finishProgress();
+  }, [pathname]);
+
+  useEffect(() => {
     const handleClick = (event: MouseEvent) => {
       if (!isPlainLeftClick(event)) return;
 
@@ -155,7 +172,7 @@ export function RouteTransitionProgress() {
       <div className="h-full w-full overflow-hidden">
         <div
           className={cn(
-            "h-full w-[42%] rounded-r-full bg-[linear-gradient(90deg,#ea580c_0%,#f97316_45%,#fb7185_100%)] shadow-[0_0_18px_rgba(249,115,22,0.35)] will-change-transform",
+            "h-full w-[42%] rounded-r-full bg-[linear-gradient(90deg,var(--vp-c-brand-light)_0%,var(--vp-c-brand)_48%,var(--vp-c-brand-lighter)_100%)] shadow-[0_0_18px_var(--vp-c-brand-soft)] will-change-transform",
             settling
               ? "w-full opacity-0 transition-[width,opacity] duration-200 ease-out"
               : "animate-[route-progress_1.15s_cubic-bezier(0.22,1,0.36,1)_infinite]",

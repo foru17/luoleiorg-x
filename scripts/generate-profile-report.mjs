@@ -14,11 +14,10 @@
 import fs from "fs/promises";
 import path from "path";
 import { createHash } from "crypto";
-import { fileURLToPath } from "url";
 import { loadEnv } from "./utils/load-env.mjs";
 
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const ROOT_DIR = path.join(__dirname, "..");
+const SCRIPT_DIR = import.meta.dirname;
+const ROOT_DIR = path.join(SCRIPT_DIR, "..");
 const DATA_DIR = path.join(ROOT_DIR, "data");
 const CONTEXT_FILE = path.join(DATA_DIR, "author-context.json");
 const REPORTS_DIR = path.join(DATA_DIR, "reports");
@@ -27,7 +26,7 @@ const MODELS_CONFIG_FILE = path.join(ROOT_DIR, ".profile-models.json");
 const DEFAULT_TIMEOUT_MS = 300_000;
 const MAX_API_RETRIES = 3;
 const MAX_CONCURRENCY = 6;
-const PROFILE_PROMPT_VERSION = "v3-public-facts";
+const PROFILE_PROMPT_VERSION = "v4-natural";
 const DISCLOSURE_POLICY_VERSION = "public-facts-v1";
 
 // ─── 模型配置加载 ────────────────────────────────────────────
@@ -250,6 +249,14 @@ function containsRawUrl(text) {
   return /https?:\/\/\S+/i.test(String(text ?? ""));
 }
 
+function stripRawUrls(text) {
+  return String(text ?? "")
+    .replace(/https?:\/\/\S+/gi, "")
+    .replace(/\s*[（(]\s*[)）]\s*/g, "")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
 function canonicalizeProofItems(items, sourceMap, kind, violations) {
   if (!Array.isArray(items)) return [];
 
@@ -286,53 +293,112 @@ function canonicalizeProofItems(items, sourceMap, kind, violations) {
 }
 
 function validateAndNormalizeReport(report, context) {
-  const violations = [];
+  // warnings: 非致命问题，自动修复后继续；fatalIssues: 报告结构不可用，需回退
+  const warnings = [];
   const lookup = buildSourceLookup(context);
   const normalized = {
     ...report,
     identities: Array.isArray(report.identities)
       ? report.identities.map((identity) => {
           const next = { ...identity };
-          if (containsRawUrl(next.description) || containsRawUrl(next.evidence)) {
-            violations.push(`identities: ${next.name || "未命名"} 的 description/evidence 含裸 URL`);
+          // 裸 URL 不再判定失败，直接从正文剥离（URL 只应出现在 link 字段）
+          if (containsRawUrl(next.description)) {
+            next.description = stripRawUrls(next.description);
+            warnings.push(`identities: ${next.name || "未命名"} 的 description 含裸 URL（已自动剥离）`);
           }
+          if (containsRawUrl(next.evidence)) {
+            next.evidence = stripRawUrls(next.evidence);
+            warnings.push(`identities: ${next.name || "未命名"} 的 evidence 含裸 URL（已自动剥离）`);
+          }
+          // link 不在上下文来源中则丢弃该 link，但保留这条 identity
           if (next.link) {
             const linkKey = normalizeUrl(next.link);
             if (!lookup.identityAllowed.has(linkKey)) {
-              violations.push(`identities: ${next.name || "未命名"} 的 link 不在上下文来源中`);
+              warnings.push(`identities: ${next.name || "未命名"} 的 link 不在上下文来源中（已移除 link）`);
+              delete next.link;
             }
           }
           return next;
         })
       : [],
     proofs: {
-      posts: canonicalizeProofItems(report.proofs?.posts, lookup.postMap, "posts", violations),
-      tweets: canonicalizeProofItems(report.proofs?.tweets, lookup.tweetMap, "tweets", violations),
-      projects: canonicalizeProofItems(report.proofs?.projects, lookup.projectMap, "projects", violations),
+      posts: canonicalizeProofItems(report.proofs?.posts, lookup.postMap, "posts", warnings),
+      tweets: canonicalizeProofItems(report.proofs?.tweets, lookup.tweetMap, "tweets", warnings),
+      projects: canonicalizeProofItems(report.proofs?.projects, lookup.projectMap, "projects", warnings),
     },
   };
 
-  return { report: normalized, violations };
+  // 仅在结构性不可用时才判定致命（触发规则模板回退）
+  const fatalIssues = [];
+  if (!normalized.hero?.summary) fatalIssues.push("缺少 hero.summary");
+  if (normalized.identities.length < 2) fatalIssues.push("有效 identities 少于 2 个");
+  if (normalized.proofs.posts.length < 3) fatalIssues.push("有效 proofs.posts 少于 3 篇");
+
+  return { report: normalized, warnings, fatalIssues };
 }
 
 // ─── AI API 调用 ─────────────────────────────────────────────
+
+function sanitizeJsonText(text) {
+  let output = "";
+
+  for (let i = 0; i < text.length; i++) {
+    const code = text.charCodeAt(i);
+
+    if (code >= 0xd800 && code <= 0xdbff) {
+      const next = text.charCodeAt(i + 1);
+      if (next >= 0xdc00 && next <= 0xdfff) {
+        output += text[i] + text[i + 1];
+        i++;
+      } else {
+        output += "\ufffd";
+      }
+      continue;
+    }
+
+    if (code >= 0xdc00 && code <= 0xdfff) {
+      output += "\ufffd";
+      continue;
+    }
+
+    output += text[i];
+  }
+
+  return output;
+}
+
+function sanitizeMessages(messages) {
+  return messages.map((message) => ({
+    ...message,
+    content:
+      typeof message.content === "string"
+        ? sanitizeJsonText(message.content)
+        : message.content,
+  }));
+}
 
 async function callAI({
   baseUrl,
   apiKey,
   model,
   messages,
+  headers = {},
+  maxTokens = 8192,
   temperature = 0.4,
   stream = false,
+  extraBody = {},
   timeoutMs = DEFAULT_TIMEOUT_MS,
 }) {
   // OpenAI 新模型使用 max_completion_tokens，其他兼容 API 使用 max_tokens
   const isOpenAI = baseUrl.includes("api.openai.com");
   const body = {
     model,
-    messages,
-    ...(isOpenAI ? { max_completion_tokens: 8192 } : { max_tokens: 8192 }),
+    messages: sanitizeMessages(messages),
+    ...(isOpenAI ? { max_completion_tokens: maxTokens } : { max_tokens: maxTokens }),
     stream,
+    ...(extraBody && typeof extraBody === "object" && !Array.isArray(extraBody)
+      ? extraBody
+      : {}),
   };
   // 只在 temperature 不为 null 时设置（某些模型如 Kimi K2.5 不接受自定义 temperature）
   if (temperature !== null) {
@@ -353,6 +419,7 @@ async function callAI({
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${apiKey}`,
+          ...headers,
         },
         body: JSON.stringify(body),
         signal: AbortSignal.timeout(timeoutMs),
@@ -506,11 +573,26 @@ function buildSystemPrompt() {
 6. styles 写"和他的内容打交道时会注意到的特点"，用具体场景描述（见上"个人色彩"）。
 7. proofs.reason 一句话讲人话（见上原则 6）。
 
-## 文风限制
+## 去 AI 味（最重要，最容易暴露"机器生成"的地方，务必克制）
 
-- 友好、有温度、第三方口吻；不写鸡汤、不写颁奖词、不总结人生。
-- 禁止"AI 腔/大词"：范式、治理、同构、反脆弱、数字主权、对齐、底座、降维、赋能、闭环、极致、卓越、深度融合、全面。
-- 少用"X 是一位……"的定义句开头；多用"从他的内容来看/可以看到/经常出现/很多时候会…"的观察句。
+1. 禁用大词与 AI 腔：范式、治理、同构、反脆弱、数字主权、对齐、底座、降维、赋能、闭环、抓手、心智、生态位、集大成者、护城河、长期主义、底层逻辑、极致、卓越、深度融合、全面、多维度、立体、标签化、丈量。
+2. 禁用万能套路句式：
+   - 开头别用"X 是一个很难用单一标签定义的人""在这个时代""不止是……更是……"。
+   - 结尾别用"这种……正是他……最……的地方""展现了……""体现了……""彰显了……"这类总结升华。
+   - 别用"集……于一身""从 0 到 1""完美诠释/复刻"。
+3. 形容词要让位给动作和细节：不写"他是一个热爱技术的人"，要写"他会为了搞清楚 IPTV 组播，把运营商盒子拆开测一遍"。
+4. 一段里别堆排比和三连。能用一句大白话说清，就不要凑成对仗。
+5. 允许口语和一点自嘲幽默，像在微信上跟朋友介绍他。要有具体名词（咖啡、智齿、宽带套餐、马拉松），不要空泛。
+
+反例（不要这样写）：
+- "他是一个集工程师、创作者与生活家于一身的多维度个体，用代码丈量世界。"
+正例（要这样写）：
+- "白天写代码、做开源，晚上可能在折腾家里的网络，或者在某个城市跑马拉松——然后把这些都写下来。"
+
+## 文风限制（补充）
+
+- 第三方口吻、不用"我"；友好有温度，但不写鸡汤、不写颁奖词、不总结人生。
+- 多用"从他的内容来看/可以看到/经常出现/很多时候会…"的观察句，少用"X 是一位……"的定义句开头。
 - identities 的 evidence 和 description 中不要出现任何 URL（http/https 链接），URL 只能放在 link 字段。
 
 ## 格式要求
@@ -829,8 +911,20 @@ async function generateReportWithAI(context, modelEntry) {
       { role: "system", content: buildSystemPrompt() },
       { role: "user", content: userPrompt },
     ],
+    headers:
+      modelEntry.headers && typeof modelEntry.headers === "object"
+        ? modelEntry.headers
+        : {},
+    maxTokens:
+      typeof modelEntry.maxTokens === "number" && modelEntry.maxTokens > 0
+        ? modelEntry.maxTokens
+        : 8192,
     temperature: "temperature" in modelEntry ? modelEntry.temperature : 0.4,
     stream: modelEntry.stream !== false,
+    extraBody:
+      modelEntry.extraBody && typeof modelEntry.extraBody === "object"
+        ? modelEntry.extraBody
+        : {},
     timeoutMs:
       typeof modelEntry.timeoutMs === "number" && modelEntry.timeoutMs > 0
         ? modelEntry.timeoutMs
@@ -847,9 +941,12 @@ async function generateReportWithAI(context, modelEntry) {
     throw new Error("AI 返回缺少 report 字段");
   }
 
-  const { report: normalizedReport, violations } = validateAndNormalizeReport(report, context);
-  if (violations.length > 0) {
-    throw new Error(`报告引用/披露校验失败: ${violations.join("；")}`);
+  const { report: normalizedReport, warnings, fatalIssues } = validateAndNormalizeReport(report, context);
+  if (fatalIssues.length > 0) {
+    throw new Error(`报告结构不可用，回退规则模板: ${fatalIssues.join("；")}`);
+  }
+  if (warnings.length > 0) {
+    console.warn(`      ⚠️  已自动修复 ${warnings.length} 处非致命问题: ${warnings.slice(0, 3).join("；")}${warnings.length > 3 ? " …" : ""}`);
   }
 
   return {
@@ -904,9 +1001,11 @@ function buildRuleBasedReport(context) {
     .map((item) => item.title)
     .slice(0, 2)
     .join("、");
-  const highLevelTopic = context.highlights?.[0]
-    ? truncate(context.highlights[0], 56)
-    : "技术实践、工具折腾与生活方式";
+  const highLevelTopic = (
+    context.highlights?.[0]
+      ? truncate(context.highlights[0], 56)
+      : "技术实践、工具折腾与生活方式"
+  ).replace(/[。．.\s]+$/, "");
 
   return {
     meta: {
@@ -924,63 +1023,63 @@ function buildRuleBasedReport(context) {
       hero: {
         title: "AI 视角下的罗磊",
         summary:
-          "一边写代码做开源，一边把网络、工具、旅行和生活方式都写进博客里。",
-        intro: `从他近期的内容来看，最集中的方向是：${highLevelTopic}。`,
+          "白天写代码、做开源，业余时间折腾家里的网络和各种工具，也会到处跑跑、拍点照片——然后把这些都写进博客。",
+        intro: `从他的内容来看，技术是主线，但旅行、跑步和日常生活的比重一点都不低。最近他写得比较多的是：${highLevelTopic}。`,
       },
       identities: [
         {
-          name: "前端工程实践",
-          description: "博客中有不少从项目搭建到部署上线的完整记录，涉及前后端、CI/CD 和性能优化。",
+          name: "把折腾写成教程",
+          description: "他喜欢把一个东西研究透，再顺手写成别人能照着做的文章，从项目搭建到部署上线都有记录。",
           evidence: majorProjectNames
-            ? `从 GitHub 来看，${majorProjectNames} 是比较有代表性的项目。`
-            : "博客中持续出现编程与工具类文章。",
+            ? `GitHub 上的 ${majorProjectNames} 就是这种"做完顺手开源"的产物。`
+            : "博客里常年都有编程和工具类的实操文章。",
           link: "https://github.com/foru17",
         },
         {
-          name: "工具与效率",
-          description: "经常可以看到关于工具选择、工作流优化和自动化脚本的讨论。",
+          name: "工具用得很讲究",
+          description: "选工具、调工作流、写点小脚本把重复的活自动化——这类内容在他博客里很常见。",
           evidence: posts[0]
-            ? `比如最近的文章《${posts[0].title}》就涉及了相关主题。`
-            : "博客长期保持对效率工具的讨论。",
+            ? `比如最近的《${posts[0].title}》就在聊这方面。`
+            : "他的博客一直保持着对效率工具的关注。",
           link: "https://luolei.org",
         },
         {
-          name: "旅行与生活方式",
-          description: "博客和社交动态中有不少关于旅行、城市体验和日常生活方式的内容。",
+          name: "旅行和生活也照写不误",
+          description: "出门旅行、城市里的吃住行、日常用的东西，他都会随手记下来发出来。",
           evidence: context.tweets?.length
-            ? "从 X 动态可以看到对旅行、居住和日常工具的持续讨论。"
-            : "历史内容中有旅行和生活方式相关的文章。",
+            ? "X 上能看到他对旅行、居住和日常工具的持续分享。"
+            : "早年的文章里就有不少旅行和生活方式的内容。",
         },
       ],
       strengths: [
         {
-          title: "从内容中可以观察到的工程方式",
+          title: "他做事的方式",
           points: [
-            "文章中常见从想法到可用产品的完整记录。",
-            "重复性工作倾向于脚本化和自动化。",
-            "会把 AI 工具整合进实际工作流，而不是单独讨论。",
+            "喜欢把一件事从头摸到尾，再整理成能复现的记录。",
+            "遇到重复的活，倾向于写个脚本让它自动跑。",
+            "把 AI 直接接进日常的活里用，而不是单独拿出来讨论。",
           ],
         },
         {
-          title: "写作与内容输出方式",
+          title: "他怎么写东西",
           points: [
-            "习惯把折腾过程写成可复现的教程。",
-            "关注阅读体验和视觉细节，文章排版讲究。",
+            "折腾完一件事，习惯写成别人照着也能做一遍的文章。",
+            "挺在意排版和图片，文章读起来比较舒服。",
           ],
         },
       ],
       styles: [
         {
-          trait: "实测驱动",
-          description: "文章中经常出现先做实验、再写结论的模式，很少纯理论讨论。",
+          trait: "先动手再下结论",
+          description: "很多文章都是自己先做一遍实验、跑一轮数据，再写结论，很少空谈理论。",
         },
         {
-          trait: "过程公开",
-          description: "愿意在博客和社交媒体上分享决策过程和踩过的坑。",
+          trait: "踩过的坑也照写",
+          description: "不光写怎么做成的，连中间走的弯路、踩的坑也会一起发出来。",
         },
         {
-          trait: "长期迭代",
-          description: "从内容时间线来看，不少主题会反复出现和更新，不是一次性的热度文章。",
+          trait: "一个主题会反复写",
+          description: "看时间线就知道，不少话题他会隔段时间又写一篇更新，不是发一次蹭个热度就完。",
         },
       ],
       proofs: { posts, tweets, projects },
@@ -1021,11 +1120,17 @@ async function updateManifest(modelEntry, reportMeta) {
     const config = JSON.parse(configRaw);
     if (Array.isArray(config?.models)) {
       const orderMap = new Map(config.models.map((m, i) => [m.id, i]));
+      manifest.models = manifest.models.filter((m) => orderMap.has(m.id));
       manifest.models.sort((a, b) => {
         const ia = orderMap.get(a.id) ?? Number.MAX_SAFE_INTEGER;
         const ib = orderMap.get(b.id) ?? Number.MAX_SAFE_INTEGER;
         return ia - ib;
       });
+
+      if (!orderMap.has(manifest.defaultModel)) {
+        const firstEnabledModel = config.models.find((m) => m.enabled !== false);
+        manifest.defaultModel = firstEnabledModel?.id ?? manifest.models[0]?.id ?? null;
+      }
     }
   } catch {
     // 读取配置失败时保持原序

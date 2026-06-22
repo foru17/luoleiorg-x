@@ -68,7 +68,11 @@
       "Bash(pip3 list:*)",
       "Bash(open:*)",
       "Bash(/tmp/streaming_summary.txt:*)",
-      "Read(//tmp/**)"
+      "Read(//tmp/**)",
+      "mcp__deepwiki__read_wiki_structure",
+      "WebFetch(domain:news.ycombinator.com)",
+      "mcp__deepwiki__read_wiki_contents",
+      "WebFetch(domain:chenglou.me)"
     ]
   }
 }

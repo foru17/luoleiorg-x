@@ -23,6 +23,7 @@ export const metadata: Metadata = {
     canonical: siteConfig.siteUrl,
     types: {
       "application/rss+xml": `${siteConfig.siteUrl}/rss.xml`,
+      "application/opensearchdescription+xml": `${siteConfig.siteUrl}/opensearch.xml`,
     },
   },
   openGraph: {

@@ -306,6 +306,16 @@ export function getMultiModelProfileData(): MultiModelProfileData {
     manifest.models = [fallbackModel];
   }
 
+  // 自愈默认模型：若配置的默认报告是规则模板兜底（某个模型 API 临时不可用），
+  // 但存在真正由 AI 生成的报告，则把默认切到第一个 AI 报告，避免首屏展示"AI 味"模板。
+  const defaultReport = reports.find((r) => r.model.id === manifest.defaultModel);
+  if (!defaultReport || defaultReport.meta.generatedBy !== "ai") {
+    const firstAiReport = reports.find((r) => r.meta.generatedBy === "ai");
+    if (firstAiReport) {
+      manifest.defaultModel = firstAiReport.model.id;
+    }
+  }
+
   _cache = { manifest, reports };
   return _cache;
 }

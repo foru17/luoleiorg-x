@@ -10,10 +10,9 @@
 import fs from "fs/promises";
 import path from "path";
 import matter from "gray-matter";
-import { fileURLToPath } from "url";
 
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const ROOT_DIR = path.join(__dirname, "..");
+const SCRIPT_DIR = import.meta.dirname;
+const ROOT_DIR = path.join(SCRIPT_DIR, "..");
 const DATA_DIR = path.join(ROOT_DIR, "data");
 const POSTS_DIR = path.join(ROOT_DIR, "content", "posts");
 const OUTPUT_REPORT = path.join(DATA_DIR, "author-profile-report.json");
