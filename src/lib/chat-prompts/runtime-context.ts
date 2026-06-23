@@ -1,5 +1,6 @@
 import { siteConfig } from "../site-config.ts";
-import authorContextJson from "../../../data/author-context.json" with { type: "json" };
+// 运行时精简版（剔除 posts/tweets 全量数组，500KB → ~21KB），由 build-author-context.mjs 生成。
+import authorContextJson from "../../../data/author-context.runtime.json" with { type: "json" };
 import factRegistryJson from "../../../data/fact-registry.json" with { type: "json" };
 import type { ChatPromptRuntimeConfig } from "./config.ts";
 import {

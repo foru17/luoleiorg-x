@@ -21,6 +21,23 @@ const DATA_DIR = path.join(ROOT_DIR, "data");
 const POSTS_DIR = path.join(ROOT_DIR, "content", "posts");
 const SOURCES_DIR = path.join(DATA_DIR, "sources");
 const OUTPUT_FILE = path.join(DATA_DIR, "author-context.json");
+// 运行时（AI 分身对话）只用到下列字段，posts/tweets 全量数组（~480KB）不参与提示词，
+// 单独生成一份精简版供 Worker bundle 引入，避免把整份大文件打进对话链路。
+const RUNTIME_OUTPUT_FILE = path.join(DATA_DIR, "author-context.runtime.json");
+const RUNTIME_CONTEXT_KEYS = [
+  "$schema",
+  "generatedAt",
+  "profile",
+  "experience",
+  "skills",
+  "highlights",
+  "projects",
+  "publicActivities",
+  "stableFacts",
+  "timelineFacts",
+  "structuredFacts",
+  "contextHash",
+];
 
 const DEFAULT_SITE_URL = "https://luolei.org";
 const DEFAULT_USERNAME = "luoleiorg";
@@ -1340,6 +1357,15 @@ async function main() {
 
   await writeJson(OUTPUT_FILE, context);
   console.log(`\n✅ 已生成: ${OUTPUT_FILE}`);
+
+  // 精简运行时版本（剔除 posts/tweets 全量数组）
+  const runtimeContext = Object.fromEntries(
+    RUNTIME_CONTEXT_KEYS.filter((key) => key in context).map((key) => [key, context[key]]),
+  );
+  await writeJson(RUNTIME_OUTPUT_FILE, runtimeContext);
+  const fullKb = (JSON.stringify(context).length / 1024).toFixed(0);
+  const slimKb = (JSON.stringify(runtimeContext).length / 1024).toFixed(0);
+  console.log(`✅ 已生成: ${RUNTIME_OUTPUT_FILE}（运行时精简版 ${slimKb}KB / 全量 ${fullKb}KB）`);
   console.log(`📊 数据概览: ${posts.length} 文章 / ${tweetResult.tweets.length} 推文 / ${github.projects.length} 项目`);
 }
 

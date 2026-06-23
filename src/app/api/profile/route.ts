@@ -9,7 +9,6 @@ const dataModules = import.meta.glob(
   [
     "/data/github-resume.json",
     "/data/author-profile-report.json",
-    "/data/author-context.json",
   ],
   { eager: true, import: "default" },
 ) as Record<string, unknown>;
