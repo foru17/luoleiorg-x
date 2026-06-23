@@ -12,6 +12,13 @@
   }
 }
 
+/* AI 摘要打字机：提示即将出现文字的流动波浪线 */
+@keyframes summary-wave {
+  to {
+    transform: translateX(-23px);
+  }
+}
+
 @keyframes route-progress {
   0% {
     transform: translateX(-100%) scaleX(0.38);
