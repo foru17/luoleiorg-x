@@ -60,7 +60,7 @@ function TypewriterText({
         // 零宽度容器：外层 w-0 不占据排版空间，内层小点 overflow 可见，
         // 动效叠加在「即将出现的透明文字」之上，不改变换行、杜绝微抖动。
         <span aria-hidden className="inline-block w-0 overflow-visible align-baseline">
-          <span className="ml-2.5 inline-flex translate-y-[-0.32em] items-center gap-[5px]">
+          <span className="ml-2.5 inline-flex items-end gap-[5px] align-baseline">
             {[0, 1, 2].map((i) => (
               <span
                 key={i}
@@ -68,6 +68,7 @@ function TypewriterText({
                 style={{
                   animation: "summary-dot 1.4s ease-in-out infinite",
                   animationDelay: `${i * 0.22}s`,
+                  transformOrigin: "center bottom",
                 }}
               />
             ))}
