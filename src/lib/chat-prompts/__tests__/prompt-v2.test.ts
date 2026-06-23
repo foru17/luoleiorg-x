@@ -91,24 +91,23 @@ const articlePool: ArticleContext[] = [
 test("core rules should include mandatory contracts and fixed templates", () => {
   const rules = buildCoreRules();
 
-  assert.match(rules, /来源限制协议/);
-  assert.match(rules, /数字协议/);
-  assert.match(rules, /履历协议/);
-  assert.match(rules, /链接协议/);
+  // 合并后的核心契约（来源限制 / 可见才可说 / 充分利用证据 / 当前文章优先 / 数量题 / 链接 / 回答模式）
+  assert.match(rules, /来源限制/);
+  assert.match(rules, /可见才可说/);
+  assert.match(rules, /充分利用证据/);
+  assert.match(rules, /当前文章优先/);
+  assert.match(rules, /链接/);
+  assert.match(rules, /回答模式/);
 
+  // 四个固定兜底模板必须保留
   assert.match(rules, new RegExp(fallbackResponseTemplates.missingProfile));
   assert.match(rules, new RegExp(fallbackResponseTemplates.missingNumber));
   assert.match(rules, new RegExp(fallbackResponseTemplates.emptySearch));
   assert.match(rules, new RegExp(fallbackResponseTemplates.searchGuidance));
 
-  assert.equal((rules.match(/来源限制协议/g) ?? []).length, 1);
-  assert.equal((rules.match(/数字协议/g) ?? []).length, 1);
-  assert.equal((rules.match(/履历协议/g) ?? []).length, 1);
-  assert.equal((rules.match(/链接协议/g) ?? []).length, 1);
-  assert.match(rules, /来源分层协议/);
-  assert.match(rules, /回答模式协议/);
-  assert.match(rules, /L1「相关文章\/相关动态」/);
-  assert.match(rules, /recommendation 先给 2-4 个推荐项/);
+  // 来源分层与关键安全约束
+  assert.match(rules, /L1 相关文章\/动态/);
+  assert.match(rules, /Markdown 格式 \[显示文字\]\(URL\)/);
   assert.match(rules, /禁止输出内部证据编号（如 A1、T1、\[A、\[T）/);
 });
 
