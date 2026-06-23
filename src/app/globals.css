@@ -12,10 +12,16 @@
   }
 }
 
-/* AI 摘要打字机：提示即将出现文字的流动波浪线 */
-@keyframes summary-wave {
-  to {
-    transform: translateX(-23px);
+/* AI 摘要打字机：提示即将出现文字的呼吸式小点（依次缩放+渐隐） */
+@keyframes summary-dot {
+  0%,
+  100% {
+    opacity: 0.2;
+    transform: scale(0.6);
+  }
+  40% {
+    opacity: 0.75;
+    transform: scale(1);
   }
 }
 

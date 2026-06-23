@@ -57,25 +57,21 @@ function TypewriterText({
     <p className="whitespace-pre-wrap text-base leading-[1.9] text-zinc-600 dark:text-zinc-400">
       <span>{revealed}</span>
       {!done && (
-        // 零宽度容器：外层 w-0 不占据排版空间，内层流动波浪线 overflow 可见，
+        // 零宽度容器：外层 w-0 不占据排版空间，内层小点 overflow 可见，
         // 动效叠加在「即将出现的透明文字」之上，不改变换行、杜绝微抖动。
         <span aria-hidden className="inline-block w-0 overflow-visible align-baseline">
-          <svg
-            className="ml-3 inline-block translate-y-[-0.12em] text-zinc-300 dark:text-zinc-600"
-            width="46"
-            height="10"
-            viewBox="0 0 46 10"
-            fill="none"
-          >
-            <g style={{ animation: "summary-wave 1.4s linear infinite" }}>
-              <path
-                d="M0 5 Q5.75 2 11.5 5 T23 5 T34.5 5 T46 5 T57.5 5 T69 5"
-                stroke="currentColor"
-                strokeWidth="1.5"
-                strokeLinecap="round"
+          <span className="ml-2.5 inline-flex translate-y-[-0.32em] items-center gap-[5px]">
+            {[0, 1, 2].map((i) => (
+              <span
+                key={i}
+                className="h-[4px] w-[4px] rounded-full bg-zinc-400/90 dark:bg-zinc-500/90"
+                style={{
+                  animation: "summary-dot 1.4s ease-in-out infinite",
+                  animationDelay: `${i * 0.22}s`,
+                }}
               />
-            </g>
-          </svg>
+            ))}
+          </span>
         </span>
       )}
       <span aria-hidden className="text-transparent">
