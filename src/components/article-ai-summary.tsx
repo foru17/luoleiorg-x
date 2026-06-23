@@ -57,10 +57,14 @@ function TypewriterText({
     <p className="whitespace-pre-wrap text-base leading-[1.9] text-zinc-600 dark:text-zinc-400">
       <span>{revealed}</span>
       {!done && (
-        // 零宽度光标：外层 w-0 不占据排版空间，内层竖线 overflow 可见，
-        // 因此光标的出现/移动不会改变换行，杜绝微抖动。
+        // 零宽度容器：外层 w-0 不占据排版空间，内层跳动圆点 overflow 可见，
+        // 因此动效叠加在「即将出现的透明文字」之上，不改变换行、杜绝微抖动。
         <span aria-hidden className="inline-block w-0 overflow-visible align-baseline">
-          <span className="inline-block h-[1.05em] w-[2px] translate-y-[0.18em] animate-pulse rounded-full bg-amber-500/80" />
+          <span className="ml-1 inline-flex translate-y-[-0.08em] items-baseline gap-[3px]">
+            <span className="h-[5px] w-[5px] animate-bounce rounded-full bg-amber-500/80 [animation-delay:0ms] [animation-duration:0.9s]" />
+            <span className="h-[5px] w-[5px] animate-bounce rounded-full bg-amber-500/60 [animation-delay:150ms] [animation-duration:0.9s]" />
+            <span className="h-[5px] w-[5px] animate-bounce rounded-full bg-amber-500/40 [animation-delay:300ms] [animation-duration:0.9s]" />
+          </span>
         </span>
       )}
       <span aria-hidden className="text-transparent">
@@ -157,11 +161,7 @@ export function ArticleAISummary({ summary, share }: ArticleAISummaryProps) {
               />
 
               {summary.tags.length > 0 && (
-                <div
-                  className={`mt-4 flex flex-wrap gap-2 border-t border-zinc-100 pt-4 transition-opacity duration-500 dark:border-zinc-700/60 ${
-                    typingDone ? "opacity-100" : "opacity-0"
-                  }`}
-                >
+                <div className="mt-4 flex flex-wrap gap-2 border-t border-zinc-100 pt-4 dark:border-zinc-700/60">
                   {summary.tags.map((tag) => (
                     <span
                       key={tag}
